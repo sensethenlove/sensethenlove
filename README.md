@@ -27,6 +27,7 @@
 - [Prisma + NextJS](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)
 - [Using Prisma with Planetscale](https://www.prisma.io/docs/guides/database/using-prisma-with-planetscale)
 - [Prisma + Cloudflare Workers](https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers)
+- [Prisma + Data Proxy](https://www.prisma.io/docs/data-platform/data-proxy)
 
 ##### Utilities
 - [Squoosh](https://squoosh.app)
