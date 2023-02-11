@@ -5,4 +5,6 @@ import { PrismaClient } from '@prisma/client'
 // Prisma Suggestion: https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices
 if (process.env.NODE_ENV === 'development' && !global.prisma) global.prisma = new PrismaClient()
 
-export default global.prisma || new PrismaClient()
+export default process.env.NODE_ENV === 'development' ?
+  global.prisma :
+  new PrismaClient()

@@ -10,7 +10,6 @@ env:
   PROD_DATABASE_URL: ${{ secrets.PROD_DATABASE_URL }}
   CLOUDFLARE_TURNSTILE_PRIVATE_KEY: ${{ secrets.CLOUDFLARE_TURNSTILE_PRIVATE_KEY }}
 
-
 jobs:
   deploy:
     runs-on: ubuntu-latest

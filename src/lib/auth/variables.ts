@@ -1,4 +1,4 @@
-export const SIGN_IN_COOKIE_MAX_AGE_IN_SECONDS = 540 // 9 minutes
+export const SIGN_IN_TOKEN_MAX_AGE_IN_SECONDS = 540 // 9 minutes
 
 export const ACCESS_COOKIE_NAME = 'access-token'
 export const ACCESS_COOKIE_MAX_AGE_IN_SECONDS = 32400 // 9 hours
