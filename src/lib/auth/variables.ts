@@ -1,3 +1,5 @@
+import { PUBLIC_ENVIRONMENT } from '$env/static/public'
+
 export const SIGN_IN_TOKEN_MAX_AGE_IN_SECONDS = 540 // 9 minutes
 
 export const ACCESS_COOKIE_NAME = 'access-token'
@@ -11,5 +13,5 @@ export const commonCookieSetSettings = {
   path: '/',
   httpOnly: true,
   sameSite: false,
-  secure: process.env.NODE_ENV === 'production',
+  secure: PUBLIC_ENVIRONMENT === 'production',
 }
