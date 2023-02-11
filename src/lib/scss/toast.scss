@@ -1,0 +1,133 @@
+@import '$lib/scss/zindex.scss';
+
+#toast-wrapper { // inspiration: https://flowbite-svelte.com/components/toast
+  position: fixed;
+  z-index: $zindex-toast;
+  top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @keyframes toast-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-9rem);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes toast-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateY(-9rem);
+    }
+  }
+
+  .toast {
+    margin-bottom: 1rem;
+    padding: 1.2rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    color: rgb(214, 217, 223);
+    border: 1px solid rgb(55, 65, 81);
+    background-color: rgb(31, 41, 55);
+    animation-name: toast-in;
+    animation-duration: 1s;
+    transition: all 1s;
+    max-width: calc(100vw - 3rem);
+    &.hide {
+      animation-name: toast-out;
+    }
+    &.error {
+
+      .icon-wrapper {
+        border: 1px solid rgb(231, 70, 148);
+        background-color: rgb(250, 209, 232);
+
+        .icon {
+          color: rgb(153, 21, 75);
+        }
+      }
+    }
+    &.success {
+
+      .icon-wrapper {
+        border: 1px solid rgb(14, 159, 110);
+        background-color: rgb(188, 240, 218);
+
+        .icon {
+          color: rgb(3, 84, 63);
+        }
+      }
+    }
+    &.info {
+    
+      .icon-wrapper {
+        border: 1px solid rgb(63, 131, 248);
+        background-color: rgb(195, 221, 253);
+    
+        .icon {
+
+          path {
+            fill: rgb(30, 66, 159);
+          }
+        }
+      }
+    }
+
+    .icon-wrapper {
+      padding: 0.3rem;
+      margin-right: 1.2rem;
+      border-radius: 0.9rem;
+
+      .icon {
+        width: 2.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    ul {
+      padding: 0;
+      margin: 0 0 0 1.8rem;
+
+      li {
+        margin: 0.3rem 0;
+      }
+    }
+
+    .close {
+      border: 1px solid transparent;
+      background-color: transparent;
+      border-radius: 1.2rem;
+      color: rgb(156, 163, 175);
+      transition: all 0.15s;
+      margin: 0 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      &:hover {
+        cursor: pointer;
+        border-color: rgb(229, 231, 235);
+        background-color: rgb(75, 85, 99);
+      }
+
+      svg {
+        width: 2rem;
+      }
+    }
+  }
+}

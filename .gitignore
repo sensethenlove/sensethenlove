@@ -1,0 +1,6 @@
+.cloudflare
+.svelte-kit
+build
+node_modules
+.env
+wrangler.toml

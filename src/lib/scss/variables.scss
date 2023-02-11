@@ -1,0 +1,19 @@
+$bg-img-swap-window-width: 50rem;
+
+$move-nav-window-width: 36rem;
+$move-nav-speed: 0.9s;
+$move-nav-transition: all $move-nav-speed;
+
+$opacity-bg: rgba(255, 255, 255, 0.95);
+
+$black-text-color: #273142;
+$light-black-text-color: #515357;
+$green-text-color: green;
+$blue-text-color: #2196F3;
+$red-text-color: #FE544B;
+
+$font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+$font-family-papyrus: papyrus, $font-family;
+
+$blue-focus-box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+$red-focus-box-shadow: 0 0 0 0.2rem rgba($red-text-color, 0.25);
