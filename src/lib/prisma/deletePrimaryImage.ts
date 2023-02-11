@@ -2,9 +2,8 @@ import prisma from '$lib/prisma/prisma'
 import type { PrimaryImage } from '$lib/util/types'
 
 
-export default (id: string): Promise<PrimaryImage> => {
-  console.log('id', id)
-  return prisma.primaryImage.delete({
+export default async (id: string): Promise<PrimaryImage> => {
+  return (await prisma()).primaryImage.delete({
     where: {
       id
     }

@@ -3,10 +3,10 @@ import type { Session } from '$lib/util/types'
 import createAccessAndRefreshExpirationDates from '$lib/util/createAccessAndRefreshExpirationDates'
 
 
-export default (sessionId: string, ipAddress: string): Promise<Session> => {
+export default async (sessionId: string, ipAddress: string): Promise<Session> => {
   const { accessExpiration, refreshExpiration } = createAccessAndRefreshExpirationDates()
 
-  return prisma.session.update({
+  return (await prisma()).session.update({
     where: { id: sessionId },
     data: {
       ipAddress,

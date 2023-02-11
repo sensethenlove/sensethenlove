@@ -1,25 +1,36 @@
-import validate from '$lib/form/validate'
-import actionCatch from '$lib/util/actionCatch'
 import type { Actions } from './$types'
-import schema from '$lib/schema/newsletterSignUp'
-import findFirstUser from '$lib/prisma/findFirstUser'
-// import newsletterSignUp from '$lib/actions/newsletterSignUp'
+import type { Source } from '$lib/util/types'
+import type { PageServerLoad } from './$types'
+import findFirstSource from '$lib/prisma/findFirstSource'
+import newsletterSignUp from '$lib/actions/newsletterSignUp'
+
+
+export const load = (async () => {
+  try {
+    return sourceToResponse(await findFirstSource())
+  } catch (error) {
+    return { error: error?.toString() }
+  }
+}) satisfies PageServerLoad
 
 
 export const actions = {
-  async newsletterSignUp ({ request }) {
-    try {
-      const { fields, error } = await validate(request, schema)
-
-      if (error) throw error
-      else {
-        const user = await findFirstUser({ email: fields.email.toString() })
-
-    //     if (!user) await createUser({ ...fields, isNewsletterSubscriber: 'on' })
-    //     else if (!user.isNewsletterSubscriber) await updateUser({ email: fields.email.toString() }, { isNewsletterSubscriber: true })
-      }
-    } catch (e) {
-      return actionCatch(e)
-    }
-  }
+  newsletterSignUp
 } satisfies Actions
+
+
+function sourceToResponse(source: Source | null) {
+  if (source) {
+    let sourceCategories = new Map() // use map so duplicates are removed
+
+    for (const quote of source.favoriteQuotes) {
+      for (const category of quote.categories) {
+        sourceCategories.set(category.id, category) // place each category in map
+      }
+    }
+
+    source.categories = [...sourceCategories.values()].sort((a, b) => Number(a.name > b.name) - Number(a.name < b.name)) // set source categories AND sort them by name
+  }
+
+  return { source } // response
+}

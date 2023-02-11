@@ -2,8 +2,8 @@ import prisma from '$lib/prisma/prisma'
 import type { Source } from '$lib/util/types'
 
 
-export default (): Promise<Source[]> => {
-  return prisma.source.findMany({
+export default async (): Promise<Source[]> => {
+  return (await prisma()).source.findMany({
     include: {
       authors: true,
       favoriteQuotes: {

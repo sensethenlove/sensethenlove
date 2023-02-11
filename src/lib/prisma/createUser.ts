@@ -2,8 +2,8 @@ import prisma from '$lib/prisma/prisma'
 import type { User, FormFields } from '$lib/util/types'
 
 
-export default (fields: FormFields): Promise<User> => {
-  return prisma.user.create({
+export default async (fields: FormFields): Promise<User> => {
+  return (await prisma()).user.create({
     data: {
       firstName: fields.firstName.toString(),
       lastName: fields.lastName.toString(),
