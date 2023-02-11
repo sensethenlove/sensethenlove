@@ -1,0 +1,5 @@
+name = "sensethenlove"
+main = "./.cloudflare/worker.js"
+compatibility_date = "2023-02-11"
+site.bucket = "./.cloudflare/public"
+account_id = 'c8867dd7c189d5624415ee17855de3bd'
