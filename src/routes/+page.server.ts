@@ -1,13 +1,13 @@
 import type { Actions } from './$types'
 import type { Source } from '$lib/util/types'
 import type { PageServerLoad } from './$types'
-import findFirstSources from '$lib/prisma/findFirstSources'
+import findFirstSource from '$lib/prisma/findFirstSource'
 import newsletterSignUp from '$lib/actions/newsletterSignUp'
 
 
 export const load = (async () => {
   try {
-    return sourceToResponse(await findFirstSources())
+    return sourceToResponse(await findFirstSource())
   } catch (error) {
     return { error: error?.toString() }
   }
