@@ -5,6 +5,12 @@ on:
     branches:
       - main
 
+env:
+  SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+  PROD_DATABASE_URL: ${{ secrets.PROD_DATABASE_URL }}
+  CLOUDFLARE_TURNSTILE_PRIVATE_KEY: ${{ secrets.CLOUDFLARE_TURNSTILE_PRIVATE_KEY }}
+
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
