@@ -1,0 +1,4 @@
+name = "sensethenlove"
+main = "./.cloudflare/worker.js"
+compatibility_date = "2023-02-11"
+site.bucket = "./.cloudflare/public"
