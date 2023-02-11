@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client/edge'
 import { PUBLIC_ENVIRONMENT } from '$env/static/public'
 
 
