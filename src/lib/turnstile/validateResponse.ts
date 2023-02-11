@@ -1,6 +1,6 @@
-import { CHALLENGE_URL } from '$lib/turnstile/variables'
 import type { TurnstileTokenValidateResponse } from '$lib/util/types'
-import { CLOUDFLARE_TURNSTILE_PRIVATE_KEY, CLOUDFLARE_TURNSTILE_PRIVATE_KEY_ALWAYS_PASSES } from '$env/static/private'
+import { CLOUDFLARE_TURNSTILE_PRIVATE_KEY } from '$env/static/private'
+import { CHALLENGE_URL, CLOUDFLARE_TURNSTILE_PRIVATE_KEY_ALWAYS_PASSES } from '$lib/turnstile/variables'
 
 
 export async function validateResponse (turnstileResponse: FormDataEntryValue | null) {
