@@ -6,7 +6,7 @@
 
 <Title h3="About Us!" noBottom={ true } />
 <section class="us">
-  <h3>Our Goals</h3>
+  <h3>Our Goals!</h3>
   <ol>
     <li>Think lovely thoughts!</li>
     <ul class="indent">
