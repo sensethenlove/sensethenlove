@@ -14,5 +14,6 @@ jobs:
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
         with:
-          apiToken: ${{ secrets.CF_ACTION_TOKEN }}
+          apiKey: ${{ secrets.CF_API_KEY }}
+          email: ${{ secrets.CF_EMAIL }}
           preCommands: npm i && npm run build
