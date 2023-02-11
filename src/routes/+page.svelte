@@ -4,7 +4,7 @@
   import Title from '$lib/components/Title.svelte'
   import AboutUs from '$lib/components/AboutUs.svelte'
   import OurSocials from '$lib/components/OurSocials.svelte'
-  import NewsletterSignUp from '$lib/components/forms/NewsletterSignUp.svelte'
+  // import NewsletterSignUp from '$lib/components/forms/NewsletterSignUp.svelte'
 </script>
 
 
