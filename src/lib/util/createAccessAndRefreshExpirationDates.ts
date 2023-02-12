@@ -1,4 +1,4 @@
-import { ACCESS_COOKIE_MAX_AGE_IN_SECONDS, REFRESH_COOKIE_MAX_AGE_IN_SECONDS } from '$lib/auth/variables'
+import { ACCESS_COOKIE_MAX_AGE_IN_SECONDS, REFRESH_COOKIE_MAX_AGE_IN_SECONDS } from '$lib/security/variables'
 
 
 export default (): { accessExpiration: Date, refreshExpiration: Date } => {

@@ -13,6 +13,9 @@
 - [Markdown](https://www.markdownguide.org/basic-syntax)
 - [Open Graph](https://ogp.me/)
 
+##### Pricing
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/platform/pricing)
+
 ##### Code Examples
 - [Sveltekit + Prisma](https://github.com/prisma/prisma-examples/tree/latest/typescript/rest-sveltekit)
 - [Sveltekit + Turnstile](https://github.com/ghostdevv/svelte-turnstile)
