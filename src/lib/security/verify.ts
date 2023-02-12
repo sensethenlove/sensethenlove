@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer'
 import getNowInSeconds from '$lib/util/getNowInSeconds'
 import getAlgorithmOptions from '$lib/security/getAlgorithmOptions'
 

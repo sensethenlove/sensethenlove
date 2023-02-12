@@ -5,37 +5,49 @@
 - [Svelte](https://svelte.dev/docs)
 - [Svelte Kit](https://kit.svelte.dev/docs/introduction)
 - [Prisma](https://www.prisma.io/docs)
+- [Prisma Cloud](https://www.prisma.io/docs/data-platform)
 - [Prisma Client](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference)
 - [Prisma Schema](https://www.prisma.io/docs/concepts/components/prisma-schema)
 - [Prisma Indexes](https://www.prisma.io/docs/concepts/components/prisma-schema/relations/relation-mode#indexes)
 - [PlanetScale](https://planetscale.com/docs)
-- [Turnstile](https://developers.cloudflare.com/turnstile/)
+- [Cloudflare Images](https://developers.cloudflare.com/images/)
+- [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/)
 - [Markdown](https://www.markdownguide.org/basic-syntax)
 - [Open Graph](https://ogp.me/)
 
 ##### Pricing
-- [Cloudflare Workers](https://developers.cloudflare.com/workers/platform/pricing)
-
-##### Code Examples
-- [Sveltekit + Prisma](https://github.com/prisma/prisma-examples/tree/latest/typescript/rest-sveltekit)
-- [Sveltekit + Turnstile](https://github.com/ghostdevv/svelte-turnstile)
-- [Sveltekit Authentication](https://github.com/huntabyte/sveltekit-protected-routes/tree/final-code)
-
-##### Videos
-- [Learn Prisma In 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)
-- [Prisma & PlanetScale Best Practices](https://www.youtube.com/watch?v=iaHt5_hg44c)
-- [MySQL Scaling Made Easy](https://planetscale.com/events/mysql-scaling-made-easy/thank-you) 
+- [Cloudflare Workers: 100,000 requests a day for free](https://developers.cloudflare.com/workers/platform/pricing)
+- [Planetscale: 5 GB storage & 1 billion row reads/mo for free](https://planetscale.com/pricing)
+- [Prisma Data Platform: 3 million CPU ms/mo for free](https://www.prisma.io/pricing)
+- [Cloudflare Images: $5 per 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
 
 ##### Articles
 - [Prisma + NextJS](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)
 - [Using Prisma with Planetscale](https://www.prisma.io/docs/guides/database/using-prisma-with-planetscale)
 - [Prisma + Cloudflare Workers](https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers)
 - [Prisma + Data Proxy](https://www.prisma.io/docs/data-platform/data-proxy)
+- [Sveltekit + Cloudflare Workers][https://kit.svelte.dev/docs/adapter-cloudflare-workers]
+- [Sveltekit + Github Actions](https://github.com/marketplace/actions/deploy-to-cloudflare-workers-with-wrangler)
+- [Github Actions + Environment Variables](https://snyk.io/blog/how-to-use-github-actions-environment-variables/)
+- [Cloudflare Workers + Cookies](https://talke.dev/setting-and-reading-cookies-within-cloudflare-workers)
+
+##### Code Examples
+- [Sveltekit + Prisma](https://github.com/prisma/prisma-examples/tree/latest/typescript/rest-sveltekit)
+- [Sveltekit + Turnstile](https://github.com/ghostdevv/svelte-turnstile)
+- [Sveltekit Authentication](https://github.com/huntabyte/sveltekit-protected-routes/tree/final-code)
+- [Subtle Crypto](https://github.com/diafygi/webcrypto-examples#rsa-pss---generatekey)
+- [Cloudflare + JWT](https://github.com/tsndr/cloudflare-worker-jwt/blob/76b7fcef2707225c9214fcba0c4e8d6498039daa/src/index.ts)
+
+##### Videos
+- [Learn Prisma In 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)
+- [Prisma & PlanetScale Best Practices](https://www.youtube.com/watch?v=iaHt5_hg44c)
+- [MySQL Scaling Made Easy](https://planetscale.com/events/mysql-scaling-made-easy/thank-you)
 
 ##### Utilities
 - [Squoosh](https://squoosh.app)
 - [SVG Icons](https://icones.js.org/collection/all)
 - [Flowbite](https://flowbite-svelte.com/)
+- [Jwt.io](https://jwt.io/)
 
 ## Set Node Version
 ```bash
