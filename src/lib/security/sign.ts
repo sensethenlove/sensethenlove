@@ -1,7 +1,5 @@
-import uInt8toBase64 from '$lib/util/uInt8toBase64'
+import { Buffer } from 'buffer'
 import type { TokenPayload } from '$lib/util/types'
-import stringToBase64 from '$lib/util/stringToBase64'
-import stringToArrayBuffer from '$lib/util/stringToArrayBuffer'
 import getAlgorithmOptions from '$lib/security/getAlgorithmOptions'
 import getHeaderAndPayloadAsStrings from '$lib/security/getHeaderAndPayloadAsStrings'
 
@@ -14,10 +12,10 @@ export default async (privateKey: CryptoKey, payloadAsObject: TokenPayload, expi
     const signatureAsArrayBuffer = await crypto.subtle.sign(
       getAlgorithmOptions('sign'),
       privateKey,
-      stringToArrayBuffer(united)
+      new TextEncoder().encode(united) // string to ArrayBuffer
     )
 
-    const signatureAsBase64 = uInt8toBase64(new Uint8Array(signatureAsArrayBuffer))
-    return `${ stringToBase64(header) }.${ stringToBase64(payload) }.${ signatureAsBase64 }`
+    const signatureAsBase64 = Buffer.from(new Uint8Array(signatureAsArrayBuffer)).toString('base64')
+    return `${ Buffer.from(header).toString('base64') }.${ Buffer.from(payload).toString('base64') }.${ signatureAsBase64 }`
   }
 }

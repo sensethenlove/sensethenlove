@@ -17,6 +17,6 @@
 <AboutUs />
 <OurSocials />
 <NewsletterSignUp />
-<section>
+<section style="max-width: 99vw; overflow:auto; word-wrap:anywhere;">
   {JSON.stringify(data)}
 </section>

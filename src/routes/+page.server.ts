@@ -17,6 +17,8 @@ export const load = (async () => {
     const expiredTokenResponse = await verify(await importKey(JSON.parse(JWK_FOR_SIGN_IN_PUBLIC), false), expiredToken)
 
     return {
+      freshToken,
+      expiredToken,
       freshTokenResponse,
       expiredTokenResponse,
     }
