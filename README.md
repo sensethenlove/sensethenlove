@@ -1,7 +1,7 @@
 # Sense Then Love
 
 ## Helpful links
-##### Docs
+#### Docs
 - [Svelte](https://svelte.dev/docs)
 - [Svelte Kit](https://kit.svelte.dev/docs/introduction)
 - [Prisma](https://www.prisma.io/docs)
@@ -15,13 +15,13 @@
 - [Markdown](https://www.markdownguide.org/basic-syntax)
 - [Open Graph](https://ogp.me/)
 
-##### Pricing
-- [Cloudflare Workers: 100,000 requests a day for free](https://developers.cloudflare.com/workers/platform/pricing)
-- [Planetscale: 5 GB storage & 1 billion row reads/mo for free](https://planetscale.com/pricing)
-- [Prisma Data Platform: 3 million CPU ms/mo for free](https://www.prisma.io/pricing)
-- [Cloudflare Images: $5 per 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
+#### Pricing
+- [Cloudflare Workers: FREE = 100,000 requests a day](https://developers.cloudflare.com/workers/platform/pricing)
+- [Planetscale: FREE = 5 GB storage & 1 billion row reads/mo](https://planetscale.com/pricing)
+- [Prisma Data Platform: FREE = 3 million CPU ms/mo](https://www.prisma.io/pricing)
+- [Cloudflare Images: $5 a month = 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
 
-##### Articles
+#### Articles
 - [Prisma + NextJS](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)
 - [Using Prisma with Planetscale](https://www.prisma.io/docs/guides/database/using-prisma-with-planetscale)
 - [Prisma + Cloudflare Workers](https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers)
@@ -31,19 +31,19 @@
 - [Github Actions + Environment Variables](https://snyk.io/blog/how-to-use-github-actions-environment-variables/)
 - [Cloudflare Workers + Cookies](https://talke.dev/setting-and-reading-cookies-within-cloudflare-workers)
 
-##### Code Examples
+#### Code Examples
 - [Sveltekit + Prisma](https://github.com/prisma/prisma-examples/tree/latest/typescript/rest-sveltekit)
 - [Sveltekit + Turnstile](https://github.com/ghostdevv/svelte-turnstile)
 - [Sveltekit Authentication](https://github.com/huntabyte/sveltekit-protected-routes/tree/final-code)
 - [Subtle Crypto](https://github.com/diafygi/webcrypto-examples#rsa-pss---generatekey)
 - [Cloudflare + JWT](https://github.com/tsndr/cloudflare-worker-jwt/blob/76b7fcef2707225c9214fcba0c4e8d6498039daa/src/index.ts)
 
-##### Videos
+#### Videos
 - [Learn Prisma In 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)
 - [Prisma & PlanetScale Best Practices](https://www.youtube.com/watch?v=iaHt5_hg44c)
 - [MySQL Scaling Made Easy](https://planetscale.com/events/mysql-scaling-made-easy/thank-you)
 
-##### Utilities
+#### Utilities
 - [Squoosh](https://squoosh.app)
 - [SVG Icons](https://icones.js.org/collection/all)
 - [Flowbite](https://flowbite-svelte.com/)
