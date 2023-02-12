@@ -8,17 +8,18 @@
 - [Prisma Cloud](https://www.prisma.io/docs/data-platform)
 - [Prisma Client](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference)
 - [Prisma Schema](https://www.prisma.io/docs/concepts/components/prisma-schema)
-- [Prisma Indexes](https://www.prisma.io/docs/concepts/components/prisma-schema/relations/relation-mode#indexes)
 - [PlanetScale](https://planetscale.com/docs)
 - [Cloudflare Images](https://developers.cloudflare.com/images/)
 - [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/)
+- [Sendgrid](https://github.com/sendgrid/sendgrid-nodejs)
 - [Markdown](https://www.markdownguide.org/basic-syntax)
 - [Open Graph](https://ogp.me/)
 
 #### Pricing
 - [Cloudflare Workers: FREE = 100,000 requests a day](https://developers.cloudflare.com/workers/platform/pricing)
-- [Planetscale: FREE = 5 GB storage & 1 billion row reads/mo](https://planetscale.com/pricing)
+- [Planetscale: FREE = 5 GB storage, 1 billion row reads/mo & 10 million row writes/mo](https://planetscale.com/pricing)
 - [Prisma Data Platform: FREE = 3 million CPU ms/mo](https://www.prisma.io/pricing)
+- [Sendgrid: FREE = 100 emails a day](https://sendgrid.com/pricing/)
 - [Cloudflare Images: $5 a month = 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
 
 #### Articles
