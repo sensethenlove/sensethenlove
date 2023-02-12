@@ -1,13 +1,10 @@
 <script lang="ts">
-  import type { PageData } from './$types'
   import ogSrc from '$lib/images/og/home.jpg'
   import Head from '$lib/components/Head.svelte'
   import Title from '$lib/components/Title.svelte'
   import AboutUs from '$lib/components/AboutUs.svelte'
   import OurSocials from '$lib/components/OurSocials.svelte'
   import NewsletterSignUp from '$lib/components/forms/NewsletterSignUp.svelte'
-
-  export let data: PageData
 </script>
 
 
@@ -17,6 +14,3 @@
 <AboutUs />
 <OurSocials />
 <NewsletterSignUp />
-<section style="max-width: 99vw; overflow:auto; word-wrap:anywhere;">
-  {JSON.stringify(data)}
-</section>
