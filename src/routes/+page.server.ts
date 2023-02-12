@@ -6,15 +6,15 @@ import type { PageServerLoad } from './$types'
 import importKey from '$lib/security/importKey'
 // import findFirstSource from '$lib/prisma/findFirstSource'
 import newsletterSignUp from '$lib/actions/newsletterSignUp'
-import { JWK_FOR_REFRESH_TOKEN_PUBLIC, JWK_FOR_REFRESH_TOKEN_PRIVATE } from '$env/static/private'
+import { JWK_FOR_SIGN_IN_PUBLIC, JWK_FOR_SIGN_IN_PRIVATE } from '$env/static/private'
 
 
 export const load = (async () => {
   try {
     const expiredToken = 'eyJhbGciOiJFQ0RTQSIsInR5cCI6IkpXVCIsImV4cCI6MTY3NjE4NTcxMn0=.eyJ1c2VySWQiOiJjaHJpcyIsImlwQWRkcmVzcyI6Ijo6MSJ9.6LIgV2L/IwfaAruBo5N6JIs6KlUrADN4BzucEsnt42tAjt9TrFwCglEPoCD6Q7GfbBaREbtk1Q+AJHimNHBMtA=='
-    const freshToken = await sign(await importKey(JSON.parse(JWK_FOR_REFRESH_TOKEN_PRIVATE), true), { userId: 'chris', ipAddress: '::1' }, 540)
-    const freshTokenResponse = await verify(await importKey(JSON.parse(JWK_FOR_REFRESH_TOKEN_PUBLIC), false), freshToken)
-    const expiredTokenResponse = await verify(await importKey(JSON.parse(JWK_FOR_REFRESH_TOKEN_PUBLIC), false), expiredToken)
+    const freshToken = await sign(await importKey(JSON.parse(JWK_FOR_SIGN_IN_PRIVATE), true), { userId: 'chris', ipAddress: '::1' }, 540)
+    const freshTokenResponse = await verify(await importKey(JSON.parse(JWK_FOR_SIGN_IN_PUBLIC), false), freshToken)
+    const expiredTokenResponse = await verify(await importKey(JSON.parse(JWK_FOR_SIGN_IN_PUBLIC), false), expiredToken)
 
     return {
       freshTokenResponse,
