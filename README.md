@@ -20,6 +20,7 @@
 - [Planetscale: FREE = 5 GB storage, 1 billion row reads/mo & 10 million row writes/mo](https://planetscale.com/pricing)
 - [Prisma Data Platform: FREE = 3 million CPU ms/mo](https://www.prisma.io/pricing)
 - [Sendgrid: FREE = 100 emails a day](https://sendgrid.com/pricing/)
+- [Namecheap: $19.58 a year = Domain Registration](https://www.namecheap.com/domains/)
 - [Github Team: $4 a month = 2G of storage & 3,000 minutes of Github Action execution time a month](https://github.com/pricing)
 - [Cloudflare Images: $5 a month = 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
 - [Proton Business: $19.98 per month = 2 users w/ secure inboxes, calendars, & 1,000GB of cloud storage](https://proton.me/business/plans)
