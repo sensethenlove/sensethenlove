@@ -6,6 +6,7 @@
 		"dev": "npm run prisma-to-prod && vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
+		"deploy": "npm run prisma-to-cloud && npm run build && wrangler.publish",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"prisma-to-dev": "node ./prisma/setPrismaUrl.js DEV_DATABASE_URL && npx prisma generate",
