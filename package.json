@@ -3,12 +3,14 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "npm run prisma-to-prod && vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"prisma-client": "npx prisma generate --data-proxy",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"prisma-to-dev": "node ./prisma/setPrismaUrl.js DEV_DATABASE_URL && npx prisma generate",
+		"prisma-to-prod": "node ./prisma/setPrismaUrl.js PROD_DATABASE_URL && npx prisma generate",
+		"prisma-to-cloud": "node ./prisma/setPrismaUrl.js PRISMA_DATABASE_URL && npx prisma generate --data-proxy"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20230115.0",

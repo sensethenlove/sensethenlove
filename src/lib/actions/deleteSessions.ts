@@ -1,5 +1,5 @@
 import type { Action } from '@sveltejs/kit'
-import actionCatch from '$lib/util/actionCatch'
+import actionCatch from '$lib/catch/actionCatch'
 import deleteManySessions from '$lib/prisma/deleteManySessions'
 
 

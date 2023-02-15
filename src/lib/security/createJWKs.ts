@@ -1,8 +1,8 @@
-import getJWK from '$lib/security/getJWK'
-import generateKeys from '$lib/security/generateKeys'
+import getAlgorithmOptions from '$lib/security/getAlgorithmOptions'
+
 
 export default async (): Promise<void> => {
-  const response = await generateKeys()
-  console.log('privateJWK', JSON.stringify(await getJWK(response.privateKey)))
-  console.log('publicJWK', JSON.stringify(await getJWK(response.publicKey)))
+  const { privateKey, publicKey } = await crypto.subtle.generateKey(getAlgorithmOptions('generate'), true, ['sign', 'verify']) as CryptoKeyPair
+  console.log('privateJWK', JSON.stringify(await crypto.subtle.exportKey('jwk', privateKey)))
+  console.log('publicJWK', JSON.stringify(await crypto.subtle.exportKey('jwk', publicKey)))
 }

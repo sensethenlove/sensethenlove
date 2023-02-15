@@ -97,7 +97,10 @@ export type FormInputs = Array<FormInput | Array<FormInput>>
 /**
  * Types for $lib/security
  */
-export type TokenPayload = { userId: string, ipAddress: string } | { userId: string, sessionId: string }
+interface TokenBasic { userId: string } // https://stackoverflow.com/a/61281828
+interface TokenWithIPAddress extends TokenBasic { ipAddress: string, sessionId?: never }
+interface TokenWithSessionId extends TokenBasic { sessionId: string, ipAddress?: never }
+export type TokenPayload = TokenWithIPAddress | TokenWithSessionId
 
 export type GetTokenResponseData = {
   error?: string,

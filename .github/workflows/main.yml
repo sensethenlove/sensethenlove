@@ -28,4 +28,4 @@ jobs:
         uses: cloudflare/wrangler-action@2.0.0
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
-          preCommands: npm i && npx prisma generate --data-proxy && npm run build
+          preCommands: npm i && npm run prisma-to-cloud && npm run build

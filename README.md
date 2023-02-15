@@ -34,6 +34,7 @@
 - [Sveltekit + Github Actions](https://github.com/marketplace/actions/deploy-to-cloudflare-workers-with-wrangler)
 - [Github Actions + Environment Variables](https://snyk.io/blog/how-to-use-github-actions-environment-variables/)
 - [Cloudflare Workers + Cookies](https://talke.dev/setting-and-reading-cookies-within-cloudflare-workers)
+- [ECDSA vs RSA](https://sectigostore.com/blog/ecdsa-vs-rsa-everything-you-need-to-know/)
 
 #### Code Examples
 - [Sveltekit + Prisma](https://github.com/prisma/prisma-examples/tree/latest/typescript/rest-sveltekit)

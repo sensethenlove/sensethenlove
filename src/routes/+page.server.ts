@@ -1,6 +1,7 @@
 import type { Actions } from './$types'
 import type { Source } from '$lib/util/types'
 import type { PageServerLoad } from './$types'
+import routeCatch from '$lib/catch/routeCatch'
 // import findFirstSource from '$lib/prisma/findFirstSource'
 import newsletterSignUp from '$lib/actions/newsletterSignUp'
 
@@ -8,8 +9,8 @@ import newsletterSignUp from '$lib/actions/newsletterSignUp'
 export const load = (async () => {
   try {
     // return sourceToResponse(await findFirstSource())
-  } catch (error) {
-    return { error: error?.toString() }
+  } catch (e) {
+    return routeCatch(e)
   }
 }) satisfies PageServerLoad
 
