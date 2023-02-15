@@ -23,7 +23,7 @@ async function verifyToken (token: string, publicKey: CryptoKey): Promise<TokenP
     const headerAsString = Buffer.from(tokenParts[0], 'base64').toString() // base64 to string
     const expiresInAsSeconds = JSON.parse(headerAsString).exp
 
-    if (expiresInAsSeconds <= getNowInSeconds()) throw new VerifyTokenExpiredError('VerifyTokenExpired: Token has expired')
+    if (expiresInAsSeconds <= getNowInSeconds()) throw new VerifyTokenExpiredError('Token has expired')
     else {
       const signatureInUInt8 = Buffer.from(tokenParts[2], 'base64') // base46 to uInt8
       const headerPayloadAsArrayBuffer = new TextEncoder().encode(`${headerAsString}.${Buffer.from(tokenParts[1], 'base64').toString()}`)
