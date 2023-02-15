@@ -3,4 +3,4 @@
 build
 node_modules
 .env
-./wrangler.toml
+wrangler.toml
