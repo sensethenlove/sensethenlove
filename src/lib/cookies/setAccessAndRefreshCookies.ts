@@ -1,9 +1,9 @@
 import type { Cookies } from '@sveltejs/kit'
-import setAccessCookie from '$lib/cookies/setAccessCookie'
-import setRefreshCookie from '$lib/cookies/setRefreshCookie'
+import { ACCESS_COOKIE_NAME, ACCESS_COOKIE_MAX_AGE_IN_SECONDS, REFRESH_COOKIE_MAX_AGE_IN_SECONDS, REFRESH_COOKIE_NAME, getCommonCookieSetSettings } from '$lib/security/variables'
 
 
-export default (cookies: Cookies, accessToken: string, refreshToken: string): void => {
-  setAccessCookie(cookies, accessToken)
-  setRefreshCookie(cookies, refreshToken)
+export default async (cookies: Cookies, accessToken: string, refreshToken: string): Promise<void> => {
+  const commonCookieSetSettings = await getCommonCookieSetSettings()
+  cookies.set(ACCESS_COOKIE_NAME, accessToken, { ...commonCookieSetSettings, maxAge: ACCESS_COOKIE_MAX_AGE_IN_SECONDS })
+  cookies.set(REFRESH_COOKIE_NAME, refreshToken, { ...commonCookieSetSettings, maxAge: REFRESH_COOKIE_MAX_AGE_IN_SECONDS })
 }

@@ -7,7 +7,9 @@ declare global {
 			userId?: any
 		}
 		// interface PageData {}
-		// interface Platform {}
+		interface Platform {
+			env: any
+		}
 	}
 }
 

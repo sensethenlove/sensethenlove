@@ -35,6 +35,7 @@
 - [Github Actions + Environment Variables](https://snyk.io/blog/how-to-use-github-actions-environment-variables/)
 - [Cloudflare Workers + Cookies](https://talke.dev/setting-and-reading-cookies-within-cloudflare-workers)
 - [ECDSA vs RSA](https://sectigostore.com/blog/ecdsa-vs-rsa-everything-you-need-to-know/)
+- [SubtleCrypto + JWT](https://coolaj86.com/articles/sign-jwt-webcrypto-vanilla-js/)
 
 #### Code Examples
 - [Sveltekit + Prisma](https://github.com/prisma/prisma-examples/tree/latest/typescript/rest-sveltekit)

@@ -29,10 +29,10 @@ export default async (event: RequestEvent): Promise<RequestEvent> => {
           if (!session) deleteAccessAndRefreshCookies(event.cookies) // if session not found, this is a signed out user so => delete cookies
           else event.locals.userId = session.userId // session found so add userId to locals so server code down stream may access it
         }
-      } catch (error) {
-        console.log(error)
-        if (error instanceof VerifyTokenExpiredError) await onAccessTokenExpired(event, refreshToken) // if access token is expired
-        else if (error instanceof VerifyTokenError) await signThemOut(event, refreshToken)  // if access token error is not a token expired error => sign them out
+      } catch (e) {
+        console.log(e)
+        if (e instanceof VerifyTokenExpiredError) await onAccessTokenExpired(event, refreshToken) // if access token is expired
+        else if (e instanceof VerifyTokenError) await signThemOut(event, refreshToken)  // if access token error is not a token expired error => sign them out
       }
     }
   }
@@ -76,8 +76,8 @@ async function signThemOut (event: RequestEvent, refreshToken: string): Promise<
   try {
     await viaCookiesOrRefreshTokenDeleteSession({ refreshToken }) // delete their session 
     deleteAccessAndRefreshCookies(event.cookies) // delete their cookies 
-  } catch (error) {
-    console.log(error)
+  } catch (e) {
+    console.log(e)
   }
 }
 
@@ -87,6 +87,6 @@ async function createNewSessionTokenAndCookies (event: RequestEvent, session: Se
   const [ accessToken, refreshToken ] = await Promise.all([ createToken('access', payload), createToken('refresh', payload) ]) // create new auth tokens for this user
 
   await updateSession(session.id, event.getClientAddress()) // update session with their most recent ip address
-  setAccessAndRefreshCookies(event.cookies, accessToken, refreshToken) // set auth cookies w/ newly created tokens
+  await setAccessAndRefreshCookies(event.cookies, accessToken, refreshToken) // set auth cookies w/ newly created tokens
   event.locals.userId = session.userId // add userId to locals so server code down stream may access it
 }

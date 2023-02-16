@@ -3,15 +3,12 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "npm run prisma-to-prod && vite dev",
+		"dev": "npx prisma generate && vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"deploy": "npm run prisma-to-cloud && npm run build && wrangler.publish",
+		"deploy": "npx prisma generate --data-proxy && npm run build && wrangler publish",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"prisma-to-dev": "node ./prisma/setPrismaUrl.js DEV_DATABASE_URL && npx prisma generate",
-		"prisma-to-prod": "node ./prisma/setPrismaUrl.js PROD_DATABASE_URL && npx prisma generate",
-		"prisma-to-cloud": "node ./prisma/setPrismaUrl.js PRISMA_DATABASE_URL && npx prisma generate --data-proxy"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20230115.0",
@@ -27,7 +24,7 @@
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0",
-		"wrangler": "^2.9.1",
+		"wrangler": "^2.10.0",
 		"zod": "^3.20.6"
 	}
 }

@@ -1,12 +1,12 @@
-import { SENDGRID_API_KEY } from '$env/static/private'
+import env from '$lib/security/environmentVariables'
 
 
 export default async ({ to, subject, html }: { to: string, subject: string, html: string }) => {
   return await fetch('https://api.sendgrid.com/v3/mail/send', {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${ SENDGRID_API_KEY }`,
       'Content-Type': 'application/json',
+      'Authorization': `Bearer ${ await env.get('SENDGRID_API_KEY') }`,
     },
     body: JSON.stringify({
       subject,
