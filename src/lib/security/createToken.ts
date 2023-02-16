@@ -1,7 +1,7 @@
+import env from '$lib/security/env'
 import toBase64Url from '$lib/util/toBase64Url'
 import { CreateTokenError } from '$lib/util/errors'
 import type { TokenPayload } from '$lib/util/types'
-import env from '$lib/security/environmentVariables'
 import getAlgorithmOptions from '$lib/security/getAlgorithmOptions'
 import getHeaderAndPayloadAsStrings from '$lib/security/getHeaderAndPayloadAsStrings'
 import { ACCESS_COOKIE_MAX_AGE_IN_SECONDS, REFRESH_COOKIE_MAX_AGE_IN_SECONDS, SIGN_IN_TOKEN_MAX_AGE_IN_SECONDS } from '$lib/security/variables'

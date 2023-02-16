@@ -1,4 +1,4 @@
-import env from '$lib/security/environmentVariables'
+import env from '$lib/security/env'
 
 export const SIGN_IN_TOKEN_MAX_AGE_IN_SECONDS = 540 // 9 minutes
 

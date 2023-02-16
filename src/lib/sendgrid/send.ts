@@ -1,4 +1,4 @@
-import env from '$lib/security/environmentVariables'
+import env from '$lib/security/env'
 
 
 export default async ({ to, subject, html }: { to: string, subject: string, html: string }) => {

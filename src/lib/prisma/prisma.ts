@@ -1,4 +1,4 @@
-import env from '$lib/security/environmentVariables'
+import env from '$lib/security/env'
 
 
 // Prisma Recommendation: "Your application should generally only create one instance of PrismaClient": https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/instantiate-prisma-client

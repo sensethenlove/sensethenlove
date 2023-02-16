@@ -1,5 +1,5 @@
 import type { Action } from 'svelte/action'
-import env from '$lib/security/environmentVariables'
+import env from '$lib/security/env'
 import { PUBLIC_KEY, PUBLIC_KEY_ALWAYS_PASSES } from '$lib/turnstile/variables'
 
 

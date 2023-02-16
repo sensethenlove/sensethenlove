@@ -1,5 +1,5 @@
+import env from '$lib/security/env'
 import send from '$lib/sendgrid/send'
-import env from '$lib/security/environmentVariables'
 
 
 export default async (token: string, email: string, firstName: string | null) => {

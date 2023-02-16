@@ -1,6 +1,6 @@
 import { Buffer } from 'buffer/'
+import env from '$lib/security/env'
 import type { TokenPayload } from '$lib/util/types'
-import env from '$lib/security/environmentVariables'
 import getNowInSeconds from '$lib/util/getNowInSeconds'
 import getAlgorithmOptions from '$lib/security/getAlgorithmOptions'
 import { VerifyTokenError, VerifyTokenExpiredError } from '$lib/util/errors'
