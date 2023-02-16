@@ -10,9 +10,16 @@ class EnvironmentVariables {
   }
 
   async get (prop: string) {
-    return this.env && typeof this.env === 'object' && this.env[prop] ?
-      this.env[prop] : // gotten from wrangler.toml (production)
-      (await import(prop.startsWith('PUBLIC_') ? '$env/static/public' : '$env/static/private'))[prop] // gotten from .env (development)
+    let value
+
+    if (this.env && typeof this.env === 'object' && this.env[prop]) {
+      value = this.env[prop] // gotten from wrangler.toml (production)
+    } else {
+      const location = `$env/static/${ prop.startsWith('PUBLIC_') ? 'public' : 'private' }`
+      value = (await import(location))[prop] // gotten from .env (development)
+    }
+
+    return value
   }
 }
 
