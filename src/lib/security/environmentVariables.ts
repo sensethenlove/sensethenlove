@@ -17,15 +17,18 @@ class EnvironmentVariables {
   async get (key: string) {
     let value = ''
 
-    if (this.env && typeof this.env === 'object' && this.env[key]) value = key === 'ENVIRONMENT' ? 'production' : this.env[key] // we're in production, return common variable (ENVIRONMENT) OR GET from wrangler.toml (production)
-    else if (key === 'ENVIRONMENT') value = 'development' // we're in dev, return common variable (ENVIRONMENT)
-    else { // we're in dev
-      const regex = new RegExp(`(${ key })(.)+`) // form a regex with the requested key
-      const fullLine = (await this.#getWranglerTomlContent()).match(regex)?.[0] // get all the info on the line with the key
+    if (this.env && typeof this.env === 'object') { // we're in prod
+      value = key === 'ENVIRONMENT' ? 'production' : this.env[key] // return common key (ENVIRONMENT) OR GET from wrangler.toml (production)
+    } else { // we're in dev
+      if (key === 'ENVIRONMENT') value = 'development' // return common key (ENVIRONMENT)
+      else { 
+        const regex = new RegExp(`(${ key })(.)+`) // form a regex with the requested key
+        const fullLine = (await this.#getWranglerTomlContent()).match(regex)?.[0] // get all the info on the line with the key
 
-      if (fullLine) {
-        const fullLineMinusBeginning = fullLine.substring(fullLine.indexOf("'") + 1) // remove key from line
-        value = fullLineMinusBeginning.substring(0, fullLineMinusBeginning.length - 1) // remove trailing tick
+        if (fullLine) {
+          const fullLineMinusBeginning = fullLine.substring(fullLine.indexOf("'") + 1) // remove key from line and opening tick
+          value = fullLineMinusBeginning.slice(0, -1) // remove closing tick
+        }
       }
     }
 
