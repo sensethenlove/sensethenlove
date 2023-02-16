@@ -1,11 +1,11 @@
 class EnvironmentVariables {
   env: any
-  wranglerTomlContent: string
+  #wranglerTomlContent: string
 
 
   constructor () {
     this.env = null
-    this.wranglerTomlContent = ''
+    this.#wranglerTomlContent = ''
   }
 
 
@@ -21,7 +21,7 @@ class EnvironmentVariables {
     else if (key === 'ENVIRONMENT') value = 'development' // we're in dev, return common variable (ENVIRONMENT)
     else { // we're in dev
       const regex = new RegExp(`(${ key })(.)+`) // form a regex with the requested key
-      const fullLine = (await this.getWranglerTomlContent()).match(regex)?.[0] // get all the info on the line with the key
+      const fullLine = (await this.#getWranglerTomlContent()).match(regex)?.[0] // get all the info on the line with the key
 
       if (fullLine) {
         const fullLineMinusBeginning = fullLine.substring(fullLine.indexOf("'") + 1) // remove key from line
@@ -33,8 +33,8 @@ class EnvironmentVariables {
   }
 
 
-  async getWranglerTomlContent() { // get from cache or get fresh
-    return this.wranglerTomlContent || await (await import('node:fs')).promises.readFile('wrangler.toml', 'utf-8')
+  async #getWranglerTomlContent() { // get from cache or get fresh
+    return this.#wranglerTomlContent || await (await import('node:fs')).promises.readFile('wrangler.toml', 'utf-8')
   }
 }
 
