@@ -7,8 +7,8 @@ export default ((node) => {
   if (window.turnstile) {
     let id: string
 
-    env.get('PUBLIC_ENVIRONMENT').then(PUBLIC_ENVIRONMENT => {
-      const sitekey = PUBLIC_ENVIRONMENT === 'production' ? PUBLIC_KEY : PUBLIC_KEY_ALWAYS_PASSES
+    env.get('ENVIRONMENT').then(ENVIRONMENT => {
+      const sitekey = ENVIRONMENT === 'production' ? PUBLIC_KEY : PUBLIC_KEY_ALWAYS_PASSES
       id = window.turnstile.render(node, { sitekey })
     })
 

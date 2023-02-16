@@ -14,6 +14,6 @@ export async function getCommonCookieSetSettings () {
     path: '/',
     httpOnly: true,
     sameSite: false,
-    secure: await env.get('PUBLIC_ENVIRONMENT') === 'production',
+    secure: await env.get('ENVIRONMENT') === 'production',
   }
 }

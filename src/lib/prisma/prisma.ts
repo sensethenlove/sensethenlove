@@ -4,7 +4,7 @@ import env from '$lib/security/environmentVariables'
 // Prisma Recommendation: "Your application should generally only create one instance of PrismaClient": https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/instantiate-prisma-client
 // Prisma Suggestion: https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices
 export default async () => {
-  if (await env.get('PUBLIC_ENVIRONMENT') === 'development') {
+  if (await env.get('ENVIRONMENT') === 'development') {
     if (global.prisma) return global.prisma // Typically module code runs once on the server but w/ HMR in development module code is run multiple times so in develpment add prisma to global so new PrismaClient() which creates a connection pool on each call is not called multiple times
     else {
       const client = await import('@prisma/client')
