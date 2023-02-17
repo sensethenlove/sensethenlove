@@ -1,0 +1,8 @@
+export const LOGO = '79da5cb2-c86d-4a96-316e-7c975bfc1500'
+export const OG_HOME = 'f3ba4208-100f-4e15-2557-0b99294bff00'
+export const OG_SOURCES = '26ae46df-e2ac-4356-2b72-16d35afdec00'
+export const OG_CONTACT = '39db3200-66de-4668-0188-c60348f4d300'
+export const BACKGROUND_1 = 'e6f09f20-861e-4f10-6fdf-395068c61b00'
+export const BACKGROUND_2 = 'f10cb432-528d-4928-5de6-92a0abf0c400'
+export const BACKGROUND_3 = 'd8cab55d-613c-4582-a28d-39b45b2d7f00'
+export const BACKGROUND_4 = 'e5d35125-45c5-4221-b217-fa93e0a2b200'

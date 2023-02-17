@@ -2,12 +2,13 @@
   import '$lib/components/nav/Nav.scss'
   import { page, navigating } from '$app/stores'
   import LoadingLink from '../LoadingLink.svelte'
+  import { LOGO } from '$lib/images/cloudflareImages'
   import IconHome from '$lib/images/svg/nav/Home.svg'
   import IconSocial from '$lib/images/svg/nav/Social.svg'
-  import srcLogo from '$lib/images/logo/transparent-bg.png'
   import IconContact from '$lib/images/svg/nav/Contact.svg'
   import IconSources from '$lib/images/svg/nav/Sources.svg'
   import IconSupport from '$lib/images/svg/nav/Support.svg'
+  import getCloudflareImageUrl from '$lib/file/getCloudflareImageUrl'
   
   let activeRoute: string | null | undefined
   $: if ($navigating) setActiveRoute(true)
@@ -27,7 +28,7 @@
 <div class="nav">
   <div class="logo">
     <LoadingLink loadWidth="huge">
-      <img src={ srcLogo } alt="The logo for Sense Then Love"/>
+      <img src={ getCloudflareImageUrl(LOGO) } alt="The logo for Sense Then Love"/>
     </LoadingLink>
   </div>
 

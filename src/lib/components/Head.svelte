@@ -1,17 +1,19 @@
 <script lang="ts">
+  import getCloudflareImageUrl from '$lib/file/getCloudflareImageUrl'
+
   export let title: string
-  export let ogSrc: string = ''
+  export let ogImageId: string = ''
   export let url: string = ''
   export let description: string = ''
 
   let imageSrc: string
   let fullTitle: string
 
-  $: if (ogSrc) setImageSrc()
+  $: if (ogImageId) setImageSrc()
   $: if (title) setFullTitle()
 
   function setImageSrc () {
-    imageSrc = `https://www.sensethenlove.com${ ogSrc }`
+    imageSrc = getCloudflareImageUrl(ogImageId)
   }
 
   function setFullTitle () {
