@@ -21,9 +21,6 @@
 - [Using Prisma with Planetscale](https://www.prisma.io/docs/guides/database/using-prisma-with-planetscale)
 - [Prisma + Cloudflare Workers](https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers)
 - [Prisma + Data Proxy](https://www.prisma.io/docs/data-platform/data-proxy)
-- [Sveltekit + Cloudflare Workers](https://kit.svelte.dev/docs/adapter-cloudflare-workers)
-- [Sveltekit + Github Actions](https://github.com/marketplace/actions/deploy-to-cloudflare-workers-with-wrangler)
-- [Github Actions + Environment Variables](https://snyk.io/blog/how-to-use-github-actions-environment-variables/)
 - [Cloudflare Workers + Cookies](https://talke.dev/setting-and-reading-cookies-within-cloudflare-workers)
 - [ECDSA vs RSA](https://sectigostore.com/blog/ecdsa-vs-rsa-everything-you-need-to-know/)
 - [SubtleCrypto + JWT](https://coolaj86.com/articles/sign-jwt-webcrypto-vanilla-js/)
@@ -71,12 +68,6 @@ npm run dev
 ```bash
 git checkout main
 git push
-```
-
-## Generate new prisma client
-This is useful after changes have been made to `schema.prisma`
-```bash
-npx prisma generate
 ```
 
 ## Open prisma studio
