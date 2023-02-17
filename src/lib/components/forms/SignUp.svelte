@@ -10,7 +10,7 @@
       { name: 'lastName', label: 'Last Name' },
     ],
     { name: 'email', label: 'Email', type: 'email' },
-    { name: 'terms', label: '<span><span>We will never sell data about you! 🙏 We will never ask you for a password! 🙌 Sense Then Love will always be</span> <a href="https://github.com/sensethenlove/sensethenlove/" target="_blank">open source</a><span>! 💖</span></span>', type: 'checkbox', checkboxValue: true },
+    { name: 'terms', label: '<span>We will never ask you for a password, we will never sell data about you & we will always be <a href="https://github.com/sensethenlove/sensethenlove/" target="_blank">open source</a>! 🙏💖🙌</span>', type: 'checkbox', checkboxValue: true },
     { name: 'isNewsletterSubscriber', label: 'Sign me up for the weekly newsletter!', type: 'checkbox' },
   ]
 
