@@ -37,7 +37,7 @@
             errors = result.data
             break
           case 'success':
-            showToast({ type: 'success', items: [ onSuccess(fields) ] }) // successful submission
+            showToast({ type: 'success', items: [ onSuccess({ fields, data: result?.data }) ] }) // successful submission
             break
         }
 

@@ -6,7 +6,7 @@
 		"dev": "npx prisma generate && vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"deploy": "npx prisma generate --data-proxy && npm run build && wrangler publish",
+		"deploy": "npx prisma generate --data-proxy && npm run build && npx wrangler publish",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
@@ -15,7 +15,7 @@
 		"@poppanator/sveltekit-svg": "^2.1.2",
 		"@prisma/client": "^4.10.1",
 		"@sveltejs/adapter-cloudflare-workers": "^1.0.6",
-		"@sveltejs/kit": "^1.5.0",
+		"@sveltejs/kit": "^1.7.0",
 		"buffer": "^6.0.3",
 		"prisma": "^4.10.1",
 		"sass": "^1.58.0",
@@ -24,7 +24,6 @@
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0",
-		"wrangler": "^2.10.0",
 		"zod": "^3.20.6"
 	}
 }

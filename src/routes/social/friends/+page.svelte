@@ -8,7 +8,7 @@
 </script>
 
 
-<Head title="Friends" url="social/friends" description="Friends page" />
-<Title h1="Friends" />
+<Head title="Friends Lovely Goals" url="social/friends" description="Friends page" />
+<Title h1="Friends Lovely Goals" />
 <Views userId={ data?.userId } />
 <Title h3="Coming soon!" />

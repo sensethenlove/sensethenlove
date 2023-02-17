@@ -7,7 +7,7 @@
     { name: 'email', label: 'Email', type: 'email' },
   ]
 
-  const onSuccess = (fields => `Please check the email inbox of ${ fields.email.toString() } for a link to sign in!`) satisfies FormOnSuccess
+  const onSuccess = (({ fields }) => `Please check the email inbox of ${ fields.email.toString() } for a link to sign in!`) satisfies FormOnSuccess
 </script>
 
 

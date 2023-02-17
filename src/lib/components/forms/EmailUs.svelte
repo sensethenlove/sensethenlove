@@ -14,7 +14,7 @@
     { name: 'isNewsletterSubscriber', label: 'Simultaneously sign me up for our weekly newsletter!', type: 'checkbox' },
   ]
 
-  const onSuccess = (fields => `Thank you for your comment ${ fields.firstName.toString() }!`) satisfies FormOnSuccess
+  const onSuccess = (({ fields }) => `Thank you for your comment ${ fields.firstName.toString() }!`) satisfies FormOnSuccess
 </script>
 
 

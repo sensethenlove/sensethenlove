@@ -13,20 +13,20 @@ export default (async ({ request, locals }) => {
     const fields = Object.fromEntries((await request.formData()).entries())
     await validateFields(fields, schema)
 
-    if (fields.file instanceof Blob && fields.file.size) { // if uploaded file provided https://nodejs.org/api/all.html#all_buffer_class-blob
-      isFileAnImage(fields.file)
+    if (fields.primaryImage instanceof Blob && fields.primaryImage.size) { // if uploaded file provided https://nodejs.org/api/all.html#all_buffer_class-blob
+      isFileAnImage(fields.primaryImage)
 
       let newPrimaryImageId
 
       if (fields.primaryImageId.toString()) { // IF user already has a primaryImageId
         const cloudflareResponse = await Promise.all([ // to cloudflare images
-          writePrimaryImage(fields.file), // write new primary image file
+          writePrimaryImage(fields.primaryImage), // write new primary image file
           deletePrimaryImage(fields.primaryImageId.toString()) // remove previous primary image file
         ])
 
         newPrimaryImageId = cloudflareResponse[0]
       } else {
-        newPrimaryImageId = await writePrimaryImage(fields.file)
+        newPrimaryImageId = await writePrimaryImage(fields.primaryImage)
       }
 
       await updateUser({ id: locals.userId }, {

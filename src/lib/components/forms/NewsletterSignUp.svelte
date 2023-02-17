@@ -12,7 +12,7 @@
     { name: 'email', label: 'Email', type: 'email' },
   ]
 
-  const onSuccess = (fields => `Thank you for signing up ${ fields.firstName.toString() }!`) satisfies FormOnSuccess
+  const onSuccess = (({ fields }) => `Thank you for signing up ${ fields.firstName.toString() }!`) satisfies FormOnSuccess
 </script>
 
 

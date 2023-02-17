@@ -8,7 +8,8 @@ export default async (fields: FormFields): Promise<User> => {
       firstName: fields.firstName.toString(),
       lastName: fields.lastName.toString(),
       email: fields.email.toString(),
-      isNewsletterSubscriber: fields.isNewsletterSubscriber === 'on'
+      isNewsletterSubscriber: fields.isNewsletterSubscriber === 'on',
+      primaryImageId: fields.primaryImageId ? fields.primaryImageId.toString() : ''
     }
   })
 }

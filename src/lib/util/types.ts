@@ -77,7 +77,7 @@ export type FormFields = {
   [k: string]: FormDataEntryValue
 }
 
-export type FormOnSuccess = (fields: FormFields) => string
+export type FormOnSuccess = ({ fields, data }: { fields: FormFields, data: any }) => string
 
 export type FormInput = {
   name: string,

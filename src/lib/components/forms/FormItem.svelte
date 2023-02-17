@@ -110,5 +110,6 @@
     display: none;
     width: 56rem;
     max-width: 100%;
+    margin-bottom: 1rem;
   }
 </style>
