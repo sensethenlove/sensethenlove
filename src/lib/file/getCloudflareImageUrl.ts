@@ -1,3 +1,3 @@
 export default (imageId: string) => {
-  return `https://imagedelivery.net/awgX85h4ifgiJaXRhZTMNw/${ imageId }/public`
+  return `https://sensethenlove.com/cdn-cgi/imagedelivery/awgX85h4ifgiJaXRhZTMNw/${ imageId }/public`
 }
