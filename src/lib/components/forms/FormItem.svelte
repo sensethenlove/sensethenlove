@@ -88,7 +88,7 @@
   { :else if type === 'checkbox' }
     <label for={ id } class="checkbox { itemErrors?.length ? 'error': '' }" on:input={ () => { clearErrors() } }>
       <input { id } { name } checked={ checkboxValue } type="checkbox" />
-      { label }
+      { @html label }
     </label>
   { :else if type === 'image' }
     <label for={ id }>{ label }</label>

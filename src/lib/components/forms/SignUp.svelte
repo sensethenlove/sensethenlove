@@ -10,8 +10,8 @@
       { name: 'lastName', label: 'Last Name' },
     ],
     { name: 'email', label: 'Email', type: 'email' },
-    { name: 'terms', label: 'We will never sell data about you! 🙌 We will never read, store or sell your location information! 🙏 We will never ask you for a password! 💖', type: 'checkbox', checkboxValue: true },
-    { name: 'isNewsletterSubscriber', label: 'Simultaneously sign me up for our weekly newsletter!', type: 'checkbox' },
+    { name: 'terms', label: '<span><span>We will never sell data about you! 🙏 We will never ask you for a password! 🙌 Sense Then Love will always be</span> <a href="https://github.com/sensethenlove/sensethenlove/" target="_blank">open source</a><span>! 💖</span></span>', type: 'checkbox', checkboxValue: true },
+    { name: 'isNewsletterSubscriber', label: 'Sign me up for the weekly newsletter!', type: 'checkbox' },
   ]
 
   const onSuccess = (({ data }) => `Welcome ${ data.user.firstName }! Please check the email inbox of ${ data.user.email } for a link to sign in!`) satisfies FormOnSuccess
