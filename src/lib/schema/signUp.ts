@@ -6,6 +6,6 @@ export default z.object({
   lastName: z.string().min(3, 'Last Name is at least 3 characters please'),
   email: z.string().email('Provide a valid email please'),
   terms: z.string({
-    errorMap () { return { message: 'Please agree to our terms' } }
+    errorMap () { return { message: 'Please ackowledge our promise' } }
   })
 })

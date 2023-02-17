@@ -8,7 +8,7 @@
 </script>
 
 
-<Head title="All of Us" url="social" description="Welcome to our Social Network" />
-<Title h1="All of Us" />
+<Head title="Our Lovely Goals" url="social" description="Welcome to our Social Network" />
+<Title h1="Our Lovely Goals" />
 <Views userId={ data?.userId } />
 <Title h3="Coming soon!" />

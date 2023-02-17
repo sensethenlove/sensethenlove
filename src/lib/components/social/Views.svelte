@@ -9,10 +9,10 @@
 
 <Title h3="Select a View" noBottom={ true } />
 <div class="chips location--nav">
-  <LoadingLink label="All of Us" href="/social" css="chip { $page.route.id === '/social' ? 'active' : '' }" />
+  <LoadingLink label="Our Lovely Goals" href="/social" css="chip { $page.route.id === '/social' ? 'active' : '' }" />
 
   { #if userId }
-    <LoadingLink label="Friends" href="/social/friends" css="chip { $page.route.id === '/social/friends' ? 'active' : '' }" />
+    <LoadingLink label="Friends Lovely Goals" href="/social/friends" css="chip { $page.route.id === '/social/friends' ? 'active' : '' }" />
     <LoadingLink label="Notifications" href="/social/notifications" css="chip { $page.route.id === '/social/notifications' ? 'active' : '' }" />
     <LoadingLink label="Profile" href="/social/profile" css="chip { $page.route.id === '/social/profile' ? 'active' : '' }" />
     <LoadingLink label="Messages" href="/social/messages" css="chip { $page.route.id === '/social/messages' ? 'active' : '' }" />

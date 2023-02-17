@@ -10,12 +10,9 @@
   <ol>
     <li>Think lovely thoughts!</li>
     <ul class="indent">
-      <li>The songs we sing, the words we share & the thoughts we think, guide how we feel</li>
-      <ul class="indent">
-        <li>Sing a lovely song &rarr; Feel lovely</li>
-        <li>Tell a scary story &rarr; Feel scared</li>
-        <li>Think lovely &rarr; Feel lovely</li>
-      </ul>
+      <li>Sing a lovely song &rarr; Feel lovely</li>
+      <li>Tell a scary story &rarr; Feel scared</li>
+      <li>Think lovely &rarr; Feel lovely</li>
     </ul>
     <li>Share <LoadingLink href="/sources/" label="scientific evidence" /> that shows the benefits of:</li>
     <ul class="indent big-screen">
@@ -34,12 +31,12 @@
       <li><LoadingLink href="/sources/exercising" label="Exercising" /></li>
       <li><LoadingLink href="/sources/natural-building" label="Natural Building" /></li>
       </ul>
-    <li>Create a social network that allows us all to:</li>
+    <li>Create a <a href="/social">social network</a> that allows us all to:</li>
     <ul class="indent">
-        <li>Share our goals</li>
-        <li>Share goal progress</li>
-        <li>Collaborate with, encourage & love each other</li>
-      </ul>
+      <li>Share our goals, progress & achievements!</li>
+      <li>Collaborate with, encourage & love each other!</li>
+      <li>Aim higher together!</li>
+    </ul>
   </ol>
 
   <h3>Our Name</h3>
