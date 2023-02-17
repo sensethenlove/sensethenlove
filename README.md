@@ -54,31 +54,37 @@
 
 
 ## Local install
+1. [Install git](https://github.com/git-guides/install-git)
+1. [Install node & npm](https://nodejs.org/en/download/)
+1. [Install nvm](https://github.com/nvm-sh/nvm)
+1. In [bash](https://opensource.com/resources/what-bash) navigate to the place you would love to place this code
 ```bash
 git clone https://github.com/sensethenlove/sensethenlove.git
 cd sensethenlove
 nvm use 18
-npm install
+npm install -g pnpm
+pnpm i
 ```
 
 ## Start development server
 ```bash
-npm run dev
+pnpm dev
 ```
 
 ## Deploy to live site
 ```bash
-npm run deploy
+pnpm live
 ```
 
 ## Open [Prisma Studio](https://www.prisma.io/studio)
 ```bash
-npx prisma studio
+pnpm data
 ```
 
 ## How to update database schema
-1. Update schema @ `./prisma/schema.prisma` & save the file
-1. Bash `npx prisma db push` to deploy schema changes to `dev` branch
+
+1. Update schema @ `./prisma/schema.prisma` & save the file w/ `datasource db` > `url` > `env("DEV_DATABASE_URL")`
+1. Bash `pnpm push-dev-schema` to push schema changes to `dev` branch in [PlanetScale](https://planetscale.com/docs)
 1. Click `DASHBOARD_PLANETSCALE` link in `.apps` file
 1. Click `Branches` tab
 1. Click `dev` link
@@ -86,6 +92,7 @@ npx prisma studio
 1. Select `Deploy to main`
 1. Click `Create deploy request` button
 1. Click `Deploy changes`
+1. Before `git push` OR `pnpm live` save schema @ `./prisma/schema.prisma` w/ `datasource db` > `url` > `env("PRISMA_DATABASE_URL")`
 
 
 ## Format `schema.prisma` in [VSCodium](https://vscodium.com/) on save

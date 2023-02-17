@@ -3,10 +3,13 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
+		"preinstall": "npx only-allow pnpm",
 		"dev": "npx prisma generate && vite dev",
+		"data": "npx prisma generate && npx prisma studio",
+		"push-dev-schema": "npx prisma db push",
 		"build": "vite build",
 		"preview": "vite preview",
-		"deploy": "npx prisma generate --data-proxy && npm run build && npx wrangler publish",
+		"live": "npx prisma generate --data-proxy && pnpm build && npx wrangler publish",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},

@@ -4,7 +4,6 @@ import type { PageServerLoad } from './$types'
 import routeCatch from '$lib/catch/routeCatch'
 import findFirstSource from '$lib/prisma/findFirstSource'
 import newsletterSignUp from '$lib/actions/newsletterSignUp'
-import prisma from '$lib/prisma/prisma'
 
 
 export const load = (async () => {
