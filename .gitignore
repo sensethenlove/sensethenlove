@@ -4,3 +4,4 @@ build
 node_modules
 wrangler.toml
 .apps
+.env

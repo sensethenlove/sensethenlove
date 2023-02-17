@@ -6,7 +6,6 @@ import type { // Import Prisma Types + Prisma Client
   Session as SessionPrisma,
   SiteComment as SiteCommentPrisma,
   QuoteCategory as QuoteCategoryPrisma,
-  PrimaryImage as PrimaryImagePrisma,
   User as UserPrisma,
 } from '@prisma/client'
 
@@ -25,7 +24,6 @@ export interface User extends UserPrisma {
   primaryImageBase64?: string
 }
 export interface SiteComment extends SiteCommentPrisma { }
-export interface PrimaryImage extends PrimaryImagePrisma { }
 
 export interface Session extends SessionPrisma {
   user?: User // schema.prisma property
@@ -88,7 +86,7 @@ export type FormInput = {
   value?: string | null,
   checkboxValue?: boolean,
   hidden?: boolean,
-  serverBase64?: string | null
+  serverImageId?: string | null
 }
 
 export type FormInputs = Array<FormInput | Array<FormInput>>

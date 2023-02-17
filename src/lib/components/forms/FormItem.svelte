@@ -1,7 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { showToast } from '$lib/util/toast'
-  import isFileAnImage from '$lib/util/isFileAnImage'
+  import isFileAnImage from '$lib/file/isFileAnImage'
+  import { IsFileAnImageError } from '$lib/util/errors'
+  import getCloudflareImageUrl from '$lib/file/getCloudflareImageUrl'
 
   export let errors: any
   export let name: string
@@ -9,7 +11,7 @@
   export let label: string = ''
   export let type: string = 'text'
   export let value: string | null = ''
-  export let serverBase64: string = ''
+  export let serverImageId: string = ''
   export let checkboxValue: boolean | null = false
 
   let itemErrors: any
@@ -36,9 +38,9 @@
       imageVariables.previewImage.src = ''
       imageVariables.previewImage.style.display = 'none'
 
-      if (!serverBase64) imageVariables.serverImage.style.display = 'none'
+      if (!serverImageId) imageVariables.serverImage.style.display = 'none'
       else {
-        imageVariables.serverImage.src = 'data:image/png;base64,' + serverBase64
+        imageVariables.serverImage.src = `${ getCloudflareImageUrl(serverImageId) }`
         imageVariables.serverImage.style.display = 'block'
       }
 
@@ -47,12 +49,8 @@
           const file = imageVariables.fileElement.files?.[0]
 
           if (file instanceof Blob) {
-            const { error } = isFileAnImage(file)
-
-            if (error) {
-              imageVariables.fileElement.value = ''
-              showToast({ type: 'error', items: [ error ] })
-            } else {
+            try {
+              isFileAnImage(file)
               const reader = new FileReader()
               reader.onload = e => {
                 if (imageVariables.previewImage && imageVariables.serverImage) { // defined in DOM
@@ -64,6 +62,11 @@
                 }
               }
               reader.readAsDataURL(file) // triggers onload fn above
+            } catch (e) {
+              if (e instanceof IsFileAnImageError) {
+                imageVariables.fileElement.value = ''
+                showToast({ type: 'error', items: [ e.toString() ] })
+              }
             }
           }
         }

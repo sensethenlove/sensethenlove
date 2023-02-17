@@ -10,7 +10,7 @@
 
   $: if (user) {
     inputs = [
-      { name: 'file', label: 'Image', type: 'image', serverBase64: user.primaryImageBase64 },
+      { name: 'file', label: 'Image', type: 'image', serverImageId: user.primaryImageId },
       [
         { name: 'firstName', label: 'First Name', value: user.firstName },
         { name: 'lastName', label: 'Last Name', value: user.lastName },

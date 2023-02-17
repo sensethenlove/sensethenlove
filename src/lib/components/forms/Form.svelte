@@ -62,7 +62,7 @@
             { /each }
           </div>
         { :else }
-          <FormItem name={ input.name } label={ input.label } value={ input.value } checkboxValue={ input.checkboxValue } type={ input.type || 'text' } { errors } css={ input.hidden ? 'hidden' : '' } serverBase64={ input.serverBase64 || '' } />
+          <FormItem name={ input.name } label={ input.label } value={ input.value } checkboxValue={ input.checkboxValue } type={ input.type || 'text' } { errors } css={ input.hidden ? 'hidden' : '' } serverImageId={ input.serverImageId || '' } />
         { /if}
       {/each }
     { /if }
