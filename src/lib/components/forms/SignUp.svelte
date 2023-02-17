@@ -9,7 +9,7 @@
       { name: 'lastName', label: 'Last Name' },
     ],
     { name: 'email', label: 'Email', type: 'email' },
-    { name: 'terms', label: 'We will never sell data about you! 😘 We will never get or store your location information! 🙏 We will never ask you for a password! 💖', type: 'checkbox', checkboxValue: true },
+    { name: 'terms', label: 'We will never sell data about you! 😘 We will never read or store your location information! 🙏 We will never ask you for a password! 💖', type: 'checkbox', checkboxValue: true },
     { name: 'isNewsletterSubscriber', label: 'Simultaneously sign me up for our weekly newsletter!', type: 'checkbox' },
   ]
 

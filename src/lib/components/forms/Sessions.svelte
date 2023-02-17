@@ -77,7 +77,7 @@
 
 <form class="sessions" novalidate method="POST" action="?/deleteSessions" use:enhance={ onSubmit }>
   <Title h3="Select IP's to sign out" noBottom={ true } css="sub-explanation" />
-  <Title h4="We never get or store your location information!" noBottom={ true } css="explanation" />
+  <Title h4="We never read or store your location information!" noBottom={ true } css="explanation" />
   <section class="ips">
     <table>
       <tbody>
