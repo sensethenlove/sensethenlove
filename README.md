@@ -12,6 +12,7 @@
 - [Cloudflare Workers](https://kit.svelte.dev/docs/adapter-cloudflare-workers)
 - [Cloudflare Images](https://developers.cloudflare.com/images/)
 - [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/)
+- [PNPM](https://pnpm.io/motivation)
 - [Sendgrid](https://github.com/sendgrid/sendgrid-nodejs)
 - [Markdown](https://www.markdownguide.org/basic-syntax)
 - [Open Graph](https://ogp.me/)
@@ -30,6 +31,8 @@
 - [Prisma + Data Proxy](https://www.prisma.io/docs/data-platform/data-proxy)
 - [ECDSA vs RSA](https://sectigostore.com/blog/ecdsa-vs-rsa-everything-you-need-to-know/)
 - [SubtleCrypto + JWT](https://coolaj86.com/articles/sign-jwt-webcrypto-vanilla-js/)
+- [NPM to PNPM](https://britishgeologicalsurvey.github.io/development/migrating-from-npm-to-pnpm/)
+- [Cloudflare Worker Explanation](https://developers.cloudflare.com/workers/learning/how-workers-works)
 
 #### Videos
 - [Learn Prisma In 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)
