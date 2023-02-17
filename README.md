@@ -52,23 +52,26 @@
 - [Cloudflare Images: $5 a month = 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
 - [Proton Business: $19.98 per month = 2 users w/ secure inboxes, calendars, & 1,000GB of cloud storage](https://proton.me/business/plans)
 
-## Set Node Version
+
+## Local install
 ```bash
+git clone https://github.com/sensethenlove/sensethenlove.git
+cd sensethenlove
 nvm use 18
+npm install
 ```
 
-## Developing
+## Start development server
 ```bash
-npm install
 npm run dev
 ```
 
-## Deploy to production
+## Deploy to live site
 ```bash
 npm run deploy
 ```
 
-## Open prisma studio
+## Open [Prisma Studio](https://www.prisma.io/studio)
 ```bash
 npx prisma studio
 ```
