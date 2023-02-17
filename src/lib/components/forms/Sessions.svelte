@@ -170,6 +170,10 @@
 
       label {
         user-select: none;
+        text-overflow: ellipsis;
+        max-width: 52vw;
+        overflow: hidden;
+        display: inline-block;
       }
     }
   }

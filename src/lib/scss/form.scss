@@ -53,9 +53,19 @@
       align-items: center;
       cursor: pointer;
 
-      input {
-        transform: scale(1.5);
+      .checkbox-input-wrapper {
         margin-right: 1.5rem;
+        width: 2rem;
+        min-width: 2rem;
+      }
+
+      input {
+        width: 100%;
+        transform: scale(1.5);
+      }
+
+      span:first-child {
+        flex: auto;
       }
     }
   }
