@@ -14,4 +14,4 @@
 <Title h1="Settings" />
 <Views userId={ data?.user?.id } />
 { #if data.user } <UpdateUser user={ data.user } /> { /if }
-<Sessions sessions={ data.sessions } />
+{ #if data.sessions } <Sessions sessions={ data.sessions } /> { /if }

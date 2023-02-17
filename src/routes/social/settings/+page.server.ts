@@ -1,3 +1,4 @@
+import routeCatch from '$lib/catch/routeCatch'
 import updateUser from '$lib/actions/updateUser'
 import findFirstUser from '$lib/prisma/findFirstUser'
 import type { Actions, PageServerLoad } from './$types'
@@ -6,11 +7,11 @@ import findManySessions from '$lib/prisma/findManySessions'
 
 
 export const load = (async ({ locals }) => {
-  const response = await Promise.all([ findManySessions(locals.userId), findFirstUser({ id: locals.userId }) ])
-
-  return {
-    user: response[1],
-    sessions: response[0],
+  try {
+    const [ user, sessions ] = await Promise.all([ findFirstUser({ id: locals.userId }), findManySessions(locals.userId) ])
+    return { user, sessions }
+  } catch (e) {
+    return routeCatch(e)
   }
 }) satisfies PageServerLoad
 

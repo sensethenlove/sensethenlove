@@ -23,7 +23,7 @@ export default (async ({ request, locals }) => {
           writePrimaryImage(fields.file), // write new primary image file
           deletePrimaryImage(fields.primaryImageId.toString()) // remove previous primary image file
         ])
-        console.log('cloudflareResponse', cloudflareResponse)
+
         newPrimaryImageId = cloudflareResponse[0]
       } else {
         newPrimaryImageId = await writePrimaryImage(fields.file)
