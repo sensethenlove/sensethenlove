@@ -1,7 +1,7 @@
 # Sense Then Love
 
 ## Helpful links
-#### Docs
+#### Documentation
 - [Svelte](https://svelte.dev/docs)
 - [Svelte Kit](https://kit.svelte.dev/docs/introduction)
 - [Prisma](https://www.prisma.io/docs)
@@ -16,21 +16,20 @@
 - [Markdown](https://www.markdownguide.org/basic-syntax)
 - [Open Graph](https://ogp.me/)
 
-#### Articles
-- [Prisma + NextJS](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)
-- [Using Prisma with Planetscale](https://www.prisma.io/docs/guides/database/using-prisma-with-planetscale)
-- [Prisma + Cloudflare Workers](https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers)
-- [Prisma + Data Proxy](https://www.prisma.io/docs/data-platform/data-proxy)
-- [Cloudflare Workers + Cookies](https://talke.dev/setting-and-reading-cookies-within-cloudflare-workers)
-- [ECDSA vs RSA](https://sectigostore.com/blog/ecdsa-vs-rsa-everything-you-need-to-know/)
-- [SubtleCrypto + JWT](https://coolaj86.com/articles/sign-jwt-webcrypto-vanilla-js/)
-
 #### Code Examples
 - [Sveltekit + Prisma](https://github.com/prisma/prisma-examples/tree/latest/typescript/rest-sveltekit)
 - [Sveltekit + Turnstile](https://github.com/ghostdevv/svelte-turnstile)
 - [Sveltekit Authentication](https://github.com/huntabyte/sveltekit-protected-routes/tree/final-code)
 - [Subtle Crypto](https://github.com/diafygi/webcrypto-examples#rsa-pss---generatekey)
 - [Cloudflare + JWT](https://github.com/tsndr/cloudflare-worker-jwt/blob/76b7fcef2707225c9214fcba0c4e8d6498039daa/src/index.ts)
+
+#### Articles
+- [Prisma + NextJS](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)
+- [Using Prisma with Planetscale](https://www.prisma.io/docs/guides/database/using-prisma-with-planetscale)
+- [Prisma + Cloudflare Workers](https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers)
+- [Prisma + Data Proxy](https://www.prisma.io/docs/data-platform/data-proxy)
+- [ECDSA vs RSA](https://sectigostore.com/blog/ecdsa-vs-rsa-everything-you-need-to-know/)
+- [SubtleCrypto + JWT](https://coolaj86.com/articles/sign-jwt-webcrypto-vanilla-js/)
 
 #### Videos
 - [Learn Prisma In 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)
@@ -49,7 +48,7 @@
 - [Prisma Data Platform: FREE = 3 million CPU ms/mo](https://www.prisma.io/pricing)
 - [Sendgrid: FREE = 100 emails a day](https://sendgrid.com/pricing/)
 - [Namecheap: $19.58 a year = Domain Registration](https://www.namecheap.com/domains/)
-- [Github Team: $4 a month = 2G of storage & 3,000 minutes of Github Action execution time a month](https://github.com/pricing)
+- [Github Team: $4 a month = 2G of storage](https://github.com/pricing)
 - [Cloudflare Images: $5 a month = 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
 - [Proton Business: $19.98 per month = 2 users w/ secure inboxes, calendars, & 1,000GB of cloud storage](https://proton.me/business/plans)
 
@@ -66,8 +65,7 @@ npm run dev
 
 ## Deploy to production
 ```bash
-git checkout main
-git push
+npm run deploy
 ```
 
 ## Open prisma studio
@@ -75,29 +73,16 @@ git push
 npx prisma studio
 ```
 
-## Sync local schema with cloud schema
-```bash
-npx prisma db push
-```
-
 ## How to update database schema
-1. Update value to `env("DEV_DATABASE_URL")` @ `./prisma/schema.prisma` > `datasource db` > `url`
-1. Save `./prisma/schema.prisma` file
-1. Bash `npx prisma db generate` to point to dev database
-1. Make schema update in `./prisma/schema.prisma`
+1. Update schema @ `./prisma/schema.prisma` & save the file
 1. Bash `npx prisma db push` to deploy schema changes to `dev` branch
-1. Click `DASHBOARD_PLANETSCALE` link in `.env` file
+1. Click `DASHBOARD_PLANETSCALE` link in `.apps` file
 1. Click `Branches` tab
 1. Click `dev` link
 1. Scroll to bottom of page
 1. Select `Deploy to main`
 1. Click `Create deploy request` button
 1. Click `Deploy changes`
-1. Wait for changes to finish
-1. Update value to `env("PROD_DATABASE_URL")` @ `./prisma/schema.prisma` > `datasource db` > `url`
-1. Save `./prisma/schema.prisma` file
-1. Bash `npx prisma db generate` to point to prod database
-1. Bash > `npx prisma studio` to see changes in browser
 
 
 ## Format `schema.prisma` in [VSCodium](https://vscodium.com/) on save
