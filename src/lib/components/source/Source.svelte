@@ -19,12 +19,12 @@
 <section class="source location--{ location }">
   <div class="head">
     { #if source.urlType === 'ACADEMIA' }
-      <a class="publisher" href={ source.url } target="_blank" rel="noreferrer">
+      <a class="publisher" href={ source.url } target="_blank" rel="noreferrer" aria-hidden="true">
       { @html academia }
       </a>
     { /if }
     { #if source.urlType === 'PUBMED' }
-      <a class="publisher" href={ source.url } target="_blank" rel="noreferrer">
+      <a class="publisher" href={ source.url } target="_blank" rel="noreferrer" aria-hidden="true">
         { @html pubmed }
       </a>
     { /if }
