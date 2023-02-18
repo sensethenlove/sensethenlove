@@ -54,7 +54,7 @@
     z-index: $zindex-theme-toggle;
 
     @media only screen and (min-width: $move-nav-window-width) { // big screen
-      top: 2rem;
+      top: 1.75rem;
       left: calc(100vw - 26rem);
     }
 
