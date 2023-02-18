@@ -44,6 +44,7 @@
 - [SVG Icons](https://icones.js.org/collection/all)
 - [Flowbite](https://flowbite-svelte.com/)
 - [Jwt.io](https://jwt.io/)
+- [Grey Shade](https://www.htmlcolor-picker.com/color-groups/white-grey-black)
 
 #### Pricing
 - [Cloudflare Workers: FREE = 100,000 requests a day](https://developers.cloudflare.com/workers/platform/pricing)
@@ -80,6 +81,7 @@ pnpm live
 ```
 
 ## Open [Prisma Studio](https://www.prisma.io/studio)
+1. Save schema @ `./prisma/schema.prisma` > `datasource db` > `url` w/ `env("DEV_DATABASE_URL")` or `env("PROD_DATABASE_URL")`
 ```bash
 pnpm data
 ```

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { afterNavigate } from '$app/navigation'
-  import PubMed from '$lib/images/svg/logo/PubMed.svg'
-  import Academia from '$lib/images/svg/logo/Academia.svg'
+  import pubmed from '$lib/images/logo/pubmed.svg'
+  import academia from '$lib/images/logo/academia.svg'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
   import type { Source, Author, QuoteCategory } from '$lib/util/types'
   import QuoteCategoryChips from '$lib/components/chips/QuoteCategoryChips.svelte'
@@ -19,13 +19,13 @@
 <section class="source location--{ location }">
   <div class="head">
     { #if source.urlType === 'ACADEMIA' }
-      <a href={ source.url } target="_blank" rel="noreferrer">
-      { @html Academia }
+      <a class="publisher" href={ source.url } target="_blank" rel="noreferrer">
+      { @html academia }
       </a>
     { /if }
     { #if source.urlType === 'PUBMED' }
-      <a href={ source.url } target="_blank" rel="noreferrer">
-        { @html PubMed }
+      <a class="publisher" href={ source.url } target="_blank" rel="noreferrer">
+        { @html pubmed }
       </a>
     { /if }
     <div class="flex">
@@ -67,9 +67,23 @@
         flex-direction: row;
       }
 
-      :global(.academia-logo),
-      :global(.pub-med-logo) {
-        height: 3rem;
+      .publisher {
+        padding: 1rem;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        background-color: var(--light-opacity-bg);
+
+        @media only screen and (min-width: $move-nav-window-width) { // big screen
+          margin-bottom: 0;
+        }
+
+        :global(.academia-logo),
+        :global(.pub-med-logo) {
+          height: 3rem;
+        }
       }
 
       .flex {

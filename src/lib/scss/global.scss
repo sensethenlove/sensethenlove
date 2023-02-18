@@ -7,6 +7,7 @@
 body,
 html {
   margin: 0;
+  background-color: var(--bg-color);
 }
 
 html {
@@ -40,7 +41,7 @@ main {
   right: 0.9rem;
   margin-left: 0;
   padding-top: 3rem;
-  color: $black-text-color;
+  color: var(--text-color);
   padding-bottom: 7rem;
   transition: all 0.3s;
 
@@ -61,7 +62,7 @@ main {
     margin: 0.9rem 0.6rem 0.6rem 0.6rem;
     line-height: 1.8;
     text-align: center;
-    color: $blue-text-color;
+    color: var(--heading-text-color);
     font-family: $font-family-papyrus;
   }
 
@@ -76,8 +77,9 @@ main {
   section {
     border-radius: 1.8rem;
     padding: 1.8rem;
-    background-color: $opacity-bg;
+    background-color: var(--opacity-bg);
     margin-bottom: 1.8rem;
+    transition: all 0.9s;
     &.title {
       display: inline-block;
       margin-left: auto;
@@ -110,7 +112,7 @@ main {
 }
 
 a {
-  color: $green-text-color;
+  color: var(--anchor-color);
   text-decoration: none;
   &:hover {
     text-decoration: underline;

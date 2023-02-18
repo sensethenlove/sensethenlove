@@ -3,11 +3,11 @@
   import { page, navigating } from '$app/stores'
   import LoadingLink from '../LoadingLink.svelte'
   import { LOGO } from '$lib/images/cloudflareImages'
-  import IconHome from '$lib/images/svg/nav/Home.svg'
-  import IconSocial from '$lib/images/svg/nav/Social.svg'
-  import IconContact from '$lib/images/svg/nav/Contact.svg'
-  import IconSources from '$lib/images/svg/nav/Sources.svg'
-  import IconSupport from '$lib/images/svg/nav/Support.svg'
+  import home from '$lib/images/nav/home.svg'
+  import social from '$lib/images/nav/social.svg'
+  import contact from '$lib/images/nav/contact.svg'
+  import sources from '$lib/images/nav/sources.svg'
+  import support from '$lib/images/nav/support.svg'
   import getCloudflareImageUrl from '$lib/file/getCloudflareImageUrl'
   
   let activeRoute: string | null | undefined
@@ -37,10 +37,10 @@
   </div>
 
   <nav>
-    <LoadingLink label="Home" loadWidth="big" css="item { activeRoute === '/' ? 'active' : '' }">{ @html IconHome }</LoadingLink>
-    <LoadingLink label="Social" href="/social" loadWidth="big" css="item { activeRoute?.includes('/social') ? 'active' : '' }">{ @html IconSocial }</LoadingLink>
-    <LoadingLink label="Sources" href="/sources" loadWidth="big" css="item { activeRoute?.includes('/sources') ? 'active' : '' }">{ @html IconSources }</LoadingLink>
-    <LoadingLink label="Contact" href="/contact" loadWidth="big" css="item { activeRoute === '/contact' ? 'active' : '' }">{ @html IconContact }</LoadingLink>
-    <LoadingLink label="Support" href="/support" loadWidth="big" css="item { activeRoute === '/support' ? 'active' : '' }">{ @html IconSupport }</LoadingLink>
+    <LoadingLink label="Home" loadWidth="big" css="item { activeRoute === '/' ? 'active' : '' }">{ @html home }</LoadingLink>
+    <LoadingLink label="Social" href="/social" loadWidth="big" css="item { activeRoute?.includes('/social') ? 'active' : '' }">{ @html social }</LoadingLink>
+    <LoadingLink label="Sources" href="/sources" loadWidth="big" css="item { activeRoute?.includes('/sources') ? 'active' : '' }">{ @html sources }</LoadingLink>
+    <LoadingLink label="Contact" href="/contact" loadWidth="big" css="item { activeRoute === '/contact' ? 'active' : '' }">{ @html contact }</LoadingLink>
+    <LoadingLink label="Support" href="/support" loadWidth="big" css="item { activeRoute === '/support' ? 'active' : '' }">{ @html support }</LoadingLink>
   </nav>
 </div>

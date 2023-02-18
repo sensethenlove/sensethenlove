@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Loading from '$lib/images/svg/Loading.svg'
+  import loading from '$lib/images/loading.svg'
 
   export let text: string
   export let disabled: boolean = false
@@ -9,6 +9,6 @@
 
 
 <button class="full-width { color } { isLoading ? 'loading': '' }" disabled={ isLoading || disabled }>
-  { @html Loading }
+  { @html loading }
   <span class="text">{ text }</span>
 </button>

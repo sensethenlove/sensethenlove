@@ -14,14 +14,14 @@
     padding: 0.9rem;
     margin-bottom: 1.8rem;
     border-radius: 1.8rem;
-    background-color: rgba(#FFF, 0.9);
+    background-color: var(--opacity-bg);
   }
 
   .chip {
     position: relative;
     padding: 0.3rem 0.72rem;
     border-radius: 0.5rem;
-    background-color: $opacity-bg;
+    background-color: var(--opacity-bg);
     margin: 0.3rem 0.72rem;
   }
 }
