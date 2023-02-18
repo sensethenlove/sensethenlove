@@ -100,13 +100,13 @@ main {
     padding-left: 3rem;
     margin-top: 0.9rem;
     margin-bottom: 0.9rem;
-    &.indent {
-      margin-top: 0.3rem;
-      margin-bottom: 0.3rem;
-    }
 
     li {
       margin-bottom: 0.6rem;
+      &.indent-dot {
+        list-style-type: circle;
+        margin-left: 2.7rem;
+      }
     }
   }
 }

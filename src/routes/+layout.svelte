@@ -28,6 +28,7 @@
   </style>
 
   { #if $theme === 'dark' }
+    <meta name="theme-color" content="#111111"/>
     <style>
       :root {
         --text-color:  #f8f8f8;
@@ -43,6 +44,7 @@
       }
     </style>
   { :else }
+    <meta name="theme-color" content="#fefefe"/>
     <style>
       :root {
         --text-color: var(--black-text-color);

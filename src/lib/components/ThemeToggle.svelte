@@ -21,7 +21,7 @@
 </script>
 
 
-<button class="theme-toggle cyan-to-blue" on:click={ () => { setTheme() }}>
+<button class="theme-toggle cyan-to-blue" on:click={ () => { setTheme() }} aria-hidden="true">
 { #if $theme === 'light' }
   { @html sun }
 { :else }

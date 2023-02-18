@@ -3,14 +3,22 @@ import { vitePreprocess } from '@sveltejs/kit/vite'
 
 /** @type {import('@sveltejs/kit').Config} */
 export default {
-	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
-	// for more information about preprocessors
-	preprocess: vitePreprocess(),
+  // Consult https://kit.svelte.dev/docs/integrations#preprocessors
+  // for more information about preprocessors
+  preprocess: vitePreprocess(),
 
-	kit: {
-		adapter: adapter(),
-		version: {
-			pollInterval: 180000 // send request to server for current app version every 3 minutes, helps w/ +layout.svelte > $app/stores > updated
-		}
-	}
+  kit: {
+    adapter: adapter(),
+    version: {
+      pollInterval: 180000 // send request to server for current app version every 3 minutes, helps w/ +layout.svelte > $app/stores > updated
+    },
+    csp: {
+      mode: 'nonce',
+      directives: {
+        'script-src': [
+          'self'
+        ]
+      }
+    }
+  }
 }

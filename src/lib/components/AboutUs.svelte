@@ -9,42 +9,32 @@
   <h3>Our Goals</h3>
   <ol>
     <li>Think lovely thoughts!</li>
-    <ul class="indent">
-      <li>Sing a lovely song &rarr; Feel lovely</li>
-      <li>Tell a scary story &rarr; Feel scared</li>
-      <li>Think lovely &rarr; Feel lovely</li>
-    </ul>
+    <li class="indent-dot">Sing a lovely song &rarr; Feel lovely</li>
+    <li class="indent-dot">Tell a scary story &rarr; Feel scared</li>
+    <li class="indent-dot">Think lovely &rarr; Feel lovely</li>
     <li>Share <LoadingLink href="/sources/" label="scientific evidence" /> that shows the benefits of:</li>
-    <ul class="indent big-screen">
-      <li><LoadingLink href="/sources/love" label="Loving" /> &sdot; <LoadingLink href="/sources/goals" label="Goal Setting" /> &sdot; <LoadingLink href="/sources/health" label="Healthy Living" /></li>
-      <li><LoadingLink href="/sources/meditation" label="Mind Setting" /> &sdot; <LoadingLink href="/sources/432hz" label="432hz Listening" /> &sdot; <LoadingLink href="/sources/stretching" label="Stretching" /></li>
-      <li><LoadingLink href="/sources/diet" label="Optimal Dieting" /> &sdot; <LoadingLink href="/sources/exercising" label="Exercising" /> &sdot; <LoadingLink href="/sources/natural-building" label="Natural Building" /></li>
-      </ul>
-    <ul class="indent small-screen">
-      <li><LoadingLink href="/sources/love" label="Loving" /></li>
-      <li><LoadingLink href="/sources/goals" label="Goal Setting" /></li>
-      <li><LoadingLink href="/sources/health" label="Healthy Living" /></li>
-      <li><LoadingLink href="/sources/meditation" label="Mind Setting" /></li>
-      <li><LoadingLink href="/sources/432hz" label="432hz Listening" /></li>
-      <li><LoadingLink href="/sources/stretching" label="Stretching" /></li>
-      <li><LoadingLink href="/sources/diet" label="Optimal Dieting" /></li>
-      <li><LoadingLink href="/sources/exercising" label="Exercising" /></li>
-      <li><LoadingLink href="/sources/natural-building" label="Natural Building" /></li>
-      </ul>
+    <li class="indent-dot big-screen"><LoadingLink href="/sources/love" label="Loving" /> &sdot; <LoadingLink href="/sources/goals" label="Goal Setting" /> &sdot; <LoadingLink href="/sources/health" label="Healthy Living" /></li>
+    <li class="indent-dot big-screen"><LoadingLink href="/sources/meditation" label="Mind Setting" /> &sdot; <LoadingLink href="/sources/432hz" label="432hz Listening" /> &sdot; <LoadingLink href="/sources/stretching" label="Stretching" /></li>
+    <li class="indent-dot big-screen"><LoadingLink href="/sources/diet" label="Optimal Dieting" /> &sdot; <LoadingLink href="/sources/exercising" label="Exercising" /> &sdot; <LoadingLink href="/sources/natural-building" label="Natural Building" /></li>
+    <li class="indent-dot small-screen"><LoadingLink href="/sources/love" label="Loving" /></li>
+    <li class="indent-dot small-screen"><LoadingLink href="/sources/goals" label="Goal Setting" /></li>
+    <li class="indent-dot small-screen"><LoadingLink href="/sources/health" label="Healthy Living" /></li>
+    <li class="indent-dot small-screen"><LoadingLink href="/sources/meditation" label="Mind Setting" /></li>
+    <li class="indent-dot small-screen"><LoadingLink href="/sources/432hz" label="432hz Listening" /></li>
+    <li class="indent-dot small-screen"><LoadingLink href="/sources/stretching" label="Stretching" /></li>
+    <li class="indent-dot small-screen"><LoadingLink href="/sources/diet" label="Optimal Dieting" /></li>
+    <li class="indent-dot small-screen"><LoadingLink href="/sources/exercising" label="Exercising" /></li>
+    <li class="indent-dot small-screen"><LoadingLink href="/sources/natural-building" label="Natural Building" /></li>
     <li>Create a <a href="/social">social network</a> that allows us all to:</li>
-    <ul class="indent">
-      <li>Share our goals, progress & achievements!</li>
-      <li>Collaborate with, encourage & love each other!</li>
-      <li>Aim higher together!</li>
-    </ul>
+    <li class="indent-dot">Share our goals, progress & achievements!</li>
+    <li class="indent-dot">Collaborate with, encourage & love each other!</li>
+    <li class="indent-dot">Aim higher together!</li>
   </ol>
 
   <h3>Our Name</h3>
   <ol>
     <li>Focus on a sensation happening now</li>
-    <ul class="indent">
-      <li>Example: Feel breath travel in & out of nose</li>
-    </ul>
+    <li class="indent-dot">Example: Feel breath travel in & out of nose</li>
     <li>Internally sing the word <strong>'Love'</strong> on inhale & exhale, to direct mind</li>
     <li>Feel love for the sensation we are focusing on</li>
   </ol>
@@ -66,7 +56,7 @@
     }
 
     .small-screen {
-      display: block;
+      display: list-item;
 
       @media only screen and (min-width: $small-big-swap-window-width) { // big screen
         display: none;
@@ -77,7 +67,7 @@
       display: none;
 
       @media only screen and (min-width: $small-big-swap-window-width) { // big screen
-        display: block;
+        display: list-item;
       }
     }
   }
