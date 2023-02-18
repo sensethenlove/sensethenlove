@@ -31,7 +31,7 @@
     <style>
       :root {
         --text-color:  #f8f8f8;
-        --opacity-bg: rgba(0, 0, 0, 0.8);
+        --opacity-bg: rgba(0, 0, 0, 0.85);
         --anchor-color: var(--gold-text-color);
         --heading-text-color: #7dbbc6;
         --bg-color: #111111;

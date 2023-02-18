@@ -46,6 +46,7 @@
     position: fixed;
     top: 8.1rem;
     left: 3.5rem;
+    height: 3.6rem;
     width: 3.6rem;
     display: flex;
     transition: all 0.9s;
