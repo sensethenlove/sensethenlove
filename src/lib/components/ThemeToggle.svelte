@@ -21,7 +21,7 @@
 </script>
 
 
-<button class="theme-toggle cyan-to-blue" on:click={ () => { setTheme() }} aria-hidden="true">
+<button class="theme-toggle brand" on:click={ () => { setTheme() }} aria-hidden="true">
 { #if $theme === 'light' }
   { @html sun }
 { :else }
@@ -31,7 +31,6 @@
 
 
 <style lang="scss">
-  @import '$lib/scss/zindex.scss';
   @import '$lib/scss/variables.scss';
 
   :global(.theme--light) .theme-toggle :global(svg) {
@@ -39,7 +38,7 @@
   }
 
   :global(.theme--dark) .theme-toggle :global(svg) {
-    fill: white;
+    fill: rgb(17, 24, 39);
   }
 
   .theme-toggle {

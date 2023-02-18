@@ -27,7 +27,6 @@
 
 
 <style lang="scss">
-  @import '$lib/scss/zindex.scss';
   @import '$lib/scss/variables.scss';
 
   .background {

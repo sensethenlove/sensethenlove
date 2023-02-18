@@ -4,7 +4,7 @@
   export let text: string
   export let disabled: boolean = false
   export let isLoading: boolean = false
-  export let color: string = 'cyan-to-blue'
+  export let color: string = 'brand'
 </script>
 
 

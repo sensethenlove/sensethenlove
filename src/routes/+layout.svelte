@@ -21,8 +21,7 @@
       --green-text-color: green;
       --blue-text-color: #2196F3;
       --red-text-color: #FE544B;
-      --gold-text-color: gold;
-      --silver-text-color: silver;
+      --gold-text-color: #eac603;
       --light-opacity-bg: rgba(255, 255, 255, 0.95);
     }
   </style>
@@ -31,10 +30,10 @@
     <meta name="theme-color" content="#111111"/>
     <style>
       :root {
-        --text-color:  #f8f8f8;
-        --opacity-bg: rgba(0, 0, 0, 0.85);
-        --anchor-color: var(--gold-text-color);
-        --heading-text-color: #7dbbc6;
+        --text-color:  #eceaea;
+        --opacity-bg: rgba(0, 0, 0, 0.9);
+        --anchor-color: #70ae14;
+        --heading-text-color: var(--gold-text-color);
         --bg-color: #111111;
         --input-bg-color: rgb(55, 65, 81);
         --input-border-color: rgb(75, 85, 99);

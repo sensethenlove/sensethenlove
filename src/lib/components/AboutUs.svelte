@@ -50,7 +50,6 @@
       margin-bottom: 0;
     }
 
-    ul,
     ol {
       margin-top: 0;
     }

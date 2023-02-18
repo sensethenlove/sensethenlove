@@ -77,5 +77,9 @@
     :global(iframe) {
       display: none;
     }
+
+    :global(button) {
+      margin-top: 0.6rem;
+    }
   }
 </style>

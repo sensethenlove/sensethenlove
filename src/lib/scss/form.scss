@@ -111,7 +111,7 @@ button {
   position: relative;
   font-weight: 500;
   border-radius: 0.4rem;
-  transition: all 0.27s;
+  transition: all 0.9s;
   border: 0.1rem solid transparent;
   &.full-width {
     width: 100%;
@@ -119,36 +119,12 @@ button {
     font-size: 1.8rem;
     padding: 1.2rem 1.6rem;
   }
-  &.blue {
-    background-color: #2196f3;
-    border-color: #0c82df;
-    &:hover {
-      background-color: #0d87e9;
-    }
-  }
-  &.green {
-    background-color: #00A81B;
-    border-color: #38A638;
-    &:hover {
-      background-color: darken(#00A81B, 5%);
-      border-color: darken(#38A638, 5%);
-    }
-  }
-  &.cyan-to-blue {
-    background-image: linear-gradient(to right, rgb(6, 182, 212), rgb(63, 131, 248));
-    &:hover {
-      background-image: linear-gradient(to left bottom, rgb(6, 182, 212), rgb(63, 131, 248));
-    }
-    &:focus {
-      box-shadow: var(--focus-box-shadow);
-    }
+  &.brand {
     &:disabled {
       opacity: 0.3;
       cursor: default;
     }
   }
-
-  
 
   &.loading {
     cursor: default;
@@ -180,5 +156,27 @@ button {
 
   .text {
     opacity: 1;
+  }
+}
+
+.theme--light button.brand {
+  color: white;
+  background-image: linear-gradient(to right, rgb(6, 182, 212), rgb(63, 131, 248));
+  &:hover {
+    background-image: linear-gradient(to left bottom, rgb(6, 182, 212), rgb(63, 131, 248));
+  }
+  &:focus {
+    box-shadow: var(--focus-box-shadow);
+  }
+}
+
+.theme--dark button.brand {
+  color: rgb(17, 24, 39);
+  background-image: linear-gradient(to right, rgb(175, 236, 239), rgb(217, 249, 157));
+  &:hover {
+    background-image: linear-gradient(to left, rgb(175, 236, 239), rgb(217, 249, 157));
+  }
+  &:focus {
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgb(3, 102, 114) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
   }
 }
