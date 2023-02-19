@@ -14,7 +14,6 @@ importers:
       sass: ^1.58.0
       svelte: ^3.54.0
       svelte-check: ^3.0.1
-      tslib: ^2.4.1
       typescript: ^4.9.3
       vite: ^4.0.0
       zod: ^3.20.6
@@ -29,7 +28,6 @@ importers:
       sass: 1.58.2
       svelte: 3.55.1
       svelte-check: 3.0.3_sass@1.58.2+svelte@3.55.1
-      tslib: 2.5.0
       typescript: 4.9.5
       vite: 4.1.2_sass@1.58.2
       zod: 3.20.6
@@ -1145,10 +1143,6 @@ packages:
   /totalist/3.0.0:
     resolution: {integrity: sha512-eM+pCBxXO/njtF7vdFsHuqb+ElbxqtI4r5EAvk6grfAFyJ6IvWlSkfZ5T9ozC6xWw3Fj1fGoSmrl0gUs46JVIw==}
     engines: {node: '>=6'}
-    dev: true
-
-  /tslib/2.5.0:
-    resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
     dev: true
 
   /typescript/4.9.5:

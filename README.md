@@ -3,7 +3,9 @@
 ## Helpful links
 #### Documentation
 - [Svelte](https://svelte.dev/docs)
-- [Svelte Kit](https://kit.svelte.dev/docs/introduction)
+- [SvelteKit](https://kit.svelte.dev/docs/introduction)
+- [SvelteKit SVG](https://www.npmjs.com/package/@poppanator/sveltekit-svg)
+- [Svelte Code Checker](https://www.npmjs.com/package/svelte-check)
 - [Prisma](https://www.prisma.io/docs)
 - [Prisma Data Platform](https://www.prisma.io/docs/data-platform)
 - [Prisma Client](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference)
@@ -12,8 +14,13 @@
 - [Cloudflare Workers](https://kit.svelte.dev/docs/adapter-cloudflare-workers)
 - [Cloudflare Images](https://developers.cloudflare.com/images/)
 - [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/)
+- [Zod](https://zod.dev/)
+- [Sass](https://sass-lang.com/documentation/)
 - [PNPM](https://pnpm.io/motivation)
 - [Sendgrid](https://github.com/sendgrid/sendgrid-nodejs)
+- [Buffer](https://www.npmjs.com/package/buffer)
+- [Vite](https://vitejs.dev/)
+- [Typescript](https://www.npmjs.com/package/typescript)
 - [Markdown](https://www.markdownguide.org/basic-syntax)
 - [Open Graph](https://ogp.me/)
 
@@ -33,6 +40,7 @@
 - [SubtleCrypto + JWT](https://coolaj86.com/articles/sign-jwt-webcrypto-vanilla-js/)
 - [NPM to PNPM](https://britishgeologicalsurvey.github.io/development/migrating-from-npm-to-pnpm/)
 - [Cloudflare Worker Explanation](https://developers.cloudflare.com/workers/learning/how-workers-works)
+- [Sveltekit + Sass](https://blog.hao.dev/how-to-add-scss-or-sass-to-sveltekit)
 
 #### Videos
 - [Learn Prisma In 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)
