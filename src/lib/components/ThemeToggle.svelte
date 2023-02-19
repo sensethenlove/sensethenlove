@@ -43,8 +43,8 @@
 
   .theme-toggle {
     position: fixed;
-    top: 8.1rem;
-    left: 3.5rem;
+    top: calc(100vh - 12rem);
+    right: 2.2rem;
     padding: 0.36rem;
     display: flex;
     transition: all 0.9s;
@@ -54,7 +54,7 @@
 
     @media only screen and (min-width: $move-nav-window-width) { // big screen
       top: 1.75rem;
-      left: calc(100vw - 26rem);
+      right: 22rem;
     }
 
     :global(svg) {

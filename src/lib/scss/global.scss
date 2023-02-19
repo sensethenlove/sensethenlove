@@ -7,26 +7,21 @@
 body,
 html {
   margin: 0;
+  padding: 0;
   background-color: var(--bg-color);
 }
 
 html {
-  padding: 0;
   font-size: 62.5%; /* https://stackoverflow.com/questions/59920538 */
 }
 
 body {
-  padding: 0 0 7.3rem 0;
   font-size: 1.8rem;
   line-height: 1.3;
   font-family: $font-family;
 
   * {
     box-sizing: border-box;
-  }
-
-  @media only screen and (min-width: $move-nav-window-width) { // big screen
-    padding: 0;
   }
 }
 
@@ -42,7 +37,7 @@ main {
   margin-left: 0;
   padding-top: 3rem;
   color: var(--text-color);
-  padding-bottom: 7rem;
+  padding-bottom: 12rem;
   transition: all 0.3s;
 
   @media only screen and (min-width: $move-nav-window-width) { // big screen

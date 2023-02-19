@@ -1,6 +1,7 @@
 import schema from '$lib/schema/signUp'
 import email from '$lib/sendgrid/signIn'
 import type { Action } from '@sveltejs/kit'
+import updateUser from '$lib/prisma/updateUser'
 import createUser from '$lib/prisma/createUser'
 import actionCatch from '$lib/catch/actionCatch'
 import createToken from '$lib/security/createToken'
@@ -19,9 +20,10 @@ export default (async ({ request, getClientAddress }) => {
 
     if (!user) { // if they are an existing user skip over altering their account and just send them a sign in email
       if (fields.primaryImage instanceof Blob && fields.primaryImage.size) { // if uploaded file provided https://nodejs.org/api/all.html#all_buffer_class-blob
-        isFileAnImage(fields.primaryImage)
-        const primaryImageId = await writePrimaryImage(fields.primaryImage) // save image in cloudflare images and get it's id
-        user = await createUser({ ...fields, primaryImageId })
+        isFileAnImage(fields.primaryImage) // will throw an error if not an image
+        user = await createUser(fields) // create user w/o primaryImageId
+        const primaryImageId = await writePrimaryImage(fields.primaryImage, user.id) // save image in cloudflare images and get it's id
+        await updateUser({ id: user.id }, { primaryImageId }) // update user with primaryImageId
       } else { // primary image file not provided
         user = await createUser(fields)
       }

@@ -20,13 +20,13 @@ export default (async ({ request, locals }) => {
 
       if (fields.primaryImageId.toString()) { // IF user already has a primaryImageId
         const cloudflareResponse = await Promise.all([ // to cloudflare images
-          writePrimaryImage(fields.primaryImage), // write new primary image file
+          writePrimaryImage(fields.primaryImage, locals.userId), // write new primary image file
           deletePrimaryImage(fields.primaryImageId.toString()) // remove previous primary image file
         ])
 
         newPrimaryImageId = cloudflareResponse[0]
       } else {
-        newPrimaryImageId = await writePrimaryImage(fields.primaryImage)
+        newPrimaryImageId = await writePrimaryImage(fields.primaryImage, locals.userId)
       }
 
       await updateUser({ id: locals.userId }, {
