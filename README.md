@@ -61,10 +61,10 @@
 - [Github Team: $4 a month for 2G of storage](https://github.com/pricing)
 - [Cloudflare Workers: $5 a month for 10 million requests a month](https://developers.cloudflare.com/workers/platform/pricing)
 - [Cloudflare Images: $5 a month for 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
-- [Sendgrid: $19.95 a month for 50,000 emails a month](https://sendgrid.com/pricing/)
-- [Proton Business: $19.98 per month for 2 users w/ secure inboxes, calendars, & 1,000GB of cloud storage](https://proton.me/business/plans)
+- [Sendgrid: $19.95 a month for 50,000 emails sent a month](https://sendgrid.com/pricing/)
+- [Proton Business: $19.98 a month for 2 users w/ secure inboxes, calendars, & 1,000GB of cloud storage](https://proton.me/business/plans)
 - [Prisma Data Platform: $29 a month for 500 CPU minutes a month](https://www.prisma.io/pricing)
-- [Planetscale: $29 a month for 10 GB storage, 100 billion row reads/mo & 50 million row writes/mo](https://planetscale.com/pricing)
+- [Planetscale: $29 a month for 10 GB storage, 50 million row writes/mo & 100 billion row reads/mo](https://planetscale.com/pricing)
 
 
 ## Local install
