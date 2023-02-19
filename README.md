@@ -90,6 +90,11 @@ pnpm dev
 pnpm live
 ```
 
+## Validate code & then push to [Github](https://github.com/sensethenlove/sensethenlove)
+```bash
+pnpm git
+```
+
 ## Open [Prisma Studio](https://www.prisma.io/studio)
 1. Save schema @ `./prisma/schema.prisma` > `datasource db` > `url` w/ `env("DEV_DATABASE_URL")` or `env("PROD_DATABASE_URL")`
 ```bash
