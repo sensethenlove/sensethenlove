@@ -6,10 +6,10 @@
 		"preinstall": "npx only-allow pnpm",
 		"dev": "npx prisma generate && vite dev",
 		"data": "npx prisma generate && npx prisma studio",
-		"push-dev-schema": "npx prisma db push",
+		"push-schema": "node ./prisma/validatePushSchema.js && npx prisma db push",
 		"build": "vite build",
 		"preview": "vite preview",
-		"live": "npx prisma generate --data-proxy && pnpm build && npx wrangler publish",
+		"live": "node ./prisma/validateLive.js && npx prisma generate --data-proxy && pnpm build && npx wrangler publish",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},

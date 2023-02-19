@@ -89,7 +89,7 @@ pnpm data
 ## How to update database schema
 
 1. Update schema @ `./prisma/schema.prisma` & save the file w/ `datasource db` > `url` > `env("DEV_DATABASE_URL")`
-1. Bash `pnpm push-dev-schema` to push schema changes to `dev` branch in [PlanetScale](https://planetscale.com/docs)
+1. Bash `pnpm push-schema` to push schema changes to `dev` branch in [PlanetScale](https://planetscale.com/docs)
 1. Click `DASHBOARD_PLANETSCALE` link in `.apps` file
 1. Click `Branches` tab
 1. Click `dev` link
