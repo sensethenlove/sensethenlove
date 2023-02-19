@@ -16,6 +16,7 @@
 - [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/)
 - [Zod](https://zod.dev/)
 - [Sass](https://sass-lang.com/documentation/)
+- [SubtleCrypto](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto)
 - [PNPM](https://pnpm.io/motivation)
 - [Sendgrid](https://github.com/sendgrid/sendgrid-nodejs)
 - [Buffer](https://www.npmjs.com/package/buffer)
@@ -41,6 +42,7 @@
 - [NPM to PNPM](https://britishgeologicalsurvey.github.io/development/migrating-from-npm-to-pnpm/)
 - [Cloudflare Worker Explanation](https://developers.cloudflare.com/workers/learning/how-workers-works)
 - [Sveltekit + Sass](https://blog.hao.dev/how-to-add-scss-or-sass-to-sveltekit)
+- [Cloudflare Network](https://www.cloudflare.com/network/)
 
 #### Videos
 - [Learn Prisma In 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)
@@ -55,14 +57,14 @@
 - [Grey Shade](https://www.htmlcolor-picker.com/color-groups/white-grey-black)
 
 #### Pricing
-- [Cloudflare Workers: FREE = 100,000 requests a day](https://developers.cloudflare.com/workers/platform/pricing)
-- [Planetscale: FREE = 5 GB storage, 1 billion row reads/mo & 10 million row writes/mo](https://planetscale.com/pricing)
-- [Prisma Data Platform: FREE = 3 million CPU ms/mo](https://www.prisma.io/pricing)
-- [Sendgrid: FREE = 100 emails a day](https://sendgrid.com/pricing/)
-- [Namecheap: $19.58 a year = Domain Registration](https://www.namecheap.com/domains/)
-- [Github Team: $4 a month = 2G of storage](https://github.com/pricing)
-- [Cloudflare Images: $5 a month = 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
-- [Proton Business: $19.98 per month = 2 users w/ secure inboxes, calendars, & 1,000GB of cloud storage](https://proton.me/business/plans)
+- [Namecheap: $19.58 a year for Domain Registration](https://www.namecheap.com/domains/)
+- [Github Team: $4 a month for 2G of storage](https://github.com/pricing)
+- [Cloudflare Workers: $5 a month for 10 million requests a month](https://developers.cloudflare.com/workers/platform/pricing)
+- [Cloudflare Images: $5 a month for 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
+- [Sendgrid: $19.95 a month for 50,000 emails a month](https://sendgrid.com/pricing/)
+- [Proton Business: $19.98 per month for 2 users w/ secure inboxes, calendars, & 1,000GB of cloud storage](https://proton.me/business/plans)
+- [Prisma Data Platform: $29 a month for 500 CPU minutes a month](https://www.prisma.io/pricing)
+- [Planetscale: $29 a month for 10 GB storage, 100 billion row reads/mo & 50 million row writes/mo](https://planetscale.com/pricing)
 
 
 ## Local install
