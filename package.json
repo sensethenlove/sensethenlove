@@ -5,13 +5,13 @@
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
 		"dev": "npx prisma generate && vite dev",
-		"data": "npx prisma generate && npx prisma studio",
-		"git": "pnpm check && node ./prisma/validateLive.js && git push",
-		"push-schema": "node ./prisma/validatePushSchema.js && npx prisma db push",
+		"push": "pnpm check && node ./prisma/validateLive.js && git push",
+		"live": "pnpm check && node ./prisma/validateLive.js && npx prisma generate --data-proxy && pnpm build && pnpm wrangler publish",
+		"schema": "node ./prisma/validatePushSchema.js && npx prisma db push",
+		"studio": "npx prisma generate && npx prisma studio",
 		"logs": "wrangler tail",
 		"build": "vite build",
 		"preview": "vite preview",
-		"live": "pnpm check && node ./prisma/validateLive.js && npx prisma generate --data-proxy && pnpm build && pnpm wrangler publish",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},

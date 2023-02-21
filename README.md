@@ -55,7 +55,8 @@
 - [SVG Icons](https://icones.js.org/collection/all)
 - [Flowbite](https://flowbite-svelte.com/)
 - [Jwt.io](https://jwt.io/)
-- [Grey Shade](https://www.htmlcolor-picker.com/color-groups/white-grey-black)
+- [White to Grey Hex's](https://www.htmlcolor-picker.com/color-groups/white-grey-black)
+- [CSP Validator](https://csp-evaluator.withgoogle.com/)
 
 #### Pricing
 - [Namecheap: $19.58 a year for Domain Registration](https://www.namecheap.com/domains/)
@@ -86,26 +87,25 @@ pnpm i
 pnpm dev
 ```
 
+## Validate code & then push to [Github](https://github.com/sensethenlove/sensethenlove)
+```bash
+pnpm push
+```
+
 ## Deploy to live site
 ```bash
 pnpm live
 ```
 
-## Validate code & then push to [Github](https://github.com/sensethenlove/sensethenlove)
-```bash
-pnpm git
-```
-
 ## Open [Prisma Studio](https://www.prisma.io/studio)
 1. Save schema @ `./prisma/schema.prisma` > `datasource db` > `url` w/ `env("DEV_DATABASE_URL")` or `env("PROD_DATABASE_URL")`
 ```bash
-pnpm data
+pnpm studio
 ```
 
 ## How to update database schema
-
 1. Update schema @ `./prisma/schema.prisma` & save the file w/ `datasource db` > `url` > `env("DEV_DATABASE_URL")`
-1. Bash `pnpm push-schema` to push schema changes to `dev` branch in [PlanetScale](https://planetscale.com/docs)
+1. Bash `pnpm schema` to push schema changes to `dev` branch in [PlanetScale](https://planetscale.com/docs)
 1. Click `DASHBOARD_PLANETSCALE` link in `.apps` file
 1. Click `Branches` tab
 1. Click `dev` link
@@ -115,6 +115,10 @@ pnpm data
 1. Click `Deploy changes`
 1. Before `git push` OR `pnpm live` save schema @ `./prisma/schema.prisma` w/ `datasource db` > `url` > `env("PRISMA_DATABASE_URL")`
 
+## View logs for production server
+```bash
+pnpm logs
+```
 
 ## Format `schema.prisma` in [VSCodium](https://vscodium.com/) on save
 Preferences > Settings > JSON
