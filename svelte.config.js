@@ -15,13 +15,10 @@ export default {
     csp: {
       mode: 'auto',
       directives: {
-        'script-src': [
-          'self',
-          'https://challenges.cloudflare.com',
-        ],
-        'frame-src': [
-          'https://challenges.cloudflare.com',
-        ]
+        'script-src': [ 'strict-dynamic' ],
+        'frame-src': [ 'https://challenges.cloudflare.com' ],
+        'object-src': [ 'none' ],
+        'base-uri': [ 'self' ],
       }
     }
   }

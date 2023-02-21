@@ -25,6 +25,7 @@
 - [Typescript](https://www.npmjs.com/package/typescript)
 - [Markdown](https://www.markdownguide.org/basic-syntax)
 - [Open Graph](https://ogp.me/)
+- [CSP](https://w3c.github.io/webappsec-csp/)
 
 #### Code Examples
 - [Sveltekit + Prisma](https://github.com/prisma/prisma-examples/tree/latest/typescript/rest-sveltekit)
