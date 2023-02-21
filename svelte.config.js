@@ -13,10 +13,14 @@ export default {
       pollInterval: 180000 // send request to server for current app version every 3 minutes, helps w/ +layout.svelte > $app/stores > updated
     },
     csp: {
-      mode: 'nonce',
+      mode: 'auto',
       directives: {
         'script-src': [
-          'self'
+          'self',
+          'https://challenges.cloudflare.com',
+        ],
+        'frame-src': [
+          'https://challenges.cloudflare.com',
         ]
       }
     }

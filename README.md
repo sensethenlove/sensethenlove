@@ -21,6 +21,7 @@
 - [Sendgrid](https://github.com/sendgrid/sendgrid-nodejs)
 - [Buffer](https://www.npmjs.com/package/buffer)
 - [Vite](https://vitejs.dev/)
+- [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
 - [Typescript](https://www.npmjs.com/package/typescript)
 - [Markdown](https://www.markdownguide.org/basic-syntax)
 - [Open Graph](https://ogp.me/)
@@ -42,7 +43,7 @@
 - [NPM to PNPM](https://britishgeologicalsurvey.github.io/development/migrating-from-npm-to-pnpm/)
 - [Cloudflare Worker Explanation](https://developers.cloudflare.com/workers/learning/how-workers-works)
 - [Sveltekit + Sass](https://blog.hao.dev/how-to-add-scss-or-sass-to-sveltekit)
-- [Cloudflare Network](https://www.cloudflare.com/network/)
+- [Cloudflare Global Network](https://www.cloudflare.com/network/)
 
 #### Videos
 - [Learn Prisma In 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)
