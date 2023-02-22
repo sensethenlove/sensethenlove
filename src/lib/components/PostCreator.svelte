@@ -13,8 +13,21 @@
 
   function displayPreview (editor: Jodit, preview: HTMLDivElement) {
     if (editor && preview) {
+      debugger
       preview.innerHTML = sanitizeHtml(editor.value, {
-        allowedAttributes: Object.assign({ span: [ 'style' ], p: [ 'style' ] }, sanitizeHtml.defaults.allowedAttributes)
+        allowedTags: [ 'p', 'u', 's', 'em', 'ol', 'ul', 'li', 'span', 'strong', 'a', 'hr', 'br' ],
+        allowedAttributes: {
+          p: [ 'style' ],
+          u: [ 'style' ],
+          s: [ 'style' ],
+          em: [ 'style' ],
+          ol: [ 'style' ],
+          ul: [ 'style' ],
+          li: [ 'style' ],
+          span: [ 'style' ],
+          strong: [ 'style' ],
+          a: [ 'style', 'href', 'src', 'target', 'title' ],
+        }
       })
     }
   }
@@ -25,12 +38,29 @@
     const editor = Jodit.make(textarea, {
       buttons,
       autofocus: true,
+      statusbar: false,
       buttonsMD: buttons,
       buttonsSM: buttons,
       buttonsXS: buttons,
       disablePlugins: 'table,iframe',
       theme: $theme === 'dark' ? 'dark' : 'default',
       placeholder: 'Share a lovely goal, achievement or goal progress!',
+      cleanHTML: {
+        allowTags: {
+          hr: true,
+          br: true,
+          p: { style: true },
+          u: { style: true },
+          s: { style: true },
+          em: { style: true },
+          ol: { style: true },
+          ul: { style: true },
+          li: { style: true },
+          span: { style: true },
+          strong: { style: true },
+          a: { style: true, href: true, src: true, target: true, title: true },
+        }
+      }
     })
 
     if (editor) {
@@ -121,7 +151,6 @@
       margin-top: 18px !important;
     }
 
-    :global(.jodit-status-bar),
     :global(.jodit-add-new-line) {
       display: none;
     }
@@ -129,6 +158,11 @@
     :global(.jodit-workplace) {
       transform: translateY(-0.18rem);
     }
+  }
+
+  :global(.jodit-ui-block__className),
+  :global(.jodit-ui-form__nofollow) {
+    display: none;
   }
 
   :global(.jodit-symbols__table td a) {

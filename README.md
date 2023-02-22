@@ -22,6 +22,7 @@
 - [Buffer](https://www.npmjs.com/package/buffer)
 - [Vite](https://vitejs.dev/)
 - [Jodit](https://xdsoft.net/jodit/docs/)
+- [Sanitize HTML](https://www.npmjs.com/package/sanitize-html)
 - [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
 - [Typescript](https://www.npmjs.com/package/typescript)
 - [Markdown](https://www.markdownguide.org/basic-syntax)
@@ -120,6 +121,11 @@ pnpm studio
 ## View logs for production server
 ```bash
 pnpm logs
+```
+
+## [Updates all dependencies](https://pnpm.io/cli/update), adhering to ranges specified in package.json
+```bash
+pnpm up
 ```
 
 ## Format `schema.prisma` in [VSCodium](https://vscodium.com/) on save
