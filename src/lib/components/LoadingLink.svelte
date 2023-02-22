@@ -76,7 +76,7 @@
       top: 50%;
       left: 50%;
       opacity: 0;
-      color: var(--anchor-text-color);
+      color: var(--anchor-color);
     }
   }
 </style>

@@ -19,6 +19,8 @@ model User {
   isNewsletterSubscriber Boolean   @default(false)
   sessions               Session[]
   primaryImageId         String?
+  createdAt              DateTime  @default(now())
+  posts                  Post[]
 
   @@index([email])
 }
@@ -26,6 +28,17 @@ model User {
 enum Role {
   Staff
   Customer
+}
+
+model Post {
+  id        String   @id @default(uuid())
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  creator   User     @relation(fields: [creatorId], references: [id])
+  creatorId String
+
+  @@index([creatorId])
 }
 
 model Session {

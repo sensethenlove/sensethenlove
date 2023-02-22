@@ -15,7 +15,7 @@ export default {
     csp: {
       mode: 'auto',
       directives: {
-        'frame-src': [ 'https://challenges.cloudflare.com' ],
+        'frame-src': [ 'https://challenges.cloudflare.com', 'https://www.youtube.com' ],
         'object-src': [ 'none' ],
         'script-src': [ 'strict-dynamic' ],
         'base-uri': [ 'self' ],

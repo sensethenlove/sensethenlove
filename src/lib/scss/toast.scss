@@ -43,8 +43,8 @@
     border: 1px solid rgb(55, 65, 81);
     background-color: rgb(31, 41, 55);
     animation-name: toast-in;
-    animation-duration: 1s;
-    transition: all 1s;
+    animation-duration: 0.9s;
+    transition: all 0.9s;
     max-width: calc(100vw - 3rem);
     &.hide {
       animation-name: toast-out;
