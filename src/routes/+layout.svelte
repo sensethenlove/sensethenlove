@@ -51,7 +51,7 @@
         --anchor-color: var(--green-text-color);
         --heading-text-color: var(--blue-text-color);
         --bg-color: #fefefe;
-        --input-bg-color: inherit;
+        --input-bg-color: white;
         --input-border-color: #ced3d6;
         --bottom-nav-bg: #fefefe;
         --focus-box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);

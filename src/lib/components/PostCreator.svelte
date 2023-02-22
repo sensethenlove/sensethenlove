@@ -14,7 +14,7 @@
   function displayPreview (editor: Jodit, preview: HTMLDivElement) {
     if (editor && preview) {
       preview.innerHTML = sanitizeHtml(editor.value, {
-        allowedAttributes: Object.assign({ span: [ 'style' ] }, sanitizeHtml.defaults.allowedAttributes)
+        allowedAttributes: Object.assign({ span: [ 'style' ], p: [ 'style' ] }, sanitizeHtml.defaults.allowedAttributes)
       })
     }
   }
@@ -24,9 +24,11 @@
 
     const editor = Jodit.make(textarea, {
       buttons,
+      autofocus: true,
       buttonsMD: buttons,
       buttonsSM: buttons,
       buttonsXS: buttons,
+      disablePlugins: 'table,iframe',
       theme: $theme === 'dark' ? 'dark' : 'default',
       placeholder: 'Share a lovely goal, achievement or goal progress!',
     })
@@ -38,17 +40,6 @@
       editor.e.on('change', () => {
         displayPreview(editor, preview)
       })
-
-      editor.s.focus()
-
-      const joditContainer = document.querySelector('.post-creator .jodit-container') 
-
-      if (joditContainer) {
-        theme.subscribe(value => {
-          if (value === 'dark') joditContainer.classList.add('jodit_theme_dark')
-          else joditContainer.classList.remove('jodit_theme_dark')
-        })
-      }
     }
 
     return () => { // on component destroy
@@ -123,6 +114,7 @@
       border: none;
       border-radius: 1.8rem;
       overflow: hidden;
+      background-color: var(--input-bg-color);
     }
 
     :global(.jodit-placeholder) {
@@ -134,9 +126,32 @@
       display: none;
     }
 
-    :global(.jodit_theme_dark) :global(.jodit-wysiwyg) {
-      color: var(--text-color);
-      background-color: var(--input-bg-color);
+    :global(.jodit-workplace) {
+      transform: translateY(-0.18rem);
     }
+  }
+
+  :global(.jodit-symbols__table td a) {
+    color: var(--text-color);
+  }
+  
+  :global(.jodit-wysiwyg),
+  :global(.jodit-dialog__panel) {
+    color: var(--text-color) !important;
+    background-color: var(--input-bg-color) !important;
+  }
+
+  :global(.jodit-icon),
+  :global(.jodit-toolbar-button__trigger) {
+    fill: var(--text-color) !important;
+    stroke: var(--text-color) !important;
+  }
+
+  :global(.theme--light .jodit-toolbar__box) {
+    background-color: #f9f9f9 !important;
+  }
+
+  :global(.theme--dark .jodit-toolbar__box) {
+    background-color: #5f5c5c !important;
   }
 </style>
