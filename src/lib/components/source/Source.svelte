@@ -31,7 +31,16 @@
     <div class="flex">
       <h3><a href={ source.url } target="_blank" rel="noreferrer">{ source.title }</a></h3>
       <p>
-        { #each source.authors as a, i }<LoadingLink href="/sources{ category?.slug ? '/' + category.slug : '' }?author={ a.slug }" css="pr-5 { author?.id === a.id ? 'active': '' }" label="{ a.name }" />{ #if i+1 !== source.authors.length }<span class="pr-5">⋅</span>{ /if }{ /each }{ #if source.publicationLocation }<span class="pr-5">⋅</span><span class="pr-5">{ source.publicationLocation }</span>{ /if }{ #if source.publicationYear }<span class="pr-5">⋅</span><span>{ source.publicationYear }</span>{ /if }
+        { #if source.publicationLocation }
+          <a href={ source.url } target="_blank" rel="noreferrer">{ source.publicationLocation }{ #if source.publicationYear }, { source.publicationYear }{ /if }</a>
+          <span>⋅</span>
+        { /if }
+        { #each source.authors as a, i }
+          <LoadingLink href="/sources{ category?.slug ? '/' + category.slug : '' }?author={ a.slug }" css="{ author?.id === a.id ? 'active': '' }" label="{ a.name }" />
+          { #if i+1 !== source.authors.length }
+            <span>⋅</span>
+          { /if }
+        { /each }
       </p>
     </div>
   </div>
