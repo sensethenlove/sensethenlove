@@ -14,21 +14,21 @@
   function displayPreview (editor: Jodit, preview: HTMLDivElement) {
     if (editor && preview) {
       preview.innerHTML = sanitizeHtml(editor.value, {
-        allowedAttributes: Object.assign({ iframe: [ 'src' ], span: [ 'style' ] }, sanitizeHtml.defaults.allowedAttributes),
-        allowedIframeHostnames: [ 'www.youtube.com', 'player.vimeo.com' ],
-        allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img', 'iframe' ]),
-        allowedSchemesByTag: {
-          img: [ 'data', 'https' ]
-        }
+        allowedAttributes: Object.assign({ span: [ 'style' ] }, sanitizeHtml.defaults.allowedAttributes)
       })
     }
   }
 
   onMount(() => {
+    const buttons = 'bold,italic,underline,strikethrough,ul,ol,fontsize,hr,link,symbols,indent,outdent,left,right,center,undo,redo,fullsize,preview'
+
     const editor = Jodit.make(textarea, {
-      placeholder: 'Aloha!',
+      buttons,
+      buttonsMD: buttons,
+      buttonsSM: buttons,
+      buttonsXS: buttons,
       theme: $theme === 'dark' ? 'dark' : 'default',
-      buttons: 'bold,italic,underline,strikethrough,ul,ol,fontsize,image,video,hr,link,symbols,indent,outdent,left,right,center,undo,redo,fullsize,preview'
+      placeholder: 'Share a lovely goal, achievement or goal progress!',
     })
 
     if (editor) {
@@ -120,13 +120,17 @@
     :global(.jodit-container) {
       animation-name: jodi-in;
       animation-duration: 0.6s;
+      border: none;
+      border-radius: 1.8rem;
+      overflow: hidden;
     }
 
     :global(.jodit-placeholder) {
       margin-top: 18px !important;
     }
 
-    :global(.jodit-status-bar__item-right) {
+    :global(.jodit-status-bar),
+    :global(.jodit-add-new-line) {
       display: none;
     }
 
