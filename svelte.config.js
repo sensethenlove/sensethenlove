@@ -19,7 +19,6 @@ export default {
         'object-src': [ 'none' ],
         'script-src': [ 'strict-dynamic' ],
         'base-uri': [ 'self' ],
-        'require-trusted-types-for': [ 'script' ],
       }
     }
   }
