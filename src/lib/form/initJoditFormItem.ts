@@ -1,6 +1,5 @@
 import { Jodit } from 'jodit'
 import { onMount } from 'svelte'
-import 'jodit/build/jodit.min.css'
 import htmlSanitize from '$lib/util/htmlSanitize'
 import getJoditOptions from '$lib/form/getJoditOptions'
 
