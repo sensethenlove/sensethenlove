@@ -1,8 +1,8 @@
 <script lang="ts">
   import { theme } from '$lib/util/store'
   import loading from '$lib/images/loading.svg'
-  import initFormItemJodit from '$lib/form/initFormItemJodit'
-  import initFormItemImage from '$lib/form/initFormItemImage'
+  import initJoditFormItem from '$lib/form/initJoditFormItem'
+  import initImageFormItem from '$lib/form/initImageFormItem'
 
   export let errors: any
   export let name: string
@@ -22,8 +22,8 @@
   }
 
   const id: string = crypto.randomUUID()
-  const imageVariables = initFormItemImage(type, serverImageId)
-  const joditVariables = initFormItemJodit(type, $theme, clearErrors)
+  const imageVariables = initImageFormItem(type, serverImageId)
+  const joditVariables = initJoditFormItem(type, $theme, clearErrors)
 </script>
 
 
@@ -44,11 +44,14 @@
       { @html label }
     </label>
   { :else if type === 'jodit'}
+    { #if label }
+      <label for={ id }>{ label }</label>
+    { /if }
     <div class="stl--jodit { joditVariables.isLoading ? 'is-loading' : '' }">
       <div class="stl--jodit__loading-wrapper">
         { @html loading }
       </div>
-      <textarea bind:this={ joditVariables.initTextarea }></textarea>
+      <textarea { id } bind:this={ joditVariables.initTextarea }></textarea>
       <textarea bind:this={ joditVariables.sanitizedTextarea } { name }></textarea>
     </div>
   { :else if type === 'image' }
@@ -69,8 +72,8 @@
 <style>
   img {
     display: none;
-    width: 56rem;
-    max-width: 100%;
+    width: 100%;
+    max-width: 90rem;
     margin-bottom: 1rem;
   }
 </style>

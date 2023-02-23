@@ -1,5 +1,5 @@
 export default (theme: string) => {
-  const buttons = 'bold,italic,underline,strikethrough,ul,ol,fontsize,hr,link,symbols,indent,outdent,left,right,center,undo,redo,fullsize,preview'
+  const buttons = 'bold,italic,underline,strikethrough,ul,ol,fontsize,hr,link,symbols,indent,outdent,left,right,center,undo,redo'
 
   return {
     buttons,
@@ -10,7 +10,7 @@ export default (theme: string) => {
     buttonsXS: buttons,
     disablePlugins: 'table,iframe',
     theme: theme === 'dark' ? 'dark' : 'default',
-    placeholder: 'Share a lovely goal, achievement or goal progress!',
+    placeholder: '',
     cleanHTML: {
       allowTags: {
         hr: true,

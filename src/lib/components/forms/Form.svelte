@@ -75,6 +75,10 @@
 
 <style lang="scss">
   form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     :global(iframe) {
       display: none;
     }
