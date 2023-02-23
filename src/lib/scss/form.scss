@@ -103,6 +103,87 @@
     color: var(--red-text-color);
     margin: 0.5rem 0;
   }
+
+  .stl--jodit {
+    width: 100vw;
+    padding: 0 0.9rem;
+    &.is-loading {
+      .loading-icon {
+        opacity: 1;
+      }
+
+      :global(button) {
+        display: none;
+      }
+
+      .loading-wrapper {
+        display: flex;
+      }
+    }
+
+    @media only screen and (min-width: 54rem) { // big screen
+      width: 90rem;
+      padding: 0;
+    }
+
+    textarea {
+      display: none !important;
+    }
+
+    &__loading-wrapper {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 20rem;
+      margin-bottom: 1.8rem;
+    }
+
+    textarea,
+    .loading-icon {
+      transition: all 0.3s;
+    }
+
+    .loading-icon {
+      width: 6rem;
+      opacity: 0;
+      color: var(--anchor-color);
+    }
+
+    @keyframes jodi-in {
+      0% {
+        opacity: 0;
+        transform: translateY(-9rem);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .jodit-container {
+      animation-name: jodi-in;
+      animation-duration: 0.6s;
+      margin-bottom: 1.8rem;
+      border: none;
+      border-radius: 1.8rem;
+      overflow: hidden;
+      background-color: var(--input-bg-color);
+    }
+
+    .jodit-placeholder {
+      margin-top: 18px !important;
+    }
+
+    .jodit-add-new-line {
+      display: none;
+    }
+
+    .jodit-workplace {
+      transform: translateY(-0.18rem);
+    }
+  }
 }
 
 button {
@@ -179,4 +260,33 @@ button {
   &:focus {
     box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgb(3, 102, 114) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
   }
+}
+
+.jodit-ui-block__className,
+.jodit-ui-form__nofollow {
+  display: none;
+}
+
+.jodit-symbols__table td a {
+  color: var(--text-color);
+}
+
+.jodit-wysiwyg,
+.jodit-dialog__panel {
+  color: var(--text-color) !important;
+  background-color: var(--input-bg-color) !important;
+}
+
+.jodit-icon,
+.jodit-toolbar-button__trigger {
+  fill: var(--text-color) !important;
+  stroke: var(--text-color) !important;
+}
+
+.theme--light .jodit-toolbar__box {
+  background-color: #f9f9f9 !important;
+}
+
+.theme--dark .jodit-toolbar__box {
+  background-color: #5f5c5c !important;
 }

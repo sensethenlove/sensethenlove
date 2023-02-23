@@ -7,6 +7,7 @@ import type { // Import Prisma Types + Prisma Client
   SiteComment as SiteCommentPrisma,
   QuoteCategory as QuoteCategoryPrisma,
   User as UserPrisma,
+  Post as PostPrisma,
 } from '@prisma/client'
 
 
@@ -24,6 +25,7 @@ export interface User extends UserPrisma {
   primaryImageBase64?: string
 }
 export interface SiteComment extends SiteCommentPrisma { }
+export interface Post extends PostPrisma { }
 
 export interface Session extends SessionPrisma {
   user?: User // schema.prisma property
@@ -82,11 +84,11 @@ export type FormOnSuccess = ({ fields, data }: { fields: FormFields, data: any }
 export type FormInput = {
   name: string,
   label?: string,
-  type?: 'checkbox' | 'email' | 'textarea' | 'image' | 'text',
+  type?: 'checkbox' | 'email' | 'textarea' | 'image' | 'text' | 'jodit',
   value?: string | null,
   checkboxValue?: boolean,
   hidden?: boolean,
-  serverImageId?: string | null
+  serverImageId?: string | null,
 }
 
 export type FormInputs = Array<FormInput | Array<FormInput>>

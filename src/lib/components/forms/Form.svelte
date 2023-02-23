@@ -20,6 +20,7 @@
 
   const onSubmit = (({ data, cancel }) => {
     const fields = Object.fromEntries(data.entries())
+
     const validationResponse = schema.safeParse(fields)
 
     if (validationResponse.success) {
