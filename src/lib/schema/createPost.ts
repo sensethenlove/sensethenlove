@@ -1,11 +1,11 @@
 import { z } from 'zod'
-import isJoditEmpty from '$lib/form/isJoditEmpty'
+import isContentEditableEmpty from '$lib/form/isContentEditableEmpty'
 
 
 export default z.object({
   content: z
     .string()
-    .refine(content => !isJoditEmpty(content), {
+    .refine(content => !isContentEditableEmpty(content), {
       message: 'Add content to post please'
     })
 })

@@ -72,6 +72,7 @@
   }
 
   textarea,
+  div[contenteditable="true"],
   input:not([type="checkbox"]):not([type="radio"]) {
     height: 4rem;
     appearance: none;
@@ -95,6 +96,10 @@
     }
   }
 
+  div[contenteditable="true"] {
+    height: inherit;
+  }
+
   textarea {
     height: 12rem;
   }
@@ -104,83 +109,12 @@
     color: var(--red-text-color);
     margin: 0.5rem 0;
   }
-
-  .stl--jodit {
-    width: 100%;
-    &.is-loading {
-      .loading-icon {
-        opacity: 1;
-      }
-
-      :global(button) {
-        display: none;
-      }
-
-      .stl--jodit__loading-wrapper {
-        display: flex;
-      }
-    }
-
-    textarea {
-      display: none !important;
-    }
-
-    &__loading-wrapper {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 20rem;
-    }
-
-    textarea,
-    .loading-icon {
-      transition: all 0.3s;
-    }
-
-    .loading-icon {
-      width: 6rem;
-      opacity: 0;
-      color: var(--anchor-color);
-    }
-
-    @keyframes jodi-in {
-      0% {
-        opacity: 0;
-        transform: translateY(-9rem);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .jodit-container {
-      animation-name: jodi-in;
-      animation-duration: 0.6s;
-      border: none;
-      border-radius: 1.8rem;
-      overflow: hidden;
-      background-color: var(--input-bg-color);
-    }
-
-    .jodit-placeholder {
-      margin-top: 18px !important;
-    }
-
-    .jodit-add-new-line {
-      display: none;
-    }
-
-    .jodit-workplace {
-      transform: translateY(-0.18rem);
-    }
-  }
 }
 
 button {
   color: #FFF;
+  padding: .9rem;
+  font-size: 1.5rem;
   cursor: pointer;
   position: relative;
   font-weight: 500;
@@ -255,31 +189,7 @@ button {
   }
 }
 
-.jodit-ui-block__className,
-.jodit-ui-form__nofollow {
-  display: none;
-}
-
-.jodit-symbols__table td a {
-  color: var(--text-color);
-}
-
-.jodit-wysiwyg,
-.jodit-dialog__panel {
-  color: var(--text-color) !important;
-  background-color: var(--input-bg-color) !important;
-}
-
-.jodit-icon,
-.jodit-toolbar-button__trigger {
-  fill: var(--text-color) !important;
-  stroke: var(--text-color) !important;
-}
-
-.theme--light .jodit-toolbar__box {
-  background-color: #f9f9f9 !important;
-}
-
-.theme--dark .jodit-toolbar__box {
-  background-color: #5f5c5c !important;
+.stl--create-post {
+  width: 100%;
+  max-width: 75rem;
 }

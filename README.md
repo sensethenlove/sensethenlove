@@ -21,7 +21,6 @@
 - [Sendgrid](https://github.com/sendgrid/sendgrid-nodejs)
 - [Buffer](https://www.npmjs.com/package/buffer)
 - [Vite](https://vitejs.dev/)
-- [Jodit](https://xdsoft.net/jodit/docs/)
 - [Sanitize HTML](https://www.npmjs.com/package/sanitize-html)
 - [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
 - [Typescript](https://www.npmjs.com/package/typescript)
@@ -60,7 +59,6 @@
 - [Jwt.io](https://jwt.io/)
 - [White to Grey Hex's](https://www.htmlcolor-picker.com/color-groups/white-grey-black)
 - [CSP Validator](https://csp-evaluator.withgoogle.com/)
-- [Jodit Playground](https://xdsoft.net/jodit/play.html)
 
 #### Pricing
 - [Namecheap: $19.58 a year for Domain Registration](https://www.namecheap.com/domains/)

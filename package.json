@@ -23,7 +23,6 @@
 		"@sveltejs/kit": "^1.8.3",
 		"@types/sanitize-html": "^2.8.0",
 		"buffer": "^6.0.3",
-		"jodit": "^3.24.5",
 		"prisma": "^4.10.1",
 		"sanitize-html": "^2.10.0",
 		"sass": "^1.58.3",

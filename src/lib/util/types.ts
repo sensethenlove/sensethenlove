@@ -50,6 +50,7 @@ declare global { // Node global types
   var prisma: PrismaClient // For /$lib/util/prisma.ts
 
   interface Window { // Browser window types
+    Jodit: any,
     turnstile: { // For Cloudflare Turnstile
       render: (element: string | HTMLElement, options: TurnstileOptions) => string;
       remove: (widgetId: string) => void;
@@ -84,7 +85,7 @@ export type FormOnSuccess = ({ fields, data }: { fields: FormFields, data: any }
 export type FormInput = {
   name: string,
   label?: string,
-  type?: 'checkbox' | 'email' | 'textarea' | 'image' | 'text' | 'jodit',
+  type?: 'checkbox' | 'email' | 'textarea' | 'image' | 'text' | 'content-editable',
   value?: string | null,
   checkboxValue?: boolean,
   hidden?: boolean,

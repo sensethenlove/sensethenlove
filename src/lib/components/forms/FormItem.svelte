@@ -1,8 +1,6 @@
 <script lang="ts">
-  import { theme } from '$lib/util/store'
-  import loading from '$lib/images/loading.svg'
-  import initJoditFormItem from '$lib/form/initJoditFormItem'
   import initImageFormItem from '$lib/form/initImageFormItem'
+  import EditableDiv from '$lib/components/EditableDiv.svelte'
 
   export let errors: any
   export let name: string
@@ -23,7 +21,6 @@
 
   const id: string = crypto.randomUUID()
   const imageVariables = initImageFormItem(type, serverImageId)
-  const joditVariables = initJoditFormItem(type, $theme, clearErrors)
 </script>
 
 
@@ -43,17 +40,8 @@
       </div>
       { @html label }
     </label>
-  { :else if type === 'jodit'}
-    { #if label }
-      <label for={ id }>{ label }</label>
-    { /if }
-    <div class="stl--jodit { joditVariables.isLoading ? 'is-loading' : '' }">
-      <div class="stl--jodit__loading-wrapper">
-        { @html loading }
-      </div>
-      <textarea { id } bind:this={ joditVariables.initTextarea }></textarea>
-      <textarea bind:this={ joditVariables.sanitizedTextarea } { name }></textarea>
-    </div>
+  { :else if type === 'content-editable'}
+    <EditableDiv { id } { label } { name } { clearErrors } />
   { :else if type === 'image' }
     <label for={ id }>{ label }</label>
     <input class={ itemErrors?.length ? 'error': '' } on:input={ () => { clearErrors() } } { name } { id } type="file" accept=".jpg, .jpeg, .png" on:change={ imageVariables.onFileSelected  } bind:this={ imageVariables.fileElement } />

@@ -5,8 +5,8 @@
   import type { FormInputs, FormOnSuccess } from '$lib/util/types'
 
   const inputs: FormInputs = [
-    { name: 'image', type: 'image' },
-    { name: 'content', type: 'jodit' },
+    { name: 'image', label: 'Image', type: 'image' },
+    { name: 'content', label: 'Content', type: 'content-editable' },
   ]
 
   const onSuccess = (() => 'Posted!') satisfies FormOnSuccess
@@ -15,11 +15,3 @@
 
 <Title h3="Share a lovely goal, achievement or goal progress!" noBottom={ true } />
 <Form css="stl--create-post" { inputs } { schema } { onSuccess } action="createPost" buttonText="Post" />
-
-
-<style>
-  :global(.stl--create-post) {
-    width: 100%;
-    max-width: 75rem;
-  }
-</style>
