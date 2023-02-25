@@ -1,6 +1,6 @@
 import schema from '$lib/schema/signUp'
-import email from '$lib/sendgrid/signIn'
 import type { Action } from '@sveltejs/kit'
+import email from '$lib/mailchannels/signIn'
 import writeImage from '$lib/file/writeImage'
 import updateUser from '$lib/prisma/updateUser'
 import createUser from '$lib/prisma/createUser'

@@ -21,9 +21,9 @@ export class VerifyTokenExpiredError extends VerifyTokenError {
 }
 
 
-export class VerifyTokenIPMismatchError extends VerifyTokenError {
-  constructor(message: string) {
-    super(message)
+export class VerifyTokenIDMismatchError extends VerifyTokenError {
+  constructor() {
+    super('VerifyTokenIDMismatchError')
     this.name = this.constructor.name
   }
 }

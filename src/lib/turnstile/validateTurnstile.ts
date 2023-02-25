@@ -12,7 +12,7 @@ export default async (turnstileResponse: FormDataEntryValue) => {
   })
 
   const validationResponse: TurnstileTokenValidateResponse = await response.json()
-  console.log('validationResponse', JSON.stringify(validationResponse))
+
   // The timeout-or-duplicate error code can happen @ UpdateUser.svelte where the file changes but the other form fields do not change
   // This is not a scary error so lets just bypass it, all errors may be found here
   // https://developers.cloudflare.com/turnstile/get-started/server-side-validation/#error-codes

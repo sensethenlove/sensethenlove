@@ -1,9 +1,9 @@
 import schema from '$lib/schema/signIn'
-import email from '$lib/sendgrid/signIn'
-import validateFields from '$lib/form/validateFields'
 import type { Action } from '@sveltejs/kit'
+import email from '$lib/mailchannels/signIn'
 import actionCatch from '$lib/catch/actionCatch'
 import createToken from '$lib/security/createToken'
+import validateFields from '$lib/form/validateFields'
 import findFirstUser from '$lib/prisma/findFirstUser'
 import setSignInCookie from '$lib/cookies/setSignInCookie'
 
