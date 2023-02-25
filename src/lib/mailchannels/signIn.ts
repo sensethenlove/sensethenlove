@@ -2,7 +2,7 @@ import env from '$lib/security/env'
 
 
 export default async (token: string, email: string, firstName: string | null) => {
-  const response = await fetch('https://api.mailchannels.net/tx/v1/send', {
+  const fetchResponse = await fetch('https://api.mailchannels.net/tx/v1/send', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -10,8 +10,8 @@ export default async (token: string, email: string, firstName: string | null) =>
     body: JSON.stringify({
       personalizations: [{
         to: [{ email }],
-        dkim_domain: 'sensethenlove.com',
         dkim_selector: 'mailchannels',
+        dkim_domain: 'sensethenlove.com',
         dkim_private_key: (await env.get('DKIM_PRIVATE_KEY'))
       }],
       from: {
@@ -38,6 +38,11 @@ export default async (token: string, email: string, firstName: string | null) =>
     }),
   })
 
-  const responseJSON = await response.json()
-  if (responseJSON?.errors) throw responseJSON.errors.toString()
+  let error, response
+
+  if (fetchResponse.status > 202) error = 'Error while sending sign in email'
+  try { response = await fetchResponse.json() } catch (e) {}
+
+  if (response?.errors) throw response.errors.toString()
+  else throw error
 }

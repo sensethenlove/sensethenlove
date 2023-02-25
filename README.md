@@ -37,7 +37,6 @@
 - [Sveltekit + Protected Routes](https://github.com/sveltejs/kit/issues/3912)
 - [Subtle Crypto](https://github.com/diafygi/webcrypto-examples#rsa-pss---generatekey)
 - [Cloudflare + JWT](https://github.com/tsndr/cloudflare-worker-jwt/blob/76b7fcef2707225c9214fcba0c4e8d6498039daa/src/index.ts)
-- [MailChannels + DKIM](https://mailchannels.zendesk.com/hc/en-us/articles/7122849237389)
 - [Cloudflare + MailChannels + DKIM](https://github.com/maggie-j-liu/mail/blob/main/src/index.ts)
 
 #### Articles
@@ -51,11 +50,13 @@
 - [Cloudflare Worker Explanation](https://developers.cloudflare.com/workers/learning/how-workers-works)
 - [Sveltekit + Sass](https://blog.hao.dev/how-to-add-scss-or-sass-to-sveltekit)
 - [Cloudflare Global Network](https://www.cloudflare.com/network/)
+- [Cloudflare + MailChannels + DKIM](https://mailchannels.zendesk.com/hc/en-us/articles/7122849237389)
 
 #### Videos
 - [Learn Prisma In 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)
 - [Prisma & PlanetScale Best Practices](https://www.youtube.com/watch?v=iaHt5_hg44c)
 - [MySQL Scaling Made Easy](https://planetscale.com/events/mysql-scaling-made-easy/thank-you)
+- [Faster MySQL with HTTP/3](https://planetscale.com/events/faster-mysql-with-http3/thank-you)
 
 #### Utilities
 - [Squoosh](https://squoosh.app)

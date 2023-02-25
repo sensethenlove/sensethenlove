@@ -15,7 +15,7 @@ import setSignInCookie from '$lib/cookies/setSignInCookie'
 
 export default (async ({ request, cookies }) => {
   try {
-    const fields = Object.fromEntries((await request.formData()).entries()) 
+    const fields = Object.fromEntries((await request.formData()).entries())
     await validateFields(fields, schema)
 
     let user = await findFirstUser({ email: fields.email.toString() }) // see if user already has an email in our system
