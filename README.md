@@ -65,14 +65,14 @@
 - [White to Grey Hex's](https://www.htmlcolor-picker.com/color-groups/white-grey-black)
 - [CSP Validator](https://csp-evaluator.withgoogle.com/)
 
-#### Pricing
-- [Namecheap: $19.58 a year for Domain Registration](https://www.namecheap.com/domains/)
-- [Github Team: $4 a month for 2G of storage](https://github.com/pricing)
-- [Cloudflare Workers: $5 a month for 10 million requests a month](https://developers.cloudflare.com/workers/platform/pricing)
-- [Cloudflare Images: $5 a month for 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
-- [Proton Business: $19.98 a month for 2 users w/ secure inboxes, calendars, & 1,000GB of cloud storage](https://proton.me/business/plans)
-- [Prisma Data Platform: $29 a month for 500 CPU minutes a month](https://www.prisma.io/pricing)
-- [Planetscale: $29 a month for 10 GB storage, 50 million row writes/mo & 100 billion row reads/mo](https://planetscale.com/pricing)
+#### Tech Stack Costs
+- [Namecheap: $19.58/year for Domain Registration](https://www.namecheap.com/domains/)
+- [Github Team: $4/month for 2G of storage](https://github.com/pricing)
+- [Cloudflare Workers: $5/month for 10 million requests/month](https://developers.cloudflare.com/workers/platform/pricing)
+- [Cloudflare Images: $5/month for 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
+- [Proton Business: $19.98/month for 2 users w/ secure inboxes, calendars, & 1,000GB of cloud storage](https://proton.me/business/plans)
+- [Prisma Data Platform: $29/month for 500 CPU minutes/month](https://www.prisma.io/pricing)
+- [Planetscale: $29/month for 10 GB storage, 50 million row writes/month & 100 billion row reads/month](https://planetscale.com/pricing)
 
 ## Local install
 1. [Install git](https://github.com/git-guides/install-git)
