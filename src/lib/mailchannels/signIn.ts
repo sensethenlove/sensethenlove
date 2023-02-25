@@ -42,7 +42,7 @@ export default async (token: string, email: string, firstName: string | null) =>
 
   if (fetchResponse.status > 202) error = 'Error while sending sign in email'
   try { response = await fetchResponse.json() } catch (e) {}
-
+  console.log('response', response)
   if (response?.errors) throw response.errors.toString()
   else throw error
 }
