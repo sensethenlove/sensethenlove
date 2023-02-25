@@ -10,9 +10,10 @@ import createToken from '$lib/security/createToken'
 import isFileAnImage from '$lib/file/isFileAnImage'
 import validateFields from '$lib/form/validateFields'
 import findFirstUser from '$lib/prisma/findFirstUser'
+import setSignInCookie from '$lib/cookies/setSignInCookie'
 
 
-export default (async ({ request, getClientAddress }) => {
+export default (async ({ request, cookies }) => {
   try {
     const fields = Object.fromEntries((await request.formData()).entries()) 
     await validateFields(fields, schema)
@@ -30,8 +31,10 @@ export default (async ({ request, getClientAddress }) => {
       }
     }
 
-    const token = await createToken('signIn', { userId: user.id, ipAddress: getClientAddress() }) // create token to place in sign in email
+    const signInId = crypto.randomUUID() // sign in id will be in the token & in the cookie
+    const token = await createToken('signIn', { userId: user.id, signInId }) // create token to place in sign in email
     await email(token, fields.email.toString(), user.firstName) // send sign in email
+    setSignInCookie(signInId, cookies)
     return { user }
   } catch (e) {
     return actionCatch(e)
