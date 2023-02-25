@@ -13,6 +13,7 @@ export const load = (async ({ url, cookies, getClientAddress }) => {
   try {
     const { userId, ipAddress } = await verifyToken('signIn', url.searchParams.get('token') || '')
     const currentIpAddress = getClientAddress()
+    console.log('verify: currentIpAddress', currentIpAddress)
 
     if (ipAddress !== currentIpAddress) throw new VerifyTokenIPMismatchError('IP Address that started sign in process must match the IP Address that clicks the email link')
     else {

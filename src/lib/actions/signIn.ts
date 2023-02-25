@@ -11,7 +11,7 @@ export default (async ({ request, getClientAddress }) => {
   try {
     const fields = Object.fromEntries((await request.formData()).entries())
     await validateFields(fields, schema)
-
+    console.log('signin action: getClientAddress()', getClientAddress())
     let user = await findFirstUser({ email: fields.email.toString() })
     if (user) await email(await createToken('signIn', { userId: user.id, ipAddress: getClientAddress() }), fields.email.toString(), user.firstName)
   } catch (e) {

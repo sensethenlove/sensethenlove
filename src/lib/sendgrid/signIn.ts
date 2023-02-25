@@ -1,31 +1,30 @@
 import env from '$lib/security/env'
-// import send from '$lib/sendgrid/send'
 
 
 export default async (token: string, email: string, firstName: string | null) => {
-  const response = await fetch(new Request("https://api.mailchannels.net/tx/v1/send", {
-    "method": "POST",
-    "headers": {
-      "content-type": "application/json",
+  const response = await fetch('https://api.mailchannels.net/tx/v1/send', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
     },
-    "body": JSON.stringify({
-      "personalizations": [{
-        "to": [{
-          "email": email,
-          "name": "Chris Carington"
+    body: JSON.stringify({
+      personalizations: [{
+        to: [{
+          email: email,
+          name: 'Chris Carington'
         }],
-        "dkim_domain": "sensethenlove.com",
-        "dkim_selector": "mailchannels",
-        "dkim_private_key": (await env.get('DKIM_PRIVATE_KEY'))
+        dkim_domain: 'sensethenlove.com',
+        dkim_selector: 'mailchannels',
+        dkim_private_key: (await env.get('DKIM_PRIVATE_KEY'))
       }],
-      "from": {
-        "email": "us@sensethenlove.com",
-        "name": "Sense Then Love",
+      from: {
+        email: 'us@sensethenlove.com',
+        name: 'Sense Then Love',
       },
-      "subject": "Test Subject",
-      "content": [{
-        "type": "text/html",
-        "value": `
+      subject:`Sense Then Love sign in link${ firstName ? ' for ' + firstName : '' }!`,
+      content: [{
+        type: 'text/html',
+        value: `
           <table style="padding: 18px 0 27px 0; color: #273142; width: 100%; font-size: 16px; text-align:center; background-color:#f9f5f2; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;">
             <tr>
               <td>
@@ -40,10 +39,11 @@ export default async (token: string, email: string, firstName: string | null) =>
         `,
       }],
     }),
-  }))
+  })
 
   const responseJSON = await response.json()
   console.log(responseJSON)
+  if (responseJSON.errors) throw responseJSON.errors.toString()
 }
 
 
