@@ -42,8 +42,8 @@ export default async (token: string, email: string, firstName: string | null) =>
     }),
   }))
 
-  const responseText = await response.text()
-  console.log(responseText)
+  const responseJSON = await response.json()
+  console.log(responseJSON)
 }
 
 
