@@ -11,16 +11,17 @@ import setAccessAndRefreshCookies from '$lib/cookies/setAccessAndRefreshCookies'
 
 export const load = (async ({ url, cookies, getClientAddress }) => {
   try {
-    const { userId, ipAddress } = await verifyToken('signIn', url.searchParams.get('token') || '')
-    const currentIpAddress = getClientAddress()
-    console.log('verify: currentIpAddress', currentIpAddress)
+    const { userId, signInId } = await verifyToken('signIn', url.searchParams.get('token') || '')
+    const cookieSignInId = cookies.get('signInId')
+    console.log('verify: cookieSignInId:', cookieSignInId)
 
-    if (ipAddress !== currentIpAddress) throw new VerifyTokenIPMismatchError('IP Address that started sign in process must match the IP Address that clicks the email link')
+    if (signInId !== cookieSignInId) throw new VerifyTokenIPMismatchError('Computer + Browser that started the sign in process must match the Computer + Browser that clicks the email link')
     else {
-      const session = await createSession(userId, ipAddress)
+      const session = await createSession(userId, getClientAddress())
       const payload = { userId, sessionId: session.id }
       const [ accessToken, refreshToken ] = await Promise.all([createToken('access', payload), createToken('refresh', payload)])
       await setAccessAndRefreshCookies(cookies, accessToken, refreshToken)
+      cookies.delete('signInId', { path: '/' })
       throw new RedirectError('/social')
     } 
   } catch (e) {

@@ -7,13 +7,23 @@ import createToken from '$lib/security/createToken'
 import findFirstUser from '$lib/prisma/findFirstUser'
 
 
-export default (async ({ request, getClientAddress }) => {
+export default (async ({ request, cookies }) => {
   try {
     const fields = Object.fromEntries((await request.formData()).entries())
     await validateFields(fields, schema)
-    console.log('signin action: getClientAddress()', getClientAddress())
     let user = await findFirstUser({ email: fields.email.toString() })
-    if (user) await email(await createToken('signIn', { userId: user.id, ipAddress: getClientAddress() }), fields.email.toString(), user.firstName)
+
+    if (user) {
+      const signInId = crypto.randomUUID()
+      await email(await createToken('signIn', { userId: user.id, signInId }), fields.email.toString(), user.firstName)
+      cookies.set('signInId', signInId, {
+        path: '/',
+        secure: true,
+        httpOnly: true,
+        sameSite: false,
+      })
+      console.log('sign in action: signInId: ', signInId)
+    }
   } catch (e) {
     return actionCatch(e)
   }

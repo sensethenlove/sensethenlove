@@ -99,8 +99,8 @@ export type FormInputs = Array<FormInput | Array<FormInput>>
  * Types for $lib/security
  */
 interface TokenBasic { userId: string } // https://stackoverflow.com/a/61281828
-interface TokenWithIPAddress extends TokenBasic { ipAddress: string, sessionId?: never }
-interface TokenWithSessionId extends TokenBasic { sessionId: string, ipAddress?: never }
+interface TokenWithIPAddress extends TokenBasic { signInId: string, sessionId?: never }
+interface TokenWithSessionId extends TokenBasic { sessionId: string, signInId?: never }
 export type TokenPayload = TokenWithIPAddress | TokenWithSessionId
 
 export type GetTokenResponseData = {
@@ -112,7 +112,7 @@ export type GetTokenResponse = Promise<GetTokenResponseData>
 
 export type SignInEmailTokenPayload = {
   userId: string,
-  ipAddress: string,
+  signInId: string,
 }
 
 export type AccessAndRefreshTokenPayload = {
