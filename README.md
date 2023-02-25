@@ -32,6 +32,7 @@
 - [Sveltekit + Prisma](https://github.com/prisma/prisma-examples/tree/latest/typescript/rest-sveltekit)
 - [Sveltekit + Turnstile](https://github.com/ghostdevv/svelte-turnstile)
 - [Sveltekit Authentication](https://github.com/huntabyte/sveltekit-protected-routes/tree/final-code)
+- [Sveltekit + Protected Routes](https://github.com/sveltejs/kit/issues/3912)
 - [Subtle Crypto](https://github.com/diafygi/webcrypto-examples#rsa-pss---generatekey)
 - [Cloudflare + JWT](https://github.com/tsndr/cloudflare-worker-jwt/blob/76b7fcef2707225c9214fcba0c4e8d6498039daa/src/index.ts)
 

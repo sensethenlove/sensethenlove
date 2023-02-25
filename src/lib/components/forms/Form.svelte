@@ -16,6 +16,7 @@
   export let buttonText: string = 'Send'
 
   let errors: any
+  let resetCounter = 0
   let isLoading = false
 
   const onSubmit = (({ data, cancel }) => {
@@ -38,6 +39,7 @@
             break
           case 'success':
             showToast({ type: 'success', items: [ onSuccess({ fields, data: result?.data }) ] }) // successful submission
+            if (reset !== false) resetCounter++
             break
         }
 
@@ -58,11 +60,11 @@
         { #if Array.isArray(input) }
           <div class="two-form-items">
             { #each input as subInput }
-              <FormItem name={ subInput.name } label={ subInput.label } value={ subInput.value } checkboxValue={ subInput.checkboxValue } type={ subInput.type || 'text' } { errors } />
+              <FormItem { resetCounter } name={ subInput.name } label={ subInput.label } value={ subInput.value } checkboxValue={ subInput.checkboxValue } type={ subInput.type || 'text' } { errors } />
             { /each }
           </div>
         { :else }
-          <FormItem name={ input.name } label={ input.label } value={ input.value } checkboxValue={ input.checkboxValue } type={ input.type || 'text' } { errors } css={ input.hidden ? 'hidden' : '' } serverImageId={ input.serverImageId || '' } />
+          <FormItem { resetCounter } name={ input.name } label={ input.label } value={ input.value } checkboxValue={ input.checkboxValue } type={ input.type || 'text' } { errors } css={ input.hidden ? 'hidden' : '' } serverImageId={ input.serverImageId || '' } />
         { /if}
       {/each }
     { /if }

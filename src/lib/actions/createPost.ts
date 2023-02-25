@@ -4,6 +4,7 @@ import createPost from '$lib/prisma/createPost'
 import actionCatch from '$lib/catch/actionCatch'
 import htmlSanitize from '$lib/util/htmlSanitize'
 import validateFields from '$lib/form/validateFields'
+import { BASE_CONTENT_EDITABLE_ELEMENT } from '$lib/form/variables'
 
 
 export default (async ({ request, locals }) => {
@@ -13,7 +14,7 @@ export default (async ({ request, locals }) => {
     fields = {
       ...fields,
       creatorId: locals.userId,
-      content: htmlSanitize(fields.content.toString())
+      content: htmlSanitize(fields.content.toString().replace(BASE_CONTENT_EDITABLE_ELEMENT, ''))
     }
 
     await validateFields(fields, schema)

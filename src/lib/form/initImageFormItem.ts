@@ -5,14 +5,14 @@ import { IsFileAnImageError } from '$lib/util/errors'
 import getCloudflareImageUrl from '$lib/file/getCloudflareImageUrl'
 
 
-export default function bindImageVariables (type: string, serverImageId: string): ImageVariables {
+export default (type: string, serverImageId: string): ImageVariables => {
   const imageVariables: ImageVariables = {}
 
   if (type === 'image') {
     onMount(() => {
       if (imageVariables.fileElement && imageVariables.previewImage && imageVariables.serverImage) { // defined in DOM
         imageVariables.fileElement.value = ''
-        imageVariables.previewImage.src = ''
+        imageVariables.previewImage.removeAttribute('src') // if we set src to an empty string some browsers will set src to the url of the page
         imageVariables.previewImage.style.display = 'none'
 
         if (!serverImageId) imageVariables.serverImage.style.display = 'none'

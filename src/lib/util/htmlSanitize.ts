@@ -3,9 +3,10 @@ import sanitizeHtml from 'sanitize-html'
 
 export default (dirty: string) => {
   return sanitizeHtml(dirty, {
-    allowedTags: ['div', 'br', 'a'],
+    allowedTags: ['div', 'br', 'a', 'span'],
     allowedAttributes: {
-      a: ['style', 'href', 'src', 'target', 'title'],
+      div: ['id'],
+      a: ['src'],
     }
   })
 }

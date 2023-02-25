@@ -32,7 +32,7 @@
       :root {
         --text-color:  #eceaea;
         --opacity-bg: rgba(0, 0, 0, 0.9);
-        --anchor-color: #70ae14;
+        --anchor-color: #8bdd10;
         --heading-text-color: var(--gold-text-color);
         --bg-color: #111111;
         --input-bg-color: rgb(55, 65, 81);

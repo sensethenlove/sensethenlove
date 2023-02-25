@@ -28,7 +28,7 @@
 
   function setButtonText (): string {
     switch (sessionsToDelete.length) {
-      case 0: return 'Select above first'
+      case 0: return 'Sign out sessions'
       case 1: return 'Sign out one session'
       case 2: return 'Sign out two sessions'
       case 3: return 'Sign out three sessions'
@@ -46,7 +46,10 @@
   }
 
   const onSubmit = (({ cancel }) => {
-    if (sessionsToDelete.length) {
+    if (!sessionsToDelete.length) {
+      showToast({ type: 'info', items: [ 'Please select an IP Address to sign it out' ] })
+      cancel()
+    } else {
       isLoading = true
 
       return async ({ update, result }: { update: any, result: any }) => {
@@ -67,9 +70,6 @@
 
         update() // continue form flow
       }
-    } else {
-      showToast({ type: 'error', items: [ 'Please select an IP Address to sign it out' ] })
-      cancel()
     }
   }) satisfies SubmitFunction
 </script>
@@ -89,7 +89,7 @@
         { /each }
       </tbody>
     </table>
-    <Button text="{ buttonText }" { isLoading } disabled={ !sessionsToDelete.length } />
+    <Button text="{ buttonText }" { isLoading } />
   </section>
 </form>
 
