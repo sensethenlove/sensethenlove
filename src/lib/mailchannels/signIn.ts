@@ -38,11 +38,14 @@ export default async (token: string, email: string, firstName: string | null) =>
     }),
   })
 
-  let error, response
+  if (fetchResponse.status > 202) {
+    let error = 'Error while sending sign in email'
 
-  if (fetchResponse.status > 202) error = 'Error while sending sign in email'
-  try { response = await fetchResponse.json() } catch (e) {}
-  console.log('response', response)
-  if (response?.errors) throw response.errors.toString()
-  else throw error
+    try {
+      const response = await fetchResponse.json()
+      if (response?.errors) error = response.errors.toString()
+    } catch (e) { }
+
+    throw error
+  }
 }
