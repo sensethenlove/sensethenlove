@@ -5,3 +5,6 @@ node_modules
 wrangler.toml
 apps.toml
 .env
+priv_key.pem
+priv_key.txt
+pub_key_record.txt
