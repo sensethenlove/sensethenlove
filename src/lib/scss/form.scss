@@ -180,9 +180,9 @@ button {
 
 .theme--dark button.brand {
   color: rgb(17, 24, 39);
-  background-image: linear-gradient(to right, var(--gold-text-color), var(--anchor-color));
+  background-image: linear-gradient(to left, var(--gold-text-color), var(--anchor-color));
   &:hover {
-    background-image: linear-gradient(to left, var(--gold-text-color), var(--anchor-color));
+    background-image: linear-gradient(to right, var(--gold-text-color), var(--anchor-color));
   }
   &:focus {
     box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgb(3, 102, 114) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;

@@ -1,9 +1,9 @@
 import env from '$lib/security/env'
 
 
-export default async (file: Blob, userId: string): Promise<string> => {
+export default async (file: Blob, name: string): Promise<string> => {
   const formData = new FormData()
-  formData.append('file', file, `primary-image--${ userId }`)
+  formData.append('file', file, name)
 
   const url = `https://api.cloudflare.com/client/v4/accounts/${ await env.get('CLOUDFLARE_ACCOUNT_ID') }/images/v1`
   const init = {

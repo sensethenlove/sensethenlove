@@ -1,10 +1,11 @@
 import type { Action } from '@sveltejs/kit'
 import schema from '$lib/schema/updateUser'
+import writeImage from '$lib/file/writeImage'
 import updateUser from '$lib/prisma/updateUser'
 import actionCatch from '$lib/catch/actionCatch'
+import getImageName from '$lib/file/getImageName'
 import isFileAnImage from '$lib/file/isFileAnImage'
 import validateFields from '$lib/form/validateFields'
-import writePrimaryImage from '$lib/file/writePrimaryImage'
 import deletePrimaryImage from '$lib/file/deletePrimaryImage'
 
 
@@ -20,13 +21,13 @@ export default (async ({ request, locals }) => {
 
       if (fields.primaryImageId.toString()) { // IF user already has a primaryImageId
         const cloudflareResponse = await Promise.all([ // to cloudflare images
-          writePrimaryImage(fields.primaryImage, locals.userId), // write new primary image file
+          writeImage(fields.primaryImage, getImageName('primary', locals.userId)), // write new primary image file
           deletePrimaryImage(fields.primaryImageId.toString()) // remove previous primary image file
         ])
 
         newPrimaryImageId = cloudflareResponse[0]
       } else {
-        newPrimaryImageId = await writePrimaryImage(fields.primaryImage, locals.userId)
+        newPrimaryImageId = await writeImage(fields.primaryImage, getImageName('primary', locals.userId))
       }
 
       await updateUser({ id: locals.userId }, {
