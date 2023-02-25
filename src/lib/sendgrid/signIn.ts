@@ -19,7 +19,7 @@ export default async (token: string, email: string, firstName: string | null) =>
         "dkim_private_key": (await env.get('DKIM_PRIVATE_KEY'))
       }],
       "from": {
-        "email": "us@sensethemlove.com",
+        "email": "us@sensethenlove.com",
         "name": "Sense Then Love",
       },
       "subject": "Test Subject",
