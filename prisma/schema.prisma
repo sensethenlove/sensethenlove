@@ -18,7 +18,7 @@ model User {
   lastName               String?   @db.VarChar(255)
   isNewsletterSubscriber Boolean   @default(false)
   sessions               Session[]
-  primaryImageId         String?
+  primaryImageId         String?   @db.VarChar(255)
   createdAt              DateTime  @default(now())
   posts                  Post[]
 
@@ -37,6 +37,7 @@ model Post {
   updatedAt DateTime @updatedAt
   creator   User     @relation(fields: [creatorId], references: [id])
   creatorId String
+  imageId   String?  @db.VarChar(255)
 
   @@index([creatorId])
 }
