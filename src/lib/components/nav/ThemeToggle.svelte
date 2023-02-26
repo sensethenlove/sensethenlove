@@ -54,7 +54,7 @@
 
     @media only screen and (min-width: $move-nav-window-width) { // big screen
       top: 1.75rem;
-      right: 22rem;
+      right: 23rem;
     }
 
     :global(svg) {
