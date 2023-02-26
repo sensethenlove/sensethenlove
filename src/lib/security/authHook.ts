@@ -1,11 +1,9 @@
 import type { Session } from '$lib/util/types'
-import authRoutes from '$lib/security/authRoutes'
+import type { RequestEvent } from '@sveltejs/kit'
 import createToken from '$lib/security/createToken'
 import verifyToken from '$lib/security/verifyToken'
-import unAuthRoutes from '$lib/security/unAuthRoutes'
 import updateSession from '$lib/prisma/updateSession'
 import findFirstSession from '$lib/prisma/findFirstSession'
-import { redirect, type RequestEvent } from '@sveltejs/kit'
 import { VerifyTokenError, VerifyTokenExpiredError } from '$lib/util/errors'
 import setAccessAndRefreshCookies from '$lib/cookies/setAccessAndRefreshCookies'
 import deleteAccessAndRefreshCookies from '$lib/cookies/deleteAccessAndRefreshCookies'
@@ -37,7 +35,7 @@ export default async (event: RequestEvent): Promise<RequestEvent> => {
     }
   }
 
-  return validateCurrentUserMayViewCurrentRoute(event)
+  return event
 }
 
 
@@ -54,21 +52,6 @@ async function onAccessTokenExpired (event: RequestEvent, refreshToken: string):
     console.log(e)
     if (e instanceof VerifyTokenError) await signThemOut(event, refreshToken) // if refreshToken has an error this is a signed out user so => sign them out
   }
-}
-
-
-function validateCurrentUserMayViewCurrentRoute (event: RequestEvent): RequestEvent {
-  if (event.locals.userId) { // if a user is authenticated
-    for (const route of unAuthRoutes) {
-      if (event.request.url.includes(route[0])) throw redirect(303, route[1]) // if request url is a route that requires unautentication => redirect to set location
-    }
-  } else { // if a user is unauthenticated
-    for (const route of authRoutes) {
-      if (event.request.url.includes(route[0])) throw redirect(303, route[1]) // if request url is a route that requires autentication => redirect to set location
-    }
-  }
-
-  return event
 }
 
 

@@ -1,8 +1,8 @@
 import type { PageServerLoad } from './$types'
+import userIsAuthenticated from '$lib/security/userIsAuthenticated'
 
 
 export const load = (async ({ locals }) => {
-  return {
-    userId: locals.userId,
-  }
+  userIsAuthenticated(locals, '/social/sign-in')
+  return { userId: locals.userId }
 }) satisfies PageServerLoad

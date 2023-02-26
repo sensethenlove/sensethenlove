@@ -5,12 +5,14 @@ import routeCatch from '$lib/catch/routeCatch'
 import createToken from '$lib/security/createToken'
 import verifyToken from '$lib/security/verifyToken'
 import createSession from '$lib/prisma/createSession'
+import userIsUnauthenticated from '$lib/security/userIsUnauthenticated'
 import { RedirectError, VerifyTokenIDMismatchError } from '$lib/util/errors'
 import setAccessAndRefreshCookies from '$lib/cookies/setAccessAndRefreshCookies'
 
 
-export const load = (async ({ url, cookies, getClientAddress }) => {
+export const load = (async ({ url, cookies, locals, getClientAddress }) => {
   try {
+    userIsUnauthenticated(locals, '/social/')
     const { userId, signInId } = await verifyToken('signIn', url.searchParams.get('token') || '')
     const cookieSignInId = cookies.get('signInId')
 
