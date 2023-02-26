@@ -36,7 +36,7 @@
     <li>Focus on a sensation happening now</li>
     <li class="indent-dot">Example: Feel breath flow in & out of nose</li>
     <li value="2">Feel love for this sensation happening now</li>
-    <li value="3">If direction towards love if desired, internally sing the word <strong>'Love'</strong>, on inhale & exhale</li>
+    <li value="3">If love guidance is desired, externally or internally sing the word <strong>'Love'</strong>, on inhale & exhale, to guide mind</li>
   </ol>
 </section>
 
