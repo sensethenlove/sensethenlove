@@ -28,7 +28,7 @@
     <li>Create a <a href="/social">social network</a> that allows us all to:</li>
     <li class="indent-dot">Share our lovely thoughts, goals & achievements!</li>
     <li class="indent-dot">Collaborate with, encourage & love each other!</li>
-    <li class="indent-dot">Aim higher together!</li>
+    <li class="indent-dot">Aim high together!</li>
   </ol>
 
   <h3>Our Name</h3>
