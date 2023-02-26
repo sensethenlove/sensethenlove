@@ -113,13 +113,13 @@ pnpm prod-live
 ```
 
 ## Open [Prisma Studio](https://www.prisma.io/studio)
-1. Save schema @ `./prisma/schema.prisma` > `datasource db` > `url` w/ `env("DEV_DATABASE_URL")` or `env("PROD_DATABASE_URL")`
+1. Save schema @ `./prisma/schema.prisma` > `datasource db` > `url` w/ `env("QA_DATABASE_URL")` or `env("PROD_DATABASE_URL")`
 ```bash
 pnpm studio
 ```
 
 ## How to update database schema
-1. Update schema @ `./prisma/schema.prisma` & save the file w/ `datasource db` > `url` > `env("DEV_DATABASE_URL")`
+1. Update schema @ `./prisma/schema.prisma` & save the file w/ `datasource db` > `url` > `env("QA_DATABASE_URL")`
 1. Bash `pnpm schema` to push schema changes to `dev` branch in [PlanetScale](https://planetscale.com/docs)
 1. Click `DASHBOARD_PLANETSCALE` link in `.apps` file
 1. Click `Branches` tab
