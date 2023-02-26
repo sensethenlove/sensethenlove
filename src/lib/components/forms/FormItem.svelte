@@ -7,6 +7,7 @@
   export let css: string = ''
   export let label: string = ''
   export let resetCounter: number
+  export let maxWidth: string = ''
   export let type: string = 'text'
   export let value: string | null = ''
   export let serverImageId: string = ''
@@ -32,8 +33,8 @@
 
 
 { #if type === 'image' }
-  <img bind:this={ imageVariables.serverImage } style="display:{ imageVariables.serverImage?.src ? 'block' : 'none' }" alt="Primary" />
-  <img bind:this={ imageVariables.previewImage } style="display:{ imageVariables.previewImage?.src ? 'block' : 'none' }" alt="Preview" /> 
+  <img bind:this={ imageVariables.serverImage } style="max-width:{ maxWidth }; display:{ imageVariables.serverImage?.src ? 'block' : 'none' }" alt="Profile" />
+  <img bind:this={ imageVariables.previewImage } style="max-width:{ maxWidth }; display:{ imageVariables.previewImage?.src ? 'block' : 'none' }" alt="Preview" /> 
 { /if }
 
 <div class="form-item form-item--{ type } { css }">
@@ -68,7 +69,6 @@
   img {
     display: none;
     width: 100%;
-    max-width: 90rem;
     margin-bottom: 1rem;
   }
 </style>

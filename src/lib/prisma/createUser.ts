@@ -9,7 +9,7 @@ export default async (fields: FormFields): Promise<User> => {
       lastName: fields.lastName.toString(),
       email: fields.email.toString(),
       isNewsletterSubscriber: fields.isNewsletterSubscriber === 'on',
-      primaryImageId: fields.primaryImageId ? fields.primaryImageId.toString() : ''
+      profileImageId: fields.profileImageId ? fields.profileImageId.toString() : ''
     }
   })
 }

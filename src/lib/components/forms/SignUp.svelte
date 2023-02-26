@@ -4,7 +4,7 @@
   import type { FormInputs, FormOnSuccess } from '$lib/util/types'
 
   const inputs: FormInputs = [
-    { name: 'primaryImage', label: 'Primay Image', type: 'image' },
+    { name: 'profileImage', label: 'Profile Image', type: 'image', maxWidth: '56rem' },
     [
       { name: 'firstName', label: 'First Name' },
       { name: 'lastName', label: 'Last Name' },

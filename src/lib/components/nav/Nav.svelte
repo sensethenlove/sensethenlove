@@ -8,7 +8,7 @@
   import contact from '$lib/images/nav/contact.svg'
   import sources from '$lib/images/nav/sources.svg'
   import support from '$lib/images/nav/support.svg'
-  import getCloudflareImageUrl from '$lib/file/getCloudflareImageUrl'
+  import getImageUrl from '$lib/file/getImageUrl'
   
   let activeRoute: string | null | undefined
   $: if ($navigating) setActiveRoute(true)
@@ -28,7 +28,7 @@
 <div class="nav">
   <div class="logo">
     <LoadingLink loadWidth="huge">
-      <img src={ getCloudflareImageUrl(LOGO) } alt="The logo for Sense Then Love"/>
+      <img src={ getImageUrl(LOGO) } alt="The logo for Sense Then Love"/>
     </LoadingLink>
   </div>
 

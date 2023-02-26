@@ -2,7 +2,7 @@ import { onMount } from 'svelte'
 import { showToast } from '$lib/util/toast'
 import isFileAnImage from '$lib/file/isFileAnImage'
 import { IsFileAnImageError } from '$lib/util/errors'
-import getCloudflareImageUrl from '$lib/file/getCloudflareImageUrl'
+import getImageUrl from '$lib/file/getImageUrl'
 
 
 export default (type: string, serverImageId: string): ImageVariables => {
@@ -17,7 +17,7 @@ export default (type: string, serverImageId: string): ImageVariables => {
 
         if (!serverImageId) imageVariables.serverImage.style.display = 'none'
         else {
-          imageVariables.serverImage.src = `${getCloudflareImageUrl(serverImageId)}`
+          imageVariables.serverImage.src = `${getImageUrl(serverImageId)}`
           imageVariables.serverImage.style.display = 'block'
         }
 

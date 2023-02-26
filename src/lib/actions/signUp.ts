@@ -1,16 +1,14 @@
 import schema from '$lib/schema/signUp'
 import type { Action } from '@sveltejs/kit'
-import email from '$lib/mailchannels/signIn'
 import writeImage from '$lib/file/writeImage'
 import updateUser from '$lib/prisma/updateUser'
 import createUser from '$lib/prisma/createUser'
 import actionCatch from '$lib/catch/actionCatch'
 import getImageName from '$lib/file/getImageName'
-import createToken from '$lib/security/createToken'
 import isFileAnImage from '$lib/file/isFileAnImage'
 import validateFields from '$lib/form/validateFields'
 import findFirstUser from '$lib/prisma/findFirstUser'
-import setSignInCookie from '$lib/cookies/setSignInCookie'
+import sendSignInEmailAndSetCookie from '$lib/security/sendSignInEmailAndSetCookie'
 
 
 export default (async ({ request, cookies }) => {
@@ -21,21 +19,20 @@ export default (async ({ request, cookies }) => {
     let user = await findFirstUser({ email: fields.email.toString() }) // see if user already has an email in our system
 
     if (!user) { // if they are an existing user skip over altering their account and just send them a sign in email
-      if (fields.primaryImage instanceof Blob && fields.primaryImage.size) { // if uploaded file provided https://nodejs.org/api/all.html#all_buffer_class-blob
-        isFileAnImage(fields.primaryImage) // will throw an error if not an image
-        user = await createUser(fields) // create user w/o primaryImageId
-        const primaryImageId = await writeImage(fields.primaryImage, getImageName('primary', user.id)) // save image in cloudflare images and get it's id
-        await updateUser({ id: user.id }, { primaryImageId }) // update user with primaryImageId
-      } else { // primary image file not provided
+      if (fields.profileImage instanceof Blob && fields.profileImage.size) { // if uploaded file provided https://nodejs.org/api/all.html#all_buffer_class-blob
+        isFileAnImage(fields.profileImage) // will throw an error if not an image
+        user = await createUser(fields) // create user w/o profileImageId
+        const profileImageId = await writeImage(fields.profileImage, getImageName('profile', user.id)) // save image in cloudflare images and get it's id
+        await updateUser({ id: user.id }, { profileImageId }) // update user with profileImageId
+      } else { // profile image file not provided
         user = await createUser(fields)
       }
     }
 
-    const signInId = crypto.randomUUID() // sign in id will be in the token & in the cookie
-    const token = await createToken('signIn', { userId: user.id, signInId }) // create token to place in sign in email
-    await email(token, fields.email.toString(), user.firstName) // send sign in email
-    setSignInCookie(signInId, cookies)
-    return { user }
+    return {
+      user,
+      $localHref: await sendSignInEmailAndSetCookie(fields, cookies, user) // $localHref is only returned if PUBLIC_ENVIRONMENT is local, so we may click the link w/in the email locally, b/c emails do not work outside of cloudflare workers (aka locally)
+    }
   } catch (e) {
     return actionCatch(e)
   }

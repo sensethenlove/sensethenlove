@@ -21,9 +21,7 @@ export interface Source extends SourcePrisma {
   categories?: QuoteCategory[]
 }
 
-export interface User extends UserPrisma {
-  primaryImageBase64?: string
-}
+export interface User extends UserPrisma {}
 export interface SiteComment extends SiteCommentPrisma { }
 export interface Post extends PostPrisma { }
 
@@ -89,6 +87,7 @@ export type FormInput = {
   checkboxValue?: boolean,
   hidden?: boolean,
   serverImageId?: string | null,
+  maxWidth?: string,
 }
 
 export type FormInputs = Array<FormInput | Array<FormInput>>

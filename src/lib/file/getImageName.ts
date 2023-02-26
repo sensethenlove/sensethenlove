@@ -1,7 +1,7 @@
-export default (type: 'primary' | 'post', id: string): string => {
+export default (type: 'post' | 'profile', id: string): string => {
   switch (type) {
     case 'post': return `post--${id}`
-    case 'primary': return `primary--${ id }`
+    case 'profile': return `profile--${ id }`
     default: throw new Error('Invalid type provided')
   }
 }

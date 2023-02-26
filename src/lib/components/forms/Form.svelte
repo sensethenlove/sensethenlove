@@ -38,7 +38,9 @@
             errors = result.data
             break
           case 'success':
-            showToast({ type: 'success', items: [ onSuccess({ fields, data: result?.data }) ] }) // successful submission
+            result?.data?.$localHref ? // if a $localHref has been returned by the action (something to click locally that we wouldn't click in qa or prod)
+              showToast({ type: 'success', items: [ onSuccess({ fields, data: result?.data }), result.data.$localHref ] }) : // show $localHref in a toast + standard success toast
+              showToast({ type: 'success', items: [ onSuccess({ fields, data: result?.data }) ] }) // show standard success toast
             if (reset !== false) resetCounter++
             break
         }
@@ -64,7 +66,7 @@
             { /each }
           </div>
         { :else }
-          <FormItem { resetCounter } name={ input.name } label={ input.label } value={ input.value } checkboxValue={ input.checkboxValue } type={ input.type || 'text' } { errors } css={ input.hidden ? 'hidden' : '' } serverImageId={ input.serverImageId || '' } />
+          <FormItem { resetCounter } name={ input.name } label={ input.label } value={ input.value } checkboxValue={ input.checkboxValue } type={ input.type || 'text' } { errors } css={ input.hidden ? 'hidden' : '' } serverImageId={ input.serverImageId || '' } maxWidth={ input.maxWidth } />
         { /if}
       {/each }
     { /if }

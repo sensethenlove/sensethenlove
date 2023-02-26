@@ -1,5 +1,5 @@
 <script lang="ts">
-  import getCloudflareImageUrl from '$lib/file/getCloudflareImageUrl'
+  import getImageUrl from '$lib/file/getImageUrl'
 
   export let title: string
   export let ogImageId: string = ''
@@ -13,7 +13,7 @@
   $: if (title) setFullTitle()
 
   function setImageSrc () {
-    imageSrc = getCloudflareImageUrl(ogImageId)
+    imageSrc = getImageUrl(ogImageId)
   }
 
   function setFullTitle () {

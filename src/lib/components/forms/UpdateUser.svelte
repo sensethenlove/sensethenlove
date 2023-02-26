@@ -10,13 +10,13 @@
 
   $: if (user) {
     inputs = [
-      { name: 'primaryImage', label: 'Primary Image', type: 'image', serverImageId: user.primaryImageId },
+      { name: 'profileImage', label: 'Profile Image', type: 'image', serverImageId: user.profileImageId, maxWidth: '56rem', },
       [
         { name: 'firstName', label: 'First Name', value: user.firstName },
         { name: 'lastName', label: 'Last Name', value: user.lastName },
       ],
       { name: 'email', label: 'Email', type: 'email', value: user?.email },
-      { name: 'primaryImageId', value: user.primaryImageId, hidden: true },
+      { name: 'profileImageId', value: user.profileImageId, hidden: true },
       { name: 'isNewsletterSubscriber', label: 'Weekly newsletter subscriber', type: 'checkbox', checkboxValue: user.isNewsletterSubscriber },
     ]
   }

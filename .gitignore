@@ -3,7 +3,7 @@
 build
 node_modules
 wrangler.toml
-apps.toml
+.apps.toml
 .env
 priv_key.pem
 priv_key.txt

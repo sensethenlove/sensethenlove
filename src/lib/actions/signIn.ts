@@ -1,11 +1,9 @@
 import schema from '$lib/schema/signIn'
 import type { Action } from '@sveltejs/kit'
-import email from '$lib/mailchannels/signIn'
 import actionCatch from '$lib/catch/actionCatch'
-import createToken from '$lib/security/createToken'
 import validateFields from '$lib/form/validateFields'
 import findFirstUser from '$lib/prisma/findFirstUser'
-import setSignInCookie from '$lib/cookies/setSignInCookie'
+import sendSignInEmailAndSetCookie from '$lib/security/sendSignInEmailAndSetCookie'
 
 
 export default (async ({ request, cookies }) => {
@@ -15,9 +13,9 @@ export default (async ({ request, cookies }) => {
     let user = await findFirstUser({ email: fields.email.toString() })
 
     if (user) {
-      const signInId = crypto.randomUUID()
-      await email(await createToken('signIn', { userId: user.id, signInId }), fields.email.toString(), user.firstName)
-      setSignInCookie(signInId, cookies)
+      return {
+        $localHref: await sendSignInEmailAndSetCookie(fields, cookies, user) // $localHref is only returned if PUBLIC_ENVIRONMENT is local, so we may click the link w/in the email locally, b/c emails do not work outside of cloudflare workers (aka locally)
+      }
     }
   } catch (e) {
     return actionCatch(e)
