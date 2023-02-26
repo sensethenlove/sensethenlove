@@ -16,6 +16,6 @@ import fs from 'node:fs'
       .replace(/PUBLIC_ENVIRONMENT.+/, `PUBLIC_ENVIRONMENT = '${ process.argv[2] }'`)
       .replace(/PUBLIC_HOST.+/, `PUBLIC_HOST = '${ envs.get(process.argv[2]) }'`)
     await fs.promises.writeFile(PATH, updated)
-    console.log('💜 Successfully updated .env file')
+    console.log('💚 Successfully updated .env file')
   }
 })()

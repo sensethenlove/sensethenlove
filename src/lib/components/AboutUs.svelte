@@ -8,7 +8,7 @@
 <section class="us">
   <h3>Our Goals</h3>
   <ol>
-    <li>Think lovely thoughts!</li>
+    <li>Thinking lovely thoughts!</li>
     <li class="indent-dot">Sing a lovely song &rarr; Feel lovely</li>
     <li class="indent-dot">Tell a scary story &rarr; Feel scared</li>
     <li class="indent-dot">Think lovely &rarr; Feel lovely</li>
