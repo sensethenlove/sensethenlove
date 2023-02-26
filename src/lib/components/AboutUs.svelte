@@ -12,7 +12,7 @@
     <li class="indent-dot">Sing a lovely song &rarr; Feel lovely</li>
     <li class="indent-dot">Tell a scary story &rarr; Feel scared</li>
     <li class="indent-dot">Think lovely &rarr; Feel lovely</li>
-    <li>Share <LoadingLink href="/sources/" label="scientific evidence" /> that shows the benefits of:</li>
+    <li value="2">Share <LoadingLink href="/sources/" label="scientific evidence" /> that shows the benefits of:</li>
     <li class="indent-dot big-screen"><LoadingLink href="/sources/love" label="Loving" /> &sdot; <LoadingLink href="/sources/goals" label="Goal Setting" /> &sdot; <LoadingLink href="/sources/health" label="Healthy Living" /></li>
     <li class="indent-dot big-screen"><LoadingLink href="/sources/meditation" label="Mind Setting" /> &sdot; <LoadingLink href="/sources/432hz" label="432hz Listening" /> &sdot; <LoadingLink href="/sources/stretching" label="Stretching" /></li>
     <li class="indent-dot big-screen"><LoadingLink href="/sources/diet" label="Optimal Dieting" /> &sdot; <LoadingLink href="/sources/exercising" label="Exercising" /> &sdot; <LoadingLink href="/sources/natural-building" label="Natural Building" /></li>
@@ -25,7 +25,7 @@
     <li class="indent-dot small-screen"><LoadingLink href="/sources/diet" label="Optimal Dieting" /></li>
     <li class="indent-dot small-screen"><LoadingLink href="/sources/exercising" label="Exercising" /></li>
     <li class="indent-dot small-screen"><LoadingLink href="/sources/natural-building" label="Natural Building" /></li>
-    <li>Create a <a href="/social">social network</a> that allows us all to:</li>
+    <li value="3">Create a <a href="/social">social network</a> that allows us all to:</li>
     <li class="indent-dot">Share our lovely thoughts, goals & achievements!</li>
     <li class="indent-dot">Collaborate with, encourage & love each other!</li>
     <li class="indent-dot">Aim high together!</li>
@@ -34,9 +34,9 @@
   <h3>Our Name</h3>
   <ol>
     <li>Focus on a sensation happening now</li>
-    <li class="indent-dot">Example: Feel breath travel in & out of nose</li>
-    <li>Internally sing the word <strong>'Love'</strong> on inhale & exhale, to direct mind</li>
-    <li>Feel love for the sensation we are focusing on</li>
+    <li class="indent-dot">Example: Feel breath flow in & out of nose</li>
+    <li value="2">Feel love for this sensation happening now</li>
+    <li value="3">If direction towards love if desired, internally sing the word <strong>'Love'</strong>, on inhale & exhale</li>
   </ol>
 </section>
 
@@ -45,6 +45,8 @@
   $small-big-swap-window-width: 31rem;
 
   .us {
+    max-width: 50rem;
+
     h3 {
       text-align: left;
       margin-bottom: 0;

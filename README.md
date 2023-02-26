@@ -70,6 +70,7 @@
 - [CSP Validator](https://csp-evaluator.withgoogle.com/)
 
 #### Tech Stack Costs
+- [MailChannels: FREE for Infinite Outbound API Emails/month](https://community.cloudflare.com/t/send-email-from-workers-using-mailchannels-for-free/361973)
 - [Namecheap: $19.58/year for Domain Registration](https://www.namecheap.com/domains/)
 - [Github Team: $4/month for 2G of storage](https://github.com/pricing)
 - [Cloudflare Workers: $5/month for 10 million requests/month](https://developers.cloudflare.com/workers/platform/pricing)
