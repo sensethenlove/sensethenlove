@@ -1,12 +1,12 @@
-import env from '$lib/security/env'
 import type { Cookies } from '@sveltejs/kit'
+import { PUBLIC_ENVIRONMENT } from '$env/static/public'
 
 
-export default async (cookies: Cookies, theme: string) => {
+export default (cookies: Cookies, theme: string) => {
   cookies.set('theme', theme, {
     path: '/',
     httpOnly: true,
     sameSite: false,
-    secure: (await env.get('ENVIRONMENT') === 'production'),
+    secure: PUBLIC_ENVIRONMENT !== 'local'
   })
 }

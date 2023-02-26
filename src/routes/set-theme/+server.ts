@@ -2,6 +2,7 @@ import { error } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
 import setThemeCookie from '$lib/cookies/setThemeCookie'
 
+
 export const GET = (async ({ url, cookies }) => {
   const theme = url.searchParams.get('to')
 

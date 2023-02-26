@@ -1,17 +1,17 @@
-import env from '$lib/security/env'
 import toBase64Url from '$lib/util/toBase64Url'
 import { CreateTokenError } from '$lib/util/errors'
 import type { TokenPayload } from '$lib/util/types'
 import getAlgorithmOptions from '$lib/security/getAlgorithmOptions'
 import getHeaderAndPayloadAsStrings from '$lib/security/getHeaderAndPayloadAsStrings'
+import { JWK_FOR_ACCESS_TOKEN_PRIVATE, JWK_FOR_REFRESH_TOKEN_PRIVATE, JWK_FOR_SIGN_IN_PRIVATE } from '$env/static/private'
 import { ACCESS_COOKIE_MAX_AGE_IN_SECONDS, REFRESH_COOKIE_MAX_AGE_IN_SECONDS, SIGN_IN_TOKEN_MAX_AGE_IN_SECONDS } from '$lib/security/variables'
 
 
 export default async (type: 'access' | 'refresh' | 'signIn', data: TokenPayload): Promise<string> => {
   switch (type) {
-    case 'access': return await getToken(data, await env.get('JWK_FOR_ACCESS_TOKEN_PRIVATE'), ACCESS_COOKIE_MAX_AGE_IN_SECONDS, (data) => Boolean(data.userId && data.sessionId), `Please pass userId and sessionId w/in data`)
-    case 'refresh': return await getToken(data, await env.get('JWK_FOR_REFRESH_TOKEN_PRIVATE'), REFRESH_COOKIE_MAX_AGE_IN_SECONDS, (data) => Boolean(data.userId && data.sessionId), `Please pass userId and sessionId w/in data`)
-    case 'signIn': return await getToken(data, await env.get('JWK_FOR_SIGN_IN_PRIVATE'), SIGN_IN_TOKEN_MAX_AGE_IN_SECONDS, (data) => Boolean(data.userId && data.signInId), `Please pass userId and signInId w/in data`)
+    case 'access': return await getToken(data, JWK_FOR_ACCESS_TOKEN_PRIVATE, ACCESS_COOKIE_MAX_AGE_IN_SECONDS, (data) => Boolean(data.userId && data.sessionId), `Please pass userId and sessionId w/in data`)
+    case 'refresh': return await getToken(data, JWK_FOR_REFRESH_TOKEN_PRIVATE, REFRESH_COOKIE_MAX_AGE_IN_SECONDS, (data) => Boolean(data.userId && data.sessionId), `Please pass userId and sessionId w/in data`)
+    case 'signIn': return await getToken(data, JWK_FOR_SIGN_IN_PRIVATE, SIGN_IN_TOKEN_MAX_AGE_IN_SECONDS, (data) => Boolean(data.userId && data.signInId), `Please pass userId and signInId w/in data`)
   }
 }
 

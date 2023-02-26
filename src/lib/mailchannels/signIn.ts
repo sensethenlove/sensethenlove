@@ -1,7 +1,10 @@
-import env from '$lib/security/env'
+import { PUBLIC_HOST } from '$env/static/public'
+import { DKIM_PRIVATE_KEY } from '$env/static/private'
 
 
 export default async (token: string, email: string, firstName: string | null) => {
+  const href = `${ PUBLIC_HOST }/social/sign-in/verify?token=${ token }`
+
   const fetchResponse = await fetch('https://api.mailchannels.net/tx/v1/send', {
     method: 'POST',
     headers: {
@@ -12,7 +15,7 @@ export default async (token: string, email: string, firstName: string | null) =>
         to: [{ email }],
         dkim_selector: 'mailchannels',
         dkim_domain: 'sensethenlove.com',
-        dkim_private_key: (await env.get('DKIM_PRIVATE_KEY'))
+        dkim_private_key: DKIM_PRIVATE_KEY
       }],
       from: {
         name: 'Sense Then Love',
@@ -27,7 +30,7 @@ export default async (token: string, email: string, firstName: string | null) =>
               <td>
                 <img style="margin-bottom: 6px; max-width: 63px;" src="https://sensethenlove.com/cdn-cgi/imagedelivery/awgX85h4ifgiJaXRhZTMNw/79da5cb2-c86d-4a96-316e-7c975bfc1500/public" />
                 <div style="color: #273142; font-size:27px; margin-bottom: 9px; font-family: papyrus, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;">Welcome${ firstName ? ' ' + firstName : '' }!</div>
-                <div style="margin-bottom: 9px;"><a href="https://sensethenlove.com/social/sign-in/verify?token=${ token }" target="_blank">Please click this link to sign in to Sense Then Love!</a></div>
+                <div style="margin-bottom: 9px;"><a href="${ href }" target="_blank">Please click this link to sign in to Sense Then Love!</a></div>
                 <div style="color: #273142; margin-bottom: 9px;">Link valid for <strong>9 minutes</strong></div>
                 <div style="color: #273142;">Link must be clicked from the <strong>same computer + browser</strong> that filled out the sign in form</div>
               </td>

@@ -1,10 +1,11 @@
-import env from '$lib/security/env'
+import { PUBLIC_ENVIRONMENT } from '$env/static/public'
+import { CLOUDFLARE_TURNSTILE_PRIVATE_KEY } from '$env/static/private'
 import type { TurnstileTokenValidateResponse } from '$lib/util/types'
 import { CHALLENGE_URL, ERROR_MESSAGE, CLOUDFLARE_TURNSTILE_PRIVATE_KEY_ALWAYS_PASSES } from '$lib/turnstile/variables'
 
 
 export default async (turnstileResponse: FormDataEntryValue) => {
-  const secret = (await env.get('ENVIRONMENT') === 'production') ? (await env.get('CLOUDFLARE_TURNSTILE_PRIVATE_KEY')) : CLOUDFLARE_TURNSTILE_PRIVATE_KEY_ALWAYS_PASSES
+  const secret = (PUBLIC_ENVIRONMENT === 'local') ? CLOUDFLARE_TURNSTILE_PRIVATE_KEY_ALWAYS_PASSES : CLOUDFLARE_TURNSTILE_PRIVATE_KEY
   const response = await fetch(CHALLENGE_URL, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },

@@ -15,6 +15,8 @@
 - [Cloudflare Images](https://developers.cloudflare.com/images/)
 - [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/)
 - [Cloudflare API](https://developers.cloudflare.com/api/operations/cloudflare-images-upload-an-image-via-url)
+- [Cloudflare Environments](https://developers.cloudflare.com/workers/wrangler/configuration/)
+- [Cloudflare Compatibility Dates](https://developers.cloudflare.com/workers/platform/compatibility-dates/)
 - [Zod](https://zod.dev/)
 - [Validator](https://github.com/validatorjs/validator.js)
 - [Sass](https://sass-lang.com/documentation/)
@@ -51,6 +53,7 @@
 - [Sveltekit + Sass](https://blog.hao.dev/how-to-add-scss-or-sass-to-sveltekit)
 - [Cloudflare Global Network](https://www.cloudflare.com/network/)
 - [Cloudflare + MailChannels + DKIM](https://mailchannels.zendesk.com/hc/en-us/articles/7122849237389)
+- [Faster Websites](https://www.cloudflare.com/resources/images/slt3lc6tev37/1PdxTNFdaTagVJ1zxxTKCX/5fcc6da3f0a170414a8b8f9c7cd405d5/Getting_Faster_-_Performance_whitepaper.pdf)
 
 #### Videos
 - [Learn Prisma In 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)

@@ -1,16 +1,12 @@
 import type { Action } from 'svelte/action'
-import env from '$lib/security/env'
+import { PUBLIC_ENVIRONMENT } from '$env/static/public'
 import { PUBLIC_KEY, PUBLIC_KEY_ALWAYS_PASSES } from '$lib/turnstile/variables'
 
 
 export default ((node) => {
   if (window.turnstile) {
-    let id: string
-
-    env.get('ENVIRONMENT').then(ENVIRONMENT => {
-      const sitekey = ENVIRONMENT === 'production' ? PUBLIC_KEY : PUBLIC_KEY_ALWAYS_PASSES
-      id = window.turnstile.render(node, { sitekey })
-    })
+    const sitekey = PUBLIC_ENVIRONMENT === 'local' ? PUBLIC_KEY_ALWAYS_PASSES : PUBLIC_KEY
+    const id = window.turnstile.render(node, { sitekey })
 
     return {
       destroy () {

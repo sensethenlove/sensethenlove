@@ -26,7 +26,7 @@
     <li class="indent-dot small-screen"><LoadingLink href="/sources/exercising" label="Exercising" /></li>
     <li class="indent-dot small-screen"><LoadingLink href="/sources/natural-building" label="Natural Building" /></li>
     <li>Create a <a href="/social">social network</a> that allows us all to:</li>
-    <li class="indent-dot">Share our goals, progress & achievements!</li>
+    <li class="indent-dot">Share our lovely thoughts, goals & achievements!</li>
     <li class="indent-dot">Collaborate with, encourage & love each other!</li>
     <li class="indent-dot">Aim higher together!</li>
   </ol>

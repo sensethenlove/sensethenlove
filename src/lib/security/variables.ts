@@ -1,4 +1,4 @@
-import env from '$lib/security/env'
+import { PUBLIC_ENVIRONMENT } from '$env/static/public'
 
 export const SIGN_IN_TOKEN_MAX_AGE_IN_SECONDS = 540 // 9 minutes
 
@@ -9,11 +9,11 @@ export const REFRESH_COOKIE_NAME = 'refresh-token'
 export const REFRESH_COOKIE_MAX_AGE_IN_SECONDS = 777600 // 9 days
 
 export const commonCookieDeleteSettings = { path: '/' }
-export async function getCommonCookieSetSettings () {
+export function getCommonCookieSetSettings () {
   return {
     path: '/',
     httpOnly: true,
     sameSite: false,
-    secure: await env.get('ENVIRONMENT') === 'production',
+    secure: PUBLIC_ENVIRONMENT !== 'local',
   }
 }
