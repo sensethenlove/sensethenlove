@@ -50,7 +50,6 @@ declare global { // Node global types
   var prisma: PrismaClient // For /$lib/util/prisma.ts
 
   interface Window { // Browser window types
-    Jodit: any,
     turnstile: { // For Cloudflare Turnstile
       render: (element: string | HTMLElement, options: TurnstileOptions) => string;
       remove: (widgetId: string) => void;

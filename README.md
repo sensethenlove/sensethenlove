@@ -101,9 +101,14 @@ pnpm dev
 pnpm push
 ```
 
-## Deploy to live site
+## Deploy to QA
 ```bash
-pnpm live
+pnpm qa-live
+```
+
+## Deploy to Production
+```bash
+pnpm prod-live
 ```
 
 ## Open [Prisma Studio](https://www.prisma.io/studio)
@@ -122,11 +127,16 @@ pnpm studio
 1. Select `Deploy to main`
 1. Click `Create deploy request` button
 1. Click `Deploy changes`
-1. Before `git push` OR `pnpm live` save schema @ `./prisma/schema.prisma` w/ `datasource db` > `url` > `env("PRISMA_DATABASE_URL")`
+1. Before `pnpm push` OR `pnm prod-live` save schema @ `./prisma/schema.prisma` w/ `datasource db` > `url` > `env("PRISMA_DATABASE_URL")`
 
 ## View logs for production server
 ```bash
-pnpm logs
+pnpm prod-logs
+```
+
+## View logs for qa server
+```bash
+pnpm qa-logs
 ```
 
 ## [Updates all dependencies](https://pnpm.io/cli/update), adhering to ranges specified in package.json
