@@ -45,7 +45,7 @@
   $small-big-swap-window-width: 31rem;
 
   .us {
-    max-width: 50rem;
+    max-width: 51rem;
 
     h3 {
       text-align: left;
