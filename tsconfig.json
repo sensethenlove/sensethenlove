@@ -12,7 +12,7 @@
   },
   "exclude": [
     "./prisma/setSchemaUrl.js",
-    "./prisma/validateSchemaPush.js",
+    "prisma/validateSchemaPushToGit.js",
     "./src/lib/security/setEnv.js"
   ]
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias

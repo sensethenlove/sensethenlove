@@ -73,7 +73,7 @@
 - [MailChannels: FREE for Infinite Outbound API Emails/month](https://community.cloudflare.com/t/send-email-from-workers-using-mailchannels-for-free/361973)
 - [Namecheap: $19.58/year for Domain Registration](https://www.namecheap.com/domains/)
 - [Github Team: $4/month for 2G of storage](https://github.com/pricing)
-- [Cloudflare Workers: $5/month for 10 million requests/month](https://developers.cloudflare.com/workers/platform/pricing)
+- [Cloudflare Workers: $5/month for 285 servers allowing 10 million requests/month](https://developers.cloudflare.com/workers/platform/pricing)
 - [Cloudflare Images: $5/month for 100,000 images stored](https://www.cloudflare.com/products/cloudflare-images/)
 - [Proton Business: $19.98/month for 2 users w/ secure inboxes, calendars, & 1,000GB of cloud storage](https://proton.me/business/plans)
 - [Prisma Data Platform: $29/month for 500 CPU minutes/month](https://www.prisma.io/pricing)
