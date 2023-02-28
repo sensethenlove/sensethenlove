@@ -22,7 +22,7 @@
 		"@poppanator/sveltekit-svg": "^2.1.2",
 		"@prisma/client": "^4.10.1",
 		"@sveltejs/adapter-cloudflare-workers": "^1.0.6",
-		"@sveltejs/kit": "^1.8.7",
+		"@sveltejs/kit": "1.8.3",
 		"@types/sanitize-html": "^2.8.0",
 		"buffer": "^6.0.3",
 		"prisma": "^4.10.1",
