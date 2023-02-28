@@ -10,6 +10,7 @@
   <script type="module">
     const firstName = 'Christopher'
     const href = 'https://sensethenlove.com/social/sign-in/verify?token=eyJhbGciOiJFUzUxMiIsInR5cCI6IkpXVCIsImV4cCI6MTY3ODMzNDkwN30.eyJ1c2VySWQiOiJjN2RmYTc0OS0wZDMyLTRlZWUtYjlkNi1lNTc4YjAwNjM0M2QiLCJzZXNzaW9uSWQiOiI1MDVmYTI4Yi04MTAyLTRjYjYtYWZhNi04NzZhNTMzNjNjZGUifQ.AOYeQdppghTZuY9HKUHqh7rThMhTWjZSwdTy-BXwBdu7WriJXlI8PH2wEntHFMfZrPJNYuwEzQJ41PMANhJYmf-jAWZKEBH7GixZI8iP6dGXF2UadbfxGOCuP8eDK2ydRgUuX4_DnYTjsj-hEtVgqUHR8kHmwYs9-RvieZKUb2fredsw'
+    const visibleHref = `${ href.slice(0, 3) }<span></span>${ href.slice(3) }`
     const env = {
       async get () {
         return 'production'
@@ -26,7 +27,7 @@
             <div style="color: #273142; margin-bottom: 9px;">🕰 This link is valid for <strong>9 minutes</strong></div>
             <div style="color: #273142; margin-bottom: 9px;">🙏 This link must be clicked from the <strong>same computer & browser</strong> that filled out the sign in form</div>
             <div style="color: #273142; margin-bottom: 9px;">🌈 Here is the link in plain text if you would love to <strong>copy & paste it</strong></div>
-            <div style="color: #273142; word-wrap: anywhere;">${ href }</div>
+            <div style="color: #273142; word-wrap: anywhere;">${ visibleHref }</div>
           </td>
         </tr>
       </table>

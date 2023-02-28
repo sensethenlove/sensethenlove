@@ -7,6 +7,7 @@ export default async (token: string, email: string, firstName: string | null): P
 
   if (PUBLIC_ENVIRONMENT === 'local') return href
   else {
+    const visibleHref = `${ href.slice(0, 3) }<span></span>${ href.slice(3) }`
     const fetchResponse = await fetch('https://api.mailchannels.net/tx/v1/send', {
       method: 'POST',
       headers: {
@@ -36,7 +37,7 @@ export default async (token: string, email: string, firstName: string | null): P
                   <div style="color: #273142; margin-bottom: 9px;">🕰 This link is valid for <strong>9 minutes</strong></div>
                   <div style="color: #273142; margin-bottom: 9px;">🙏 This link must be clicked from the <strong>same computer & browser</strong> that filled out the sign in form</div>
                   <div style="color: #273142; margin-bottom: 9px;">🌈 Here is the link in plain text if you would love to <strong>copy & paste it</strong></div>
-                  <div style="color: #273142; word-wrap: anywhere;">${ href }</div>
+                  <div style="color: #273142; word-wrap: anywhere;">${ visibleHref }</div>
                 </td>
               </tr>
             </table>
