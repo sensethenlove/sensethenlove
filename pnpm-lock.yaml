@@ -8,7 +8,7 @@ importers:
       '@poppanator/sveltekit-svg': ^2.1.2
       '@prisma/client': ^4.10.1
       '@sveltejs/adapter-cloudflare-workers': ^1.0.6
-      '@sveltejs/kit': 1.8.3
+      '@sveltejs/kit': 1.8.6
       '@types/sanitize-html': ^2.8.0
       buffer: ^6.0.3
       prisma: ^4.10.1
@@ -24,8 +24,8 @@ importers:
       '@cloudflare/workers-types': 4.20230221.0
       '@poppanator/sveltekit-svg': 2.1.2_svelte@3.55.1+vite@4.1.4
       '@prisma/client': 4.10.1_prisma@4.10.1
-      '@sveltejs/adapter-cloudflare-workers': 1.0.6_@sveltejs+kit@1.8.3
-      '@sveltejs/kit': 1.8.3_svelte@3.55.1+vite@4.1.4
+      '@sveltejs/adapter-cloudflare-workers': 1.0.6_@sveltejs+kit@1.8.6
+      '@sveltejs/kit': 1.8.6_svelte@3.55.1+vite@4.1.4
       '@types/sanitize-html': 2.8.0
       buffer: 6.0.3
       prisma: 4.10.1
@@ -714,19 +714,19 @@ packages:
     requiresBuild: true
     dev: true
 
-  /@sveltejs/adapter-cloudflare-workers/1.0.6_@sveltejs+kit@1.8.3:
+  /@sveltejs/adapter-cloudflare-workers/1.0.6_@sveltejs+kit@1.8.6:
     resolution: {integrity: sha512-1+Kym0tqq9eXfNFJbgTquMQdawM3zBSBesJPQCrNHWsqh0nRJDcy4vidm0BJ3rWAoE9gVhewsONLrtNjY86/1g==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
       '@cloudflare/workers-types': 4.20230221.0
       '@iarna/toml': 2.2.5
-      '@sveltejs/kit': 1.8.3_svelte@3.55.1+vite@4.1.4
+      '@sveltejs/kit': 1.8.6_svelte@3.55.1+vite@4.1.4
       esbuild: 0.16.17
     dev: true
 
-  /@sveltejs/kit/1.8.3_svelte@3.55.1+vite@4.1.4:
-    resolution: {integrity: sha512-32tiLy5PPpt2lquK2p53/5wR+ghAXw0HymIBEezmwmwtzx7Xf36xw3RG3fDYQ9gyzon89T+JRweXgAv/qhhvSQ==}
+  /@sveltejs/kit/1.8.6_svelte@3.55.1+vite@4.1.4:
+    resolution: {integrity: sha512-sQajxLlwbh4mGYv07QJkqC5kFeS2/0j0BUjA1xrW51zIomWPdRkdYgnY9dEqAV7Agt8y7Lw4MlylJY4Z+mgbAg==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -740,7 +740,7 @@ packages:
       devalue: 4.3.0
       esm-env: 1.0.0
       kleur: 4.1.5
-      magic-string: 0.29.0
+      magic-string: 0.30.0
       mime: 3.0.0
       sade: 1.8.1
       set-cookie-parser: 2.5.1
@@ -1348,6 +1348,13 @@ packages:
 
   /magic-string/0.29.0:
     resolution: {integrity: sha512-WcfidHrDjMY+eLjlU+8OvwREqHwpgCeKVBUpQ3OhYYuvfaYCUgcbuBzappNzZvg/v8onU3oQj+BYpkOJe9Iw4Q==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.4.14
+    dev: true
+
+  /magic-string/0.30.0:
+    resolution: {integrity: sha512-LA+31JYDJLs82r2ScLrlz1GjSgu66ZV518eyWT+S8VhyQn/JL0u9MeBOvQMGYiPk1DBiSN9DDMOcXvigJZaViQ==}
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.14
