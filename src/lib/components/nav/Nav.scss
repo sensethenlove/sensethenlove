@@ -87,7 +87,6 @@
     transition: $move-nav-transition;
     display: flex;
     justify-content: space-between;
-    // background-color: white;
     background-color: var(--bottom-nav-bg);
 
     @media only screen and (min-width: $move-nav-window-width) { // big screen
@@ -106,12 +105,6 @@
       text-decoration: none;
       padding: 1.5rem 0;
       cursor: pointer;
-      &:hover {
-
-        span {
-          color: var(--gold-text-color)
-        }
-      }
       &.is-loading {
         cursor: default;
 
@@ -126,7 +119,7 @@
 
       svg:not(.loading-icon) {
         width: auto;
-        max-height: 2rem;
+        max-height: 2.1rem;
         margin-bottom: 0.75rem;
         transition: max-height $move-nav-speed, margin-bottom $move-nav-speed, opacity 0.25s;
 
@@ -134,26 +127,15 @@
           margin: 0;
           max-height: 0;
         }
-
-        path {
-          fill: var(--anchor-color);
-          &.stroke {
-            stroke: var(--anchor-color);
-          }
-        }
       }
 
       span {
         font-size: 1.5rem;
-        color: var(--anchor-color);
         transition: all 0.25s;
         &.hidden {
           @media only screen and (min-width: $move-nav-window-width) { // big screen
             opacity: 0;
           }
-        }
-        &.active {
-          color: var(--gold-text-color);
         }
 
         @media only screen and (min-width: $move-nav-window-width) { // big screen

@@ -33,12 +33,8 @@
 <style lang="scss">
   @import '$lib/scss/variables.scss';
 
-  :global(.theme--light) .theme-toggle :global(svg) {
-    fill: gold;
-  }
-
-  :global(.theme--dark) .theme-toggle :global(svg) {
-    fill: rgb(17, 24, 39);
+  :global(.theme--light) .theme-toggle {
+    color: gold;
   }
 
   .theme-toggle {

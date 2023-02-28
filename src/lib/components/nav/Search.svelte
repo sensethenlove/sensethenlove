@@ -43,14 +43,6 @@
 <style lang="scss">
   @import '$lib/scss/variables.scss';
 
-  :global(.theme--light) .search__button :global(svg) {
-    fill: white;
-  }
-
-  :global(.theme--dark) .search__button :global(svg) {
-    fill: rgb(17, 24, 39);
-  }
-
   .search {
     &__button {
       position: fixed;
