@@ -1,0 +1,96 @@
+@import '$lib/scss/variables.scss';
+
+@keyframes modal-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-9rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modal-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-9rem);
+  }
+}
+
+.modal {
+  width: 100%;
+  max-width: 54rem;
+  position: relative;
+  border-radius: 1.8rem;
+  z-index: $zindex-modal-modal;
+  background-color: white;
+  animation-name: modal-in;
+  animation-duration: 0.9s;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  &.hide {
+    animation-name: modal-out;
+  }
+
+  &--container {
+    position: fixed;
+    z-index: $zindex-modal-container;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 9rem 0.9rem;
+    overflow: auto;
+    transition: all 0.9s;
+    background-color: rgba(0, 0, 0, 0.693);
+    z-index: $zindex-modal-backdrop;
+    cursor: default;
+    &.hide {
+      opacity: 0;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2.4rem;
+    color: var(--heading-text-color);
+    font-family: $font-family-papyrus;
+    padding: 1.8rem 1.8rem 0 1.8rem;
+    margin-bottom: -0.9rem;
+
+    &__close {
+      border: none;
+      background-color: transparent;
+
+      svg {
+        height: 2.4rem;
+        width: 2.4rem;
+        cursor: pointer;
+        color: var(--anchor-color);
+        &:hover {
+          color: var(--gold-text-color);
+        }
+      }
+    }
+  }
+
+  &__body {
+    margin: 0;
+    padding: 1.8rem;
+  }
+}

@@ -4,9 +4,9 @@
   import { theme } from '$lib/util/store'
   import type { PageData } from './$types'
   import Nav from '$lib/components/nav/Nav.svelte'
+  import Search from '$lib/components/nav/Search.svelte'
   import Background from '$lib/components/Background.svelte'
   import ThemeToggle from '$lib/components/nav/ThemeToggle.svelte'
-  import SearchButton from '$lib/components/nav/SearchButton.svelte'
 
   export let data: PageData
 
@@ -68,6 +68,6 @@
   <Nav />
 </main>
 <Background />
-<SearchButton />
+<Search />
 <ThemeToggle />
 <div id="toast-wrapper"></div>

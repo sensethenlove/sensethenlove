@@ -1,7 +1,7 @@
 <script lang="ts">
   import { theme } from '$lib/util/store'
-  import sun from '$lib/images/nav/home.svg'
-  import moon from '$lib/images/moon.svg'
+  import SVG_HOME from '$lib/svg/nav/SVG_HOME.svg'
+  import SVG_MOON from '$lib/svg/nav/SVG_MOON.svg'
 
 
   function setTheme () {
@@ -23,9 +23,9 @@
 
 <button class="theme-toggle brand" on:click={ () => { setTheme() }} aria-hidden="true">
 { #if $theme === 'light' }
-  { @html sun }
+  { @html SVG_HOME }
 { :else }
-  { @html moon }
+  { @html SVG_MOON }
 { /if }
 </button>
 

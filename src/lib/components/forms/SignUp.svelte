@@ -1,7 +1,7 @@
 <script lang="ts">
   import schema from '$lib/schema/signUp'
   import Form from '$lib/components/forms/Form.svelte'
-  import type { FormInputs, FormOnSuccess } from '$lib/util/types'
+  import type { FormInputs, FormToastOnSuccess } from '$lib/util/types'
 
   const inputs: FormInputs = [
     { name: 'profileImage', label: 'Profile Image', type: 'image', maxWidth: '56rem' },
@@ -14,8 +14,8 @@
     { name: 'isNewsletterSubscriber', label: 'Sign me up for the weekly newsletter!', type: 'checkbox' },
   ]
 
-  const onSuccess = (({ data }) => `Welcome ${ data.user.firstName }! Please check the email inbox of ${ data.user.email } for a link to sign in!`) satisfies FormOnSuccess
+  const toastOnSuccess = (({ data }) => `Welcome ${ data.user.firstName }! Please check the email inbox of ${ data.user.email } for a link to sign in!`) satisfies FormToastOnSuccess
 </script>
 
 
-<Form { inputs } { schema } { onSuccess } action="signUp" buttonText="Send email link to sign in" />
+<Form { inputs } { schema } { toastOnSuccess } action="signUp" buttonText="Send email link to sign in" />

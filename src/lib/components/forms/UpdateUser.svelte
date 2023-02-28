@@ -2,7 +2,7 @@
   import schema from '$lib/schema/updateUser'
   import Title from '$lib/components/Title.svelte'
   import Form from '$lib/components/forms/Form.svelte'
-  import type { FormInputs, FormOnSuccess, User } from '$lib/util/types'
+  import type { FormInputs, FormToastOnSuccess, User } from '$lib/util/types'
 
   export let user: User
 
@@ -21,9 +21,9 @@
     ]
   }
 
-  const onSuccess = (() => { return 'Information Saved!' }) satisfies FormOnSuccess
+  const toastOnSuccess = (() => { return 'Information Saved!' }) satisfies FormToastOnSuccess
 </script>
 
 
 <Title h3="Update your information" noBottom={ true } />
-<Form { inputs } { schema } { onSuccess } reset={ false } action="updateUser" buttonText="Save" />
+<Form { inputs } { schema } { toastOnSuccess } reset={ false } action="updateUser" buttonText="Save" />

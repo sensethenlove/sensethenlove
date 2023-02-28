@@ -1,7 +1,7 @@
 <script lang="ts">
   import schema from '$lib/schema/emailUs'
   import Title from '$lib/components/Title.svelte'
-  import type { FormInputs, FormOnSuccess } from '$lib/util/types'
+  import type { FormInputs, FormToastOnSuccess } from '$lib/util/types'
   import Form from '$lib/components/forms/Form.svelte'
 
   const inputs: FormInputs = [
@@ -14,9 +14,9 @@
     { name: 'isNewsletterSubscriber', label: 'Simultaneously sign me up for our weekly newsletter!', type: 'checkbox' },
   ]
 
-  const onSuccess = (({ fields }) => `Thank you for your comment ${ fields.firstName.toString() }!`) satisfies FormOnSuccess
+  const toastOnSuccess = (({ fields }) => `Thank you for your comment ${ fields.firstName.toString() }!`) satisfies FormToastOnSuccess
 </script>
 
 
 <Title h3="Send us an email?!" noBottom={ true } />
-<Form { inputs } { schema } { onSuccess } action="emailUs" />
+<Form { inputs } { schema } { toastOnSuccess } action="emailUs" />

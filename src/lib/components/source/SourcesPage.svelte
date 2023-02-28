@@ -1,7 +1,7 @@
 <script lang="ts">
   import Head from '$lib/components/Head.svelte'
   import Title from '$lib/components/Title.svelte'
-  import { OG_SOURCES } from '$lib/images/cloudflareImages'
+  import { CF_OG_SOURCES } from '$lib/util/cloudflareImages'
   import Source from '$lib/components/source/Source.svelte'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
   import AuthorChips from '$lib/components/chips/AuthorChips.svelte'
@@ -24,7 +24,7 @@
 </script>
 
 
-<Head { title } ogImageId={ OG_SOURCES } description="Scientific evidence that aligns with our goal!" url="sources" />
+<Head { title } ogImageId={ CF_OG_SOURCES } description="Scientific evidence that aligns with our goal!" url="sources" />
 <Title h1="Sources" />
 
 { #if author || category }

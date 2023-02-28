@@ -92,6 +92,7 @@ model Quote {
   categories   QuoteCategory[]
 
   @@index([sourceId])
+  @@fulltext([text])
 }
 
 model QuoteCategory {

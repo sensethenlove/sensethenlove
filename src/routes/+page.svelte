@@ -4,7 +4,7 @@
   import Title from '$lib/components/Title.svelte'
   import Source from '$lib/components/source/Source.svelte'
   import AboutUs from '$lib/components/AboutUs.svelte'
-  import { OG_HOME } from '$lib/images/cloudflareImages'
+  import { CF_OG_HOME } from '$lib/util/cloudflareImages'
   import OurSocials from '$lib/components/OurSocials.svelte'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
   import NewsletterSignUp from '$lib/components/forms/NewsletterSignUp.svelte'
@@ -12,7 +12,7 @@
 </script>
 
 
-<Head title="Home" ogImageId={ OG_HOME } description="Welcome to Sense Then Love!" />
+<Head title="Home" ogImageId={ CF_OG_HOME } description="Welcome to Sense Then Love!" />
 <Title h1="Home" />
 <Title h3="Welcome to Sense Then Love!" />
 <AboutUs />

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores'
   import { afterNavigate } from '$app/navigation'
-  import loading from '$lib/images/loading.svg'
+  import SVG_LOADING from '$lib/svg/SVG_LOADING.svg'
 
   export let label: string = ''
   export let css: string = ''
@@ -16,7 +16,7 @@
 <a { href } class="{ css } loading-link { isLoading ? 'is-loading' : '' } loading-link--loading-size-{ loadWidth }" on:click={ () => { $page.route.id !== href ? isLoading = true : null } }>
   <slot/>
   <span>{ label }</span>
-  { @html loading }
+  { @html SVG_LOADING }
 </a>
 
 

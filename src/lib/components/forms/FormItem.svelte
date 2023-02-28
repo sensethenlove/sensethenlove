@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import initImageFormItem from '$lib/form/initImageFormItem'
   import EditableDiv from '$lib/components/EditableDiv.svelte'
 
@@ -9,11 +10,14 @@
   export let resetCounter: number
   export let maxWidth: string = ''
   export let type: string = 'text'
+  export let autocomplete: string = ''
   export let value: string | null = ''
   export let serverImageId: string = ''
+  export let focusOnInit: boolean = false
   export let checkboxValue: boolean | null = false
 
   let itemErrors: any
+  let input: HTMLInputElement
 
   $: if (errors) itemErrors = errors?.[ name ]?._errors
 
@@ -28,6 +32,12 @@
     imageVariables.fileElement.value = ''
     imageVariables.serverImage.removeAttribute('src') // if we set src to an empty string some browsers will set src to the url of the page
     imageVariables.previewImage.removeAttribute('src') // if we set src to an empty string some browsers will set src to the url of the page
+  }
+
+  if (focusOnInit) {
+    onMount(() => {
+      input.focus()
+    })
   }
 </script>
 
@@ -55,7 +65,7 @@
     <input class={ itemErrors?.length ? 'error': '' } on:input={ () => { clearErrors() } } { name } { id } type="file" accept=".jpg, .jpeg, .png" on:change={ imageVariables.onFileSelected  } bind:this={ imageVariables.fileElement } />
   { :else }
     <label for={ id }>{ label }</label>
-    <input { value } class={ itemErrors?.length ? 'error': '' } on:input={ () => { clearErrors() } } { name } { id } { type } />
+    <input bind:this={ input } { value } { autocomplete } class={ itemErrors?.length ? 'error': '' } on:input={ () => { clearErrors() } } { name } { id } { type } />
   { /if }
   { #if itemErrors?.length }
     { #each itemErrors as error }

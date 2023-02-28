@@ -2,7 +2,7 @@
   import Title from '$lib/components/Title.svelte'
   import schema from '$lib/schema/newsletterSignUp'
   import Form from '$lib/components/forms/Form.svelte'
-  import type { FormInputs, FormOnSuccess } from '$lib/util/types'
+  import type { FormInputs, FormToastOnSuccess } from '$lib/util/types'
 
   const inputs: FormInputs = [
     [
@@ -12,9 +12,9 @@
     { name: 'email', label: 'Email', type: 'email' },
   ]
 
-  const onSuccess = (({ fields }) => `Thank you for signing up ${ fields.firstName.toString() }!`) satisfies FormOnSuccess
+  const toastOnSuccess = (({ fields }) => `Thank you for signing up ${ fields.firstName.toString() }!`) satisfies FormToastOnSuccess
 </script>
 
 
 <Title h3="Subscribe to our Weekly Newsletter?!" noBottom={ true } />
-<Form { inputs } { schema } { onSuccess } action="newsletterSignUp" buttonText="Subscribe" />
+<Form { inputs } { schema } { toastOnSuccess } action="newsletterSignUp" buttonText="Subscribe" />

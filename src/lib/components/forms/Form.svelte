@@ -5,25 +5,36 @@
   import turnstileFormItem from '$lib/turnstile/formItem'
   import Button from '$lib/components/forms/Button.svelte'
   import FormItem from '$lib/components/forms/FormItem.svelte'
-  import type { FormInputs, FormOnSuccess } from '$lib/util/types'
+  import type { FormInputs, FormOnSuccess, FormToastOnSuccess, FormOnSubmitValidate } from '$lib/util/types'
 
   export let schema: any
   export let action: string
   export let css: string = ''
   export let inputs: FormInputs
   export let reset: boolean = true
-  export let onSuccess: FormOnSuccess
   export let buttonText: string = 'Send'
+  export let onSuccess: FormOnSuccess = () => {}
+  export let toastOnSuccess: FormToastOnSuccess = () => ''
+  export let onSubmitValidate: FormOnSubmitValidate = () => true
 
   let errors: any
   let resetCounter = 0
   let isLoading = false
 
   const onSubmit = (({ data, cancel }) => {
+    let doCancel = false
     const fields = Object.fromEntries(data.entries())
     const validationResponse = schema.safeParse(fields)
 
-    if (validationResponse.success) {
+    if (!validationResponse.success) {
+      doCancel = true
+      errors = validationResponse.error.format()
+    }
+
+    if (!onSubmitValidate(fields)) doCancel = true
+
+    if (doCancel) cancel()
+    else {
       isLoading = true
 
       return async ({ update, result }: { update: any, result: any }) => {
@@ -38,18 +49,18 @@
             errors = result.data
             break
           case 'success':
-            result?.data?.$localHref ? // if a $localHref has been returned by the action (something to click locally that we wouldn't click in qa or prod)
-              showToast({ type: 'success', items: [ onSuccess({ fields, data: result?.data }), result.data.$localHref ] }) : // show $localHref in a toast + standard success toast
-              showToast({ type: 'success', items: [ onSuccess({ fields, data: result?.data }) ] }) // show standard success toast
+            const successMessage = toastOnSuccess({ fields, data: result?.data })
+
+            if (successMessage) showToast({ type: 'success', items: [ successMessage ] })
+            if (result?.data?.$localHref) showToast({ type: 'success', items: [ `<a href="${ result?.data?.$localHref }">Local Link</a>` ] }) // if a $localHref has been returned by the action (something to click locally that we wouldn't click in qa or prod)
             if (reset !== false) resetCounter++
+
+            onSuccess({ fields, data: result?.data })
             break
         }
 
         update({ reset }) // continue form flow
       }
-    } else {
-      errors = validationResponse.error.format()
-      cancel()
     }
   }) satisfies SubmitFunction
 </script>
@@ -66,7 +77,7 @@
             { /each }
           </div>
         { :else }
-          <FormItem { resetCounter } name={ input.name } label={ input.label } value={ input.value } checkboxValue={ input.checkboxValue } type={ input.type || 'text' } { errors } css={ input.hidden ? 'hidden' : '' } serverImageId={ input.serverImageId || '' } maxWidth={ input.maxWidth } />
+          <FormItem { resetCounter } name={ input.name } label={ input.label } value={ input.value } checkboxValue={ input.checkboxValue } type={ input.type || 'text' } { errors } css={ input.hidden ? 'hidden' : '' } serverImageId={ input.serverImageId || '' } maxWidth={ input.maxWidth } focusOnInit={ input.focusOnInit } autocomplete={ input.autocomplete } />
         { /if}
       {/each }
     { /if }

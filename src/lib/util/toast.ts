@@ -1,24 +1,25 @@
+let wrapper: HTMLElement | null
+
 export function showToast({ type, items }: { type: 'success' | 'error' | 'info', items: string[] }) {
   let icon
   const id = crypto.randomUUID()
-  const wrapper = document.getElementById('toast-wrapper')
 
-  function removeToast(id: string) {
-    const child = document.getElementById(id)
+  if (!wrapper) wrapper = document.getElementById('toast-wrapper')
 
-    if (child && wrapper) {
-      child.classList.add('hide')
-      child.style.marginBottom = `-${ child.offsetHeight }px`
+  function removeToast(toast: HTMLElement) {
+    if (toast && wrapper) {
+      toast.classList.add('hide')
+      toast.style.marginBottom = `-${toast.offsetHeight }px`
 
       setTimeout(() => {
-        wrapper.removeChild(child)
-      }, 999)
+        wrapper?.removeChild(toast)
+      }, 810)
     }
   }
 
   if (!window.closeToast) {
-    window.closeToast = (id) => {
-      removeToast(id)
+    window.closeToast = (toast: HTMLElement) => {
+      removeToast(toast)
     }
   }
 
@@ -43,22 +44,23 @@ export function showToast({ type, items }: { type: 'success' | 'error' | 'info',
       <div id="${ id }" class="toast ${ type }">
         <div class="icon-wrapper">${ icon }</div>
         ${ inner }
-        <button class="close" data-toast-button--for="${ id }">
+        <button class="close">
           <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
         </button>
       </div>
     `)
 
-    const button = document.querySelector(`[data-toast-button--for="${id}"]`) 
+    const toast = document.getElementById(id)
+    const button = toast?.querySelector('button') 
 
-    if (button) {
+    if (toast && button) {
       button.addEventListener('click', () => {
-        window.closeToast(id)
+        window.closeToast(toast)
       })
-    }
 
-    setTimeout(() => {
-      removeToast(id)
-    }, 9000)
+      setTimeout(() => {
+        removeToast(toast)
+      }, 9000)
+    }
   }
 }

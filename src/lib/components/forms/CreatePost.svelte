@@ -2,16 +2,16 @@
   import schema from '$lib/schema/createPost'
   import Title from '$lib/components/Title.svelte'
   import Form from '$lib/components/forms/Form.svelte'
-  import type { FormInputs, FormOnSuccess } from '$lib/util/types'
+  import type { FormInputs, FormToastOnSuccess } from '$lib/util/types'
 
   const inputs: FormInputs = [
     { name: 'image', label: 'Image', type: 'image' },
     { name: 'content', label: 'Content', type: 'content-editable' },
   ]
 
-  const onSuccess = (() => 'Posted!') satisfies FormOnSuccess
+  const toastOnSuccess = (() => 'Posted!') satisfies FormToastOnSuccess
 </script>
 
 
 <Title h3="Share lovely thoughts, goals & achievements!" noBottom={ true } />
-<Form css="stl--create-post" { inputs } { schema } { onSuccess } action="createPost" buttonText="Post" />
+<Form css="stl--create-post" { inputs } { schema } { toastOnSuccess } action="createPost" buttonText="Post" />

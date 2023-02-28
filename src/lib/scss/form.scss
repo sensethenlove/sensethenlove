@@ -111,7 +111,7 @@
   }
 }
 
-button {
+button.brand {
   color: #FFF;
   padding: .9rem;
   font-size: 1.5rem;
@@ -127,11 +127,9 @@ button {
     font-size: 1.8rem;
     padding: 1.2rem 1.6rem;
   }
-  &.brand {
-    &:disabled {
-      opacity: 0.3;
-      cursor: default;
-    }
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
   }
 
   &.loading {

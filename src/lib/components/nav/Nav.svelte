@@ -2,13 +2,13 @@
   import '$lib/components/nav/Nav.scss'
   import { page, navigating } from '$app/stores'
   import LoadingLink from '../LoadingLink.svelte'
-  import { LOGO } from '$lib/images/cloudflareImages'
-  import home from '$lib/images/nav/home.svg'
-  import social from '$lib/images/nav/social.svg'
-  import contact from '$lib/images/nav/contact.svg'
-  import sources from '$lib/images/nav/sources.svg'
-  import support from '$lib/images/nav/support.svg'
   import getImageUrl from '$lib/file/getImageUrl'
+  import SVG_HOME from '$lib/svg/nav/SVG_HOME.svg'
+  import SVG_SOCIAL from '$lib/svg/nav/SVG_SOCIAL.svg'
+  import { CF_LOGO } from '$lib/util/cloudflareImages'
+  import SVG_CONTACT from '$lib/svg/nav/SVG_CONTACT.svg'
+  import SVG_SOURCES from '$lib/svg/nav/SVG_SOURCES.svg'
+  import SVG_SUPPORT from '$lib/svg/nav/SVG_SUPPORT.svg'
   
   let activeRoute: string | null | undefined
   $: if ($navigating) setActiveRoute(true)
@@ -28,7 +28,7 @@
 <div class="nav">
   <div class="logo">
     <LoadingLink loadWidth="huge">
-      <img src={ getImageUrl(LOGO) } alt="The logo for Sense Then Love"/>
+      <img src={ getImageUrl(CF_LOGO) } alt="The logo for Sense Then Love"/>
     </LoadingLink>
   </div>
 
@@ -37,10 +37,10 @@
   </div>
 
   <nav>
-    <LoadingLink label="Home" loadWidth="big" css="item { activeRoute === '/' ? 'active' : '' }">{ @html home }</LoadingLink>
-    <LoadingLink label="Social" href="/social" loadWidth="big" css="item { activeRoute?.includes('/social') ? 'active' : '' }">{ @html social }</LoadingLink>
-    <LoadingLink label="Sources" href="/sources" loadWidth="big" css="item { activeRoute?.includes('/sources') ? 'active' : '' }">{ @html sources }</LoadingLink>
-    <LoadingLink label="Contact" href="/contact" loadWidth="big" css="item { activeRoute === '/contact' ? 'active' : '' }">{ @html contact }</LoadingLink>
-    <LoadingLink label="Support" href="/support" loadWidth="big" css="item { activeRoute === '/support' ? 'active' : '' }">{ @html support }</LoadingLink>
+    <LoadingLink label="Home" loadWidth="big" css="item { activeRoute === '/' ? 'active' : '' }">{ @html SVG_HOME }</LoadingLink>
+    <LoadingLink label="Social" href="/social" loadWidth="big" css="item { activeRoute?.includes('/social') ? 'active' : '' }">{ @html SVG_SOCIAL }</LoadingLink>
+    <LoadingLink label="Sources" href="/sources" loadWidth="big" css="item { activeRoute?.includes('/sources') ? 'active' : '' }">{ @html SVG_SOURCES }</LoadingLink>
+    <LoadingLink label="Contact" href="/contact" loadWidth="big" css="item { activeRoute === '/contact' ? 'active' : '' }">{ @html SVG_CONTACT }</LoadingLink>
+    <LoadingLink label="Support" href="/support" loadWidth="big" css="item { activeRoute === '/support' ? 'active' : '' }">{ @html SVG_SUPPORT }</LoadingLink>
   </nav>
 </div>

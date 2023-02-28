@@ -1,7 +1,7 @@
 <script lang="ts">
   import { afterNavigate } from '$app/navigation'
-  import pubmed from '$lib/images/logo/pubmed.svg'
-  import academia from '$lib/images/logo/academia.svg'
+  import SVG_PUBMED from '$lib/svg/logo/SVG_PUBMED.svg'
+  import SVG_ACADEMIA from '$lib/svg/logo/SVG_ACADEMIA.svg'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
   import type { Source, Author, QuoteCategory } from '$lib/util/types'
   import QuoteCategoryChips from '$lib/components/chips/QuoteCategoryChips.svelte'
@@ -20,12 +20,12 @@
   <div class="head">
     { #if source.urlType === 'ACADEMIA' }
       <a class="publisher" href={ source.url } target="_blank" rel="noreferrer" aria-hidden="true">
-      { @html academia }
+      { @html SVG_ACADEMIA }
       </a>
     { /if }
     { #if source.urlType === 'PUBMED' }
       <a class="publisher" href={ source.url } target="_blank" rel="noreferrer" aria-hidden="true">
-        { @html pubmed }
+        { @html SVG_PUBMED }
       </a>
     { /if }
     <div class="flex">
@@ -35,12 +35,14 @@
           <a href={ source.url } target="_blank" rel="noreferrer">{ source.publicationLocation }{ #if source.publicationYear }, { source.publicationYear }{ /if }</a>
           <span>⋅</span>
         { /if }
-        { #each source.authors as a, i }
-          <LoadingLink href="/sources{ category?.slug ? '/' + category.slug : '' }?author={ a.slug }" css="{ author?.id === a.id ? 'active': '' }" label="{ a.name }" />
-          { #if i+1 !== source.authors.length }
-            <span>⋅</span>
-          { /if }
-        { /each }
+        { #if source.authors }
+          { #each source.authors as a, i }
+            <LoadingLink href="/sources{ category?.slug ? '/' + category.slug : '' }?author={ a.slug }" css="{ author?.id === a.id ? 'active': '' }" label="{ a.name }" />
+            { #if i+1 !== source.authors.length }
+              <span>⋅</span>
+            { /if }
+          { /each }
+        { /if }
       </p>
     </div>
   </div>

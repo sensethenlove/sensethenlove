@@ -16,8 +16,8 @@ import type { // Import Prisma Types + Prisma Client
  * For some reason properties defined as a one to many or many to many in schema.prisma do not show up here, so we must include them here too
  */
 export interface Source extends SourcePrisma {
-  authors: Author[] // schema.prisma property
-  favoriteQuotes: Quote[] // schema.prisma property
+  authors?: Author[] // schema.prisma property
+  favoriteQuotes?: Quote[] // schema.prisma property
   categories?: QuoteCategory[]
 }
 
@@ -52,7 +52,7 @@ declare global { // Node global types
       render: (element: string | HTMLElement, options: TurnstileOptions) => string;
       remove: (widgetId: string) => void;
     },
-    closeToast: (id: string) => void // For /$lib/util/toast.ts
+    closeToast: (toast: HTMLElement) => void // For /$lib/util/toast.ts
   }
 }
 
@@ -77,7 +77,9 @@ export type FormFields = {
   [k: string]: FormDataEntryValue
 }
 
-export type FormOnSuccess = ({ fields, data }: { fields: FormFields, data: any }) => string
+export type FormOnSuccess = ({ fields, data }: { fields: FormFields, data: any }) => void
+export type FormToastOnSuccess = ({ fields, data }: { fields: FormFields, data: any }) => string
+export type FormOnSubmitValidate = (fields: FormFields) => boolean
 
 export type FormInput = {
   name: string,
@@ -88,6 +90,8 @@ export type FormInput = {
   hidden?: boolean,
   serverImageId?: string | null,
   maxWidth?: string,
+  focusOnInit?: boolean,
+  autocomplete?: string,
 }
 
 export type FormInputs = Array<FormInput | Array<FormInput>>
@@ -132,3 +136,6 @@ export type VerifyAccessAndRefreshTokenResponseData = {
 
 export type VerifySignInEmailTokenResponse = Promise<VerifySignInEmailTokenResponseData>
 export type VerifyAccessAndRefreshEmailTokenResponse = Promise<VerifyAccessAndRefreshTokenResponseData>
+
+export type HideModal = () => void
+export type ShowModal = () => void

@@ -1,4 +1,5 @@
 import type { Actions } from './$types'
+import search from '$lib/actions/search'
 import type { Source } from '$lib/util/types'
 import type { PageServerLoad } from './$types'
 import routeCatch from '$lib/catch/routeCatch'
@@ -16,12 +17,13 @@ export const load = (async () => {
 
 
 export const actions = {
+  search,
   newsletterSignUp
 } satisfies Actions
 
 
 function sourceToResponse(source: Source | null) {
-  if (source) {
+  if (source?.favoriteQuotes) {
     let sourceCategories = new Map() // use map so duplicates are removed
 
     for (const quote of source.favoriteQuotes) {
