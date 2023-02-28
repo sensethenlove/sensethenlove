@@ -6,12 +6,12 @@ importers:
     specifiers:
       '@cloudflare/workers-types': ^4.20230221.0
       '@poppanator/sveltekit-svg': ^2.1.2
-      '@prisma/client': ^4.10.1
+      '@prisma/client': ^4.11.0
       '@sveltejs/adapter-cloudflare-workers': ^1.0.6
-      '@sveltejs/kit': 1.8.5
+      '@sveltejs/kit': ^1.8.8
       '@types/sanitize-html': ^2.8.0
       buffer: ^6.0.3
-      prisma: ^4.10.1
+      prisma: ^4.11.0
       sanitize-html: ^2.10.0
       sass: ^1.58.3
       svelte: ^3.55.1
@@ -23,12 +23,12 @@ importers:
     devDependencies:
       '@cloudflare/workers-types': 4.20230221.0
       '@poppanator/sveltekit-svg': 2.1.2_svelte@3.55.1+vite@4.1.4
-      '@prisma/client': 4.10.1_prisma@4.10.1
-      '@sveltejs/adapter-cloudflare-workers': 1.0.6_@sveltejs+kit@1.8.5
-      '@sveltejs/kit': 1.8.5_svelte@3.55.1+vite@4.1.4
+      '@prisma/client': 4.11.0_prisma@4.11.0
+      '@sveltejs/adapter-cloudflare-workers': 1.0.6_@sveltejs+kit@1.8.8
+      '@sveltejs/kit': 1.8.8_svelte@3.55.1+vite@4.1.4
       '@types/sanitize-html': 2.8.0
       buffer: 6.0.3
-      prisma: 4.10.1
+      prisma: 4.11.0
       sanitize-html: 2.10.0
       sass: 1.58.3
       svelte: 3.55.1
@@ -691,8 +691,8 @@ packages:
       vite: 4.1.4_sass@1.58.3
     dev: true
 
-  /@prisma/client/4.10.1_prisma@4.10.1:
-    resolution: {integrity: sha512-VonXLJZybdt8e5XZH5vnIGCRNnIh6OMX1FS3H/yzMGLT3STj5TJ/OkMcednrvELgk8PK89Vo3aSh51MWNO0axA==}
+  /@prisma/client/4.11.0_prisma@4.11.0:
+    resolution: {integrity: sha512-0INHYkQIqgAjrt7NzhYpeDQi8x3Nvylc2uDngKyFDDj1tTRQ4uV1HnVmd1sQEraeVAN63SOK0dgCKQHlvjL0KA==}
     engines: {node: '>=14.17'}
     requiresBuild: true
     peerDependencies:
@@ -701,32 +701,32 @@ packages:
       prisma:
         optional: true
     dependencies:
-      '@prisma/engines-version': 4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19
-      prisma: 4.10.1
+      '@prisma/engines-version': 4.11.0-57.8fde8fef4033376662cad983758335009d522acb
+      prisma: 4.11.0
     dev: true
 
-  /@prisma/engines-version/4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19:
-    resolution: {integrity: sha512-tsjTho7laDhf9EJ9EnDxAPEf7yrigSMDhniXeU4YoWc7azHAs4GPxRi2P9LTFonmHkJLMOLjR77J1oIP8Ife1w==}
+  /@prisma/engines-version/4.11.0-57.8fde8fef4033376662cad983758335009d522acb:
+    resolution: {integrity: sha512-3Vd8Qq06d5xD8Ch5WauWcUUrsVPdMC6Ge8ILji8RFfyhUpqon6qSyGM0apvr1O8n8qH8cKkEFqRPsYjuz5r83g==}
     dev: true
 
-  /@prisma/engines/4.10.1:
-    resolution: {integrity: sha512-B3tcTxjx196nuAu1GOTKO9cGPUgTFHYRdkPkTS4m5ptb2cejyBlH9X7GOfSt3xlI7p4zAJDshJP4JJivCg9ouA==}
+  /@prisma/engines/4.11.0:
+    resolution: {integrity: sha512-0AEBi2HXGV02cf6ASsBPhfsVIbVSDC9nbQed4iiY5eHttW9ZtMxHThuKZE1pnESbr8HRdgmFSa/Kn4OSNYuibg==}
     requiresBuild: true
     dev: true
 
-  /@sveltejs/adapter-cloudflare-workers/1.0.6_@sveltejs+kit@1.8.5:
+  /@sveltejs/adapter-cloudflare-workers/1.0.6_@sveltejs+kit@1.8.8:
     resolution: {integrity: sha512-1+Kym0tqq9eXfNFJbgTquMQdawM3zBSBesJPQCrNHWsqh0nRJDcy4vidm0BJ3rWAoE9gVhewsONLrtNjY86/1g==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
       '@cloudflare/workers-types': 4.20230221.0
       '@iarna/toml': 2.2.5
-      '@sveltejs/kit': 1.8.5_svelte@3.55.1+vite@4.1.4
+      '@sveltejs/kit': 1.8.8_svelte@3.55.1+vite@4.1.4
       esbuild: 0.16.17
     dev: true
 
-  /@sveltejs/kit/1.8.5_svelte@3.55.1+vite@4.1.4:
-    resolution: {integrity: sha512-b6kbjVAivoPd3oL9IVBaZBWiuHeI0qBKfszSDXcqsPfiSMyUK7ilHDFVSWNn+2EMPO48+87iuho71yTCOXZE3w==}
+  /@sveltejs/kit/1.8.8_svelte@3.55.1+vite@4.1.4:
+    resolution: {integrity: sha512-64bEcgIECQ8TPQ7sCMo1X1IMSkFjTP8MaKB4YpG4Tw3rvKDaVxBt6MuxdvMShDJu12CpXv692AY4jhfNUPwcmQ==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -1582,13 +1582,13 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /prisma/4.10.1:
-    resolution: {integrity: sha512-0jDxgg+DruB1kHVNlcspXQB9au62IFfVg9drkhzXudszHNUAQn0lVuu+T8np0uC2z1nKD5S3qPeCyR8u5YFLnA==}
+  /prisma/4.11.0:
+    resolution: {integrity: sha512-4zZmBXssPUEiX+GeL0MUq/Yyie4ltiKmGu7jCJFnYMamNrrulTBc+D+QwAQSJ01tyzeGHlD13kOnqPwRipnlNw==}
     engines: {node: '>=14.17'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.10.1
+      '@prisma/engines': 4.11.0
     dev: true
 
   /queue-microtask/1.2.3:

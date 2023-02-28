@@ -55,7 +55,6 @@
     padding: 9rem 0.9rem;
     overflow: auto;
     transition: all 0.9s;
-    background-color: rgba(0, 0, 0, 0.693);
     z-index: $zindex-modal-backdrop;
     cursor: default;
     &.hide {
@@ -92,5 +91,17 @@
   &__body {
     margin: 0;
     padding: 1.8rem;
+  }
+}
+
+.theme--light {
+  .modal--container {
+    background-color: rgba(white, 0.369);
+  }
+}
+
+.theme--dark {
+  .modal--container {
+    background-color: rgba(black, 0.693);
   }
 }

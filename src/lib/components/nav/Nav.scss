@@ -129,6 +129,10 @@
         }
       }
 
+      .loading-icon {
+        transform: translateY(-0.3rem);
+      }
+
       span {
         font-size: 1.5rem;
         transition: all 0.25s;
