@@ -10,7 +10,7 @@
 
   if (typeof data.error === 'string') {
     if (data.error.includes('VerifyTokenExpiredError')) heading = 'Sign in link expired'
-    else if (data.error.includes('VerifyTokenIDMismatchError')) heading = 'Computer & browser that started the sign in process must match the computer & browser that clicks the email link'
+    else if (data.error.includes('VerifyTokenIDMismatchError')) heading = 'Computer & browser that starts the sign in process must match the computer & browser that clicks the email link'
     else heading = 'Email link is invalid'
   }
 </script>

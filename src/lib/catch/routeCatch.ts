@@ -4,7 +4,7 @@ import { RedirectError } from '$lib/util/errors'
 
 export default (e: any) => {
   let error = 'We apologize, there was an error creating this page'
-
+  console.log(e instanceof RedirectError, e.message)
   if (e instanceof RedirectError) throw redirect(303, e.message) // redirects are the smoothest w/ a throw b4 hand
   else if (typeof e?.toString === 'function') error = e?.toString()
 
