@@ -8,7 +8,7 @@ importers:
       '@poppanator/sveltekit-svg': ^2.1.2
       '@prisma/client': ^4.11.0
       '@sveltejs/adapter-cloudflare-workers': ^1.0.6
-      '@sveltejs/kit': ^1.8.8
+      '@sveltejs/kit': ^1.9.1
       '@types/sanitize-html': ^2.8.0
       buffer: ^6.0.3
       prisma: ^4.11.0
@@ -24,8 +24,8 @@ importers:
       '@cloudflare/workers-types': 4.20230221.0
       '@poppanator/sveltekit-svg': 2.1.2_svelte@3.55.1+vite@4.1.4
       '@prisma/client': 4.11.0_prisma@4.11.0
-      '@sveltejs/adapter-cloudflare-workers': 1.0.6_@sveltejs+kit@1.8.8
-      '@sveltejs/kit': 1.8.8_svelte@3.55.1+vite@4.1.4
+      '@sveltejs/adapter-cloudflare-workers': 1.0.6_@sveltejs+kit@1.9.1
+      '@sveltejs/kit': 1.9.1_svelte@3.55.1+vite@4.1.4
       '@types/sanitize-html': 2.8.0
       buffer: 6.0.3
       prisma: 4.11.0
@@ -714,19 +714,19 @@ packages:
     requiresBuild: true
     dev: true
 
-  /@sveltejs/adapter-cloudflare-workers/1.0.6_@sveltejs+kit@1.8.8:
+  /@sveltejs/adapter-cloudflare-workers/1.0.6_@sveltejs+kit@1.9.1:
     resolution: {integrity: sha512-1+Kym0tqq9eXfNFJbgTquMQdawM3zBSBesJPQCrNHWsqh0nRJDcy4vidm0BJ3rWAoE9gVhewsONLrtNjY86/1g==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
       '@cloudflare/workers-types': 4.20230221.0
       '@iarna/toml': 2.2.5
-      '@sveltejs/kit': 1.8.8_svelte@3.55.1+vite@4.1.4
+      '@sveltejs/kit': 1.9.1_svelte@3.55.1+vite@4.1.4
       esbuild: 0.16.17
     dev: true
 
-  /@sveltejs/kit/1.8.8_svelte@3.55.1+vite@4.1.4:
-    resolution: {integrity: sha512-64bEcgIECQ8TPQ7sCMo1X1IMSkFjTP8MaKB4YpG4Tw3rvKDaVxBt6MuxdvMShDJu12CpXv692AY4jhfNUPwcmQ==}
+  /@sveltejs/kit/1.9.1_svelte@3.55.1+vite@4.1.4:
+    resolution: {integrity: sha512-SC2pTnaloAL+6744tWl1/b1zGAhZX2zmgmUmKV4Y6nx/y5gP6+MTzY6SC74PYUWSlOPumi8wZ40hQ2RExCFuhg==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true

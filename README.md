@@ -10,6 +10,7 @@
 - [Prisma Data Platform](https://www.prisma.io/docs/data-platform)
 - [Prisma Client](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference)
 - [Prisma Schema](https://www.prisma.io/docs/concepts/components/prisma-schema)
+- [Prisma Full Text Search](https://www.prisma.io/docs/concepts/components/prisma-client/full-text-search)
 - [PlanetScale](https://planetscale.com/docs)
 - [Cloudflare Workers](https://kit.svelte.dev/docs/adapter-cloudflare-workers)
 - [Cloudflare Images](https://developers.cloudflare.com/images/)
