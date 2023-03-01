@@ -47,11 +47,6 @@
   .us {
     max-width: 51rem;
 
-    h3 {
-      text-align: left;
-      margin-bottom: 0;
-    }
-
     ol {
       margin-top: 0;
     }
