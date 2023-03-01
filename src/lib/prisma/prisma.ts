@@ -1,5 +1,5 @@
 import { PUBLIC_ENVIRONMENT } from '$env/static/public'
-import { QA_DATABASE_URL, PROD_DATABASE_URL, PRISMA_DATABASE_URL } from '$env/static/private'
+import { QA_DATABASE_URL, QA_PRISMA_DATABASE_URL, PROD_DATABASE_URL, PROD_PRISMA_DATABASE_URL } from '$env/static/private'
 
 
 // Prisma Recommendation: "Your application should generally only create one instance of PrismaClient": https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/instantiate-prisma-client
@@ -12,8 +12,8 @@ export default async () => {
       global.prisma = new client.PrismaClient({ // https://github.com/prisma/prisma/issues/13771#issuecomment-1204295665
         datasources: {
           db: {
-            url: QA_DATABASE_URL // uncomment to point to qa database
-            // url: PROD_DATABASE_URL // uncomment to point to production database
+            url: QA_DATABASE_URL
+            // url: PROD_DATABASE_URL
           }
         }
       })
@@ -24,7 +24,8 @@ export default async () => {
     return new client.PrismaClient({ // https://github.com/prisma/prisma/issues/13771#issuecomment-1204295665
       datasources: {
         db: {
-          url: PRISMA_DATABASE_URL
+          url: QA_PRISMA_DATABASE_URL
+          // url: PROD_PRISMA_DATABASE_URL
         }
       }
     })
