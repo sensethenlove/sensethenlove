@@ -19,17 +19,17 @@ import prismaMap from './prismaMap.js'
 
     if (values) {
       for (const [i, line] of schemaLines.entries()) {
-        if (line.match('QA_PRISMA_DATABASE_URL')) schemaLines[i] = values.schemaPrismaQA
-        else if (line.match('PROD_PRISMA_DATABASE_URL')) schemaLines[i] = values.schemaPrismaPROD
-        else if (line.match('QA_DATABASE_URL')) schemaLines[i] = values.schemaPlanetscaleQA
-        else if (line.match('PROD_DATABASE_URL')) schemaLines[i] = values.schemaPlanetscalePROD
+        if (line.match('QA_PRISMA_URL')) schemaLines[i] = values.schemaPrismaQA
+        else if (line.match('PROD_PRISMA_URL')) schemaLines[i] = values.schemaPrismaPROD
+        else if (line.match('QA_PLANETSCALE_URL')) schemaLines[i] = values.schemaPlanetscaleQA
+        else if (line.match('PROD_PLANETSCALE_URL')) schemaLines[i] = values.schemaPlanetscalePROD
       }
 
       for (const [i, line] of prismaLines.entries()) {
-        if (line.match('url: QA_DATABASE_URL')) prismaLines[i] = values.prismaLocalQA
-        else if (line.match('url: PROD_DATABASE_URL')) prismaLines[i] = values.prismaLocalProd
-        else if (line.match('url: QA_PRISMA_DATABASE_URL')) prismaLines[i] = values.prismaElseQA
-        else if (line.match('url: PROD_PRISMA_DATABASE_URL')) prismaLines[i] = values.prismaElseProd
+        if (line.match('url: QA_PLANETSCALE_URL')) prismaLines[i] = values.prismaLocalQA
+        else if (line.match('url: PROD_PLANETSCALE_URL')) prismaLines[i] = values.prismaLocalProd
+        else if (line.match('url: QA_PRISMA_URL')) prismaLines[i] = values.prismaElseQA
+        else if (line.match('url: PROD_PRISMA_URL')) prismaLines[i] = values.prismaElseProd
       }
     }
 
