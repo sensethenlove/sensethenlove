@@ -19,8 +19,10 @@ import prismaMap from './prismaMap.js'
 
     if (values) {
       for (const [i, line] of schemaLines.entries()) {
-        if (line.match('QA_PRISMA_DATABASE_URL')) schemaLines[i] = values.schemaQA
-        else if (line.match('PROD_PRISMA_DATABASE_URL')) schemaLines[i] = values.schemaPROD
+        if (line.match('QA_PRISMA_DATABASE_URL')) schemaLines[i] = values.schemaPrismaQA
+        else if (line.match('PROD_PRISMA_DATABASE_URL')) schemaLines[i] = values.schemaPrismaPROD
+        else if (line.match('QA_DATABASE_URL')) schemaLines[i] = values.schemaPlanetscaleQA
+        else if (line.match('PROD_DATABASE_URL')) schemaLines[i] = values.schemaPlanetscalePROD
       }
 
       for (const [i, line] of prismaLines.entries()) {

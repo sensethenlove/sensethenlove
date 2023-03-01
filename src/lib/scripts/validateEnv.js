@@ -10,10 +10,11 @@ import envMap from './envMap.js'
     const PATH = '.env'
     const environment = process.argv[2]
     const text = await fs.promises.readFile(PATH, 'utf-8')
+    const value = map.get(environment)
 
-    if (!text.match(`PUBLIC_ENVIRONMENT = '${ environment}'`)) throw new Error(`Put this in the .env file please PUBLIC_ENVIRONMENT = '${ environment }'`)
-    if (!text.match(`PUBLIC_HOST = '${ map.get(environment) }'`)) throw new Error(`Put this in the .env file please PUBLIC_HOST = '${ map.get(environment) }'`)
+    if (!text.match(`PUBLIC_ENVIRONMENT = '${ environment }'`)) throw new Error(`In the terminal run ${ value.write }`)
+    if (!text.match(`PUBLIC_HOST = '${ value.host }'`)) throw new Error(`In the terminal run ${ value.write }`)
 
-    console.log('💚 Successfully updated .env file')
+    console.log('💚 Successfully validated .env file')
   }
 })()

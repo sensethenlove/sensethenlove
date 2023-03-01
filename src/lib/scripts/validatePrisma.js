@@ -18,8 +18,10 @@ import prismaMap from './prismaMap.js'
     const values = map.get(process.argv[2])
 
     const found = {
-      schemaQA: false,
-      schemaPROD: false,
+      schemaPrismaQA: false,
+      schemaPrismaPROD: false,
+      schemaPlanetscaleQA: false,
+      schemaPlanetscalePROD: false,
       prismaLocalQA: false,
       prismaLocalProd: false,
       prismaElseQA: false,
@@ -28,8 +30,10 @@ import prismaMap from './prismaMap.js'
 
     if (values) {
       for (const [i, line] of schemaLines.entries()) {
-        if (line === values.schemaQA) found.schemaQA = true
-        else if (line === values.schemaPROD) found.schemaPROD = true
+        if (line === values.schemaPrismaQA) found.schemaPrismaQA = true
+        else if (line === values.schemaPrismaPROD) found.schemaPrismaPROD = true
+        else if (line === values.schemaPlanetscaleQA) found.schemaPlanetscaleQA = true
+        else if (line === values.schemaPlanetscalePROD) found.schemaPlanetscalePROD = true
       }
 
       for (const [i, line] of prismaLines.entries()) {
@@ -39,14 +43,11 @@ import prismaMap from './prismaMap.js'
         else if (line === values.prismaElseProd) found.prismaElseProd = true
       }
 
-      if (!found.schemaQA) throw new Error('Put this in the ' + SCHEMA_PATH + ' file please ' + values.schemaQA)
-      if (!found.schemaPROD) throw new Error('Put this in the ' + SCHEMA_PATH + ' file please ' + values.schemaPROD)
-      if (!found.prismaLocalQA) throw new Error('Put this in the ' + PRISMA_PATH + ' file please ' + values.prismaLocalQA)
-      if (!found.prismaLocalProd) throw new Error('Put this in the ' + PRISMA_PATH + ' file please ' + values.prismaLocalProd)
-      if (!found.prismaElseQA) throw new Error('Put this in the ' + PRISMA_PATH + ' file please ' + values.prismaElseQA)
-      if (!found.prismaElseProd) throw new Error('Put this in the ' + PRISMA_PATH + ' file please ' + values.prismaElseProd)
+      if (!found.schemaPrismaQA || !found.schemaPrismaPROD || !found.schemaPlanetscaleQA || !found.schemaPlanetscalePROD || !found.prismaLocalQA || !found.prismaLocalProd || !found.prismaElseQA || !found.prismaElseProd) {
+        throw new Error(`In the terminal run ${ values.write }`)
+      }
     }
 
-    console.log(`💜 Successfully updated "${ SCHEMA_PATH }" AND "${ PRISMA_PATH }"`)
+    console.log(`💜 Successfully validated "${ SCHEMA_PATH }" AND "${ PRISMA_PATH }"`)
   }
 })()

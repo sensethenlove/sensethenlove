@@ -4,7 +4,8 @@
 	"type": "module",
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
-		"dev": "node ./src/lib/scripts/writePrisma.js qa && node ./src/lib/scripts/writeEnv.js local && pnpm prisma generate && vite dev",
+		"local-write": "node ./src/lib/scripts/writePrisma.js qa && node ./src/lib/scripts/writeEnv.js local",
+		"dev": "pnpm local-write && pnpm prisma generate && vite dev",
 		"qa-write": "node ./src/lib/scripts/writePrisma.js qa && node ./src/lib/scripts/writeEnv.js qa",
 		"qa-push": "node ./src/lib/scripts/validatePrisma.js qa && node ./src/lib/scripts/validateEnv.js qa && pnpm check && git push",
 		"qa-deploy": "pnpm qa-write && pnpm prisma generate --data-proxy && pnpm check && pnpm build && pnpm wrangler publish --env qa",

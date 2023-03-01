@@ -13,7 +13,7 @@ import envMap from './envMap.js'
 
     const updated = text
       .replace(/PUBLIC_ENVIRONMENT.+/, `PUBLIC_ENVIRONMENT = '${ environment }'`)
-      .replace(/PUBLIC_HOST.+/, `PUBLIC_HOST = '${map.get(environment)}'`)
+      .replace(/PUBLIC_HOST.+/, `PUBLIC_HOST = '${ map.get(environment).host }'`)
 
     await fs.promises.writeFile(PATH, updated)
     console.log('💚 Successfully updated .env file')

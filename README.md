@@ -98,38 +98,47 @@ pnpm i
 pnpm dev
 ```
 
-## Validate code & then push to [Github](https://github.com/sensethenlove/sensethenlove)
+## Write to ./prisma/schema.prisma, ./src/lib/prisma/prisma.ts & .env files to prep for [github qa branch push](https://github.com/sensethenlove/sensethenlove/tree/qa) or [qa deploy](https://qa.sensethenlove.com)
 ```bash
-pnpm push
+pnpm qa-write
 ```
 
-## Deploy to QA
+## Write to ./prisma/schema.prisma, ./src/lib/prisma/prisma.ts & .env files to prep for [github main branch](https://github.com/sensethenlove/sensethenlove/tree/main) or [poduction deploy](https://sensethenlove.com)
 ```bash
-pnpm qa-live
+pnpm prod-write
 ```
 
-## Deploy to Production
+## Validate code & then push to [github qa branch](https://github.com/sensethenlove/sensethenlove/tree/qa)
 ```bash
-pnpm prod-live
+pnpm qa-push
 ```
 
-## Open [Prisma Studio](https://www.prisma.io/studio)
-1. Save schema @ `./prisma/schema.prisma` > `datasource db` > `url` w/ `env("QA_DATABASE_URL")` or `env("PROD_DATABASE_URL")`
+## Validate code & then push to [github main branch](https://github.com/sensethenlove/sensethenlove/tree/main)
 ```bash
-pnpm studio
+pnpm prod-push
+```
+
+## Deploy to [qa](https://qa.sensethenlove.com)
+```bash
+pnpm qa-deploy
+```
+
+## Deploy to [production](https://sensethenlove.com)
+```bash
+pnpm prod-deploy
 ```
 
 ## How to update database schema
-1. Update schema @ `./prisma/schema.prisma` & save the file w/ `datasource db` > `url` > `env("QA_DATABASE_URL")`
-1. Bash `pnpm schema` to push schema changes to `dev` branch in [PlanetScale](https://planetscale.com/docs)
+1. Bash `pnpm write-qa`
+1. Update schema @ `./prisma/schema.prisma`
+1. Bash `pnpm schema` to push schema changes to `qa` branch in [PlanetScale](https://planetscale.com/docs)
 1. Click `DASHBOARD_PLANETSCALE` link in `.apps.toml` file
 1. Click `Branches` tab
-1. Click `dev` link
+1. Click `qa` link
 1. Scroll to bottom of page
 1. Select `Deploy to main`
 1. Click `Create deploy request` button
 1. Click `Deploy changes`
-1. Before `pnpm push` OR `pnm prod-live` save schema @ `./prisma/schema.prisma` w/ `datasource db` > `url` > `env("PRISMA_DATABASE_URL")`
 
 ## View logs for production server
 ```bash
@@ -141,9 +150,15 @@ pnpm prod-logs
 pnpm qa-logs
 ```
 
-## [Updates all dependencies](https://pnpm.io/cli/update), adhering to ranges specified in package.json
+## [Updates all dependencies](https://pnpm.io/cli/update)
 ```bash
 pnpm up
+```
+
+## Open [Prisma Studio](https://www.prisma.io/studio)
+1. Save schema @ `./prisma/schema.prisma` > `datasource db` > `url` w/ `env("QA_DATABASE_URL")` or `env("PROD_DATABASE_URL")`
+```bash
+pnpm studio
 ```
 
 ## Format `schema.prisma` in [VSCodium](https://vscodium.com/) on save
