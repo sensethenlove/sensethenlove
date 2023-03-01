@@ -8,7 +8,7 @@
 		"push": "node ./src/lib/security/setEnv.js production && pnpm check && node ./prisma/validateSchemaPushToGit.js && git push",
 		"prod-live": "node ./src/lib/security/setEnv.js production && pnpm check && node ./prisma/setSchemaUrl.js PRISMA_DATABASE_URL && pnpm prisma generate --data-proxy && pnpm build && pnpm wrangler publish",
 		"prod-logs": "wrangler tail",
-		"qa-live": "pnpm check && node ./prisma/setSchemaUrl.js PRISMA_DATABASE_URL && pnpm prisma generate --data-proxy && pnpm build && pnpm wrangler publish --env qa",
+		"qa-live": "pnpm check && pnpm prisma generate --data-proxy && pnpm build && pnpm wrangler publish --env qa",
 		"qa-logs": "wrangler tail  --env qa",
 		"schema": "node ./prisma/setSchemaUrl.js QA_DATABASE_URL && pnpm prisma db push",
 		"studio": "pnpm prisma generate && pnpm prisma studio",
