@@ -156,7 +156,7 @@ pnpm up
 ```
 
 ## Open [Prisma Studio](https://www.prisma.io/studio)
-1. Save schema @ `./prisma/schema.prisma` > `datasource db` > `url` w/ `env("QA_DATABASE_URL")` or `env("PROD_DATABASE_URL")`
+1. Save schema @ `./prisma/schema.prisma` > `datasource db` > `url` w/ `env("QA_PLANETSCALE_URL")` or `env("PROD_PLANETSCALE_URL")`
 ```bash
 pnpm studio
 ```
