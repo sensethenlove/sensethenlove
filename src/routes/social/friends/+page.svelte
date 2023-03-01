@@ -9,6 +9,6 @@
 
 
 <Head title="Friends" url="social/friends" description="Friends page" />
-<Title h1="Friends" />
+<Title text="Friends" size="one" />
 <Views userId={ data?.userId } />
-<Title h3="Coming soon!" />
+<Title text="Coming soon!" />

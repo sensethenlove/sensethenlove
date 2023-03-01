@@ -9,6 +9,6 @@
 
 
 <Head title="Notifications" url="social/notifications" description="Notifications page" />
-<Title h1="Notifications" />
+<Title text="Notifications" size="one" />
 <Views userId={ data?.userId } />
-<Title h3="Coming soon!" />
+<Title text="Coming soon!" />

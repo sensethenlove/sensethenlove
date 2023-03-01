@@ -10,6 +10,6 @@
 
 
 <Head title="Profile" url="social/profile" description="Profile page" />
-<Title h1="Profile" />
+<Title text="Profile" size="one" />
 <Views userId={ data?.userId } />
 <CreatePost />

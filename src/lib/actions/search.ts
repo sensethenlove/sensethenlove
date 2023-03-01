@@ -4,6 +4,7 @@ import actionCatch from '$lib/catch/actionCatch'
 import validateFields from '$lib/form/validateFields'
 import searchQuotesByText from '$lib/prisma/searchQuotesByText'
 import searchSourcesByTitle from '$lib/prisma/searchSourcesByTitle'
+import type { Source, SearchQuotesByTextResponse } from '$lib/util/types'
 
 
 export default (async ({ request }) => {
@@ -19,12 +20,19 @@ export default (async ({ request }) => {
         searchSourcesByTitle(fields.query.toString()),
       ])
 
-      response = { quotesByText, sourcesByTitle }
+      response = {
+        quotesByText: quotesByTextToResponse(quotesByText),
+        sourcesByTitle: sourcesByTitle,
+      }
     }
     else if (fields.quotesByText?.toString() === 'on') {
-      response = { quotesByText: await searchQuotesByText(fields.query.toString()) }
+      response = {
+        quotesByText: quotesByTextToResponse(await searchQuotesByText(fields.query.toString()))
+      }
     } else {
-      response = { sourcesByTitle: await searchSourcesByTitle(fields.query.toString()) }
+      response = {
+        sourcesByTitle: await searchSourcesByTitle(fields.query.toString())
+      }
     }
 
     return response
@@ -32,3 +40,29 @@ export default (async ({ request }) => {
     return actionCatch(e)
   }
 }) satisfies Action
+
+
+function quotesByTextToResponse(quotesByText: SearchQuotesByTextResponse): Source[] {
+  return quotesByText.map(r => {
+    return {
+      id: r.Source.id,
+      title: r.Source.title,
+      slug: r.Source.slug,
+      url: r.Source.url,
+      urlType: r.Source.urlType,
+      publicationLocation: r.Source.publicationLocation,
+      publicationYear: r.Source.publicationYear,
+      updatedAt: r.Source.updatedAt,
+      createdAt: r.Source.createdAt,
+      favoriteQuotes: [
+        {
+          id: r.id,
+          text: r.text,
+          sourceId: r.sourceId,
+          displayOrder: r.displayOrder,
+          categories: r.categories
+        }
+      ]
+    }
+  })
+}

@@ -1,3 +1,4 @@
+import search from '$lib/actions/search'
 import routeCatch from '$lib/catch/routeCatch'
 import updateUser from '$lib/actions/updateUser'
 import findFirstUser from '$lib/prisma/findFirstUser'
@@ -19,6 +20,7 @@ export const load = (async ({ locals }) => {
 
 
 export const actions = {
+  search,
   updateUser,
   deleteSessions,
 } satisfies Actions

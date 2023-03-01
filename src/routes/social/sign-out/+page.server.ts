@@ -1,5 +1,5 @@
-import routeCatch from '$lib/catch/routeCatch'
 import type { PageServerLoad } from './$types'
+import routeCatch from '$lib/catch/routeCatch'
 import { RedirectError } from '$lib/util/errors'
 import userIsAuthenticated from '$lib/security/userIsAuthenticated'
 import deleteAccessAndRefreshCookies from '$lib/cookies/deleteAccessAndRefreshCookies'

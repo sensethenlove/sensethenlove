@@ -16,5 +16,5 @@
 </script>
 
 
-<Title h3="Subscribe to our Weekly Newsletter?!" noBottom={ true } />
+<Title text="Subscribe to our Weekly Newsletter?!" noBottom={ true } />
 <Form { inputs } { schema } { toastOnSuccess } action="newsletterSignUp" buttonText="Subscribe" />

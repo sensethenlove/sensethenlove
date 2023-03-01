@@ -7,7 +7,7 @@
   import SVG_INSTAGRAM from '$lib/svg/logo/SVG_INSTAGRAM.svg'
 </script>
 
-<Title h3="Our Socials" noBottom={ true } />
+<Title text="Our Socials" noBottom={ true } />
 <section>
   <div class="logos">
     { @html SVG_YOUTUBE }

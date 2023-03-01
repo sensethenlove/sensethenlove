@@ -9,6 +9,6 @@
 
 
 <Head title="Public" url="social" description="Welcome to our Social Network" />
-<Title h1="Public" />
+<Title text="Public" size="one" />
 <Views userId={ data?.userId } />
-<Title h3="Coming soon!" />
+<Title text="Coming soon!" />

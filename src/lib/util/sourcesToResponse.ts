@@ -31,14 +31,16 @@ export default function (sources: Source[], urlParamAuthor: string | null, urlPa
         let quoteHasUrlCategory = false
         let quote = source.favoriteQuotes[quoteIndex]
 
-        for (const category of quote.categories) {
-          categories.set(category.id, category) // place each category in map of all categories
+        if (quote.categories) {
+          for (const category of quote.categories) {
+            categories.set(category.id, category) // place each category in map of all categories
 
-          if (!urlParamCategory) addQuoteCategoriesToSourceCategories(quote, sourceCategories) // if no category is requested in the url => place categories from quote into source categories
-          else if (category.slug === urlParamCategory) { // if a category param is requested in the URL AND the category in the loop matches the urlParamCategory
-            responseCategory = category // save this full varialbe representing the url param
-            quoteHasUrlCategory = true // tip flag indicating quote from url found
-            addQuoteCategoriesToSourceCategories(quote, sourceCategories) // place categories from quote into source categories
+            if (!urlParamCategory) addQuoteCategoriesToSourceCategories(quote, sourceCategories) // if no category is requested in the url => place categories from quote into source categories
+            else if (category.slug === urlParamCategory) { // if a category param is requested in the URL AND the category in the loop matches the urlParamCategory
+              responseCategory = category // save this full varialbe representing the url param
+              quoteHasUrlCategory = true // tip flag indicating quote from url found
+              addQuoteCategoriesToSourceCategories(quote, sourceCategories) // place categories from quote into source categories
+            }
           }
         }
 
@@ -63,7 +65,9 @@ export default function (sources: Source[], urlParamAuthor: string | null, urlPa
 
 
 function addQuoteCategoriesToSourceCategories (quote: Quote, sourceCategories: Map<string, QuoteCategory>) {
-  for (const category of quote.categories) {
-    sourceCategories.set(category.id, category)
+  if (quote.categories) {
+    for (const category of quote.categories) {
+      sourceCategories.set(category.id, category)
+    }
   }
 }

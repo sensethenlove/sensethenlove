@@ -1,5 +1,6 @@
-import type { PageServerLoad } from './$types'
+import search from '$lib/actions/search'
 import routeCatch from '$lib/catch/routeCatch'
+import type { Actions, PageServerLoad } from './$types'
 import findManySources from '$lib/prisma/findManySources'
 import sourcesToResponse from '$lib/util/sourcesToResponse'
 
@@ -11,3 +12,8 @@ export const load = (async ({ url }) => {
     return routeCatch(e)
   }
 }) satisfies PageServerLoad
+
+
+export const actions = {
+  search,
+} satisfies Actions

@@ -25,5 +25,5 @@
 </script>
 
 
-<Title h3="Update your information" noBottom={ true } />
+<Title text="Update your information" noBottom={ true } />
 <Form { inputs } { schema } { toastOnSuccess } reset={ false } action="updateUser" buttonText="Save" />

@@ -10,7 +10,7 @@
 </script>
 
 { #if location === 'nav' }
-  <Title h3="Select a Category!" noBottom={ true } />
+  <Title text="Select a Category!" noBottom={ true } />
 { /if }
 
 <div class="chips location--{ location }">

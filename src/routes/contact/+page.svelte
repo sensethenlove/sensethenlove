@@ -9,7 +9,7 @@
 
 
 <Head title="Contact" url="contact" ogImageId={ CF_OG_CONTACT } description="Please feel free to contat us!" />
-<Title h1="Contact" />
+<Title text="Contact" size="one" />
 <EmailUs />
 <OurSocials />
 <NewsletterSignUp />

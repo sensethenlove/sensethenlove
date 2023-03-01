@@ -11,7 +11,7 @@
 
 
 <Head title="Settings" url="social/settings" description="Settings page" />
-<Title h1="Settings" />
+<Title text="Settings" size="one" />
 <Views userId={ data?.user?.id } />
 { #if data.user } <UpdateUser user={ data.user } /> { /if }
 { #if data.sessions } <Sessions sessions={ data.sessions } /> { /if }

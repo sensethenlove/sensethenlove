@@ -1,3 +1,4 @@
+import search from '$lib/actions/search'
 import signIn from '$lib/actions/signIn'
 import routeCatch from '$lib/catch/routeCatch'
 import type { Actions, PageServerLoad } from './$types'
@@ -14,5 +15,6 @@ export const load = (async ({ locals }) => {
 
 
 export const actions = {
-  signIn
+  search,
+  signIn,
 } satisfies Actions

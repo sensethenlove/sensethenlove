@@ -7,6 +7,6 @@
 
 
 <Head title="Sign Up" url="social/sign-up" description="Sign Up page" />
-<Title h1="Sign Up" />
+<Title text="Sign Up" size="one" />
 <Views />
 <SignUp />

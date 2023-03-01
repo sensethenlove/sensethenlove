@@ -7,6 +7,6 @@
 
 
 <Head title="Sign In" url="social/sign-in" description="Sign In page" />
-<Title h1="Sign In" />
+<Title text="Sign In" size="one" />
 <Views />
 <SignIn />

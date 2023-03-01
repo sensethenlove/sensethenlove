@@ -17,7 +17,7 @@
 
 <Head title="Verify Sign In" />
 { #if data.error }
-  <Title h1={ heading } />
-  <Title h4="Please sign in again" noBottom={ true } />
+  <Title text={ heading } size="one" />
+  <Title text="Please sign in again" size="four" noBottom={ true } />
   <SignIn />
 { /if }

@@ -13,8 +13,8 @@
 
 
 <Head title="Home" ogImageId={ CF_OG_HOME } description="Welcome to Sense Then Love!" />
-<Title h1="Home" />
-<Title h3="Welcome to Sense Then Love!" />
+<Title text="Home" size="one" />
+<Title text="Welcome to Sense Then Love!" />
 <AboutUs />
 <OurSocials />
 <NewsletterSignUp />

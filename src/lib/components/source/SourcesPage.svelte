@@ -25,20 +25,24 @@
 
 
 <Head { title } ogImageId={ CF_OG_SOURCES } description="Scientific evidence that aligns with our goal!" url="sources" />
-<Title h1="Sources" />
+<Title text="Sources" size="one" />
 
-{ #if author || category }
+{ #if sources?.length }
+  { #if author || category }
+    <Title>
+      { #if !author }{ category?.name }
+      { :else if !category }{ author.name }
+      { :else }{ category.name } by { author.name }
+      { /if }
+    </Title>
+  { /if }
+
+
   <Title>
-    { #if !author }{ category?.name }
-    { :else if !category }{ author.name }
-    { :else }{ category.name } by { author.name }
-    { /if }
+    <span>Scientific evidence that aligns with our <LoadingLink label='goals' loadWidth="big" />!</span>
   </Title>
 { /if }
 
-<section class="title">
-  <h3>Scientific evidence that aligns with our <LoadingLink label='goals' loadWidth="big" />!</h3>
-</section>
 <div class="sources-page">
   <div class="left">
     { #if categories }
@@ -55,17 +59,23 @@
       <Source { source } { author } { category } />
     { /each }
   { :else }
-    <section class="no-results">
-      { #if category?.name && author?.name }
-        <h4>There are no sources for { category?.name } by { author?.name }, <LoadingLink href="/sources" label="view all sources" loadWidth="big" />?!</h4>
-      { :else if category?.name }
-        <h4>There are no sources for { category?.name }, <LoadingLink href="/sources" label="view all sources" loadWidth="big" />?!</h4>
-      { :else if author?.name }
-        <h4>There are no sources for { author?.name }, <LoadingLink href="/sources" label="view all sources" loadWidth="big" />?!</h4>
-      { :else }
-        <h4>There are no sources for this query yet, <LoadingLink href="/sources" label="view all sources" loadWidth="big" />?!</h4>
-      { /if }
-    </section>
+    { #if category?.name && author?.name }
+      <Title css="no-results">
+        <span>There are no sources for { category?.name } by { author?.name }, <LoadingLink href="/sources" label="view all sources" loadWidth="big" />?!</span>
+      </Title>
+    { :else if category?.name }
+      <Title css="no-results">
+        <span>There are no sources for { category?.name }, <LoadingLink href="/sources" label="view all sources" loadWidth="big" />?!</span>
+      </Title>
+    { :else if author?.name }
+      <Title css="no-results">
+        <span>There are no sources for { author?.name }, <LoadingLink href="/sources" label="view all sources" loadWidth="big" />?!</span>
+      </Title>
+    { :else }
+      <Title css="no-results">
+        <span>There are no sources for this query yet, <LoadingLink href="/sources" label="view all sources" loadWidth="big" />?!</span>
+      </Title>
+    { /if }
   { /if }
   <div class="clear-both"></div>
 </div>
@@ -83,7 +93,7 @@
     }
 
     .left,
-    .no-results,
+    :global(.no-results),
     :global(.source) {
       display: flex;
       flex-direction: column;

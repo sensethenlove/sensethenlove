@@ -4,9 +4,12 @@
   import Modal from '$lib/components/Modal.svelte'
   import Form from '$lib/components/forms/Form.svelte'
   import SVG_SEARCH from '$lib/svg/nav/SVG_SEARCH.svg'
-  import type { ShowModal, FormInputs, FormOnSuccess, FormOnSubmitValidate } from '$lib/util/types'
+  import Source from '$lib/components/source/Source.svelte'
+  import type { Source as SourceType } from '$lib/util/types'
+  import type { ShowModal, OnModalHide, FormInputs, FormOnSuccess, FormOnSubmitValidate } from '$lib/util/types'
 
   let showModal: ShowModal
+  let response: { quotesByText?: SourceType[], sourcesByTitle?: SourceType[] } | null = null
 
   const onSubmitValidate = ((fields) => {
     let isValid = true
@@ -20,13 +23,18 @@
   }) satisfies FormOnSubmitValidate
 
   const onSuccess = (({ data }) => {
-    console.log(data)
+    if (!data?.quotesByText?.length && !data?.sourcesByTitle?.length) showToast({ type: 'info', items: [ 'No search results found' ] })
+    else response = data
   }) satisfies FormOnSuccess
+
+  const onHideModal = (() => {
+    response = null
+  }) satisfies OnModalHide
 
   const inputs: FormInputs = [
     { name: 'query', focusOnInit: true, autocomplete: 'off' },
     { name: 'sourcesByTitle', label: 'Search source titles',  type: 'checkbox' },
-    { name: 'quotesByText', label: 'Search source quote text', type: 'checkbox' },
+    { name: 'quotesByText', label: 'Search source quotes', type: 'checkbox' },
   ]
 </script>
 
@@ -35,13 +43,35 @@
   { @html SVG_SEARCH }
 </button>
 
-<Modal header="Search" on:functions={ e => showModal = e.detail.showModal }>
+<Modal header="Search" on:functions={ e => showModal = e.detail.showModal } { onHideModal }>
   <Form { inputs } { schema } { onSubmitValidate } { onSuccess } reset={ false } action="search" buttonText="Search" />
+
+  { #if response?.quotesByText?.length || response?.sourcesByTitle?.length }
+    <div class="response">
+      { #if response?.sourcesByTitle?.length }
+        <div class="papyrus three">Source title results:</div>
+        { #each response.sourcesByTitle as source }
+          <Source { source } location="search--source-titles" />
+        { /each }
+      { /if }
+
+      { #if response?.quotesByText?.length }
+        <div class="papyrus three">Source quote results:</div>
+        { #each response.quotesByText as source }
+          <Source { source } location="search--with-quote" />
+        { /each }
+      { /if }
+    </div>
+  { /if }
 </Modal>
 
 
 <style lang="scss">
   @import '$lib/scss/variables.scss';
+
+  .papyrus {
+    margin-top: 2.1rem;
+  }
 
   .search {
     &__button {

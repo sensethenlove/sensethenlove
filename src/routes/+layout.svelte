@@ -34,7 +34,7 @@
         --text-color:  #eceaea;
         --opacity-bg: rgba(0, 0, 0, 0.9);
         --anchor-color: #8bdd10;
-        --heading-text-color: var(--gold-text-color);
+        --papyrus-text-color: var(--gold-text-color);
         --bg-color: #111111;
         --input-bg-color: rgb(55, 65, 81);
         --input-border-color: rgb(75, 85, 99);
@@ -50,7 +50,7 @@
         --text-color: var(--black-text-color);
         --opacity-bg: var(--light-opacity-bg);
         --anchor-color: var(--green-text-color);
-        --heading-text-color: var(--blue-text-color);
+        --papyrus-text-color: var(--blue-text-color);
         --bg-color: #fefefe;
         --input-bg-color: white;
         --input-border-color: #ced3d6;

@@ -26,7 +26,7 @@
 
 .modal {
   width: 100%;
-  max-width: 54rem;
+  max-width: 81rem;
   position: relative;
   border-radius: 1.8rem;
   z-index: $zindex-modal-modal;
@@ -66,11 +66,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 2.4rem;
-    color: var(--heading-text-color);
-    font-family: $font-family-papyrus;
     padding: 1.8rem 1.8rem 0 1.8rem;
-    margin-bottom: -0.9rem;
+    margin-bottom: -1.8rem;
 
     &__close {
       border: none;
@@ -96,7 +93,7 @@
 
 .theme--light {
   .modal--container {
-    background-color: rgba(white, 0.369);
+    background-color: rgba(white, 0.81);
   }
 }
 

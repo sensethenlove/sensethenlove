@@ -49,26 +49,6 @@ main {
     padding-right: 9vw;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    margin: 0.9rem 0.6rem 0.6rem 0.6rem;
-    line-height: 1.8;
-    text-align: center;
-    color: var(--heading-text-color);
-    font-family: $font-family-papyrus;
-  }
-
-  h1 {
-    text-align: center;
-  }
-
-  h5 {
-    font-size: 1.6rem;
-  }
-
   section {
     border-radius: 1.8rem;
     padding: 1.8rem;
@@ -117,4 +97,26 @@ a {
 
 strong {
   font-weight: 600;
+}
+
+.papyrus {
+  line-height: 1.8;
+  font-weight: 600;
+  color: var(--papyrus-text-color);
+  font-family: $font-family-papyrus;
+  &.one {
+    font-size: 2.7rem;
+  }
+  &.two {
+    font-size: 2.4rem;
+  }
+  &.three {
+    font-size: 2.1rem;
+  }
+  &.four {
+    font-size: 1.8rem;
+  }
+  &.five {
+    font-size: 1.5rem;
+  }
 }

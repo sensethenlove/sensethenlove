@@ -1,8 +1,7 @@
-import type { Actions } from './$types'
 import search from '$lib/actions/search'
 import type { Source } from '$lib/util/types'
-import type { PageServerLoad } from './$types'
 import routeCatch from '$lib/catch/routeCatch'
+import type { Actions, PageServerLoad } from './$types'
 import findFirstSource from '$lib/prisma/findFirstSource'
 import newsletterSignUp from '$lib/actions/newsletterSignUp'
 
@@ -27,8 +26,10 @@ function sourceToResponse(source: Source | null) {
     let sourceCategories = new Map() // use map so duplicates are removed
 
     for (const quote of source.favoriteQuotes) {
-      for (const category of quote.categories) {
-        sourceCategories.set(category.id, category) // place each category in map
+      if (quote.categories) {
+        for (const category of quote.categories) {
+          sourceCategories.set(category.id, category) // place each category in map
+        }
       }
     }
 

@@ -4,9 +4,9 @@
 </script>
 
 
-<Title h3="About Us!" noBottom={ true } />
+<Title text="About Us!" noBottom={ true } />
 <section class="us">
-  <h3>Our Goals</h3>
+  <div class="papyrus three">Our Goals</div>
   <ol>
     <li>Thinking lovely thoughts!</li>
     <li class="indent-dot">Sing a lovely song &rarr; Feel lovely</li>
@@ -31,7 +31,7 @@
     <li class="indent-dot">Aim high together!</li>
   </ol>
 
-  <h3>Our Name</h3>
+  <div class="papyrus three">Our Name</div>
   <ol>
     <li>Focus on a sensation happening now</li>
     <li class="indent-dot">Example: Feel breath flow in & out of nose</li>

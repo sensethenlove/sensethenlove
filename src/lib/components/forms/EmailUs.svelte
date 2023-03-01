@@ -18,5 +18,5 @@
 </script>
 
 
-<Title h3="Send us an email?!" noBottom={ true } />
+<Title text="Send us an email?!" noBottom={ true } />
 <Form { inputs } { schema } { toastOnSuccess } action="emailUs" />

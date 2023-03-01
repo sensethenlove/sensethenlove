@@ -35,7 +35,7 @@ export interface Author extends AuthorPrisma {
 
 export interface Quote extends QuotePrisma {
   favoriteQuotes?: Quote[]
-  categories: QuoteCategory[] // schema.prisma property
+  categories?: QuoteCategory[] // schema.prisma property
 }
 
 export interface QuoteCategory extends QuoteCategoryPrisma {
@@ -138,4 +138,10 @@ export type VerifySignInEmailTokenResponse = Promise<VerifySignInEmailTokenRespo
 export type VerifyAccessAndRefreshEmailTokenResponse = Promise<VerifyAccessAndRefreshTokenResponseData>
 
 export type HideModal = () => void
+export type OnModalHide = () => void
 export type ShowModal = () => void
+
+export type SearchQuotesByTextResponse = (Quote & {
+  Source: Source;
+  categories: QuoteCategory[];
+})[]

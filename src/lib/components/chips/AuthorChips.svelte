@@ -19,7 +19,7 @@
 </script>
 
 
-<Title h3="Select an Author!" noBottom={ true } />
+<Title text="Select an Author!" noBottom={ true } />
 <div id="author-chips" class="chips location--nav">
   { #if location !== 'source' }
     <LoadingLink label="All" href="/sources{ category?.slug ? `/${ category.slug }` : '' }"  css="chip { !urlAuthorSlug ? 'active' : '' }"/>

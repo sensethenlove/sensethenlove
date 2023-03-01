@@ -13,5 +13,5 @@
 </script>
 
 
-<Title h3="Share lovely thoughts, goals & achievements!" noBottom={ true } />
+<Title text="Share lovely thoughts, goals & achievements!" noBottom={ true } />
 <Form css="stl--create-post" { inputs } { schema } { toastOnSuccess } action="createPost" buttonText="Post" />

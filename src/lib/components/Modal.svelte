@@ -6,6 +6,7 @@
 
 
   export let header: string = ''
+  export let onHideModal: () => void = () => {}
 
 
   let setHideCss = false
@@ -28,6 +29,7 @@
     setTimeout(() => {
       setHideCss = false
       isModalVisible = false
+      onHideModal()
     }, 900)
 
     document.removeEventListener('keyup', onKeyup)
@@ -54,7 +56,7 @@
     <div on:click|stopPropagation on:keyup={ onKeyup } class="modal{ setHideCss ? ' hide': '' }">
       { #if header}
         <div class="modal__header">
-          <div>{ header }</div>
+          <div class="papyrus two">{ header }</div>
           <button class="modal__header__close" on:click={ hideModal }>{ @html SVG_CLOSE }</button>
         </div>
       { /if }

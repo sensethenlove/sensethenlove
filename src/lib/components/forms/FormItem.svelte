@@ -52,7 +52,7 @@
     <label for={ id }>{ label }</label>
     <textarea class={ itemErrors?.length ? 'error': '' } { value } on:input={ () => { clearErrors() } } { name } { id } />
   { :else if type === 'checkbox' }
-    <label for={ id } class="checkbox { itemErrors?.length ? 'error': '' }" on:input={ () => { clearErrors() } }>
+    <label style="max-width:{ maxWidth };" for={ id } class="checkbox { itemErrors?.length ? 'error': '' }" on:input={ () => { clearErrors() } }>
       <div class="checkbox-input-wrapper">
         <input { id } { name } checked={ checkboxValue } type="checkbox" />
       </div>

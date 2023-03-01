@@ -7,7 +7,7 @@
 </script>
 
 
-<Title h3="Select a View" noBottom={ true } />
+<Title text="Select a View" noBottom={ true } />
 <div class="chips location--nav">
   <LoadingLink label="Public" href="/social" css="chip { $page.route.id === '/social' ? 'active' : '' }" />
 

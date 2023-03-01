@@ -5,5 +5,5 @@
 
 
 <Head title="Support" description="Thank you for supporting Sense Then Love!" />
-<Title h1="Support" />
-<Title h3="Coming soon!" />
+<Title text="Support" size="one" />
+<Title text="Coming soon!" />

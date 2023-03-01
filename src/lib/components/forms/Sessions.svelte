@@ -76,7 +76,7 @@
 
 
 <form class="sessions" novalidate method="POST" action="?/deleteSessions" use:enhance={ onSubmit }>
-  <Title h3="Select IP's to sign out" noBottom={ true } css="sub-explanation" />
+  <Title text="Select IP's to sign out" noBottom={ true } css="sub-explanation" />
   <section class="ips">
     <table>
       <tbody>

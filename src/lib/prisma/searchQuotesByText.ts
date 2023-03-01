@@ -1,10 +1,10 @@
 
 
 import prisma from '$lib/prisma/prisma'
-import type { Quote } from '$lib/util/types'
+import type { SearchQuotesByTextResponse } from '$lib/util/types'
 
 
-export default async (query: string)/*: Promise<Quote[]>*/ => {
+export default async (query: string): Promise<SearchQuotesByTextResponse> => {
   return (await prisma()).quote.findMany({
     where: {
       text: {
@@ -12,7 +12,8 @@ export default async (query: string)/*: Promise<Quote[]>*/ => {
       },
     },
     include: {
-      Source: true
+      Source: true,
+      categories: true,
     }
   })
 }

@@ -11,8 +11,12 @@
   export let author: Author | undefined = undefined
   export let category: QuoteCategory = { id: '', name: '', slug: '' }
 
-  let displayCategory: QuoteCategory = { ...category }
-  afterNavigate(() => displayCategory = { ...category })
+  let displayCategory: QuoteCategory
+
+  if (location !== 'search') {
+    displayCategory = { ...category }
+    afterNavigate(() => displayCategory = { ...category })
+  }
 </script>
 
 
@@ -29,13 +33,13 @@
       </a>
     { /if }
     <div class="flex">
-      <h3><a href={ source.url } target="_blank" rel="noreferrer">{ source.title }</a></h3>
+      <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
       <p>
         { #if source.publicationLocation }
           <a href={ source.url } target="_blank" rel="noreferrer">{ source.publicationLocation }{ #if source.publicationYear }, { source.publicationYear }{ /if }</a>
-          <span>⋅</span>
         { /if }
         { #if source.authors }
+          <span>⋅</span>
           { #each source.authors as a, i }
             <LoadingLink href="/sources{ category?.slug ? '/' + category.slug : '' }?author={ a.slug }" css="{ author?.id === a.id ? 'active': '' }" label="{ a.name }" />
             { #if i+1 !== source.authors.length }
@@ -46,14 +50,20 @@
       </p>
     </div>
   </div>
-  <div class="fav-head">{ displayCategory?.name ? `Favorite ${ displayCategory.name } Quotes:` : 'Favorite Quotes:' }</div>
-  <ol>
-    { #if source.favoriteQuotes?.length }
+  { #if location === 'search--with-quote' }
+    <div class="fav-head">Quote:</div>
+    { :else if location !== 'search--source-titles' }
+      <div class="fav-head">{ displayCategory?.name ? `Favorite ${ displayCategory.name } Quotes:` : 'Favorite Quotes:' }</div>
+  { /if }
+
+  { #if source.favoriteQuotes?.length }
+    <ol>
       { #each source.favoriteQuotes as quote }
         <li>{ @html quote.text }</li>
       { /each }
-    { /if }
-  </ol>
+    </ol>
+  { /if }
+
   { #if source.categories?.length }
     <QuoteCategoryChips categories={ source.categories } { author } location="source" />
   { /if }
@@ -66,6 +76,27 @@
   .source {
     &.location--home {
       max-width: 82.565rem;
+    }
+    &.location--search--with-quote,
+    &.location--search--source-titles {
+      border-bottom: 1px solid gold;
+      margin-bottom: 1.5rem;
+    }
+    &.location--search--with-quote {
+
+      ol {
+        list-style-type: circle;
+      }
+    }
+    &.location--search--source-titles {
+      .head {
+        flex-direction: column;
+
+        .flex,
+        .title {
+          text-align: center !important;
+        }
+      }
     }
 
     .head {
@@ -107,14 +138,16 @@
           text-align: left;
         }
 
-        h3 {
-          margin: 0 0 0.75rem 0;
+        .title {
+          font-size: 2.1rem;
+          margin: 0 0 0.9rem 0;
           line-height: 1.4;
           font-weight: 500;
-          font-family: $font-family;
+          display: inline-block;
 
           @media only screen and (min-width: $move-nav-window-width) { // big screen
             text-align: left;
+            margin: 0 0 0.6rem 0;
           }
         }
         
