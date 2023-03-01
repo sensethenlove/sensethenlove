@@ -11,9 +11,12 @@
     "strict": true,
   },
   "exclude": [
-    "./prisma/setSchemaUrl.js",
-    "prisma/validateSchemaPushToGit.js",
-    "./src/lib/security/setEnv.js"
+    "./src/lib/scripts/envMap.js",
+    "./src/lib/scripts/prismaMap.js",
+    "./src/lib/scripts/validateEnv.js",
+    "./src/lib/scripts/validatePrisma.js",
+    "./src/lib/scripts/writeEnv.js",
+    "./src/lib/scripts/writePrisma.js",
   ]
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
   //
