@@ -2,8 +2,8 @@ import search from '$lib/actions/search'
 import type { Source } from '$lib/util/types'
 import routeCatch from '$lib/catch/routeCatch'
 import type { Actions, PageServerLoad } from './$types'
-import findFirstSource from '$lib/prisma/findFirstSource'
 import newsletterSignUp from '$lib/actions/newsletterSignUp'
+import findFirstSource from '$lib/prisma/findFirstSource'
 
 
 export const load = (async () => {

@@ -1,10 +1,9 @@
-import prisma from '@prisma/client'
+import prisma from '$lib/prisma/prisma'
 import type { Source } from '$lib/util/types'
 
 
 export default async (): Promise<Source | null> => {
-  const client = new prisma.PrismaClient()
-  const response = await client.source.findFirst({
+  return (await prisma()).source.findFirst({
     orderBy: {
       createdAt: 'desc'
     },
@@ -17,6 +16,4 @@ export default async (): Promise<Source | null> => {
       }
     },
   })
-  client.$disconnect()
-  return response
 }
