@@ -90,6 +90,8 @@ git clone https://github.com/sensethenlove/sensethenlove.git
 cd sensethenlove
 nvm use 18
 npm install -g pnpm
+pnpm setup
+source /Users/[ username ]/.zshrc
 pnpm i
 ```
 

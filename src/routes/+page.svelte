@@ -2,12 +2,13 @@
   import type { PageData } from './$types'
   import Head from '$lib/components/Head.svelte'
   import Title from '$lib/components/Title.svelte'
-  import Source from '$lib/components/source/Source.svelte'
   import AboutUs from '$lib/components/AboutUs.svelte'
   import { CF_OG_HOME } from '$lib/util/cloudflareImages'
+  import Source from '$lib/components/source/Source.svelte'
   import OurSocials from '$lib/components/OurSocials.svelte'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
   import NewsletterSignUp from '$lib/components/forms/NewsletterSignUp.svelte'
+
   export let data: PageData
 </script>
 
