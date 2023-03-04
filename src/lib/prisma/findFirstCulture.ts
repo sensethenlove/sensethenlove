@@ -8,7 +8,7 @@ export default async (): Promise<Culture | null> => {
       createdAt: 'desc'
     },
     include: {
-      author: true,
+      authors: true,
       categories: true,
     },
   })
