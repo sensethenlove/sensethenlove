@@ -56,25 +56,28 @@ model Session {
 }
 
 model Source {
-  id                  String        @id @default(uuid())
-  title               String        @unique @db.VarChar(255)
-  slug                String        @unique @db.VarChar(255)
-  url                 String        @db.VarChar(255)
-  urlType             SourceUrlType @default(PUBMED)
-  publicationLocation String?       @db.VarChar(255)
-  publicationYear     Int?          @db.Year
+  id                  String   @id @default(uuid())
+  title               String   @unique @db.VarChar(255)
+  slug                String   @unique @db.VarChar(255)
+  url                 String   @db.VarChar(255)
+  urlType             UrlType  @default(PUBMED)
+  publicationLocation String?  @db.VarChar(255)
+  publicationYear     Int?     @db.Year
   favoriteQuotes      Quote[]
   authors             Author[]
-  createdAt           DateTime      @default(now())
-  updatedAt           DateTime      @updatedAt
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 
   @@index([createdAt, updatedAt])
   @@fulltext([title])
 }
 
-enum SourceUrlType {
+enum UrlType {
   PUBMED
   ACADEMIA
+  YOUTUBE
+
+  @@map("SourceUrlType")
 }
 
 model Author {
@@ -112,4 +115,56 @@ model SiteComment {
   email     String   @db.VarChar(255)
   comment   String   @db.Text
   createdAt DateTime @default(now())
+}
+
+model Culture {
+  id          String            @id @default(uuid())
+  title       String            @unique @db.VarChar(255)
+  description String            @db.Text()
+  slug        String            @unique @db.VarChar(255)
+  url         String            @db.VarChar(255)
+  urlType     UrlType           @default(YOUTUBE)
+  categories  CultureCategory[]
+  author      CultureAuthor[]
+  createdAt   DateTime          @default(now())
+}
+
+model CultureCategory {
+  id      String    @id @default(uuid())
+  name    String    @unique @db.VarChar(255)
+  slug    String    @unique @db.VarChar(255)
+  culture Culture[]
+}
+
+model CultureAuthor {
+  id      String    @id @default(uuid())
+  name    String    @unique @db.VarChar(255)
+  slug    String    @unique @db.VarChar(255)
+  culture Culture[]
+}
+
+model Product {
+  id          String            @id @default(uuid())
+  title       String            @unique @db.VarChar(255)
+  description String            @db.Text()
+  slug        String            @unique @db.VarChar(255)
+  url         String            @db.VarChar(255)
+  urlType     UrlType
+  categories  ProductCategory[]
+  authors     ProductAuthor[]
+  createdAt   DateTime          @default(now())
+}
+
+model ProductCategory {
+  id       String    @id @default(uuid())
+  name     String    @unique @db.VarChar(255)
+  slug     String    @unique @db.VarChar(255)
+  products Product[]
+}
+
+model ProductAuthor {
+  id       String    @id @default(uuid())
+  name     String    @unique @db.VarChar(255)
+  slug     String    @unique @db.VarChar(255)
+  products Product[]
 }

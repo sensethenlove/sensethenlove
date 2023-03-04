@@ -102,32 +102,32 @@ pnpm dev
 
 ## Write to ./prisma/schema.prisma, ./src/lib/prisma/prisma.ts & .env files to prep for [github qa branch push](https://github.com/sensethenlove/sensethenlove/tree/qa) or [qa deploy](https://qa.sensethenlove.com)
 ```bash
-pnpm qa-write
+pnpm qaWrite
 ```
 
 ## Write to ./prisma/schema.prisma, ./src/lib/prisma/prisma.ts & .env files to prep for [github main branch](https://github.com/sensethenlove/sensethenlove/tree/main) or [poduction deploy](https://sensethenlove.com)
 ```bash
-pnpm prod-write
+pnpm prodWrite
 ```
 
 ## Validate code & then push to [github qa branch](https://github.com/sensethenlove/sensethenlove/tree/qa)
 ```bash
-pnpm qa-push
+pnpm qaPush
 ```
 
 ## Validate code & then push to [github main branch](https://github.com/sensethenlove/sensethenlove/tree/main)
 ```bash
-pnpm prod-push
+pnpm prodPush
 ```
 
 ## Deploy to [qa](https://qa.sensethenlove.com)
 ```bash
-pnpm qa-deploy
+pnpm qaDeploy
 ```
 
 ## Deploy to [production](https://sensethenlove.com)
 ```bash
-pnpm prod-deploy
+pnpm prodDeploy
 ```
 
 ## How to update database schema
@@ -144,12 +144,12 @@ pnpm prod-deploy
 
 ## View logs for production server
 ```bash
-pnpm prod-logs
+pnpm prodLogs
 ```
 
 ## View logs for qa server
 ```bash
-pnpm qa-logs
+pnpm qaLogs
 ```
 
 ## [Updates all dependencies](https://pnpm.io/cli/update)
