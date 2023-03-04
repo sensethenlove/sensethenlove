@@ -41,7 +41,7 @@
         { #if source.authors }
           <span>⋅</span>
           { #each source.authors as a, i }
-            <LoadingLink href="/sources{ category?.slug ? '/' + category.slug : '' }?author={ a.slug }" css="{ author?.id === a.id ? 'active': '' }" label="{ a.name }" />
+            <LoadingLink href="/library{ category?.slug ? '/' + category.slug : '' }?author={ a.slug }" css="{ author?.id === a.id ? 'active': '' }" label="{ a.name }" />
             { #if i+1 !== source.authors.length }
               <span>⋅</span>
             { /if }

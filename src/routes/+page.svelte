@@ -21,7 +21,7 @@
 <NewsletterSignUp />
 
 <Title noBottom={ true }>
-  <span class="pr-5">Our most recent</span><LoadingLink href="/sources" label="Source" loadWidth="big" />!
+  <span class="pr-5">Our most recent</span><LoadingLink href="/library" label="Source" loadWidth="big" />!
 </Title>
 { #if data.source }
   <Source source={ data.source } location="home" />

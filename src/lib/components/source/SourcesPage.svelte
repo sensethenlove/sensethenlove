@@ -25,7 +25,7 @@
 
 
 <Head { title } ogImageId={ CF_OG_SOURCES } description="Scientific evidence that aligns with our goal!" url="sources" />
-<Title text="Sources" size="one" />
+<Title text="Library" size="one" />
 
 { #if sources?.length }
   { #if author || category }
@@ -61,19 +61,19 @@
   { :else }
     { #if category?.name && author?.name }
       <Title css="no-results">
-        <span>There are no sources for { category?.name } by { author?.name }, <LoadingLink href="/sources" label="view all sources" loadWidth="big" />?!</span>
+        <span>There are no sources for { category?.name } by { author?.name }, <LoadingLink href="/library" label="view all sources" loadWidth="big" />?!</span>
       </Title>
     { :else if category?.name }
       <Title css="no-results">
-        <span>There are no sources for { category?.name }, <LoadingLink href="/sources" label="view all sources" loadWidth="big" />?!</span>
+        <span>There are no sources for { category?.name }, <LoadingLink href="/library" label="view all sources" loadWidth="big" />?!</span>
       </Title>
     { :else if author?.name }
       <Title css="no-results">
-        <span>There are no sources for { author?.name }, <LoadingLink href="/sources" label="view all sources" loadWidth="big" />?!</span>
+        <span>There are no sources for { author?.name }, <LoadingLink href="/library" label="view all sources" loadWidth="big" />?!</span>
       </Title>
     { :else }
       <Title css="no-results">
-        <span>There are no sources for this query yet, <LoadingLink href="/sources" label="view all sources" loadWidth="big" />?!</span>
+        <span>There are no sources for this query yet, <LoadingLink href="/library" label="view all sources" loadWidth="big" />?!</span>
       </Title>
     { /if }
   { /if }

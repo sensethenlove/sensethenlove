@@ -7,7 +7,7 @@
   import SVG_SOCIAL from '$lib/svg/nav/SVG_SOCIAL.svg'
   import { CF_LOGO } from '$lib/util/cloudflareImages'
   import SVG_CONTACT from '$lib/svg/nav/SVG_CONTACT.svg'
-  import SVG_SOURCES from '$lib/svg/nav/SVG_SOURCES.svg'
+  import SVG_LIBRARY from '$lib/svg/nav/SVG_LIBRARY.svg'
   import SVG_SUPPORT from '$lib/svg/nav/SVG_SUPPORT.svg'
   
   let activeRoute: string | null | undefined
@@ -39,7 +39,7 @@
   <nav>
     <LoadingLink label="Home" loadWidth="big" css="item { activeRoute === '/' ? 'active' : '' }">{ @html SVG_HOME }</LoadingLink>
     <LoadingLink label="Social" href="/social" loadWidth="big" css="item { activeRoute?.includes('/social') ? 'active' : '' }">{ @html SVG_SOCIAL }</LoadingLink>
-    <LoadingLink label="Sources" href="/sources" loadWidth="big" css="item { activeRoute?.includes('/sources') ? 'active' : '' }">{ @html SVG_SOURCES }</LoadingLink>
+    <LoadingLink label="Library" href="/library" loadWidth="big" css="item { activeRoute?.includes('/library') ? 'active' : '' }">{ @html SVG_LIBRARY }</LoadingLink>
     <LoadingLink label="Contact" href="/contact" loadWidth="big" css="item { activeRoute === '/contact' ? 'active' : '' }">{ @html SVG_CONTACT }</LoadingLink>
     <LoadingLink label="Support" href="/support" loadWidth="big" css="item { activeRoute === '/support' ? 'active' : '' }">{ @html SVG_SUPPORT }</LoadingLink>
   </nav>

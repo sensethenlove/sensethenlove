@@ -25,6 +25,7 @@
 
   .loading-link {
     position: relative;
+    display: inline-block;
     &.active {
       text-decoration: underline;
     }

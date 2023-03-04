@@ -15,9 +15,9 @@
 
 <div class="chips location--{ location }">
   { #if location !== 'source' }
-    <LoadingLink href="/sources{ author?.slug ? `?author=${ author.slug }`: '' }" label="All" css="chip { !$page.params.slug ? 'active' : '' }" />
+    <LoadingLink href="/library{ author?.slug ? `?author=${ author.slug }`: '' }" label="All" css="chip { !$page.params.slug ? 'active' : '' }" />
   { /if }
   {#each categories as category}
-    <LoadingLink label={ category.name } href="/sources/{ category.slug }{ author?.slug ? `?author=${ author.slug }`: '' }" css="chip { $page.params?.slug === category.slug ? 'active' : '' }"/>
+    <LoadingLink label={ category.name } href="/library/{ category.slug }{ author?.slug ? `?author=${ author.slug }`: '' }" css="chip { $page.params?.slug === category.slug ? 'active' : '' }"/>
   {/each}
 </div>

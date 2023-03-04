@@ -22,9 +22,9 @@
 <Title text="Select an Author!" noBottom={ true } />
 <div id="author-chips" class="chips location--nav">
   { #if location !== 'source' }
-    <LoadingLink label="All" href="/sources{ category?.slug ? `/${ category.slug }` : '' }"  css="chip { !urlAuthorSlug ? 'active' : '' }"/>
+    <LoadingLink label="All" href="/library{ category?.slug ? `/${ category.slug }` : '' }"  css="chip { !urlAuthorSlug ? 'active' : '' }"/>
   { /if }
   {#each authors as author}
-    <LoadingLink label={ author?.name } href="/sources{ category?.slug ? `/${ category.slug }` : '' }?author={ author.slug }"  css="chip { urlAuthorSlug === author.slug ? 'active' : '' }"/>
+    <LoadingLink label={ author?.name } href="/library{ category?.slug ? `/${ category.slug }` : '' }?author={ author.slug }"  css="chip { urlAuthorSlug === author.slug ? 'active' : '' }"/>
   {/each}
 </div>

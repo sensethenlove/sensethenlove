@@ -8,27 +8,15 @@
 <section class="us">
   <div class="papyrus three">Our Goals</div>
   <ol>
-    <li>Thinking lovely thoughts!</li>
+    <li>Think lovely thoughts!</li>
     <li class="indent-dot">Sing a lovely song &rarr; Feel lovely</li>
     <li class="indent-dot">Tell a scary story &rarr; Feel scared</li>
     <li class="indent-dot">Think lovely &rarr; Feel lovely</li>
-    <li value="2">Share <LoadingLink href="/sources/" label="scientific evidence" /> that shows the benefits of:</li>
-    <li class="indent-dot big-screen"><LoadingLink href="/sources/love" label="Loving" /> &sdot; <LoadingLink href="/sources/goals" label="Goal Setting" /> &sdot; <LoadingLink href="/sources/health" label="Healthy Living" /></li>
-    <li class="indent-dot big-screen"><LoadingLink href="/sources/meditation" label="Mind Setting" /> &sdot; <LoadingLink href="/sources/432hz" label="432hz Listening" /> &sdot; <LoadingLink href="/sources/stretching" label="Stretching" /></li>
-    <li class="indent-dot big-screen"><LoadingLink href="/sources/diet" label="Optimal Dieting" /> &sdot; <LoadingLink href="/sources/exercising" label="Exercising" /> &sdot; <LoadingLink href="/sources/natural-building" label="Natural Building" /></li>
-    <li class="indent-dot small-screen"><LoadingLink href="/sources/love" label="Loving" /></li>
-    <li class="indent-dot small-screen"><LoadingLink href="/sources/goals" label="Goal Setting" /></li>
-    <li class="indent-dot small-screen"><LoadingLink href="/sources/health" label="Healthy Living" /></li>
-    <li class="indent-dot small-screen"><LoadingLink href="/sources/meditation" label="Mind Setting" /></li>
-    <li class="indent-dot small-screen"><LoadingLink href="/sources/432hz" label="432hz Listening" /></li>
-    <li class="indent-dot small-screen"><LoadingLink href="/sources/stretching" label="Stretching" /></li>
-    <li class="indent-dot small-screen"><LoadingLink href="/sources/diet" label="Optimal Dieting" /></li>
-    <li class="indent-dot small-screen"><LoadingLink href="/sources/exercising" label="Exercising" /></li>
-    <li class="indent-dot small-screen"><LoadingLink href="/sources/natural-building" label="Natural Building" /></li>
-    <li value="3">Create a <a href="/social">social network</a> that allows us all to:</li>
+    <li value="2">Share our <LoadingLink href="/social/" label="social network" /> that may help us all:</li>
     <li class="indent-dot">Share our lovely thoughts, goals & achievements!</li>
-    <li class="indent-dot">Collaborate with, encourage & love each other!</li>
     <li class="indent-dot">Aim high together!</li>
+    <li class="indent-dot">Collaborate with, encourage & love each other!</li>
+    <li value="3">Share our <LoadingLink href="/library/" label="library" /> of lovely <LoadingLink href="/library/" label="scientific evidence," /> <LoadingLink href="/library/" label="products," /> & <LoadingLink href="/library/" label="culture" /></li>
   </ol>
 
   <div class="papyrus three">Our Name</div>
@@ -42,29 +30,11 @@
 
 
 <style lang="scss">
-  $small-big-swap-window-width: 31rem;
-
   .us {
     max-width: 51rem;
 
     ol {
       margin-top: 0;
-    }
-
-    .small-screen {
-      display: list-item;
-
-      @media only screen and (min-width: $small-big-swap-window-width) { // big screen
-        display: none;
-      }
-    }
-
-    .big-screen {
-      display: none;
-
-      @media only screen and (min-width: $small-big-swap-window-width) { // big screen
-        display: list-item;
-      }
     }
   }
 </style>
