@@ -19,7 +19,7 @@
   setTitle()
 
   function setTitle () {
-    title = `${ category ? category.name + ' ⋅ ' : ''}${ author ? author.name + ' ⋅ ' : ''}Sources`
+    title = `${ category ? category.name + ' ⋅ ' : ''}${ author ? author.name + ' ⋅ ' : ''}Scientific Evidence`
   }
 </script>
 
