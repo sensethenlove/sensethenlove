@@ -17,6 +17,7 @@
     "./src/lib/scripts/validatePrisma.js",
     "./src/lib/scripts/writeEnv.js",
     "./src/lib/scripts/writePrisma.js",
+    "./src/lib/scripts/getPropertiesError.js",
   ]
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
   //

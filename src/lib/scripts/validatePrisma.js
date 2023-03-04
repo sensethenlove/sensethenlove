@@ -1,11 +1,13 @@
 import fs from 'node:fs'
 import prismaMap from './prismaMap.js'
+import getPropertiesError from './getPropertiesError.js'
 
 
 (async function main() {
   const map = prismaMap
+  const propertiesError = getPropertiesError(map)
 
-  if (!map.has(process.argv[2])) throw new Error(`Please pass one of the following properties ${[...map.keys()].join(', ')}`)
+  if (!map.has(process.argv[2])) throw propertiesError
   else {
     const SCHEMA_PATH = './prisma/schema.prisma'
     const schemaText = await fs.promises.readFile(SCHEMA_PATH, 'utf-8')
@@ -44,7 +46,8 @@ import prismaMap from './prismaMap.js'
       }
 
       if (!found.schemaPrismaQA || !found.schemaPrismaPROD || !found.schemaPlanetscaleQA || !found.schemaPlanetscalePROD || !found.prismaLocalQA || !found.prismaLocalProd || !found.prismaElseQA || !found.prismaElseProd) {
-        throw new Error(`In the terminal run ${ values.write }`)
+        const validationError = new Error(`In the terminal run "${values.write}"`)
+        throw validationError
       }
     }
 

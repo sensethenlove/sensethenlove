@@ -1,11 +1,13 @@
 import fs from 'node:fs'
 import envMap from './envMap.js'
+import getPropertiesError from './getPropertiesError.js'
 
 
 (async function main() {
   const map = envMap
+  const propertiesError = getPropertiesError(map)
 
-  if (!map.has(process.argv[2])) throw new Error(`Please pass one of the following properties ${[...map.keys()].join(', ')}`)
+  if (!map.has(process.argv[2])) throw propertiesError
   else {
     const PATH = '.env'
     const environment = process.argv[2]
