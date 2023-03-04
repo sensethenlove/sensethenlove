@@ -40,6 +40,7 @@ import getPropertiesError from './getPropertiesError.js'
       fs.promises.writeFile(PRISMA_PATH, prismaLines.join('\n'))
     ])
 
-    console.log(`💜 Successfully updated "${ SCHEMA_PATH }" AND "${ PRISMA_PATH }"`)
+    console.log(`💖 Successfully updated "${ SCHEMA_PATH }""`)
+    console.log(`💜 Successfully updated "${ PRISMA_PATH }"`)
   }
 })()

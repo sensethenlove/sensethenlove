@@ -51,6 +51,7 @@ import getPropertiesError from './getPropertiesError.js'
       }
     }
 
-    console.log(`💜 Successfully validated "${ SCHEMA_PATH }" AND "${ PRISMA_PATH }"`)
+    console.log(`💖 Successfully validated "${ SCHEMA_PATH }"`)
+    console.log(`💜 Successfully validated "${ PRISMA_PATH }"`)
   }
 })()
