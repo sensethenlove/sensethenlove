@@ -12,8 +12,8 @@ export default async () => {
       global.prisma = new client.PrismaClient({ // https://github.com/prisma/prisma/issues/13771#issuecomment-1204295665
         datasources: {
           db: {
-            // url: QA_PLANETSCALE_URL
-            url: PROD_PLANETSCALE_URL
+            url: QA_PLANETSCALE_URL
+            // url: PROD_PLANETSCALE_URL
           }
         }
       })
@@ -24,8 +24,8 @@ export default async () => {
     return new client.PrismaClient({ // https://github.com/prisma/prisma/issues/13771#issuecomment-1204295665
       datasources: {
         db: {
-          // url: QA_PRISMA_URL
-          url: PROD_PRISMA_URL
+          url: QA_PRISMA_URL
+          // url: PROD_PRISMA_URL
         }
       }
     })
