@@ -11,7 +11,7 @@ export default async () => {
       const client = await import('@prisma/client')
       global.prisma = new client.PrismaClient({ // https://github.com/prisma/prisma/issues/13771#issuecomment-1204295665
         datasources: {
-          db: {
+          db: { // Do not manually alter this url, bash "pnpm localWrite", "pnpm qaWrite" or "pnpm prodWrite" instead please
             url: QA_PLANETSCALE_URL
             // url: PROD_PLANETSCALE_URL
           }
@@ -23,7 +23,7 @@ export default async () => {
     const client = await import('@prisma/client/edge') // https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers + https://www.prisma.io/docs/data-platform/data-proxy
     return new client.PrismaClient({ // https://github.com/prisma/prisma/issues/13771#issuecomment-1204295665
       datasources: {
-        db: {
+        db: { // Do not manually alter this url, bash "pnpm localWrite", "pnpm qaWrite" or "pnpm prodWrite" instead please
           url: QA_PRISMA_URL
           // url: PROD_PRISMA_URL
         }
