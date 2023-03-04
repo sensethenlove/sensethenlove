@@ -1,4 +1,4 @@
 #!/bin/bash
-pnpm localWrite
-pnpm prisma generate
+pnpm localWrite &&
+pnpm prisma generate &&
 vite dev

@@ -5,9 +5,9 @@ generator client {
 
 datasource db {
   provider     = "mysql"
-  // url          = env("QA_PLANETSCALE_URL")
+  url          = env("QA_PLANETSCALE_URL")
   // url          = env("PROD_PLANETSCALE_URL")
-  url          = env("QA_PRISMA_URL")
+  // url          = env("QA_PRISMA_URL")
   // url          = env("PROD_PRISMA_URL")
   relationMode = "prisma"
 }
@@ -126,6 +126,7 @@ model Culture {
   urlType     UrlType           @default(YOUTUBE)
   categories  CultureCategory[]
   author      CultureAuthor[]
+  createdAt   DateTime          @default(now())
 }
 
 model CultureCategory {
@@ -151,6 +152,7 @@ model Product {
   urlType     UrlType
   categories  ProductCategory[]
   authors     ProductAuthor[]
+  createdAt   DateTime          @default(now())
 }
 
 model ProductCategory {

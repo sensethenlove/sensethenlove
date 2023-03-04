@@ -12,6 +12,7 @@
 		"qaLogs": "wrangler tail --env qa",
 		"prodWrite": "bash ./src/lib/scripts/prodWrite.sh",
 		"prodPush": "bash ./src/lib/scripts/prodPush.sh",
+		"test": "bash ./src/lib/scripts/test.sh",
 		"prodDeploy": "bash ./src/lib/scripts/prodDeploy.sh",
 		"prodLogs": "wrangler tail",
 		"schemaWrite": "bash ./src/lib/scripts/schemaWrite.sh",
