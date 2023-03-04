@@ -13,7 +13,7 @@ import getPropertiesError from './getPropertiesError.js'
     const environment = process.argv[2]
     const text = await fs.promises.readFile(PATH, 'utf-8')
     const value = map.get(environment)
-    const validateError = new Error(`In the terminal run "${ value.write }"`)
+    const validateError = new Error(`In bash run "${ value.write }" please`)
 
     if (!text.match(`PUBLIC_ENVIRONMENT = '${ environment }'`)) throw validateError
     if (!text.match(`PUBLIC_HOST = '${ value.host }'`)) throw validateError

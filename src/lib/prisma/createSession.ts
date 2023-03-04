@@ -1,6 +1,6 @@
 import prisma from '$lib/prisma/prisma'
 import type { Session } from '$lib/util/types'
-import createAccessAndRefreshExpirationDates from '$lib/util/createAccessAndRefreshExpirationDates'
+import createAccessAndRefreshExpirationDates from '$lib/security/createAccessAndRefreshExpirationDates'
 
 
 export default async (userId: string, ipAddress: string): Promise<Session> => {
