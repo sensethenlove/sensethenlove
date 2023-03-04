@@ -22,12 +22,12 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20230221.0",
+		"@cloudflare/workers-types": "^4.20230228.0",
 		"@poppanator/sveltekit-svg": "^2.1.2",
 		"@prisma/client": "^4.11.0",
-		"@sveltejs/adapter-cloudflare-workers": "^1.0.6",
-		"@sveltejs/kit": "^1.9.1",
-		"@types/sanitize-html": "^2.8.0",
+		"@sveltejs/adapter-cloudflare-workers": "^1.1.0",
+		"@sveltejs/kit": "^1.10.0",
+		"@types/sanitize-html": "^2.8.1",
 		"buffer": "^6.0.3",
 		"prisma": "^4.11.0",
 		"sanitize-html": "^2.10.0",
