@@ -46,7 +46,7 @@ import getPropertiesError from './getPropertiesError.js'
       }
 
       if (!found.schemaPrismaQA || !found.schemaPrismaPROD || !found.schemaPlanetscaleQA || !found.schemaPlanetscalePROD || !found.prismaLocalQA || !found.prismaLocalProd || !found.prismaElseQA || !found.prismaElseProd) {
-        const validationError = new Error(`In bash run "${values.write}" please`)
+        const validationError = new Error(`Prisma value(s) incorrect. Maybe in bash run "${values.write}" please`)
         throw validationError
       }
     }

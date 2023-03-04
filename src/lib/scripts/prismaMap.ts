@@ -1,5 +1,5 @@
 const qaValues = {
-  write: 'pnpm qa-write',
+  write: 'pnpm qaWrite',
   schemaPlanetscaleQA: '  // url          = env("QA_PLANETSCALE_URL")',
   schemaPlanetscalePROD: '  // url          = env("PROD_PLANETSCALE_URL")',
   schemaPrismaQA: '  url          = env("QA_PRISMA_URL")',
@@ -11,7 +11,7 @@ const qaValues = {
 }
 
 const prodValues = {
-  write: 'pnpm prod-write',
+  write: 'pnpm prodWrite',
   schemaPlanetscaleQA: '  // url          = env("QA_PLANETSCALE_URL")',
   schemaPlanetscalePROD: '  // url          = env("PROD_PLANETSCALE_URL")',
   schemaPrismaQA: '  // url          = env("QA_PRISMA_URL")',

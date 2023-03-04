@@ -5,7 +5,7 @@ exec('git branch', (error, stdout, stderr) => {
   if (error) throw error
   if (stderr) throw stderr
   if(!stdout.includes(`* ${ process.argv[2] }`)) {
-    const wrongBranchError = new Error(`In bash run "git checkout ${ process.argv[2] }" please`)
+    const wrongBranchError = new Error(`Required branch "${ process.argv[2] }" is not the current branch`)
     throw wrongBranchError
   }
 

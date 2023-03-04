@@ -10,15 +10,9 @@
     "sourceMap": true,
     "strict": true,
   },
-  "exclude": [
-    "./src/lib/scripts/envMap.js",
-    "./src/lib/scripts/prismaMap.js",
-    "./src/lib/scripts/validateEnv.js",
-    "./src/lib/scripts/validatePrisma.js",
-    "./src/lib/scripts/writeEnv.js",
-    "./src/lib/scripts/writePrisma.js",
-    "./src/lib/scripts/getPropertiesError.js",
-  ]
+  "ts-node": {
+    "esm": true // https://typestrong.org/ts-node/docs/imports#native-ecmascript-modules
+  }
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
   //
   // If you want to overwrite includes/excludes, make sure to copy over the relevant includes/excludes
