@@ -125,7 +125,7 @@ model Culture {
   url         String            @db.VarChar(255)
   urlType     UrlType           @default(YOUTUBE)
   categories  CultureCategory[]
-  author      CultureAuthor[]
+  authors     CultureAuthor[]
   createdAt   DateTime          @default(now())
 }
 

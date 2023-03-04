@@ -8,6 +8,7 @@ import type { // Import Prisma Types + Prisma Client
   QuoteCategory as QuoteCategoryPrisma,
   User as UserPrisma,
   Post as PostPrisma,
+  Culture as CulturePrisma,
 } from '@prisma/client'
 
 
@@ -24,6 +25,7 @@ export interface Source extends SourcePrisma {
 export interface User extends UserPrisma {}
 export interface SiteComment extends SiteCommentPrisma { }
 export interface Post extends PostPrisma { }
+export interface Culture extends CulturePrisma { }
 
 export interface Session extends SessionPrisma {
   user?: User // schema.prisma property
