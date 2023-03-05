@@ -79,7 +79,7 @@
 
     .img-wrapper,
     :global(iframe) {
-      width: 87vw;
+      width: calc(100vw - 7rem);
       transition: all 0.9s;
 
       @media only screen and (min-width: 50rem) { // big screen
