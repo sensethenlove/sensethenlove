@@ -38,6 +38,8 @@
 
 
 <style lang="scss">
+  @import '$lib/scss/variables.scss';
+
   .wrapper {
     cursor: pointer;
     position: relative;
@@ -61,7 +63,7 @@
       border: none;
       cursor: pointer;
       background-color: transparent;
-      z-index: 5000;
+      z-index: $zindex-youtube-embed-button;
       color: rgb(238, 238, 238);
 
       :global(.play--out) {
