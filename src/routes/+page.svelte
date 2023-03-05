@@ -23,14 +23,14 @@
 
 { #if data.source }
   <Title noBottom={ true }>
-    <span class="pr-5">The most recent</span> <LoadingLink href="/science" label="science addition" loadWidth="big" /> to our <LoadingLink href="/library" label="library" loadWidth="big" />!
+    <span class="pr-5">The most recent</span> <LoadingLink href="/science" label="science" loadWidth="big" /> addition to our <LoadingLink href="/library" label="library" loadWidth="big" />!
   </Title>
   <Source source={ data.source } location="home" />
 { /if }
 
 { #if data.culture }
   <Title noBottom={ true }>
-    <span class="pr-5">The most recent</span> <LoadingLink href="/library" label="culture addition" loadWidth="big" /> to our <LoadingLink href="/library" label="library" loadWidth="big" />!
+    <span class="pr-5">The most recent</span> <LoadingLink href="/library" label="culture" loadWidth="big" /> addition to our <LoadingLink href="/library" label="library" loadWidth="big" />!
   </Title>
   <Culture culture={ data.culture } />
 { /if }
