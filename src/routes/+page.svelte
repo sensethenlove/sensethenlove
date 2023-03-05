@@ -2,6 +2,7 @@
   import type { PageData } from './$types'
   import Head from '$lib/components/Head.svelte'
   import Title from '$lib/components/Title.svelte'
+  import Culture from '$lib/components/Culture.svelte'
   import AboutUs from '$lib/components/AboutUs.svelte'
   import { CF_OG_HOME } from '$lib/util/cloudflareImages'
   import Source from '$lib/components/source/Source.svelte'
@@ -20,9 +21,16 @@
 <OurSocials />
 <NewsletterSignUp />
 
-<Title noBottom={ true }>
-  <span class="pr-5">Our most recent</span><LoadingLink href="/library" label="Source" loadWidth="big" />!
-</Title>
 { #if data.source }
+  <Title noBottom={ true }>
+    <span class="pr-5">The most recent</span> <LoadingLink href="/science" label="science addition" loadWidth="big" /> to our <LoadingLink href="/library" label="library" loadWidth="big" />!
+  </Title>
   <Source source={ data.source } location="home" />
+{ /if }
+
+{ #if data.culture }
+  <Title noBottom={ true }>
+    <span class="pr-5">The most recent</span> <LoadingLink href="/library" label="culture addition" loadWidth="big" /> to our <LoadingLink href="/library" label="library" loadWidth="big" />!
+  </Title>
+  <Culture culture={ data.culture } />
 { /if }
