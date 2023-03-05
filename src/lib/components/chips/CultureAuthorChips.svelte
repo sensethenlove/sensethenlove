@@ -4,7 +4,7 @@
   import type { CultureAuthor, CultureCategory } from '$lib/util/types'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
 
-  export let location = ''
+  // export let location = ''
   export let authors: CultureAuthor[]
   export let category: CultureCategory | undefined
 
