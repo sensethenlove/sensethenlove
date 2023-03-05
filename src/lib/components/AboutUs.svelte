@@ -26,19 +26,18 @@
     <li class="indent-dot">Collaborate with, encourage & love each other!</li>
   </ul>
   <div class="item">
-    <div class="emoji">📚</div>
-    <div>Share our <LoadingLink href="/library/" label="library" /> of lovely <LoadingLink href="/library/" label="scientific evidence," /> <LoadingLink href="/library/" label="products," /> & <LoadingLink href="/library/" label="culture" /></div>
+    <div class="emoji" style="font-size: 2.3rem">📚</div>
+    <div>Share our <LoadingLink href="/library/" label="library" /> of our favorite <LoadingLink href="/library/" label="scientific evidence," /> <LoadingLink href="/library/" label="products," /> & <LoadingLink href="/library/" label="culture" />!</div>
   </div>
 
   <div class="papyrus three">Our Name</div>
     <div class="item list-below">
-    <div class="emoji">🌬️</div>
-      Focus on a sensation happening now
+      <div class="emoji" style="font-size: 2.4rem;">🌬️</div>
+      <div>Focus on a sensation happening now</div>
     </div>
     <ul>
       <li class="indent-dot">Example: Feel breath flow in & out of nose</li>
     </ul>
-
     <div class="item">
       <div class="emoji">🥰</div>
       <div>Feel love for this sensation happening now</div>
@@ -62,6 +61,7 @@
       }
 
       .emoji {
+        width: 3rem;
         min-width: 3rem;
         font-size: 2.1rem;
         transform: translateY(-0.3rem);

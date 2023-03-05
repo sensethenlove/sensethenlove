@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import getId from '$lib/youtube/getId'
   import getiFrame from '$lib/youtube/getiFrame'
   import getImageUrl from '$lib/youtube/getImageUrl'
@@ -10,6 +11,7 @@
   let iframe: string
   let youtubeImageUrl: string
   let showIframe: boolean = false
+  let playButton: HTMLButtonElement
 
   $: if (url) {
     id = getId(url)
@@ -19,15 +21,18 @@
       youtubeImageUrl = getImageUrl(id)
     }
   }
+
+  onMount(() => {
+    if (playButton) playButton.classList.add('visible')
+  })
 </script>
+
 
 { #if youtubeImageUrl }
   <button on:click={ () => { showIframe = true } } class="wrapper" aria-label="Play video">
     { #if !showIframe }
-      <div class="img-wrapper">
-        <img src={ youtubeImageUrl } alt="YouTube" />
-      </div>
-      <button aria-label="Play video" style="position: absolute;">
+      <img src={ youtubeImageUrl } alt="YouTube" />
+      <button bind:this={ playButton } style="position:absolute; visibility:hidden;" aria-label="Play video">
         { @html SVG_YOUTUBE_EMBED }
       </button> 
     { :else }
@@ -41,6 +46,7 @@
   @import '$lib/scss/variables.scss';
 
   .wrapper {
+    width: 100%;
     cursor: pointer;
     position: relative;
     border: transparent;
@@ -53,20 +59,22 @@
     }
 
     button {
-      animation-name: fade-in-from-above;
-      animation-duration: 0.9s;
-      position: absolute;
       top: 50%;
       left: 50%;
       width: 6.8rem;
       height: 4.8rem;
       margin-left: -3.4rem;
       margin-top: -2.4rem;
+      animation-duration: 0.9s;
       border: none;
       cursor: pointer;
       background-color: transparent;
       z-index: $zindex-youtube-embed-button;
       color: rgb(238, 238, 238);
+      &:global(.visible) {
+        visibility: visible !important;
+        animation-name: fade-in-from-above;
+      }
 
       :global(.play--out) {
         transition: fill .1s cubic-bezier(.4,0,1,1),fill-opacity .1s cubic-bezier(.4,0,1,1);
@@ -79,22 +87,18 @@
       }
     }
 
-    .img-wrapper,
-    :global(iframe) {
-      width: calc(100vw - 7rem);
-      transition: all 0.9s;
-
-      @media only screen and (min-width: 50rem) { // big screen
-        width: 78rem;
-      }
-    }
-
-    img {
+    img  {
       width: 100%;
     }
 
     :global(iframe) {
       aspect-ratio: 16 / 9;
+      width: calc(100vw - 6.6rem);
+      transition: all 0.9s;
+
+      @media only screen and (min-width: 54rem) { // big screen
+        width: 78rem;
+      }
     }
   }
 </style>
