@@ -7,25 +7,46 @@
 <Title text="About Us!" noBottom={ true } />
 <section class="us">
   <div class="papyrus three">Our Goals</div>
-  <ol>
-    <li>Think lovely thoughts!</li>
+  <div class="item list-below">
+    <div class="emoji">💖</div>
+    <div>Think lovely thoughts!</div>
+  </div>
+  <ul>
     <li class="indent-dot">Sing a lovely song &rarr; Feel lovely</li>
     <li class="indent-dot">Tell a scary story &rarr; Feel scared</li>
     <li class="indent-dot">Think lovely &rarr; Feel lovely</li>
-    <li value="2">Share our <LoadingLink href="/social/" label="social network" /> that may help us all:</li>
+  </ul>
+  <div class="item list-below">
+    <div class="emoji">🕉</div>
+    <div>Share our <LoadingLink href="/social/" label="social network" /> that may help us all:</div>
+  </div>
+  <ul>
     <li class="indent-dot">Share our lovely thoughts, goals & achievements!</li>
     <li class="indent-dot">Aim high together!</li>
     <li class="indent-dot">Collaborate with, encourage & love each other!</li>
-    <li value="3">Share our <LoadingLink href="/library/" label="library" /> of lovely <LoadingLink href="/library/" label="scientific evidence," /> <LoadingLink href="/library/" label="products," /> & <LoadingLink href="/library/" label="culture" /></li>
-  </ol>
+  </ul>
+  <div class="item">
+    <div class="emoji">📚</div>
+    <div>Share our <LoadingLink href="/library/" label="library" /> of lovely <LoadingLink href="/library/" label="scientific evidence," /> <LoadingLink href="/library/" label="products," /> & <LoadingLink href="/library/" label="culture" /></div>
+  </div>
 
   <div class="papyrus three">Our Name</div>
-  <ol>
-    <li>Focus on a sensation happening now</li>
-    <li class="indent-dot">Example: Feel breath flow in & out of nose</li>
-    <li value="2">Feel love for this sensation happening now</li>
-    <li value="3">If love guidance is desired, externally or internally sing the word <strong>'Love'</strong>, on inhale & exhale, to guide mind</li>
-  </ol>
+    <div class="item list-below">
+    <div class="emoji">🌬️</div>
+      Focus on a sensation happening now
+    </div>
+    <ul>
+      <li class="indent-dot">Example: Feel breath flow in & out of nose</li>
+    </ul>
+
+    <div class="item">
+      <div class="emoji">🥰</div>
+      <div>Feel love for this sensation happening now</div>
+    </div>
+    <div class="item">
+      <div class="emoji">🌟</div>
+      <div>If love guidance is desired, externally or internally sing the word <strong>'Love'</strong>, on inhale & exhale, to guide mind</div>
+    </div>
 </section>
 
 
@@ -33,8 +54,18 @@
   .us {
     max-width: 51rem;
 
-    ol {
-      margin-top: 0;
+    .item {
+      display: flex;
+      margin-bottom: 0.9rem;
+      &.list-below {
+        margin-bottom: 0.3rem;
+      }
+
+      .emoji {
+        min-width: 3rem;
+        font-size: 2.1rem;
+        transform: translateY(-0.3rem);
+      }
     }
   }
 </style>
