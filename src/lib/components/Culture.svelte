@@ -12,7 +12,7 @@
   <div class="header">
     <a href={ culture.url } class="title" target="_blank" rel="noreferrer">{ culture.title }</a>
     { #if culture?.authors?.length }
-      <CultureAuthorChips authors={ culture.authors } category={ undefined } location="culture" />
+      <CultureAuthorChips authors={ culture.authors } category={ undefined } />
     { /if }
   </div>
 
