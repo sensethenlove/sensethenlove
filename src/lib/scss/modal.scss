@@ -1,29 +1,5 @@
 @import '$lib/scss/variables.scss';
 
-@keyframes modal-in {
-  0% {
-    opacity: 0;
-    transform: translateY(-9rem);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes modal-out {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(-9rem);
-  }
-}
-
 .modal {
   width: 100%;
   max-width: 81rem;
@@ -31,12 +7,12 @@
   border-radius: 1.8rem;
   z-index: $zindex-modal-modal;
   background-color: white;
-  animation-name: modal-in;
+  animation-name: fade-in-from-above;
   animation-duration: 0.9s;
   color: var(--text-color);
   background-color: var(--bg-color);
   &.hide {
-    animation-name: modal-out;
+    animation-name: fade-out-and-slide-up;
   }
 
   &--container {

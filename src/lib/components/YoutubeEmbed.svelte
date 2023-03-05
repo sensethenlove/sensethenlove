@@ -51,6 +51,8 @@
     }
 
     button {
+      animation-name: fade-in-from-above;
+      animation-duration: 0.9s;
       position: absolute;
       top: 50%;
       left: 50%;
