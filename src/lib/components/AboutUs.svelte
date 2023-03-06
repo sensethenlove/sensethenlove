@@ -27,7 +27,7 @@
   </ul>
   <div class="item">
     <div class="emoji" style="font-size: 2.3rem">📚</div>
-    <div>Share our <LoadingLink href="/library/" label="library" /> of our favorite <LoadingLink href="/library/" label="scientific evidence," /> <LoadingLink href="/library/" label="products," /> & <LoadingLink href="/library/" label="culture" />!</div>
+    <div>Share our <LoadingLink href="/library" label="library" /> of our favorite <LoadingLink href="/library?type=science" label="scientific evidence," /> <LoadingLink href="/library?type=product" label="products," /> & <LoadingLink href="/library?type=culture" label="culture" />!</div>
   </div>
 
   <div class="papyrus three">Our Name</div>

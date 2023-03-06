@@ -1,26 +1,30 @@
 <script lang="ts">
-  import type { Source } from '$lib/util/types'
   import getImageUrl from '$lib/file/getImageUrl'
   import AuthorChips from '$lib/components/chips/AuthorChips.svelte'
   import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
+  import type { Source, Author, Category, SourceType } from '$lib/util/types'
 
-  export let product: Source
+  export let source: Source
+  export let location: string
+  export let type: SourceType = undefined
+  export let author: Author | undefined = undefined
+  export let category: Category | undefined = undefined
 
   let images: string[] = []
 
-  $: if (product?.images) {
-    images = product.images.map(({ id }) => getImageUrl(id))
+  $: if (source?.images) {
+    images = source.images.map(({ id }) => getImageUrl(id))
   }
 </script>
 
 
-<section>
+<section class="source type--product location--{ location }">
   <div class="header">
-    <a href={ product.url } class="title" target="_blank" rel="noreferrer">{ product.title }</a>
-    { #if product?.authors?.length }
-      <AuthorChips authors={ product.authors } category={ undefined } location="product" />
+    <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
+    { #if source?.authors?.length }
+      <AuthorChips { type } { category } { author } authors={ source.authors } location="product" />
     { /if }
-    <div class="description">{ product.description }</div>
+    <div class="description">{ source.description }</div>
   </div>
 
   <div class="images">
@@ -29,39 +33,13 @@
     { /each }
   </div>
 
-  { #if product?.categories?.length }
-    <CategoryChips categories={ product.categories } author={ undefined } location="product" />
+  { #if source?.categories?.length }
+    <CategoryChips { type } { category } { author } categories={ source.categories } location="product" />
   { /if }
 </section>
 
 
 <style lang="scss">
-  section {
-    width: calc(100vw - 1.8rem);
-    transition: all 0.9s;
-
-    @media only screen and (min-width: 54rem) { // big screen
-      width: 82rem;
-    }
-  }
-
-  .header {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    align-items: center;
-    margin-bottom: 1rem;
-    justify-content: center;
-
-    .title {
-      font-weight: 500;
-      font-size: 2.1rem;
-      margin-right: 1rem;
-      line-height: 1.4;
-      display: inline-block;
-    }
-  }
-
   .images {
     display: flex;
     justify-content: space-between;

@@ -1,20 +1,38 @@
 <script lang="ts">
-  import { page } from '$app/stores'
+  import { onMount } from 'svelte'
+  import { afterNavigate } from '$app/navigation'
   import Title from '$lib/components/Title.svelte'
-  import type { Author, QuoteCategory } from '$lib/util/types'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
+  import type { Author, Category, SourceType } from '$lib/util/types'
 
   export let location = ''
   export let authors: Author[]
-  export let category: QuoteCategory | undefined
+  export let type: SourceType = undefined
+  export let author: Author | undefined = undefined
+  export let category: Category | undefined = undefined
 
-  let urlAuthorSlug: string | null | undefined
+  let allHref: string
 
-  setUrlAuthorSlug()
-  $: if ($page) setUrlAuthorSlug()
+  function bindAllHref () {
+    const params: any = {}
+    if (type) params.type = type
+    if (category) params.category = category.slug
+    const urlParams = (new URLSearchParams(params)).toString()
+    allHref = urlParams ? '/library?' + urlParams : '/library'
+  }
 
-  function setUrlAuthorSlug () {
-    urlAuthorSlug = $page.url.searchParams.get('author')
+  onMount(bindAllHref)
+  afterNavigate(bindAllHref)
+
+  $: if (authors) {
+    for (const author of authors) {
+      const params: any = { }
+      if (type) params.type = type
+      if (category) params.category = category.slug
+      params.author = author.slug
+      const urlParams = (new URLSearchParams(params)).toString()
+      author.href = '/library?' + urlParams
+    }
   }
 </script>
 
@@ -23,9 +41,9 @@
 { /if }
 <div class="chips location--{ location }">
   { #if location === 'nav' }
-    <LoadingLink label="All" href="/library{ category?.slug ? `/${ category.slug }` : '' }"  css="chip { !urlAuthorSlug ? 'active' : '' }"/>
+    <LoadingLink label="All" href={ allHref }  css="chip { !author ? 'active' : '' }"/>
   { /if }
-  { #each authors as author }
-    <LoadingLink label={ author?.name } href="/library{ category?.slug ? `/${ category.slug }` : '' }?author={ author.slug }"  css="chip { urlAuthorSlug === author.slug ? 'active' : '' }"/>
+  { #each authors as a }
+    <LoadingLink label={ a.name } href={ a.href }  css="chip { author?.slug === a.slug ? 'active' : '' }"/>
   { /each }
 </div>

@@ -1,12 +1,39 @@
 <script lang="ts">
-  import { page } from '$app/stores'
+  import { onMount } from 'svelte'
+  import { afterNavigate } from '$app/navigation'
   import Title from '$lib/components/Title.svelte'
-  import type { Author, QuoteCategory } from '$lib/util/types'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
+  import type { Author, Category, SourceType } from '$lib/util/types'
 
   export let location = ''
-  export let author: Author | undefined
-  export let categories: QuoteCategory[]
+  export let categories: Category[]
+  export let type: SourceType = undefined
+  export let author: Author | undefined = undefined
+  export let category: Category | undefined = undefined
+
+  let allHref: string
+
+  function bindAllHref () {
+    const params: any = {}
+    if (type) params.type = type
+    if (author) params.author = author.slug
+    const urlParams = (new URLSearchParams(params)).toString()
+    allHref = urlParams ? '/library?' + urlParams : '/library'
+  }
+
+  onMount(bindAllHref)
+  afterNavigate(bindAllHref)
+
+  $: if (categories) {
+    for (const category of categories) {
+      const params: any = { }
+      if (type) params.type = type
+      params.category = category.slug
+      if (author) params.author = author.slug
+      const urlParams = (new URLSearchParams(params)).toString()
+      category.href = '/library?' + urlParams
+    }
+  }
 </script>
 
 { #if location === 'nav' }
@@ -15,9 +42,9 @@
 
 <div class="chips location--{ location }">
   { #if location === 'nav' }
-    <LoadingLink href="/library{ author?.slug ? `?author=${ author.slug }`: '' }" label="All" css="chip { !$page.params.slug ? 'active' : '' }" />
+    <LoadingLink href={ allHref } label="All" css="chip { !category ? 'active' : '' }" />
   { /if }
-  {#each categories as category}
-    <LoadingLink label={ category.name } href="/library/{ category.slug }{ author?.slug ? `?author=${ author.slug }`: '' }" css="chip { $page.params?.slug === category.slug ? 'active' : '' }"/>
+  {#each categories as c}
+    <LoadingLink label={ c.name } href={ c.href } css="chip { c.slug === category?.slug ? 'active' : '' }"/>
   {/each}
 </div>
