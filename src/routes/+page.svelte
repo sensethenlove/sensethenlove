@@ -12,7 +12,6 @@
   import NewsletterSignUp from '$lib/components/forms/NewsletterSignUp.svelte'
 
   export let data: PageData
-  console.log(data)
 </script>
 
 
@@ -25,21 +24,21 @@
 
 { #if data.science }
   <Title noBottom={ true }>
-    <span class="pr-5">The most recent</span> <LoadingLink href="/science" label="science" loadWidth="big" /> addition to our <LoadingLink href="/library" label="library" loadWidth="big" />!
+    <span class="pr-5">The most recent</span> <LoadingLink href="/library?type=science" label="science" loadWidth="big" /> addition to our <LoadingLink href="/library" label="library" loadWidth="big" />!
   </Title>
   <Source source={ data.science } location="home" />
 { /if }
 
 { #if data.culture }
   <Title noBottom={ true }>
-    <span class="pr-5">The most recent</span> <LoadingLink href="/library" label="culture" loadWidth="big" /> addition to our <LoadingLink href="/library" label="library" loadWidth="big" />!
+    <span class="pr-5">The most recent</span> <LoadingLink href="/library?type=culture" label="culture" loadWidth="big" /> addition to our <LoadingLink href="/library" label="library" loadWidth="big" />!
   </Title>
-  <Culture culture={ data.culture } />
+  <Culture source={ data.culture } location="home" />
 { /if }
 
 { #if data.product }
   <Title noBottom={ true }>
-    <span class="pr-5">The most recent</span> <LoadingLink href="/library" label="product" loadWidth="big" /> addition to our <LoadingLink href="/library" label="library" loadWidth="big" />!
+    <span class="pr-5">The most recent</span> <LoadingLink href="/library?type=product" label="product" loadWidth="big" /> addition to our <LoadingLink href="/library" label="library" loadWidth="big" />!
   </Title>
-  <Product product={ data.product } />
+  <Product source={ data.product } location="home" />
 { /if }

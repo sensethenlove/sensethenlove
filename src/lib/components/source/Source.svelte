@@ -3,15 +3,16 @@
   import SVG_PUBMED from '$lib/svg/logo/SVG_PUBMED.svg'
   import SVG_ACADEMIA from '$lib/svg/logo/SVG_ACADEMIA.svg'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
-  import type { Source, Author, QuoteCategory } from '$lib/util/types'
   import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
+  import type { Source, Author, Category, SourceType } from '$lib/util/types'
 
   export let source: Source
   export let location = 'sources'
+  export let type: SourceType = undefined
   export let author: Author | undefined = undefined
-  export let category: QuoteCategory = { id: '', name: '', slug: '' }
+  export let category: Category = { id: '', name: '', slug: '' }
 
-  let displayCategory: QuoteCategory
+  let displayCategory: Category
 
   if (location !== 'search') {
     displayCategory = { ...category }
@@ -20,7 +21,7 @@
 </script>
 
 
-<section class="source location--{ location }">
+<section class="source type--science location--{ location }">
   <div class="head">
     { #if source.urlType === 'ACADEMIA' }
       <a class="publisher" href={ source.url } target="_blank" rel="noreferrer" aria-hidden="true">
@@ -41,7 +42,7 @@
         { #if source.authors }
           <span>⋅</span>
           { #each source.authors as a, i }
-            <LoadingLink href="/library{ category?.slug ? '/' + category.slug : '' }?author={ a.slug }" css="{ author?.id === a.id ? 'active': '' }" label="{ a.name }" />
+            <LoadingLink href={ `/library?author=${ a.slug }${ type ? '&type=' + type : '' }${ displayCategory?.slug ? '&category=' + displayCategory.slug : '' }` } css="{ author?.id === a.id ? 'active': '' }" label="{ a.name }" />
             { #if i+1 !== source.authors.length }
               <span>⋅</span>
             { /if }
@@ -65,7 +66,7 @@
   { /if }
 
   { #if source.categories?.length }
-    <CategoryChips categories={ source.categories } { author } location="source" />
+    <CategoryChips { type } category={ displayCategory } { author } categories={ source.categories } location="source" />
   { /if }
 </section>
 
@@ -74,9 +75,6 @@
   @import '$lib/scss/variables.scss';
 
   .source {
-    &.location--home {
-      max-width: 82.565rem;
-    }
     &.location--search--with-quote,
     &.location--search--source-titles {
       border-bottom: 1px solid gold;

@@ -5,7 +5,7 @@ import type { // Import Prisma Types + Prisma Client
   Author as AuthorPrisma,
   Session as SessionPrisma,
   SiteComment as SiteCommentPrisma,
-  QuoteCategory as QuoteCategoryPrisma,
+  QuoteCategory as CategoryPrisma,
   User as UserPrisma,
   Post as PostPrisma,
   Image as ImagePrisma,
@@ -19,9 +19,10 @@ import type { // Import Prisma Types + Prisma Client
 export interface Source extends SourcePrisma {
   authors?: Author[] // schema.prisma property
   favoriteQuotes?: Quote[] // schema.prisma property
-  categories?: QuoteCategory[], // schema.prisma property
+  categories?: Category[], // schema.prisma property
   images?: Image[], // schema.prisma property
 }
+export type SourceType = 'science' | 'culture' | 'product' | undefined
 
 export interface Image extends ImagePrisma { }
 export interface User extends UserPrisma {}
@@ -33,18 +34,21 @@ export interface Session extends SessionPrisma {
 }
 
 export interface Author extends AuthorPrisma {
+  href?: string
   isLoading?: boolean
 }
 
 export interface Quote extends QuotePrisma {
   favoriteQuotes?: Quote[]
-  categories?: QuoteCategory[] // schema.prisma property
+  categories?: Category[] // schema.prisma property
 }
 
-export interface QuoteCategory extends QuoteCategoryPrisma {
+export interface Category extends CategoryPrisma {
   quotes?: Quote[] // schema.prisma property
   isLoading?: boolean
+  href?: string
 }
+
 
 
 declare global { // Node global types
@@ -146,5 +150,5 @@ export type ShowModal = () => void
 
 export type SearchQuotesByTextResponse = (Quote & {
   Source: Source;
-  categories: QuoteCategory[];
+  categories: Category[];
 })[]

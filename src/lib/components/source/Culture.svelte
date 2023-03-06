@@ -1,56 +1,31 @@
 <script lang="ts">
-  import type { Source } from '$lib/util/types'
   import YoutubeEmbed from '../YoutubeEmbed.svelte'
   import AuthorChips from '$lib/components/chips/AuthorChips.svelte'
   import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
+  import type { Source, SourceType, Author, Category } from '$lib/util/types'
 
-  export let culture: Source
+  export let source: Source
+  export let location: string
+  export let type: SourceType = undefined
+  export let author: Author | undefined = undefined
+  export let category: Category | undefined = undefined
 </script>
 
 
-<section>
+<section class="source type--culture location--{ location }">
   <div class="header">
-    <a href={ culture.url } class="title" target="_blank" rel="noreferrer">{ culture.title }</a>
-    { #if culture?.authors?.length }
-      <AuthorChips authors={ culture.authors } category={ undefined } location="culture" />
+    <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
+    { #if source?.authors?.length }
+      <AuthorChips { type } { category } { author } authors={ source.authors } location="culture" />
     { /if }
-    <div class="description">{ culture.description }</div>
+    <div class="description">{ source.description }</div>
   </div>
 
-  { #if culture?.url }
-    <YoutubeEmbed url={ culture.url } />
+  { #if source?.url }
+    <YoutubeEmbed url={ source.url } />
   { /if }
 
-  { #if culture?.categories?.length }
-    <CategoryChips categories={ culture.categories } author={ undefined } location="culture" />
+  { #if source?.categories?.length }
+    <CategoryChips { type } { category } { author } categories={ source.categories } location="culture" />
   { /if }
 </section>
-
-
-<style lang="scss">
-  section {
-    width: calc(100vw - 1.8rem);
-    transition: all 0.9s;
-
-    @media only screen and (min-width: 54rem) { // big screen
-      width: 82rem;
-    }
-  }
-
-  .header {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    align-items: center;
-    margin-bottom: 1rem;
-    justify-content: center;
-
-    .title {
-      font-weight: 500;
-      font-size: 2.1rem;
-      margin-right: 1rem;
-      line-height: 1.4;
-      display: inline-block;
-    }
-  }
-</style>

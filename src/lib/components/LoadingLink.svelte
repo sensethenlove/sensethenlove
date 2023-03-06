@@ -10,10 +10,14 @@
 
   let isLoading: boolean
   afterNavigate(() => isLoading = false)
+
+  function click () {
+    isLoading = $page.url.href.endsWith(href) ? false : true
+  }
 </script>
 
 
-<a { href } class="{ css } loading-link { isLoading ? 'is-loading' : '' } loading-link--loading-size-{ loadWidth }" on:click={ () => { $page.route.id !== href ? isLoading = true : null } }>
+<a { href } class="{ css } loading-link { isLoading ? 'is-loading' : '' } loading-link--loading-size-{ loadWidth }" on:click={ click }>
   <slot/>
   <span>{ label }</span>
   { @html SVG_LOADING }

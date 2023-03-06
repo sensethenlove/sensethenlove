@@ -1,0 +1,29 @@
+.source {
+  transition: all 0.9s;
+  &.location--home {
+    width: calc(100vw - 1.8rem);
+
+    @media only screen and (min-width: 54rem) { // big screen
+      width: 82rem;
+    }
+  }
+  &.type--culture,
+  &.type--product {
+    .header {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        align-items: center;
+        margin-bottom: 1rem;
+        justify-content: center;
+    
+        .title {
+          font-weight: 500;
+          font-size: 2.1rem;
+          margin-right: 1rem;
+          line-height: 1.4;
+          display: inline-block;
+        }
+      }
+  }
+}
