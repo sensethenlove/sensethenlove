@@ -131,9 +131,9 @@ pnpm prodDeploy
 ```
 
 ## How to update database schema
-1. Bash `pnpm write-qa`
+1. Bash `pnpm qaWrite`
 1. Update schema @ `./prisma/schema.prisma`
-1. Bash `pnpm schema` to push schema changes to `qa` branch in [PlanetScale](https://planetscale.com/docs)
+1. Bash `pnpm schemaDeploy` to push schema changes to `qa` branch in [PlanetScale](https://planetscale.com/docs)
 1. Click `DASHBOARD_PLANETSCALE` link in `.apps.toml` file
 1. Click `Branches` tab
 1. Click `qa` link
@@ -160,7 +160,7 @@ pnpm up
 ## Open [Prisma Studio](https://www.prisma.io/studio)
 1. Save schema @ `./prisma/schema.prisma` > `datasource db` > `url` w/ `env("QA_PLANETSCALE_URL")` or `env("PROD_PLANETSCALE_URL")`
 ```bash
-pnpm studio
+pnpm data
 ```
 
 ## Format `schema.prisma` in [VSCodium](https://vscodium.com/) on save

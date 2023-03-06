@@ -21,7 +21,7 @@ importers:
       typescript: ^4.9.5
       vite: ^4.1.4
       wrangler: ^2.12.0
-      zod: ^3.20.6
+      zod: ^3.21.2
     devDependencies:
       '@cloudflare/workers-types': 4.20230228.0
       '@poppanator/sveltekit-svg': 2.1.2_svelte@3.55.1+vite@4.1.4
@@ -40,7 +40,7 @@ importers:
       typescript: 4.9.5
       vite: 4.1.4_tbu6ibuzbmq2zng52hwcifltki
       wrangler: 2.12.0
-      zod: 3.20.6
+      zod: 3.21.2
 
 packages:
 
@@ -2185,6 +2185,6 @@ packages:
       stack-trace: 0.0.10
     dev: true
 
-  /zod/3.20.6:
-    resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
+  /zod/3.21.2:
+    resolution: {integrity: sha512-0Ygy2/IZNIxHterZdHjE5Vb8hp1fUHJD/BGvSHj8QJx+UipEVNvo9WLchoyBpz5JIaN6KmdGDGYdloGzpFK98g==}
     dev: true
