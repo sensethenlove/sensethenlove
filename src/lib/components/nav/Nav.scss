@@ -131,6 +131,10 @@
 
       .loading-icon {
         transform: translateY(-0.3rem);
+
+        @media only screen and (min-width: $move-nav-window-width) { // big screen
+          transform: none;
+        }
       }
 
       span {
