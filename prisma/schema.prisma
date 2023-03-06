@@ -5,11 +5,11 @@ generator client {
 
 datasource db {
   provider     = "mysql"
+  relationMode = "prisma"
   // url          = env("QA_PLANETSCALE_URL")
   // url          = env("PROD_PLANETSCALE_URL")
   // url          = env("QA_PRISMA_URL")
   url          = env("PROD_PRISMA_URL")
-  relationMode = "prisma"
 }
 
 model User {
@@ -56,28 +56,47 @@ model Session {
 }
 
 model Source {
-  id                  String   @id @default(uuid())
-  title               String   @unique @db.VarChar(255)
-  slug                String   @unique @db.VarChar(255)
-  url                 String   @db.VarChar(255)
-  urlType             UrlType  @default(PUBMED)
-  publicationLocation String?  @db.VarChar(255)
-  publicationYear     Int?     @db.Year
+  id                  String          @id @default(uuid())
+  title               String          @unique @db.VarChar(255)
+  slug                String          @unique @db.VarChar(255)
+  type                SourceType      @default(SCIENCE)
+  description         String?         @db.Text()
+  url                 String          @db.VarChar(255)
+  urlType             UrlType         @default(PUBMED)
+  publicationLocation String?         @db.VarChar(255)
+  publicationYear     Int?            @db.Year
   favoriteQuotes      Quote[]
   authors             Author[]
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  categories          QuoteCategory[]
+  images              Image[]
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
 
   @@index([createdAt, updatedAt])
   @@fulltext([title])
+}
+
+enum SourceType {
+  SCIENCE
+  PRODUCT
+  CULTURE
 }
 
 enum UrlType {
   PUBMED
   ACADEMIA
   YOUTUBE
+  HEARTMATH
 
   @@map("SourceUrlType")
+}
+
+model Image {
+  id       String  @unique
+  source   Source? @relation(fields: [sourceId], references: [id])
+  sourceId String?
+
+  @@index([sourceId])
 }
 
 model Author {
@@ -100,10 +119,11 @@ model Quote {
 }
 
 model QuoteCategory {
-  id     String  @id @default(uuid())
-  name   String  @unique @db.VarChar(255)
-  slug   String  @unique @db.VarChar(255)
-  quotes Quote[]
+  id      String   @id @default(uuid())
+  name    String   @unique @db.VarChar(255)
+  slug    String   @unique @db.VarChar(255)
+  quotes  Quote[]
+  sources Source[]
 
   @@index([name])
 }
@@ -115,56 +135,4 @@ model SiteComment {
   email     String   @db.VarChar(255)
   comment   String   @db.Text
   createdAt DateTime @default(now())
-}
-
-model Culture {
-  id          String            @id @default(uuid())
-  title       String            @unique @db.VarChar(255)
-  description String            @db.Text()
-  slug        String            @unique @db.VarChar(255)
-  url         String            @db.VarChar(255)
-  urlType     UrlType           @default(YOUTUBE)
-  categories  CultureCategory[]
-  authors     CultureAuthor[]
-  createdAt   DateTime          @default(now())
-}
-
-model CultureCategory {
-  id      String    @id @default(uuid())
-  name    String    @unique @db.VarChar(255)
-  slug    String    @unique @db.VarChar(255)
-  culture Culture[]
-}
-
-model CultureAuthor {
-  id      String    @id @default(uuid())
-  name    String    @unique @db.VarChar(255)
-  slug    String    @unique @db.VarChar(255)
-  culture Culture[]
-}
-
-model Product {
-  id          String            @id @default(uuid())
-  title       String            @unique @db.VarChar(255)
-  description String            @db.Text()
-  slug        String            @unique @db.VarChar(255)
-  url         String            @db.VarChar(255)
-  urlType     UrlType
-  categories  ProductCategory[]
-  authors     ProductAuthor[]
-  createdAt   DateTime          @default(now())
-}
-
-model ProductCategory {
-  id       String    @id @default(uuid())
-  name     String    @unique @db.VarChar(255)
-  slug     String    @unique @db.VarChar(255)
-  products Product[]
-}
-
-model ProductAuthor {
-  id       String    @id @default(uuid())
-  name     String    @unique @db.VarChar(255)
-  slug     String    @unique @db.VarChar(255)
-  products Product[]
 }

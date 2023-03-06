@@ -47,6 +47,8 @@ function quotesByTextToResponse(quotesByText: SearchQuotesByTextResponse): Sourc
     return {
       id: r.Source.id,
       title: r.Source.title,
+      type: r.Source.type,
+      description: r.Source.description,
       slug: r.Source.slug,
       url: r.Source.url,
       urlType: r.Source.urlType,

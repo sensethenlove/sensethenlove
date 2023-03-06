@@ -1,22 +1,22 @@
 <script lang="ts">
   import { page } from '$app/stores'
   import Title from '$lib/components/Title.svelte'
-  import type { CultureAuthor, CultureCategory } from '$lib/util/types'
+  import type { Author, QuoteCategory } from '$lib/util/types'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
 
   export let location = ''
-  export let author: CultureAuthor | undefined
-  export let categories: CultureCategory[]
+  export let author: Author | undefined
+  export let categories: QuoteCategory[]
 </script>
 
-<!-- { #if location === 'nav' }
+{ #if location === 'nav' }
   <Title text="Select a Category!" noBottom={ true } />
-{ /if } -->
+{ /if }
 
 <div class="chips location--{ location }">
-  <!-- { #if location !== 'source' }
+  { #if location === 'nav' }
     <LoadingLink href="/library{ author?.slug ? `?author=${ author.slug }`: '' }" label="All" css="chip { !$page.params.slug ? 'active' : '' }" />
-  { /if } -->
+  { /if }
   {#each categories as category}
     <LoadingLink label={ category.name } href="/library/{ category.slug }{ author?.slug ? `?author=${ author.slug }`: '' }" css="chip { $page.params?.slug === category.slug ? 'active' : '' }"/>
   {/each}

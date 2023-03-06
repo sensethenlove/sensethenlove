@@ -18,13 +18,14 @@
   }
 </script>
 
-
-<Title text="Select an Author!" noBottom={ true } />
-<div id="author-chips" class="chips location--nav">
-  { #if location !== 'source' }
+{ #if location === 'nav' }
+  <Title text="Select an Author!" noBottom={ true } />
+{ /if }
+<div class="chips location--{ location }">
+  { #if location === 'nav' }
     <LoadingLink label="All" href="/library{ category?.slug ? `/${ category.slug }` : '' }"  css="chip { !urlAuthorSlug ? 'active' : '' }"/>
   { /if }
-  {#each authors as author}
+  { #each authors as author }
     <LoadingLink label={ author?.name } href="/library{ category?.slug ? `/${ category.slug }` : '' }?author={ author.slug }"  css="chip { urlAuthorSlug === author.slug ? 'active' : '' }"/>
-  {/each}
+  { /each }
 </div>

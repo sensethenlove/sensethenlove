@@ -16,8 +16,8 @@
 		"prodDeploy": "bash ./src/lib/scripts/prodDeploy.sh",
 		"prodLogs": "wrangler tail",
 		"schemaWrite": "bash ./src/lib/scripts/schemaWrite.sh",
-		"schema": "pnpm schemaWrite && pnpm prisma db push",
-		"studio": "pnpm prisma generate && pnpm prisma studio",
+		"schemaDeploy": "pnpm schemaWrite && pnpm prisma db push",
+		"data": "pnpm prisma generate && pnpm prisma studio",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
 	},

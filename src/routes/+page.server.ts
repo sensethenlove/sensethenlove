@@ -1,22 +1,25 @@
 import search from '$lib/actions/search'
+import type { Source } from '$lib/util/types'
 import routeCatch from '$lib/catch/routeCatch'
-import type { Source, Culture } from '$lib/util/types'
 import type { Actions, PageServerLoad } from './$types'
+import findFirstScience from '$lib/prisma/findFirstScience'
 import newsletterSignUp from '$lib/actions/newsletterSignUp'
-import findFirstSource from '$lib/prisma/findFirstSource'
 import findFirstCulture from '$lib/prisma/findFirstCulture'
+import findFirstProduct from '$lib/prisma/findFirstProduct'
 
 
 export const load = (async () => {
   try {
-    const [ source, culture ] = await Promise.all([
-      findFirstSource(),
-      findFirstCulture()
+    const [ science, culture, product ] = await Promise.all([
+      findFirstScience(),
+      findFirstCulture(),
+      findFirstProduct(),
     ])
 
     return {
-      source: formatSource(source),
-      culture: formatCulture(culture),
+      culture,
+      product,
+      science: formatSource(science),
     }
   } catch (e) {
     return routeCatch(e)
@@ -46,9 +49,4 @@ function formatSource (source: Source | null) {
   }
 
   return source
-}
-
-function formatCulture (culture: Culture | null) {
-  console.log(culture)
-  return culture
 }

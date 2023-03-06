@@ -4,7 +4,7 @@
   import SVG_ACADEMIA from '$lib/svg/logo/SVG_ACADEMIA.svg'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
   import type { Source, Author, QuoteCategory } from '$lib/util/types'
-  import QuoteCategoryChips from '$lib/components/chips/QuoteCategoryChips.svelte'
+  import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
 
   export let source: Source
   export let location = 'sources'
@@ -65,7 +65,7 @@
   { /if }
 
   { #if source.categories?.length }
-    <QuoteCategoryChips categories={ source.categories } { author } location="source" />
+    <CategoryChips categories={ source.categories } { author } location="source" />
   { /if }
 </section>
 

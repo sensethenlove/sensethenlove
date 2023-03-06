@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { Culture } from '$lib/util/types'
-  import YoutubeEmbed from './YoutubeEmbed.svelte'
-  import CultureAuthorChips from '$lib/components/chips/CultureAuthorChips.svelte'
-  import CultureCategoryChips from '$lib/components/chips/CultureCategoryChips.svelte'
+  import type { Source } from '$lib/util/types'
+  import YoutubeEmbed from '../YoutubeEmbed.svelte'
+  import AuthorChips from '$lib/components/chips/AuthorChips.svelte'
+  import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
 
-  export let culture: Culture
+  export let culture: Source
 </script>
 
 
@@ -12,7 +12,7 @@
   <div class="header">
     <a href={ culture.url } class="title" target="_blank" rel="noreferrer">{ culture.title }</a>
     { #if culture?.authors?.length }
-      <CultureAuthorChips authors={ culture.authors } category={ undefined } />
+      <AuthorChips authors={ culture.authors } category={ undefined } location="culture" />
     { /if }
     <div class="description">{ culture.description }</div>
   </div>
@@ -22,7 +22,7 @@
   { /if }
 
   { #if culture?.categories?.length }
-    <CultureCategoryChips categories={ culture.categories } author={ undefined } location="culture" />
+    <CategoryChips categories={ culture.categories } author={ undefined } location="culture" />
   { /if }
 </section>
 

@@ -7,13 +7,13 @@ export default async (): Promise<Source | null> => {
     orderBy: {
       createdAt: 'desc'
     },
+    where: {
+      type: 'PRODUCT'
+    },
     include: {
+      images: true,
       authors: true,
-      favoriteQuotes: {
-        include: {
-          categories: true
-        }
-      }
+      categories: true,
     },
   })
 }
