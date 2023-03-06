@@ -86,7 +86,7 @@ function sourcesToResponse ({ sources, urlParamType, urlParamAuthor, urlParamCat
         }
 
         if (urlParamCategory && !source.categories.find(c => c.slug === urlParamCategory)) spliceSource = true // if a category param is requested in the URL AND category in url is not in this source => tip remove source flag
-        else source.categories = source.categories.sort((a, b) => Number(a.name > b.name) - Number(a.name < b.name)) // sort categories by name
+        else source.categories.sort((a, b) => Number(a.name > b.name) - Number(a.name < b.name)) // sort categories by name
       } else if (urlParamCategory) { // if a category param is requested in the URL AND source has no categories => tip remove source flag
         spliceSource = true
       }

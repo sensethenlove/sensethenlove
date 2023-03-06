@@ -11,7 +11,12 @@ import userIsAuthenticated from '$lib/security/userIsAuthenticated'
 export const load = (async ({ locals }) => {
   try {
     userIsAuthenticated(locals, '/social/sign-in')
-    const [user, sessions] = await Promise.all([ findFirstUser({ id: locals.userId }), findManySessions(locals.userId) ])
+
+    const [ user, sessions ] = await Promise.all([
+      findFirstUser({ id: locals.userId }),
+      findManySessions(locals.userId)
+    ])
+
     return { user, sessions }
   } catch (e) {
     return routeCatch(e)
