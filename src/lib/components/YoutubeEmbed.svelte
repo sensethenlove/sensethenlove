@@ -47,6 +47,7 @@
 
   .wrapper {
     width: 100%;
+    margin-bottom: 0.9rem;
     cursor: pointer;
     position: relative;
     border: transparent;

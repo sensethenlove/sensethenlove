@@ -66,7 +66,7 @@
   { /if }
 
   { #if source.categories?.length }
-    <CategoryChips { type } category={ displayCategory } { author } categories={ source.categories } location="source" />
+    <CategoryChips { type } category={ displayCategory } { author } categories={ source.categories } location="science" />
   { /if }
 </section>
 

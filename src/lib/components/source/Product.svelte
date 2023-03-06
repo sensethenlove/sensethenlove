@@ -1,5 +1,6 @@
 <script lang="ts">
   import getImageUrl from '$lib/file/getImageUrl'
+  import LoadingLink from '$lib/components/LoadingLink.svelte'
   import AuthorChips from '$lib/components/chips/AuthorChips.svelte'
   import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
   import type { Source, Author, Category, SourceType } from '$lib/util/types'
@@ -20,10 +21,14 @@
 
 <section class="source type--product location--{ location }">
   <div class="header">
-    <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
-    { #if source?.authors?.length }
-      <AuthorChips { type } { category } { author } authors={ source.authors } location="product" />
-    { /if }
+    <div class="top">
+      <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
+      { #if location !== 'home' }
+      { /if }
+      { #if source?.authors?.length }
+        <AuthorChips { type } { category } { author } authors={ source.authors } />
+      { /if }
+    </div>
     <div class="description">{ source.description }</div>
   </div>
 
@@ -33,6 +38,7 @@
     { /each }
   </div>
 
+  
   { #if source?.categories?.length }
     <CategoryChips { type } { category } { author } categories={ source.categories } location="product" />
   { /if }

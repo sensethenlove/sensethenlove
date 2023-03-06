@@ -1,5 +1,6 @@
 <script lang="ts">
-  import YoutubeEmbed from '../YoutubeEmbed.svelte'
+  import LoadingLink from '$lib/components/LoadingLink.svelte'
+  import YoutubeEmbed from '$lib/components/YoutubeEmbed.svelte'
   import AuthorChips from '$lib/components/chips/AuthorChips.svelte'
   import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
   import type { Source, SourceType, Author, Category } from '$lib/util/types'
@@ -14,10 +15,12 @@
 
 <section class="source type--culture location--{ location }">
   <div class="header">
-    <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
-    { #if source?.authors?.length }
-      <AuthorChips { type } { category } { author } authors={ source.authors } location="culture" />
-    { /if }
+    <div class="top">
+      <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
+      { #if source?.authors?.length }
+        <AuthorChips { type } { category } { author } authors={ source.authors } />
+      { /if }
+    </div>
     <div class="description">{ source.description }</div>
   </div>
 
