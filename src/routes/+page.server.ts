@@ -17,9 +17,9 @@ export const load = (async () => {
     ])
 
     return {
-      culture,
-      product,
-      science: formatSource(science),
+      science: formatScience(science),
+      culture: formatCultureAndProduct(culture),
+      product: formatCultureAndProduct(product),
     }
   } catch (e) {
     return routeCatch(e)
@@ -33,7 +33,13 @@ export const actions = {
 } satisfies Actions
 
 
-function formatSource (source: Source | null) {
+function formatCultureAndProduct (source: Source | null): Source | null {
+  if (source?.categories) source.categories.sort((a, b) => Number(a.name > b.name) - Number(a.name < b.name)) // sort categories by name
+  return source
+}
+
+
+function formatScience (source: Source | null): Source | null {
   if (source?.favoriteQuotes) {
     let sourceCategories = new Map() // use map so duplicates are removed
 

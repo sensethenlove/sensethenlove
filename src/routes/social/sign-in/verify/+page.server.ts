@@ -20,7 +20,11 @@ export const load = (async ({ url, cookies, locals, getClientAddress }) => {
     else {
       const session = await createSession(userId, getClientAddress())
       const payload = { userId, sessionId: session.id }
-      const [ accessToken, refreshToken ] = await Promise.all([createToken('access', payload), createToken('refresh', payload)])
+      const [ accessToken, refreshToken ] = await Promise.all([
+        createToken('access', payload),
+        createToken('refresh', payload)
+      ])
+
       await setAccessAndRefreshCookies(cookies, accessToken, refreshToken)
       throw new RedirectError('/social')
     } 
