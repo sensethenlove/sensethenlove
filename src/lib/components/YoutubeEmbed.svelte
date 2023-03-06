@@ -92,13 +92,9 @@
     }
 
     :global(iframe) {
-      aspect-ratio: 16 / 9;
-      width: calc(100vw - 6.6rem);
+      width: 100%;
       transition: all 0.9s;
-
-      @media only screen and (min-width: 54rem) { // big screen
-        width: 78rem;
-      }
+      aspect-ratio: 16 / 9;
     }
   }
 </style>
