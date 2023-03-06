@@ -8,9 +8,7 @@ import type { // Import Prisma Types + Prisma Client
   QuoteCategory as QuoteCategoryPrisma,
   User as UserPrisma,
   Post as PostPrisma,
-  Culture as CulturePrisma,
-  CultureAuthor as CultureAuthorPrisma,
-  CultureCategory as CultureCategoryPrisma
+  Image as ImagePrisma,
 } from '@prisma/client'
 
 
@@ -21,19 +19,14 @@ import type { // Import Prisma Types + Prisma Client
 export interface Source extends SourcePrisma {
   authors?: Author[] // schema.prisma property
   favoriteQuotes?: Quote[] // schema.prisma property
-  categories?: QuoteCategory[]
+  categories?: QuoteCategory[], // schema.prisma property
+  images?: Image[], // schema.prisma property
 }
 
+export interface Image extends ImagePrisma { }
 export interface User extends UserPrisma {}
 export interface SiteComment extends SiteCommentPrisma { }
 export interface Post extends PostPrisma { }
-export interface CultureCategory extends CultureCategoryPrisma { }
-export interface CultureAuthor extends CultureAuthorPrisma { }
-
-export interface Culture extends CulturePrisma {
-  authors?: CultureAuthor[] // schema.prisma property
-  categories?: CultureCategory[] // schema.prisma property
-}
 
 export interface Session extends SessionPrisma {
   user?: User // schema.prisma property

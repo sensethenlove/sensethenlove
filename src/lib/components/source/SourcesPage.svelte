@@ -5,7 +5,7 @@
   import Source from '$lib/components/source/Source.svelte'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
   import AuthorChips from '$lib/components/chips/AuthorChips.svelte'
-  import QuoteCategoryChips from '$lib/components/chips/QuoteCategoryChips.svelte'
+  import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
   import type { Source as SourceType, Author, QuoteCategory } from '$lib/util/types'
 
   export let author: Author | undefined
@@ -46,11 +46,11 @@
 <div class="sources-page">
   <div class="left">
     { #if categories }
-      <QuoteCategoryChips categories={ categories } author={ author } location="nav" />
+      <CategoryChips categories={ categories } author={ author } location="nav" />
     { /if }
 
     { #if authors }
-      <AuthorChips authors={ authors } category={ category } />
+      <AuthorChips authors={ authors } category={ category } location="nav" />
     { /if }
   </div>
 

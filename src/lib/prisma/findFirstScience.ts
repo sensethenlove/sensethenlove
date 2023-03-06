@@ -8,11 +8,15 @@ export default async (): Promise<Source | null> => {
       createdAt: 'desc'
     },
     where: {
-      type: 'CULTURE'
+      type: 'SCIENCE'
     },
     include: {
       authors: true,
-      categories: true,
+      favoriteQuotes: {
+        include: {
+          categories: true
+        }
+      }
     },
   })
 }
