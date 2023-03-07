@@ -10,19 +10,19 @@ import findFirstProduct from '$lib/prisma/findFirstProduct'
 
 export const load = (async () => {
   try {
-    console.timeLog('fast', '+page.server.ts', 'start')
+    console.log('fast', '+page.server.ts', 'start')
     const [science, culture, product ] = await Promise.all([
       findFirstScience(),
       findFirstCulture(),
       findFirstProduct(),
     ])
-    console.timeLog('fast', '+page.server.ts', 'db responded')
+    console.log('fast', '+page.server.ts', 'db responded')
     const response = {
       science: formatScience(science),
       culture: formatCultureAndProduct(culture),
       product: formatCultureAndProduct(product),
     }
-    console.timeEnd('fast')
+    console.log('fast', 'hooks.server.ts', '💖 START 💖')
 
     return response
   } catch (e) {
