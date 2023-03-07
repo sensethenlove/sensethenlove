@@ -22,7 +22,7 @@ export const load = (async () => {
       culture: formatCultureAndProduct(culture),
       product: formatCultureAndProduct(product),
     }
-    console.log('fast', 'hooks.server.ts', '💖 START 💖')
+    console.log('fast', 'hooks.server.ts', '💖 STOP 💖')
 
     return response
   } catch (e) {
