@@ -30,13 +30,13 @@
     <div>Share our <LoadingLink href="/library" label="library" /> of our favorite <LoadingLink href="/library?type=science" label="scientific evidence," /> <LoadingLink href="/library?type=product" label="products," /> & <LoadingLink href="/library?type=culture" label="culture" />!</div>
   </div>
 
-  <div class="papyrus three">What does Sense Then Love mean?</div>
+  <div class="papyrus three content-above">What does Sense Then Love mean?</div>
   <div class="item list-below">
-    <div class="emoji">🦋</div>
+    <div class="emoji">🙏</div>
     <div>Sense Then Love is a map for feeling bliss!</div>
   </div>
 
-  <div class="papyrus three">How?</div>
+  <div class="papyrus three content-above">How?</div>
   <div class="item list-below">
     <div class="emoji" style="font-size: 2.4rem;">🌬️</div>
     <div>Focus on a sensation happening now</div>
@@ -59,11 +59,15 @@
   .us {
     max-width: 51rem;
 
+    .content-above {
+      margin-top: 1.5rem;
+    }
+
     .item {
       display: flex;
       margin-bottom: 0.9rem;
       &.list-below {
-        margin-bottom: 0.3rem;
+        margin-bottom: 0rem;
       }
 
       .emoji {

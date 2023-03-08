@@ -1,5 +1,5 @@
 export const CF_LOGO = '3c485364-b636-4de3-96c5-6e71e2e6df00'
-export const CF_OG_HOME = '544f83fd-4b31-48d3-9b6f-6905effe9800'
+export const CF_OG_HOME = '488a555f-0358-48b6-aa56-c8ff3c0e9a00'
 export const CF_OG_SOURCES = '59c9e83f-3dd3-4100-c135-e70025714000'
 export const CF_OG_CONTACT = '19afa8f8-8c0b-4063-4bdf-c454d49c1000'
 export const CF_BACKGROUND_1 = '114e1a0e-bae2-403d-c2ba-1671a8001d00'
