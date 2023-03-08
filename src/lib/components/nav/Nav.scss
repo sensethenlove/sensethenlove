@@ -10,13 +10,15 @@
     position: fixed;
     z-index: $zindex-nav;
     top: 0.9rem;
-    width: 8rem;
+    width: 6rem;
     left: 50%;
-    margin-left: -4rem;
+    margin-left: -3.7rem;
     transition: all 0.9s;
 
     @media only screen and (min-width: $move-logo-above-all-window-width) { // medium screen
       left: 1rem;
+      margin-left: 0;
+      width: 8rem;
       margin-left: 0;
     }
 
@@ -36,7 +38,7 @@
       }
 
       img {
-        width: 8.1rem;
+        width: 100%;
         border-radius: 50%;
       }
     }
@@ -45,7 +47,7 @@
   .name-wrapper {
     position: fixed;
     width: 100%;
-    top: 9rem;
+    top: 7.7rem;
     right: 0;
     left: 0;
     padding: 0;

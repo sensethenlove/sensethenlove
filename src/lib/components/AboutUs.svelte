@@ -30,10 +30,10 @@
     <div>Share our <LoadingLink href="/library" label="library" /> of our favorite <LoadingLink href="/library?type=science" label="scientific evidence," /> <LoadingLink href="/library?type=product" label="products," /> & <LoadingLink href="/library?type=culture" label="culture" />!</div>
   </div>
 
-  <div class="papyrus three content-above">What's Sense Then Love mean?</div>
+  <div class="papyrus three content-above">Sense Then Love means?</div>
   <div class="item list-below">
     <div class="emoji">🙏</div>
-    <div>Sense Then Love is a map, guide or invitation to bliss!</div>
+    <div>Sense Then Love is our guide to <LoadingLink href="/library?category=coherence" label="coherence" /> (bliss)!</div>
   </div>
 
   <div class="papyrus three content-above">How?</div>
@@ -45,19 +45,19 @@
     <li class="indent-dot">Example: Feel breath flow in & out of nose</li>
   </ul>
   <div class="item">
-    <div class="emoji">🥰</div>
-    <div>Feel love for this sensation</div>
+    <div class="emoji">🌟</div>
+    <div>To guide mind, externally or internally sing the word <strong>'Love'</strong>, on inhale & exhale</div>
   </div>
   <div class="item">
-    <div class="emoji">🌟</div>
-    <div>If additional mind guidance is desired, externally or internally sing the word <strong>'Love'</strong>, on inhale & exhale</div>
+    <div class="emoji">🥰</div>
+    <div>Feel love for this sensation</div>
   </div>
 </section>
 
 
 <style lang="scss">
   .us {
-    max-width: 51rem;
+    max-width: 50rem;
 
     .content-above {
       margin-top: 1.5rem;
