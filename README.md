@@ -71,6 +71,7 @@
 - [White to Grey Hex's](https://www.htmlcolor-picker.com/color-groups/white-grey-black)
 - [CSP Validator](https://csp-evaluator.withgoogle.com/)
 - [DNS Checker](https://dnschecker.org)
+- [Emoji's](https://www.iemoji.com/)
 
 #### Tech Stack Costs
 - [MailChannels: FREE for Infinite Outbound API Emails/month](https://community.cloudflare.com/t/send-email-from-workers-using-mailchannels-for-free/361973)
