@@ -32,8 +32,8 @@
 
   const inputs: FormInputs = [
     { name: 'query', focusOnInit: true, autocomplete: 'off' },
-    { name: 'sourcesByTitle', label: 'Search source titles',  type: 'checkbox' },
-    { name: 'quotesByText', label: 'Search source quotes', type: 'checkbox' },
+    { name: 'sourcesByTitle', label: 'Search library titles',  type: 'checkbox' },
+    { name: 'quotesByText', label: 'Search science quotes', type: 'checkbox' },
   ]
 </script>
 
