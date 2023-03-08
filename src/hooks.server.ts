@@ -4,12 +4,7 @@ import authHook from '$lib/security/authHook'
 
 
 export const handle = (async ({ event, resolve }) => {
-  console.log('fast', 'hooks.server.ts', '💖 START 💖')
   event = await authHook(event) // do auth stuff
-  console.log('fast', 'hooks.server.ts', 'authhook done')
   const transformPageChunk = await themeHook(event) // do theme stuff AND give back html rewrite function (transformPageChunk) to add theme to body class to be used @ app.html
-  console.log('fast', 'hooks.server.ts', 'theme hook done')
-  const response = resolve(event, { transformPageChunk  }) // continue to down stream server code
-  console.log('fast', 'hooks.server.ts', 'resolve done')
-  return response
+  return resolve(event, { transformPageChunk  }) // continue to down stream server code
 }) satisfies Handle
