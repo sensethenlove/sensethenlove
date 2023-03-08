@@ -2,7 +2,7 @@
   import schema from '$lib/schema/updateUser'
   import Title from '$lib/components/Title.svelte'
   import Form from '$lib/components/forms/Form.svelte'
-  import type { FormInputs, FormToastOnSuccess, User } from '$lib/util/types'
+  import type { FormInputs, FormToastOnSuccess, User } from '$lib/types/all'
 
   export let user: User
 

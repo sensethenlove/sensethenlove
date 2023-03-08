@@ -1,6 +1,6 @@
 import { Buffer } from 'buffer/'
 import type { Cookies } from '@sveltejs/kit'
-import type { Session } from '$lib/util/types'
+import type { Session } from '$lib/types/all'
 import deleteSession from '$lib/prisma/deleteSession'
 import { REFRESH_COOKIE_NAME } from '$lib/security/variables'
 

@@ -1,5 +1,5 @@
 import { Buffer } from 'buffer/'
-import type { TokenPayload } from '$lib/util/types'
+import type { TokenPayload } from '$lib/types/all'
 import getNowInSeconds from '$lib/util/getNowInSeconds'
 import getAlgorithmOptions from '$lib/security/getAlgorithmOptions'
 import { VerifyTokenError, VerifyTokenExpiredError } from '$lib/util/errors'

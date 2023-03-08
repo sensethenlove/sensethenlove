@@ -1,4 +1,4 @@
-import type { Session } from '$lib/util/types'
+import type { Session } from '$lib/types/all'
 import type { RequestEvent } from '@sveltejs/kit'
 import createToken from '$lib/security/createToken'
 import verifyToken from '$lib/security/verifyToken'

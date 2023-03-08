@@ -2,7 +2,7 @@
   import '$lib/scss/modal.scss'
   import SVG_CLOSE from '$lib/svg/SVG_CLOSE.svg'
   import { onMount, createEventDispatcher } from 'svelte'
-  import type { ShowModal, HideModal } from '$lib/util/types'
+  import type { ShowModal, HideModal } from '$lib/types/all'
 
 
   export let header: string = ''

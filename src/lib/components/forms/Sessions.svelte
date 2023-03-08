@@ -1,7 +1,7 @@
 <script lang="ts">
   import { enhance } from '$app/forms'
   import { showToast } from '$lib/util/toast'
-  import type { Session } from '$lib/util/types'
+  import type { Session } from '$lib/types/all'
   import Title from '$lib/components/Title.svelte'
   import type { SubmitFunction } from '@sveltejs/kit'
   import Button from '$lib/components/forms/Button.svelte'

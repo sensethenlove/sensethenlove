@@ -1,5 +1,5 @@
 import prisma from '$lib/prisma/prisma'
-import type { Post } from '$lib/util/types'
+import type { Post } from '$lib/types/all'
 
 
 export default async (id: string, data: any): Promise<Post> => {

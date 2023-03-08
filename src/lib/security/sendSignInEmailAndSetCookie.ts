@@ -1,7 +1,7 @@
 import type { Cookies } from '@sveltejs/kit'
 import email from '$lib/mailchannels/signIn'
 import createToken from '$lib/security/createToken'
-import type { FormFields, User } from '$lib/util/types'
+import type { FormFields, User } from '$lib/types/all'
 import setSignInCookie from '$lib/cookies/setSignInCookie'
 
 

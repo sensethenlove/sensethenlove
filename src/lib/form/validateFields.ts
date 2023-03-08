@@ -1,4 +1,4 @@
-import type { FormFields } from '$lib/util/types'
+import type { FormFields } from '$lib/types/all'
 import { ERROR_MESSAGE } from '$lib/turnstile/variables'
 import validateTurnstile from '$lib/turnstile/validateTurnstile'
 

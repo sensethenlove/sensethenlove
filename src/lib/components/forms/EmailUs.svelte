@@ -1,8 +1,8 @@
 <script lang="ts">
   import schema from '$lib/schema/emailUs'
   import Title from '$lib/components/Title.svelte'
-  import type { FormInputs, FormToastOnSuccess } from '$lib/util/types'
   import Form from '$lib/components/forms/Form.svelte'
+  import type { FormInputs, FormToastOnSuccess } from '$lib/types/all'
 
   const inputs: FormInputs = [
     [

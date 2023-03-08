@@ -1,7 +1,7 @@
 <script lang="ts">
   import schema from '$lib/schema/signUp'
   import Form from '$lib/components/forms/Form.svelte'
-  import type { FormInputs, FormToastOnSuccess } from '$lib/util/types'
+  import type { FormInputs, FormToastOnSuccess } from '$lib/types/all'
 
   const inputs: FormInputs = [
     { name: 'profileImage', label: 'Profile Image', type: 'image', maxWidth: '56rem' },

@@ -1,6 +1,6 @@
 import toBase64Url from '$lib/util/toBase64Url'
+import type { TokenPayload } from '$lib/types/all'
 import { CreateTokenError } from '$lib/util/errors'
-import type { TokenPayload } from '$lib/util/types'
 import getAlgorithmOptions from '$lib/security/getAlgorithmOptions'
 import getHeaderAndPayloadAsStrings from '$lib/security/getHeaderAndPayloadAsStrings'
 import { JWK_FOR_ACCESS_TOKEN_PRIVATE, JWK_FOR_REFRESH_TOKEN_PRIVATE, JWK_FOR_SIGN_IN_PRIVATE } from '$env/static/private'

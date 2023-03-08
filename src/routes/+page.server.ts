@@ -1,5 +1,5 @@
 import search from '$lib/actions/search'
-import type { Source } from '$lib/util/types'
+import type { Source } from '$lib/types/all'
 import routeCatch from '$lib/catch/routeCatch'
 import type { Actions, PageServerLoad } from './$types'
 import findFirstScience from '$lib/prisma/findFirstScience'
@@ -10,21 +10,17 @@ import findFirstProduct from '$lib/prisma/findFirstProduct'
 
 export const load = (async () => {
   try {
-    console.log('fast', '+page.server.ts', 'start')
     const [science, culture, product ] = await Promise.all([
       findFirstScience(),
       findFirstCulture(),
       findFirstProduct(),
     ])
-    console.log('fast', '+page.server.ts', 'db responded')
-    const response = {
+
+    return {
       science: formatScience(science),
       culture: formatCultureAndProduct(culture),
       product: formatCultureAndProduct(product),
     }
-    console.log('fast', 'hooks.server.ts', '💖 START 💖')
-
-    return response
   } catch (e) {
     return routeCatch(e)
   }

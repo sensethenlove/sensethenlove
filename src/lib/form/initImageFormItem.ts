@@ -3,10 +3,11 @@ import { showToast } from '$lib/util/toast'
 import isFileAnImage from '$lib/file/isFileAnImage'
 import { IsFileAnImageError } from '$lib/util/errors'
 import getImageUrl from '$lib/file/getImageUrl'
+import type { ImageVariableFormItemResponse } from '$lib/types/all'
 
 
-export default (type: string, serverImageId: string): ImageVariables => {
-  const imageVariables: ImageVariables = {}
+export default (type: string, serverImageId: string): ImageVariableFormItemResponse => {
+  const imageVariables: ImageVariableFormItemResponse = {}
 
   if (type === 'image') {
     onMount(() => {
@@ -53,12 +54,4 @@ export default (type: string, serverImageId: string): ImageVariables => {
   }
 
   return imageVariables
-}
-
-
-type ImageVariables = {
-  fileElement ?: HTMLInputElement,
-  previewImage ?: HTMLImageElement,
-  serverImage ?: HTMLImageElement,
-  onFileSelected ?: () => void,
 }

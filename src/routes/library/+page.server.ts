@@ -2,7 +2,7 @@ import search from '$lib/actions/search'
 import routeCatch from '$lib/catch/routeCatch'
 import type { Actions, PageServerLoad } from './$types'
 import findManySources from '$lib/prisma/findManySources'
-import type { Source, SourceType, Quote, Author, Category } from '$lib/util/types'
+import type { Source, SourceType, Quote, Author, Category } from '$lib/types/all'
 
 
 export const load = (async ({ url }) => {
