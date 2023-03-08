@@ -7,12 +7,27 @@
   import Culture from '$lib/components/source/Culture.svelte'
 
   export let data: PageData
+
+  let prettyType: string
+
+  $: if (data?.source?.type) {
+    switch (data.source.type) {
+      case 'SCIENCE':
+        prettyType = 'Science'
+        break
+      case 'CULTURE':
+        prettyType = 'Culture'
+        break
+      case 'PRODUCT':
+        prettyType = 'Product'
+        break
+    }
+  }
 </script>
 
 
 <Head title={ data?.source?.title || '' } description={ data?.source?.title || '' } url={ `/source/${ data?.source?.id }` } />
-<Title text="Library" size="one" />
-<Title text={ data?.source?.title || '' } />
+<Title text="{ prettyType } Library Addition" size="one" />
 
 { #if data.source }
   { #if data.source.type === 'SCIENCE' }

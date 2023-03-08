@@ -34,7 +34,11 @@
       </a>
     { /if }
     <div class="flex">
-      <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
+      { #if location === 'source-page' }
+        <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
+      { :else }
+        <LoadingLink href={ `/library/${ source.slug }` } css="title" label={ source.title } />
+      { /if }
       <p>
         { #if source.publicationLocation }
           <a href={ source.url } target="_blank" rel="noreferrer">{ source.publicationLocation }{ #if source.publicationYear }, { source.publicationYear }{ /if }</a>
@@ -91,7 +95,7 @@
         flex-direction: column;
 
         .flex,
-        .title {
+        :global(.title) {
           text-align: center !important;
         }
       }
@@ -136,7 +140,7 @@
           text-align: left;
         }
 
-        .title {
+        :global(.title) {
           font-size: 2.1rem;
           margin: 0 0 0.9rem 0;
           line-height: 1.4;

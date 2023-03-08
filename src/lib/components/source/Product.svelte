@@ -22,7 +22,11 @@
 <section class="source type--product location--{ location }">
   <div class="header">
     <div class="top">
-      <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
+      { #if location === 'source-page' }
+        <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
+      { :else }
+        <LoadingLink href={ `/library/${ source.slug }` } css="title" label={ source.title } />
+      { /if }
       { #if source?.authors?.length }
         <AuthorChips { type } { category } { author } authors={ source.authors } />
       { /if }
@@ -32,7 +36,9 @@
 
   <div class="images">
     { #each images as image }
-      <img src={ image } alt="Product" />
+      <a href={ source.url } target="_blank" rel="noreferrer">
+        <img src={ image } alt="Product" />
+      </a>
     { /each }
   </div>
 
@@ -48,8 +54,13 @@
     display: flex;
     justify-content: space-between;
 
-    img {
+    a {
       width: 49%;
+      min-width: 49%;
+
+      img {
+        width: 100%;
+      }
     }
   }
 </style>
