@@ -1,4 +1,4 @@
-import type { TokenPayload } from '$lib/util/types'
+import type { TokenPayload } from '$lib/types/all'
 import getNowInSeconds from '$lib/util/getNowInSeconds'
 
 

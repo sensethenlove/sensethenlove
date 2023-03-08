@@ -5,8 +5,7 @@
   import Form from '$lib/components/forms/Form.svelte'
   import SVG_SEARCH from '$lib/svg/nav/SVG_SEARCH.svg'
   import Source from '$lib/components/source/Source.svelte'
-  import type { Source as SourceType } from '$lib/util/types'
-  import type { ShowModal, OnModalHide, FormInputs, FormOnSuccess, FormOnSubmitValidate } from '$lib/util/types'
+  import type { Source as SourceType, ShowModal, OnModalHide, FormInputs, FormOnSuccess, FormOnSubmitValidate } from '$lib/types/all'
 
   let showModal: ShowModal
   let response: { quotesByText?: SourceType[], sourcesByTitle?: SourceType[] } | null = null

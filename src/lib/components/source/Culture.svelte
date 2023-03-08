@@ -3,7 +3,7 @@
   import YoutubeEmbed from '$lib/components/YoutubeEmbed.svelte'
   import AuthorChips from '$lib/components/chips/AuthorChips.svelte'
   import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
-  import type { Source, SourceType, Author, Category } from '$lib/util/types'
+  import type { Source, SourceType, Author, Category } from '$lib/types/all'
 
   export let source: Source
   export let location: string

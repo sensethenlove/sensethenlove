@@ -1,5 +1,5 @@
 import search from '$lib/actions/search'
-import type { Source } from '$lib/util/types'
+import type { Source } from '$lib/types/all'
 import routeCatch from '$lib/catch/routeCatch'
 import type { Actions, PageServerLoad } from './$types'
 import findFirstScience from '$lib/prisma/findFirstScience'

@@ -2,7 +2,7 @@
   import Title from '$lib/components/Title.svelte'
   import schema from '$lib/schema/newsletterSignUp'
   import Form from '$lib/components/forms/Form.svelte'
-  import type { FormInputs, FormToastOnSuccess } from '$lib/util/types'
+  import type { FormInputs, FormToastOnSuccess } from '$lib/types/all'
 
   const inputs: FormInputs = [
     [

@@ -3,7 +3,7 @@
   import { afterNavigate } from '$app/navigation'
   import Title from '$lib/components/Title.svelte'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
-  import type { Author, Category, SourceType } from '$lib/util/types'
+  import type { Author, Category, SourceType } from '$lib/types/all'
 
   export let location = ''
   export let categories: Category[]

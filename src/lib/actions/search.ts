@@ -4,7 +4,7 @@ import actionCatch from '$lib/catch/actionCatch'
 import validateFields from '$lib/form/validateFields'
 import searchQuotesByText from '$lib/prisma/searchQuotesByText'
 import searchSourcesByTitle from '$lib/prisma/searchSourcesByTitle'
-import type { Source, SearchQuotesByTextResponse } from '$lib/util/types'
+import type { Source, SearchQuotesByTextResponse } from '$lib/types/all'
 
 
 export default (async ({ request }) => {

@@ -1,5 +1,5 @@
 import prisma from '$lib/prisma/prisma'
-import type { SiteComment, FormFields } from '$lib/util/types'
+import type { SiteComment, FormFields } from '$lib/types/all'
 
 
 export default async (fields: FormFields): Promise<SiteComment> => {

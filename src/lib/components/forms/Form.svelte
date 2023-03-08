@@ -5,7 +5,7 @@
   import turnstileFormItem from '$lib/turnstile/formItem'
   import Button from '$lib/components/forms/Button.svelte'
   import FormItem from '$lib/components/forms/FormItem.svelte'
-  import type { FormInputs, FormOnSuccess, FormToastOnSuccess, FormOnSubmitValidate } from '$lib/util/types'
+  import type { FormInputs, FormOnSuccess, FormToastOnSuccess, FormOnSubmitValidate } from '$lib/types/all'
 
   export let schema: any
   export let action: string

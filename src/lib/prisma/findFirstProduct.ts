@@ -1,5 +1,5 @@
 import prisma from '$lib/prisma/prisma'
-import type { Source } from '$lib/util/types'
+import type { Source } from '$lib/types/all'
 
 
 export default async (): Promise<Source | null> => {

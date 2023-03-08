@@ -1,7 +1,7 @@
 
 
 import prisma from '$lib/prisma/prisma'
-import type { SearchQuotesByTextResponse } from '$lib/util/types'
+import type { SearchQuotesByTextResponse } from '$lib/types/all'
 
 
 export default async (query: string): Promise<SearchQuotesByTextResponse> => {

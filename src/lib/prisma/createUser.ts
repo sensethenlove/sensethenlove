@@ -1,5 +1,5 @@
 import prisma from '$lib/prisma/prisma'
-import type { User, FormFields } from '$lib/util/types'
+import type { User, FormFields } from '$lib/types/all'
 
 
 export default async (fields: FormFields): Promise<User> => {

@@ -4,7 +4,7 @@
   import SVG_ACADEMIA from '$lib/svg/logo/SVG_ACADEMIA.svg'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
   import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
-  import type { Source, Author, Category, SourceType } from '$lib/util/types'
+  import type { Source, Author, Category, SourceType } from '$lib/types/all'
 
   export let source: Source
   export let location = 'sources'

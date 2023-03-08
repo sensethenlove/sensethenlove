@@ -1,6 +1,6 @@
 import { PUBLIC_ENVIRONMENT } from '$env/static/public'
+import type { TurnstileTokenValidateResponse } from '$lib/types/all'
 import { CLOUDFLARE_TURNSTILE_PRIVATE_KEY } from '$env/static/private'
-import type { TurnstileTokenValidateResponse } from '$lib/util/types'
 import { CHALLENGE_URL, ERROR_MESSAGE, CLOUDFLARE_TURNSTILE_PRIVATE_KEY_ALWAYS_PASSES } from '$lib/turnstile/variables'
 
 
