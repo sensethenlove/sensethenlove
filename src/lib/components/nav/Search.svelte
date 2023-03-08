@@ -5,6 +5,8 @@
   import Form from '$lib/components/forms/Form.svelte'
   import SVG_SEARCH from '$lib/svg/nav/SVG_SEARCH.svg'
   import Source from '$lib/components/source/Source.svelte'
+  import Culture from '$lib/components/source/Culture.svelte'
+  import Product from '$lib/components/source/Product.svelte'
   import type { Source as SourceType, ShowModal, OnModalHide, FormInputs, FormOnSuccess, FormOnSubmitValidate } from '$lib/types/all'
 
   let showModal: ShowModal
@@ -48,14 +50,20 @@
   { #if response?.quotesByText?.length || response?.sourcesByTitle?.length }
     <div class="response">
       { #if response?.sourcesByTitle?.length }
-        <div class="papyrus three">Source title results:</div>
+        <div class="papyrus three">Library title results:</div>
         { #each response.sourcesByTitle as source }
-          <Source { source } location="search--source-titles" />
+          { #if source.type === 'SCIENCE' }
+            <Source { source } location="search--source-titles" />
+          { :else if source.type === 'CULTURE' }
+            <Culture { source } location="search--source-titles" />
+          { :else if source.type === 'PRODUCT' }
+            <Product { source } location="search--source-titles" />
+          { /if }
         { /each }
       { /if }
 
       { #if response?.quotesByText?.length }
-        <div class="papyrus three">Source quote results:</div>
+        <div class="papyrus three">Science quote results:</div>
         { #each response.quotesByText as source }
           <Source { source } location="search--with-quote" />
         { /each }

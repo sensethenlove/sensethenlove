@@ -57,7 +57,7 @@
   </div>
   { #if location === 'search--with-quote' }
     <div class="fav-head">Quote:</div>
-    { :else if location !== 'search--source-titles' }
+    { :else }
       <div class="fav-head">{ displayCategory?.name ? `Favorite ${ displayCategory.name } Quotes:` : 'Favorite Quotes:' }</div>
   { /if }
 
@@ -88,16 +88,6 @@
 
       ol {
         list-style-type: circle;
-      }
-    }
-    &.location--search--source-titles {
-      .head {
-        flex-direction: column;
-
-        .flex,
-        :global(.title) {
-          text-align: center !important;
-        }
       }
     }
 

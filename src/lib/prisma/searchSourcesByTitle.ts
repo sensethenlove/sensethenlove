@@ -9,5 +9,10 @@ export default async (query: string): Promise<Source[]> => {
         search: query,
       },
     },
+    include: {
+      images: true,
+      categories: true,
+      favoriteQuotes: true,
+    }
   })
 }
