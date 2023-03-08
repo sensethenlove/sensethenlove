@@ -84,7 +84,7 @@
     &__button {
       position: fixed;
       top: calc(100vh - 12rem);
-      right: calc(100vw - 5rem);
+      left: 2rem;
       padding: 0.36rem;
       display: flex;
       transition: all 0.9s;
@@ -93,8 +93,8 @@
       z-index: $zindex-search-button;
 
       @media only screen and (min-width: $move-nav-window-width) { // big screen
-        top: 1.75rem;
-        right: 28rem;
+        top: $theme-search-top;
+        left: calc(100vw - 32rem);
       }
 
       :global(svg) {

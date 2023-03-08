@@ -30,10 +30,10 @@
     <div>Share our <LoadingLink href="/library" label="library" /> of our favorite <LoadingLink href="/library?type=science" label="scientific evidence," /> <LoadingLink href="/library?type=product" label="products," /> & <LoadingLink href="/library?type=culture" label="culture" />!</div>
   </div>
 
-  <div class="papyrus three content-above">What does Sense Then Love mean?</div>
+  <div class="papyrus three content-above">What's Sense Then Love mean?</div>
   <div class="item list-below">
     <div class="emoji">🙏</div>
-    <div>Sense Then Love is a map for feeling bliss!</div>
+    <div>Sense Then Love is a map, guide or invitation to bliss!</div>
   </div>
 
   <div class="papyrus three content-above">How?</div>
@@ -46,11 +46,11 @@
   </ul>
   <div class="item">
     <div class="emoji">🥰</div>
-    <div>Feel love for this sensation happening now</div>
+    <div>Feel love for this sensation</div>
   </div>
   <div class="item">
     <div class="emoji">🌟</div>
-    <div>If love guidance is desired, externally or internally sing the word <strong>'Love'</strong>, on inhale & exhale, to guide mind</div>
+    <div>If additional mind guidance is desired, externally or internally sing the word <strong>'Love'</strong>, on inhale & exhale</div>
   </div>
 </section>
 

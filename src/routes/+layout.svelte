@@ -23,7 +23,7 @@
       --blue-text-color: #2196F3;
       --red-text-color: #FE544B;
       --gold-text-color: #eac603;
-      --light-opacity-bg: rgba(255, 255, 255, 0.9);
+      --light-opacity-bg: rgba(255, 255, 255, 0.95);
     }
   </style>
 

@@ -32,7 +32,7 @@ main {
   align-items: center;
   position: absolute;
   z-index: $zindex-main;
-  top: 9.9rem;
+  top: 13rem;
   left: 0.9rem;
   right: 0.9rem;
   margin-left: 0;
@@ -40,6 +40,10 @@ main {
   color: var(--text-color);
   padding-bottom: 12rem;
   transition: all 0.3s;
+
+  @media only screen and (min-width: $move-logo-above-all-window-width) { // medium screen
+    top: 9.9rem;
+  }
 
   @media only screen and (min-width: $move-nav-window-width) { // big screen
     padding-bottom: 3rem;
