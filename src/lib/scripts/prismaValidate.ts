@@ -44,9 +44,14 @@ import getPropertiesError from './getPropertiesError.js'
         else if (line === values.prismaElseMain) found.prismaElseMain = true
       }
 
-      if (!found.schemaPrismaQA || !found.schemaPrismaMAIN || !found.schemaPlanetscaleQA || !found.schemaPlanetscaleMAIN || !found.prismaLocalQA || !found.prismaLocalMain || !found.prismaElseQA || !found.prismaElseMain) {
-        throw new Error('Prisma value(s) incorrect.')
-      }
+      if (!found.schemaPrismaQA) throw new Error('Prisma value "schemaPrismaQA" incorrect.')
+      if (!found.schemaPrismaMAIN) throw new Error('Prisma value "schemaPrismaMAIN" incorrect.')
+      if (!found.schemaPlanetscaleQA) throw new Error('Prisma value "schemaPlanetscaleQA" incorrect.')
+      if (!found.schemaPlanetscaleMAIN) throw new Error('Prisma value "schemaPlanetscaleMAIN" incorrect.')
+      if (!found.prismaLocalQA) throw new Error('Prisma value "prismaLocalQA" incorrect.')
+      if (!found.prismaLocalMain) throw new Error('Prisma value "prismaLocalMain" incorrect.')
+      if (!found.prismaElseQA) throw new Error('Prisma value "prismaElseQA" incorrect.')
+      if (!found.prismaElseMain) throw new Error('Prisma value "prismaElseMain" incorrect.')
     }
 
     console.log(`💖 Successfully validated "${ SCHEMA_PATH }"`)
