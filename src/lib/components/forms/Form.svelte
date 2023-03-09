@@ -52,7 +52,7 @@
             const successMessage = toastOnSuccess({ fields, data: result?.data })
 
             if (successMessage) showToast({ type: 'success', items: [ successMessage ] })
-            if (result?.data?.$localHref) showToast({ type: 'success', items: [ `<a href="${ result?.data?.$localHref }">Local Link</a>` ] }) // if a $localHref has been returned by the action (something to click locally that we wouldn't click in qa or prod)
+            if (result?.data?.$localHref) showToast({ type: 'success', items: [ `<a href="${ result?.data?.$localHref }">Local Link</a>` ] }) // if a $localHref has been returned by the action (something to click locally that we wouldn't click in qa or main)
             if (reset !== false) resetCounter++
 
             onSuccess({ fields, data: result?.data })

@@ -14,7 +14,7 @@ import getPropertiesError from './getPropertiesError.js'
     const text = await fs.promises.readFile(PATH, 'utf-8')
     const updated = text
       .replace(/PUBLIC_ENVIRONMENT.+/, `PUBLIC_ENVIRONMENT = '${ environment }'`)
-      .replace(/PUBLIC_HOST.+/, `PUBLIC_HOST = '${ map.get(environment)?.host }'`)
+      .replace(/PUBLIC_HOST.+/, `PUBLIC_HOST = '${ map.get(environment) }'`)
 
     await fs.promises.writeFile(PATH, updated)
     console.log('💚 Successfully updated .env file')

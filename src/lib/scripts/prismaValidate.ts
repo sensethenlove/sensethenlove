@@ -21,33 +21,32 @@ import getPropertiesError from './getPropertiesError.js'
 
     const found = {
       schemaPrismaQA: false,
-      schemaPrismaPROD: false,
+      schemaPrismaMAIN: false,
       schemaPlanetscaleQA: false,
-      schemaPlanetscalePROD: false,
+      schemaPlanetscaleMAIN: false,
       prismaLocalQA: false,
-      prismaLocalProd: false,
+      prismaLocalMain: false,
       prismaElseQA: false,
-      prismaElseProd: false,
+      prismaElseMain: false,
     }
 
     if (values) {
       for (const [i, line] of schemaLines.entries()) {
         if (line === values.schemaPrismaQA) found.schemaPrismaQA = true
-        else if (line === values.schemaPrismaPROD) found.schemaPrismaPROD = true
+        else if (line === values.schemaPrismaMAIN) found.schemaPrismaMAIN = true
         else if (line === values.schemaPlanetscaleQA) found.schemaPlanetscaleQA = true
-        else if (line === values.schemaPlanetscalePROD) found.schemaPlanetscalePROD = true
+        else if (line === values.schemaPlanetscaleMAIN) found.schemaPlanetscaleMAIN = true
       }
 
       for (const [i, line] of prismaLines.entries()) {
         if (line === values.prismaLocalQA) found.prismaLocalQA = true
-        else if (line === values.prismaLocalProd) found.prismaLocalProd = true
+        else if (line === values.prismaLocalMain) found.prismaLocalMain = true
         else if (line === values.prismaElseQA) found.prismaElseQA = true
-        else if (line === values.prismaElseProd) found.prismaElseProd = true
+        else if (line === values.prismaElseMain) found.prismaElseMain = true
       }
 
-      if (!found.schemaPrismaQA || !found.schemaPrismaPROD || !found.schemaPlanetscaleQA || !found.schemaPlanetscalePROD || !found.prismaLocalQA || !found.prismaLocalProd || !found.prismaElseQA || !found.prismaElseProd) {
-        const validationError = new Error(`Prisma value(s) incorrect. Maybe in bash run "${values.write}" please`)
-        throw validationError
+      if (!found.schemaPrismaQA || !found.schemaPrismaMAIN || !found.schemaPlanetscaleQA || !found.schemaPlanetscaleMAIN || !found.prismaLocalQA || !found.prismaLocalMain || !found.prismaElseQA || !found.prismaElseMain) {
+        throw new Error('Prisma value(s) incorrect.')
       }
     }
 

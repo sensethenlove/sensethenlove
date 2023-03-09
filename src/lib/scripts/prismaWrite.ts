@@ -22,16 +22,16 @@ import getPropertiesError from './getPropertiesError.js'
     if (values) {
       for (const [i, line] of schemaLines.entries()) {
         if (line.match('QA_PRISMA_URL')) schemaLines[i] = values.schemaPrismaQA
-        else if (line.match('PROD_PRISMA_URL')) schemaLines[i] = values.schemaPrismaPROD
+        else if (line.match('MAIN_PRISMA_URL')) schemaLines[i] = values.schemaPrismaMAIN
         else if (line.match('QA_PLANETSCALE_URL')) schemaLines[i] = values.schemaPlanetscaleQA
-        else if (line.match('PROD_PLANETSCALE_URL')) schemaLines[i] = values.schemaPlanetscalePROD
+        else if (line.match('MAIN_PLANETSCALE_URL')) schemaLines[i] = values.schemaPlanetscaleMAIN
       }
 
       for (const [i, line] of prismaLines.entries()) {
         if (line.match('url: QA_PLANETSCALE_URL')) prismaLines[i] = values.prismaLocalQA
-        else if (line.match('url: PROD_PLANETSCALE_URL')) prismaLines[i] = values.prismaLocalProd
+        else if (line.match('url: MAIN_PLANETSCALE_URL')) prismaLines[i] = values.prismaLocalMain
         else if (line.match('url: QA_PRISMA_URL')) prismaLines[i] = values.prismaElseQA
-        else if (line.match('url: PROD_PRISMA_URL')) prismaLines[i] = values.prismaElseProd
+        else if (line.match('url: MAIN_PRISMA_URL')) prismaLines[i] = values.prismaElseMain
       }
     }
 

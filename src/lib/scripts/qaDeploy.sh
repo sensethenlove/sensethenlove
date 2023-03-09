@@ -1,5 +1,5 @@
 #!/bin/bash
-pnpm ts-node ./src/lib/scripts/validateGitBranch.ts qa &&
+pnpm ts-node ./src/lib/scripts/gitBranchValidate.ts qa &&
 pnpm qaWrite &&
 pnpm prisma generate --data-proxy &&
 pnpm check &&

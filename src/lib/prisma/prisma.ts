@@ -1,5 +1,5 @@
 import { PUBLIC_ENVIRONMENT } from '$env/static/public'
-import { QA_PLANETSCALE_URL, QA_PRISMA_URL, PROD_PLANETSCALE_URL, PROD_PRISMA_URL } from '$env/static/private'
+import { QA_PLANETSCALE_URL, QA_PRISMA_URL, MAIN_PLANETSCALE_URL, MAIN_PRISMA_URL } from '$env/static/private'
 
 
 // Prisma Recommendation: "Your application should generally only create one instance of PrismaClient": https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/instantiate-prisma-client
@@ -11,9 +11,9 @@ export default async () => {
       const client = await import('@prisma/client')
       global.prisma = new client.PrismaClient({ // https://github.com/prisma/prisma/issues/13771#issuecomment-1204295665
         datasources: {
-          db: { // Do not manually alter this url, bash "pnpm localWrite", "pnpm qaWrite" or "pnpm prodWrite" instead please
+          db: { // Do not manually alter this url, bash "env=$env db=$db pnpm write" instead please
             // url: QA_PLANETSCALE_URL
-            url: PROD_PLANETSCALE_URL
+            url: MAIN_PLANETSCALE_URL
           }
         }
       })
@@ -23,9 +23,9 @@ export default async () => {
     const client = await import('@prisma/client/edge') // https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers + https://www.prisma.io/docs/data-platform/data-proxy
     return new client.PrismaClient({ // https://github.com/prisma/prisma/issues/13771#issuecomment-1204295665
       datasources: {
-        db: { // Do not manually alter this url, bash "pnpm localWrite", "pnpm qaWrite" or "pnpm prodWrite" instead please
+        db: { // Do not manually alter this url, bash "env=$env db=$db pnpm write" instead please
           // url: QA_PRISMA_URL
-          url: PROD_PRISMA_URL
+          url: MAIN_PRISMA_URL
         }
       }
     })

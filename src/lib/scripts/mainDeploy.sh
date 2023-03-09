@@ -1,6 +1,6 @@
 #!/bin/bash
-pnpm ts-node ./src/lib/scripts/validateGitBranch.ts main &&
-pnpm prodWrite &&
+pnpm ts-node ./src/lib/scripts/gitBranchValidate.ts main &&
+pnpm mainWrite &&
 pnpm prisma generate --data-proxy &&
 pnpm check &&
 pnpm vite build &&

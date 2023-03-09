@@ -1,41 +1,50 @@
-const qaValues = {
-  write: 'pnpm qaWrite',
+const qaPrismaValues = {
   schemaPlanetscaleQA: '  // url          = env("QA_PLANETSCALE_URL")',
-  schemaPlanetscalePROD: '  // url          = env("PROD_PLANETSCALE_URL")',
+  schemaPlanetscaleMAIN: '  // url          = env("MAIN_PLANETSCALE_URL")',
   schemaPrismaQA: '  url          = env("QA_PRISMA_URL")',
-  schemaPrismaPROD: '  // url          = env("PROD_PRISMA_URL")',
+  schemaPrismaMAIN: '  // url          = env("MAIN_PRISMA_URL")',
   prismaLocalQA: '            url: QA_PLANETSCALE_URL',
-  prismaLocalProd: '            // url: PROD_PLANETSCALE_URL',
+  prismaLocalMain: '            // url: MAIN_PLANETSCALE_URL',
   prismaElseQA: '          url: QA_PRISMA_URL',
-  prismaElseProd: '          // url: PROD_PRISMA_URL',
+  prismaElseMain: '          // url: MAIN_PRISMA_URL',
 }
 
-const prodValues = {
-  write: 'pnpm prodWrite',
-  schemaPlanetscaleQA: '  // url          = env("QA_PLANETSCALE_URL")',
-  schemaPlanetscalePROD: '  // url          = env("PROD_PLANETSCALE_URL")',
-  schemaPrismaQA: '  // url          = env("QA_PRISMA_URL")',
-  schemaPrismaPROD: '  url          = env("PROD_PRISMA_URL")',
-  prismaLocalQA: '            // url: QA_PLANETSCALE_URL',
-  prismaLocalProd: '            url: PROD_PLANETSCALE_URL',
-  prismaElseQA: '          // url: QA_PRISMA_URL',
-  prismaElseProd: '          url: PROD_PRISMA_URL',
-}
-
-const schemaValues = {
-  write: 'pnpm schemaWrite',
+const qaPlanetScaleValues = {
   schemaPlanetscaleQA: '  url          = env("QA_PLANETSCALE_URL")',
-  schemaPlanetscalePROD: '  // url          = env("PROD_PLANETSCALE_URL")',
+  schemaPlanetscaleMAIN: '  // url          = env("MAIN_PLANETSCALE_URL")',
   schemaPrismaQA: '  // url          = env("QA_PRISMA_URL")',
-  schemaPrismaPROD: '  // url          = env("PROD_PRISMA_URL")',
+  schemaPrismaMAIN: '  // url          = env("MAIN_PRISMA_URL")',
   prismaLocalQA: '            url: QA_PLANETSCALE_URL',
-  prismaLocalProd: '            // url: PROD_PLANETSCALE_URL',
+  prismaLocalMain: '            // url: MAIN_PLANETSCALE_URL',
   prismaElseQA: '          url: QA_PRISMA_URL',
-  prismaElseProd: '          // url: PROD_PRISMA_URL',
+  prismaElseMain: '          // url: MAIN_PRISMA_URL',
+}
+
+const mainPrismaValues = {
+  schemaPlanetscaleQA: '  // url          = env("QA_PLANETSCALE_URL")',
+  schemaPlanetscaleMAIN: '  // url          = env("MAIN_PLANETSCALE_URL")',
+  schemaPrismaQA: '  // url          = env("QA_PRISMA_URL")',
+  schemaPrismaMAIN: '  url          = env("MAIN_PRISMA_URL")',
+  prismaLocalQA: '            // url: QA_PLANETSCALE_URL',
+  prismaLocalMain: '            url: MAIN_PLANETSCALE_URL',
+  prismaElseQA: '          // url: QA_PRISMA_URL',
+  prismaElseMain: '          url: MAIN_PRISMA_URL',
+}
+
+const mainPlanetScaleValues = {
+  schemaPlanetscaleQA: '  // url          = env("QA_PLANETSCALE_URL")',
+  schemaPlanetscaleMAIN: '  url          = env("MAIN_PLANETSCALE_URL")',
+  schemaPrismaQA: '  // url          = env("QA_PRISMA_URL")',
+  schemaPrismaMAIN: '  // url          = env("MAIN_PRISMA_URL")',
+  prismaLocalQA: '            // url: QA_PLANETSCALE_URL',
+  prismaLocalMain: '            url: MAIN_PLANETSCALE_URL',
+  prismaElseQA: '          // url: QA_PRISMA_URL',
+  prismaElseMain: '          url: MAIN_PRISMA_URL',
 }
 
 export default new Map([
-  ['qa', qaValues],
-  ['schema', schemaValues],
-  ['production', prodValues],
+  ['qaPrisma', qaPrismaValues],
+  ['qaPlanetScale', qaPlanetScaleValues],
+  ['mainPrisma', mainPrismaValues],
+  ['mainPlanetScale', mainPlanetScaleValues],
 ])

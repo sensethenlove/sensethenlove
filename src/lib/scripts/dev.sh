@@ -1,4 +1,5 @@
 #!/bin/bash
-pnpm localWrite &&
+# env=local db=qaPlanetScale pnpm write &&
+pnpm devWrite &&
 pnpm prisma generate &&
-vite dev
+pnpm vite dev
