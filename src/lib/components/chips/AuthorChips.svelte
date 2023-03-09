@@ -11,7 +11,42 @@
   export let author: Author | undefined = undefined
   export let category: Category | undefined = undefined
 
+  let query: string
   let allHref: string
+  let filterdAuthors: Author[]
+  let isAllVisible: boolean = true
+
+  $: if (query || authors) {
+    if (!query) {
+      isAllVisible = true
+      filterdAuthors = [ ...authors ]
+    } else {
+      filterdAuthors.length = 0
+      const lowQuery = query.toLowerCase()
+      isAllVisible = 'all'.includes(lowQuery)
+
+      for (const a of authors) {
+        console.log(a.lowName)
+        if (a.lowName && a.lowName.includes(lowQuery)) filterdAuthors.push(a)
+      }
+
+      filterdAuthors = filterdAuthors
+    }
+  }
+
+  $: if (filterdAuthors) {
+    if (filterdAuthors.length && !filterdAuthors[0].href) {
+      for (const author of authors) {
+        author.lowName = author.name.toLowerCase()
+        const params: any = { }
+        if (type) params.type = type
+        if (category) params.category = category.slug
+        params.author = author.slug
+        const urlParams = (new URLSearchParams(params)).toString()
+        author.href = '/library?' + urlParams
+      }
+    }
+  }
 
   function bindAllHref () {
     const params: any = {}
@@ -22,18 +57,10 @@
   }
 
   onMount(bindAllHref)
-  afterNavigate(bindAllHref)
-
-  $: if (authors) {
-    for (const author of authors) {
-      const params: any = { }
-      if (type) params.type = type
-      if (category) params.category = category.slug
-      params.author = author.slug
-      const urlParams = (new URLSearchParams(params)).toString()
-      author.href = '/library?' + urlParams
-    }
-  }
+  afterNavigate(() => {
+    bindAllHref()
+    query = ''
+  })
 </script>
 
 { #if location === 'nav' }
@@ -41,9 +68,14 @@
 { /if }
 <div class="chips location--{ location }">
   { #if location === 'nav' }
+    <div class="form-item">
+      <input bind:value={ query } type="text" placeholder="Search" />
+    </div>
+  { /if }
+  { #if location === 'nav' && isAllVisible }
     <LoadingLink label="All" href={ allHref }  css="chip { !author ? 'active' : '' }"/>
   { /if }
-  { #each authors as a }
+  { #each filterdAuthors as a }
     <LoadingLink label={ a.name } href={ a.href }  css="chip { author?.slug === a.slug ? 'active' : '' }"/>
   { /each }
 </div>

@@ -43,6 +43,7 @@ export interface Session extends SessionPrisma {
 export interface Author extends AuthorPrisma {
   href?: string
   isLoading?: boolean
+  lowName?: string
 }
 
 
@@ -56,6 +57,7 @@ export interface Category extends CategoryPrisma {
   quotes?: Quote[] // schema.prisma property
   isLoading?: boolean
   href?: string
+  lowName?: string
 }
 
 
