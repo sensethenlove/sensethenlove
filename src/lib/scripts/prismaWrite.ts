@@ -5,9 +5,8 @@ import getPropertiesError from './getPropertiesError.js'
 
 (async function main() {
   const map = prismaMap
-  const propertiesError = getPropertiesError(map)
 
-  if (!map.has(process.argv[2])) throw propertiesError
+  if (!map.has(process.argv[2])) throw getPropertiesError(process.argv[2], map)
   else {
     const SCHEMA_PATH = './prisma/schema.prisma'
     const schemaText = await fs.promises.readFile(SCHEMA_PATH, 'utf-8')

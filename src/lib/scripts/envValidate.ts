@@ -5,9 +5,8 @@ import getPropertiesError from './getPropertiesError.js'
 
 (async function main() {
   const map = envMap
-  const propertiesError = getPropertiesError(map)
 
-  if (!map.has(process.argv[2])) throw propertiesError
+  if (!map.has(process.argv[2])) throw getPropertiesError(process.argv[2], map)
   else {
     const PATH = '.env'
     const environment = process.argv[2]

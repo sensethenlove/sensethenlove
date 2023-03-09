@@ -6,9 +6,8 @@ import getPropertiesError from './getPropertiesError.js'
 (async function main() {
   const map = envMap
   const environment = process.argv[2]
-  const propertiesError = getPropertiesError(map)
 
-  if (!map.has(environment)) throw propertiesError
+  if (!map.has(environment)) throw getPropertiesError(process.argv[2], map)
   else {
     const PATH = '.env'
     const text = await fs.promises.readFile(PATH, 'utf-8')
