@@ -36,7 +36,7 @@
         --anchor-color: #8bdd10;
         --papyrus-text-color: var(--gold-text-color);
         --bg-color: #111111;
-        --input-bg-color: rgb(55, 65, 81);
+        --input-bg-color: rgb(55, 65, 81, 0.6);
         --input-border-color: rgb(75, 85, 99);
         --bottom-nav-bg: #111111;
         --focus-box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgb(63, 131, 248) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
@@ -52,7 +52,7 @@
         --anchor-color: var(--green-text-color);
         --papyrus-text-color: var(--blue-text-color);
         --bg-color: #fefefe;
-        --input-bg-color: white;
+        --input-bg-color: rgb(255, 255, 255, 0.6);
         --input-border-color: #ced3d6;
         --bottom-nav-bg: #fefefe;
         --focus-box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
