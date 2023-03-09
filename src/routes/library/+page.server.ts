@@ -68,7 +68,7 @@ function sourcesToResponse ({ sources, urlParamType, urlParamAuthor, urlParamCat
 
               if (!urlParamCategory) addCategoriesToSourceCategories(quote, sourceCategories) // if no category is requested in the url => place categories from quote into source categories
               else if (category.slug === urlParamCategory) { // if a category param is requested in the URL AND the category in the loop matches the urlParamCategory
-                responseCategory = category // save this full varialbe representing the url param
+                responseCategory = category // save this full variable representing the url slug as an object filled w/ properties
                 quoteHasUrlCategory = true // tip flag indicating quote from url found
                 addCategoriesToSourceCategories(quote, sourceCategories) // place categories from quote into source categories
               }
@@ -80,12 +80,19 @@ function sourcesToResponse ({ sources, urlParamType, urlParamAuthor, urlParamCat
         }
       }
     } else { // CULTURE || PRODUCT
+      let sourceHasUrlCategory = false
+
       if (source.categories) {
         for (const category of source.categories) {
           categories.set(category.id, category) // place each category in map of all categories
+
+          if (category.slug === urlParamCategory) { // category in source matches category in URL
+            sourceHasUrlCategory = true // tip flag
+            responseCategory = category // save this full variable representing the url slug as an object filled w/ properties
+          }
         }
 
-        if (urlParamCategory && !source.categories.find(c => c.slug === urlParamCategory)) spliceSource = true // if a category param is requested in the URL AND category in url is not in this source => tip remove source flag
+        if (urlParamCategory && !sourceHasUrlCategory) spliceSource = true // if a category param is requested in the URL AND category in url is not in this source => tip remove source flag
         else source.categories.sort((a, b) => Number(a.name > b.name) - Number(a.name < b.name)) // sort categories by name
       } else if (urlParamCategory) { // if a category param is requested in the URL AND source has no categories => tip remove source flag
         spliceSource = true
