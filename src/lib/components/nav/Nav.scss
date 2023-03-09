@@ -10,9 +10,9 @@
     position: fixed;
     z-index: $zindex-nav;
     top: 0.9rem;
-    width: 6rem;
+    width: 4rem;
     left: 50%;
-    margin-left: -3.7rem;
+    margin-left: -2.7rem;
     transition: all 0.9s;
 
     @media only screen and (min-width: $move-logo-above-all-window-width) { // medium screen
@@ -47,7 +47,7 @@
   .name-wrapper {
     position: fixed;
     width: 100%;
-    top: 7.7rem;
+    top: 6rem;
     right: 0;
     left: 0;
     padding: 0;
