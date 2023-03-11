@@ -1,5 +1,6 @@
 import search from '$lib/actions/search'
 import routeCatch from '$lib/catch/routeCatch'
+import loopBackwards from '$lib/util/loopBackwards'
 import type { Actions, PageServerLoad } from './$types'
 import findManySources from '$lib/prisma/findManySources'
 import type { Source, SourceType, Quote, Author, Category } from '$lib/types/all'
@@ -35,11 +36,9 @@ function sourcesToResponse ({ request, sources }: { request: Request, sources: S
   const urlCategorySlug = url.searchParams.get('category') // get category slug in url
   const authors: Map<string, Author> = new Map() // use map so duplicates are removed
   const categories: Map<string, Category> = new Map() // use map so duplicates are removed
-  const SOURCES_LENGTH_MINUS_ONE = sources.length - 1 // indexes (sourceIndex) in for loop below go to 1 minus the length
 
-  for (let sourceIndex = SOURCES_LENGTH_MINUS_ONE; sourceIndex >= 0; sourceIndex--) { // loop sources backwards b/c we may remove some sources
-    let spliceSource = false
-    let source = sources[sourceIndex]
+  loopBackwards(sources, (source, spliceSource) => {
+    let sourceIsValid = true
     let urlAuthorWroteSource = false
 
     if (source.authors) {
@@ -56,11 +55,9 @@ function sourcesToResponse ({ request, sources }: { request: Request, sources: S
     if (source.type === 'SCIENCE') {
       if (source.favoriteQuotes) {
         let sourceCategories: Map<string, Category> = new Map() // use map so duplicates are removed
-        const QUOTE_LENGTH_MINUS_ONE = source.favoriteQuotes.length - 1 // indexes (quoteIndex) in for loop below go to 1 minus the length
 
-        for (let quoteIndex = QUOTE_LENGTH_MINUS_ONE; quoteIndex >= 0; quoteIndex--) { // loop favoriteQuotes backwards b/c we may remove some quotes
+        loopBackwards(source.favoriteQuotes, (quote, spliceQuote) => {          
           let quoteHasUrlCategory = false
-          let quote = source.favoriteQuotes[quoteIndex]
 
           if (quote.categories) {
             for (const category of quote.categories) {
@@ -75,9 +72,9 @@ function sourcesToResponse ({ request, sources }: { request: Request, sources: S
             }
           }
 
-          if (urlCategorySlug && !quoteHasUrlCategory) source.favoriteQuotes.splice(quoteIndex, 1) // if a category param is requested in the URL AND this quote does not in the requested category => remove quote from source
+          if (urlCategorySlug && !quoteHasUrlCategory) spliceQuote() // if a category param is requested in the URL AND this quote does not in the requested category => remove quote from source
           else source.categories = [...sourceCategories.values()].sort((a, b) => Number(a.name > b.name) - Number(a.name < b.name)) // source is valid => set source categories AND sort them by name
-        }
+        })
       }
     } else { // CULTURE || PRODUCT
       let sourceHasUrlCategory = false
@@ -92,20 +89,20 @@ function sourcesToResponse ({ request, sources }: { request: Request, sources: S
           }
         }
 
-        if (urlCategorySlug && !sourceHasUrlCategory) spliceSource = true // if a category param is requested in the URL AND category in url is not in this source => tip remove source flag
-        else source.categories.sort((a, b) => Number(a.name > b.name) - Number(a.name < b.name)) // sort categories by name
+        if (urlCategorySlug && !sourceHasUrlCategory) sourceIsValid = false // if a category param is requested in the URL AND category in url is not in this source => tip remove source flag
+        else source.categories.sort((a: Category, b: Category) => Number(a.name > b.name) - Number(a.name < b.name)) // sort categories by name
       } else if (urlCategorySlug) { // if a category param is requested in the URL AND source has no categories => tip remove source flag
-        spliceSource = true
+        sourceIsValid = false
       }
     }
     
 
-    if (spliceSource) sources.splice(sourceIndex, 1) // if splice source requested => remove source
-    else if (urlType && urlType.toUpperCase() !== source.type) sources.splice(sourceIndex, 1) // if source type is requested in the URL AND this source is not in that type => remove source
-    else if (urlAuthorSlug && !urlAuthorWroteSource) sources.splice(sourceIndex, 1) // if an author param is requested in the URL AND this source was not written by this author => remove source
-    else if (source.type === 'SCIENCE' && !source.favoriteQuotes?.length) sources.splice(sourceIndex, 1) // if science source has no quotes => remove source
-    else if (source.type === 'SCIENCE') source.favoriteQuotes?.sort((a, b) => a.displayOrder - b.displayOrder) // sorce is valid AND it is a science source => sort quotes by displayOrder
-  }
+    if (!sourceIsValid) spliceSource() // if splice source requested => remove source
+    else if (urlType && urlType.toUpperCase() !== source.type) spliceSource() // if source type is requested in the URL AND this source is not in that type => remove source
+    else if (urlAuthorSlug && !urlAuthorWroteSource) spliceSource() // if an author param is requested in the URL AND this source was not written by this author => remove source
+    else if (source.type === 'SCIENCE' && !source.favoriteQuotes?.length) spliceSource() // if science source has no quotes => remove source
+    else if (source.type === 'SCIENCE') source.favoriteQuotes?.sort((a: Quote, b: Quote) => a.displayOrder - b.displayOrder) // sorce is valid AND it is a science source => sort quotes by displayOrder
+  })
 
   return { // response
     sources,

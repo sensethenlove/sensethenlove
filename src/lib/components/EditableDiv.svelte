@@ -1,8 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import htmlSanitize from '$lib/util/htmlSanitize'
-  import { BASE_CONTENT_EDITABLE_ELEMENT } from '$lib/form/variables'
+  import loopBackwards from '$lib/util/loopBackwards'
+  import addHtmlToEditableDiv from '$lib/form/addHtmlToEditableDiv'
   import isContentEditableEmpty from '$lib/form/isContentEditableEmpty'
+  import { BASE_CONTENT_EDITABLE_ELEMENT, EDITABLE_PRISTINE_ATTRIBUTE } from '$lib/form/variables'
 
   export let id: string
   export let name: string
@@ -18,6 +20,12 @@
   }
 
   function onInput () {
+    const pristineAdditions = editableDiv.querySelectorAll(`[${ EDITABLE_PRISTINE_ATTRIBUTE }]`)
+
+    loopBackwards(Array.from(pristineAdditions), (item, splice) => {
+      if (item.innerText !== item.getAttribute(EDITABLE_PRISTINE_ATTRIBUTE)) splice()
+    })
+
     if (sanitizedTextarea && editableDiv && typeof editableDiv.textContent === 'string') {
       if (!isContentEditableEmpty(editableDiv.innerHTML)) sanitizedTextarea.value = htmlSanitize(editableDiv.innerHTML) // editable div is not empty so set sanitized text
       else { // editable div is empty
@@ -29,32 +37,24 @@
     clearErrors() // stop showing errors if input happens
   }
 
-  function addTag () {
-    const selection = window.getSelection() // find out where the users current focus is
-
-    // if selection has been found and it is on the editable div or in the editale div
-    if (selection?.getRangeAt && selection?.rangeCount && (editableDiv.contains(selection.focusNode) || selection.focusNode instanceof HTMLDivElement && selection.focusNode.classList.contains('editable-div'))) {
-      const range = selection.getRangeAt(0) // get the users selection
+  function addHashTag () {
+    addHtmlToEditableDiv(editableDiv, onInput, () => {
       const anchor = document.createElement('a') // create an anchor element
-      anchor.setAttribute('href', 'https://sensethenlove.com') // add link to the anchor element
+      anchor.setAttribute(EDITABLE_PRISTINE_ATTRIBUTE, '#I AM')
+      anchor.setAttribute('href', 'https://sensethenlove.com') // add href to the anchor element
+      anchor.innerText = '#I AM' // add text to anchor element
+      return anchor
+    })
+  }
+
+  function addFriendTag () {
+    addHtmlToEditableDiv(editableDiv, onInput, () => {
+      const anchor = document.createElement('a') // create an anchor element
+      anchor.setAttribute(EDITABLE_PRISTINE_ATTRIBUTE, '@Chris Carrington')
+      anchor.setAttribute('href', 'https://sensethenlove.com') // add href to the anchor element
       anchor.innerText = '@Chris Carrington' // add text to anchor element
-      range.insertNode(anchor) // add anchor element where the user has selected
-    } else { // if focus was not in editable div pre tag request
-      const content = editableDiv.innerHTML
-      const tag = '<a href="https://sensethenlove.com">@Chris Carrington</a>'
-
-      if (content.endsWith('<br></div>')) { // if editable div ends with a break and a closing div we'd like to put the tag between the break and div (so not on a new line)
-        const length = content.length
-        const position = length - 10
-        editableDiv.innerHTML = content.substring(0, position) + ` ${ tag }` + content.substring(position)
-      } else if (!isContentEditableEmpty(content)) { // content is not empty
-        editableDiv.innerHTML += ` ${ tag }` // put tag @ end
-      } else { // tag becomes it all b/c there is nothing else here
-        editableDiv.innerHTML = tag
-      }
-    }
-
-    onInput()
+      return anchor
+    })
   }
 
   onMount(() => { // reset sanitized & editable
@@ -66,7 +66,10 @@
 
 <div class="above">
   <label for={ id }>{ label }</label>
-  <button class="brand" type="button" unselectable="on" on:click={ () => { addTag() } }>Tag Friend in Post</button>
+  <div>
+    <button class="brand" type="button" unselectable="on" on:click={ () => { addHashTag() } }>Add Hash Tag</button>
+    <button class="brand" type="button" unselectable="on" on:click={ () => { addFriendTag() } }>Add Friend Tag</button>
+  </div>
 </div>
 
 <div on:input={ () => { onInput() } } bind:this={ editableDiv } contenteditable="true" class="editable-div"><div></div></div>
