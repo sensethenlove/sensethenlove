@@ -27,8 +27,8 @@ function getUrlParamType (url: URL): SourceType {
 
 
 function sourcesToResponse ({ request, sources }: { request: Request, sources: Source[] }) {
-  let responseAuthor // the author we will place in the response
-  let responseCategory // the category we will place in the response
+  let responseAuthor: Author | undefined // if there is an author slug in the url we'll respond w/ the full author object in this property
+  let responseCategory: Category | undefined // if there is an category slug in the url we'll respond w/ the full category object in this property
 
   const url = new URL(request.url) // get current url this way to avoid this bug https://github.com/sveltejs/kit/issues/9390
   const urlType = getUrlParamType(url) // get source type from url

@@ -1,9 +1,9 @@
 <script lang="ts">
   import { page } from '$app/stores'
+  import { goto } from '$app/navigation'
   import type { PageData } from './$types'
   import Head from '$lib/components/Head.svelte'
   import Title from '$lib/components/Title.svelte'
-  import { goto } from '$app/navigation'
   import Source from '$lib/components/source/Source.svelte'
   import { CF_OG_SOURCES } from '$lib/util/cloudflareImages'
   import type { Source as SourceType } from '$lib/types/all'
@@ -18,8 +18,8 @@
 
   const titleParts: string[] = []
   let visibleSources: SourceType[] = []
-  let title: string = 'Welcome to our Library!'
   let showMoreSourcesButton: HTMLButtonElement
+  let title: string = 'Welcome to our Library!'
 
   $: if (showMoreSourcesButton) { // add observer to infinite scroll button
     (new IntersectionObserver(showMoreSources, { rootMargin: '270px' })).observe(showMoreSourcesButton)
@@ -121,4 +121,3 @@
     justify-content: center;
   }
 </style>
-
