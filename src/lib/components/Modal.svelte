@@ -57,7 +57,7 @@
       { #if header}
         <div class="modal__header">
           <div class="papyrus two">{ header }</div>
-          <button class="modal__header__close" on:click={ hideModal }>{ @html SVG_CLOSE }</button>
+          <button class="modal__header__close" on:click={ hideModal } type="button">{ @html SVG_CLOSE }</button>
         </div>
       { /if }
       <div class="modal__body">
