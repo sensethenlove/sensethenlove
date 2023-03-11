@@ -4,9 +4,9 @@
   import htmlSanitize from '$lib/util/htmlSanitize'
   import loopBackwards from '$lib/util/loopBackwards'
   import type { ShowModal, HideModal } from '$lib/types/all'
+  import { EDITABLE_PRISTINE_ATTRIBUTE } from '$lib/form/variables'
   import addHtmlToEditableDiv from '$lib/form/addHtmlToEditableDiv'
   import isContentEditableEmpty from '$lib/form/isContentEditableEmpty'
-  import { BASE_CONTENT_EDITABLE_ELEMENT, EDITABLE_PRISTINE_ATTRIBUTE } from '$lib/form/variables'
 
   export let id: string
   export let name: string
@@ -20,7 +20,7 @@
   let sanitizedTextarea: HTMLTextAreaElement
 
   $: if (resetCounter) { // Form.svelte letting us know the form has be reset
-    editableDiv.innerHTML = BASE_CONTENT_EDITABLE_ELEMENT // set editable to base so insert tags works
+    editableDiv.innerHTML = '' // set editable to base so insert tags works
   }
 
   function onInput () {
@@ -31,11 +31,8 @@
     })
 
     if (sanitizedTextarea && editableDiv && typeof editableDiv.textContent === 'string') {
-      if (!isContentEditableEmpty(editableDiv.innerHTML)) sanitizedTextarea.value = htmlSanitize(editableDiv.innerHTML.replace(BASE_CONTENT_EDITABLE_ELEMENT, '')) // editable div is not empty so set sanitized text
-      else { // editable div is empty
-        sanitizedTextarea.value = '' // set sanitized to an empty string so validation knows it is blank
-        editableDiv.innerHTML = BASE_CONTENT_EDITABLE_ELEMENT // set editable to base so insert tags works
-      }
+      if (isContentEditableEmpty(editableDiv.innerHTML))  editableDiv.innerHTML = sanitizedTextarea.value = ''
+      else sanitizedTextarea.value = htmlSanitize(editableDiv.innerHTML)
     }
 
     clearErrors() // stop showing errors if input happens
@@ -52,7 +49,7 @@
 
   onMount(() => { // reset sanitized & editable
     if (sanitizedTextarea) sanitizedTextarea.value = ''
-    if (editableDiv) editableDiv.innerHTML = BASE_CONTENT_EDITABLE_ELEMENT
+    if (editableDiv) editableDiv.innerHTML = ''
   })
 </script>
 

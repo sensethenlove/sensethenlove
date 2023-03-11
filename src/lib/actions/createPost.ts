@@ -8,7 +8,6 @@ import getImageName from '$lib/file/getImageName'
 import htmlSanitize from '$lib/util/htmlSanitize'
 import isFileAnImage from '$lib/file/isFileAnImage'
 import validateFields from '$lib/form/validateFields'
-import { BASE_CONTENT_EDITABLE_ELEMENT } from '$lib/form/variables'
 
 
 export default (async ({ request, locals }) => {
@@ -18,7 +17,7 @@ export default (async ({ request, locals }) => {
     fields = {
       ...fields,
       creatorId: locals.userId, // necessary for createPost
-      content: htmlSanitize(fields.content.toString().replace(BASE_CONTENT_EDITABLE_ELEMENT, '')) // remove base b4 validating and sanitize b4 validating
+      content: htmlSanitize(fields.content.toString()) // remove base b4 validating and sanitize b4 validating
     }
 
     await validateFields(fields, schema) // validate form fits requirements

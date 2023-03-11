@@ -6,7 +6,6 @@ export default (editableDiv: HTMLDivElement, onInput: () => void, node: string):
 
   if (content.endsWith('<br>')) insertBeforeBreak(content, editableDiv, node, 4)
   else if (content.endsWith('<br></div>')) insertBeforeBreak(content, editableDiv, node, 10)
-  else if (content.endsWith('<br><div id="stl--delete-me"></div>')) insertBeforeBreak(content, editableDiv, node, 35)
   else if (isContentEditableEmpty(content)) editableDiv.innerHTML = node
   else editableDiv.innerHTML += ` ${ node }`
 
