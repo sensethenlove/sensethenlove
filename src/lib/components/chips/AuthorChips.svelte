@@ -1,20 +1,21 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
+  import  { page } from '$app/stores'
   import { afterNavigate } from '$app/navigation'
   import Title from '$lib/components/Title.svelte'
+  import getLibraryHref from '$lib/util/getLibraryHref'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
   import type { Author, Category, SourceType } from '$lib/types/all'
 
   export let location = ''
   export let authors: Author[]
-  export let type: SourceType = undefined
   export let author: Author | undefined = undefined
-  export let category: Category | undefined = undefined
 
   let query: string
   let allHref: string
   let filterdAuthors: Author[]
   let isAllVisible: boolean = true
+
+  afterNavigate(() => query = '')
 
   $: if (query || authors) {
     if (!query) {
@@ -36,31 +37,20 @@
 
   $: if (filterdAuthors) {
     if (filterdAuthors.length && !filterdAuthors[0].href) {
+      const url = new URL($page.url)
+
       for (const author of authors) {
         author.lowName = author.name.toLowerCase()
-        const params: any = { }
-        if (type) params.type = type
-        if (category) params.category = category.slug
-        params.author = author.slug
-        const urlParams = (new URLSearchParams(params)).toString()
-        author.href = '/library?' + urlParams
+        url.searchParams.delete('count')
+        url.searchParams.set('author', author.slug)
+        author.href = url.href
       }
     }
   }
 
-  function bindAllHref () {
-    const params: any = {}
-    if (type) params.type = type
-    if (category) params.category = category.slug
-    const urlParams = (new URLSearchParams(params)).toString()
-    allHref = urlParams ? '/library?' + urlParams : '/library'
+  $: if ($page.url) {
+    allHref = getLibraryHref($page.url, [ [ 'author', '' ], [ 'count', '' ] ])
   }
-
-  onMount(bindAllHref)
-  afterNavigate(() => {
-    bindAllHref()
-    query = ''
-  })
 </script>
 
 { #if location === 'nav' }

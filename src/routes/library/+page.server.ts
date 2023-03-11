@@ -5,14 +5,9 @@ import findManySources from '$lib/prisma/findManySources'
 import type { Source, SourceType, Quote, Author, Category } from '$lib/types/all'
 
 
-export const load = (async ({ url }) => {
+export const load = (async ({ request }) => {
   try {
-    return sourcesToResponse({
-      sources: await findManySources(),
-      urlParamType: getUrlParamType(url),
-      urlParamAuthor: url.searchParams.get('author'),
-      urlParamCategory: url.searchParams.get('category'),
-    })
+    return sourcesToResponse({ request, sources: await findManySources() })
   } catch (e) {
     return routeCatch(e)
   }
@@ -24,15 +19,20 @@ export const actions = {
 } satisfies Actions
 
 
-function getUrlParamType (url: URL) {
+function getUrlParamType (url: URL): SourceType {
   const type = url.searchParams.get('type')
   return (type === 'science' || type === 'product' || type === 'culture') ? type : undefined
 }
 
 
-function sourcesToResponse ({ sources, urlParamType, urlParamAuthor, urlParamCategory }: { sources: Source[], urlParamType: SourceType, urlParamCategory?: string | null, urlParamAuthor: string | null }) {
+function sourcesToResponse ({ request, sources }: { request: Request, sources: Source[] }) {
   let responseAuthor // the author we will place in the response
   let responseCategory // the category we will place in the response
+
+  const url = new URL(request.url) // get current url this way to avoid this bug https://github.com/sveltejs/kit/issues/9390
+  const urlType = getUrlParamType(url) // get source type from url
+  const urlAuthorSlug = url.searchParams.get('author') // get author slug in url
+  const urlCategorySlug = url.searchParams.get('category') // get category slug in url
   const authors: Map<string, Author> = new Map() // use map so duplicates are removed
   const categories: Map<string, Category> = new Map() // use map so duplicates are removed
   const SOURCES_LENGTH_MINUS_ONE = sources.length - 1 // indexes (sourceIndex) in for loop below go to 1 minus the length
@@ -46,7 +46,7 @@ function sourcesToResponse ({ sources, urlParamType, urlParamAuthor, urlParamCat
       for (const author of source.authors) {
         authors.set(author.id, author) // place each author in map
 
-        if (urlParamAuthor && author.slug === urlParamAuthor) { // if an author param is requested in the URL AND the author in the loop matches the urlParamAuthor
+        if (urlAuthorSlug && author.slug === urlAuthorSlug) { // if an author param is requested in the URL AND the author in the loop matches the urlAuthorSlug
           responseAuthor = author
           urlAuthorWroteSource = true
         }
@@ -66,8 +66,8 @@ function sourcesToResponse ({ sources, urlParamType, urlParamAuthor, urlParamCat
             for (const category of quote.categories) {
               categories.set(category.id, category) // place each category in map of all categories
 
-              if (!urlParamCategory) addCategoriesToSourceCategories(quote, sourceCategories) // if no category is requested in the url => place categories from quote into source categories
-              else if (category.slug === urlParamCategory) { // if a category param is requested in the URL AND the category in the loop matches the urlParamCategory
+              if (!urlCategorySlug) addCategoriesToSourceCategories(quote, sourceCategories) // if no category is requested in the url => place categories from quote into source categories
+              else if (category.slug === urlCategorySlug) { // if a category param is requested in the URL AND the category in the loop matches the urlCategorySlug
                 responseCategory = category // save this full variable representing the url slug as an object filled w/ properties
                 quoteHasUrlCategory = true // tip flag indicating quote from url found
                 addCategoriesToSourceCategories(quote, sourceCategories) // place categories from quote into source categories
@@ -75,7 +75,7 @@ function sourcesToResponse ({ sources, urlParamType, urlParamAuthor, urlParamCat
             }
           }
 
-          if (urlParamCategory && !quoteHasUrlCategory) source.favoriteQuotes.splice(quoteIndex, 1) // if a category param is requested in the URL AND this quote does not in the requested category => remove quote from source
+          if (urlCategorySlug && !quoteHasUrlCategory) source.favoriteQuotes.splice(quoteIndex, 1) // if a category param is requested in the URL AND this quote does not in the requested category => remove quote from source
           else source.categories = [...sourceCategories.values()].sort((a, b) => Number(a.name > b.name) - Number(a.name < b.name)) // source is valid => set source categories AND sort them by name
         }
       }
@@ -86,32 +86,33 @@ function sourcesToResponse ({ sources, urlParamType, urlParamAuthor, urlParamCat
         for (const category of source.categories) {
           categories.set(category.id, category) // place each category in map of all categories
 
-          if (category.slug === urlParamCategory) { // category in source matches category in URL
+          if (category.slug === urlCategorySlug) { // category in source matches category in URL
             sourceHasUrlCategory = true // tip flag
             responseCategory = category // save this full variable representing the url slug as an object filled w/ properties
           }
         }
 
-        if (urlParamCategory && !sourceHasUrlCategory) spliceSource = true // if a category param is requested in the URL AND category in url is not in this source => tip remove source flag
+        if (urlCategorySlug && !sourceHasUrlCategory) spliceSource = true // if a category param is requested in the URL AND category in url is not in this source => tip remove source flag
         else source.categories.sort((a, b) => Number(a.name > b.name) - Number(a.name < b.name)) // sort categories by name
-      } else if (urlParamCategory) { // if a category param is requested in the URL AND source has no categories => tip remove source flag
+      } else if (urlCategorySlug) { // if a category param is requested in the URL AND source has no categories => tip remove source flag
         spliceSource = true
       }
     }
     
 
     if (spliceSource) sources.splice(sourceIndex, 1) // if splice source requested => remove source
-    else if (urlParamType && urlParamType.toUpperCase() !== source.type) sources.splice(sourceIndex, 1) // if source type is requested in the URL AND this source is not in that type => remove source
-    else if (urlParamAuthor && !urlAuthorWroteSource) sources.splice(sourceIndex, 1) // if an author param is requested in the URL AND this source was not written by this author => remove source
+    else if (urlType && urlType.toUpperCase() !== source.type) sources.splice(sourceIndex, 1) // if source type is requested in the URL AND this source is not in that type => remove source
+    else if (urlAuthorSlug && !urlAuthorWroteSource) sources.splice(sourceIndex, 1) // if an author param is requested in the URL AND this source was not written by this author => remove source
     else if (source.type === 'SCIENCE' && !source.favoriteQuotes?.length) sources.splice(sourceIndex, 1) // if science source has no quotes => remove source
     else if (source.type === 'SCIENCE') source.favoriteQuotes?.sort((a, b) => a.displayOrder - b.displayOrder) // sorce is valid AND it is a science source => sort quotes by displayOrder
   }
 
   return { // response
     sources,
-    type: urlParamType,
+    type: urlType,
     author: responseAuthor,
     category: responseCategory,
+    count: Number(url.searchParams.get('count')) || 3,
     authors: [...authors.values()].sort((a, b) => Number(a.name > b.name) - Number(a.name < b.name)), // sort authors by name
     categories: [...categories.values()].sort((a, b) => Number(a.name > b.name) - Number(a.name < b.name)) // sort categories by name
   }

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { afterNavigate } from '$app/navigation'
+  import getLibraryHref from '$lib/util/getLibraryHref'
   import SVG_PUBMED from '$lib/svg/logo/SVG_PUBMED.svg'
   import SVG_ACADEMIA from '$lib/svg/logo/SVG_ACADEMIA.svg'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
@@ -70,7 +71,7 @@
   { /if }
 
   { #if source.categories?.length }
-    <CategoryChips { type } category={ displayCategory } { author } categories={ source.categories } location="science" />
+    <CategoryChips { type } category={ displayCategory } categories={ source.categories } location="science" />
   { /if }
 </section>
 

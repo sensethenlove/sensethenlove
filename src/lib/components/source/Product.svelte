@@ -28,7 +28,7 @@
         <LoadingLink href={ `/library/${ source.slug }` } css="title" label={ source.title } />
       { /if }
       { #if source?.authors?.length }
-        <AuthorChips { type } { category } { author } authors={ source.authors } />
+        <AuthorChips { author } authors={ source.authors } />
       { /if }
     </div>
     <div class="description">{ source.description }</div>
@@ -44,7 +44,7 @@
 
   
   { #if source?.categories?.length }
-    <CategoryChips { type } { category } { author } categories={ source.categories } location="product" />
+    <CategoryChips { type } { category } categories={ source.categories } location="product" />
   { /if }
 </section>
 
