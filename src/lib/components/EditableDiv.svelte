@@ -66,6 +66,7 @@
   <button class="brand" type="button" on:click={ showModal }>+</button>
 </div>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div on:input={ () => { onInput() } } bind:this={ editableDiv } contenteditable="true" class="editable-div" on:click={ e => e.preventDefault() }></div>
 <textarea { id } { name } aria-hidden="true" bind:this={ sanitizedTextarea }></textarea>
 

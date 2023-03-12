@@ -1,10 +1,10 @@
 <script lang="ts">
-  import  { page } from '$app/stores'
+  import { page } from '$app/stores'
+  import type { Author } from '$lib/types/all'
   import { afterNavigate } from '$app/navigation'
   import Title from '$lib/components/Title.svelte'
   import getLibraryHref from '$lib/util/getLibraryHref'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
-  import type { Author, Category, SourceType } from '$lib/types/all'
 
   export let location = ''
   export let authors: Author[]
@@ -37,13 +37,9 @@
 
   $: if (filterdAuthors) {
     if (filterdAuthors.length && !filterdAuthors[0].href) {
-      const url = new URL($page.url)
-
       for (const author of authors) {
         author.lowName = author.name.toLowerCase()
-        url.searchParams.delete('count')
-        url.searchParams.set('author', author.slug)
-        author.href = url.href
+        author.href = getLibraryHref($page.url, [ [ 'author', author.slug ], [ 'count', '' ] ])
       }
     }
   }

@@ -40,13 +40,9 @@
 
   $: if (filterdCategories) {
     if (filterdCategories.length && !filterdCategories[0].href) {
-      const url = new URL($page.url)
-
       for (const category of categories) {
         category.lowName = category.name.toLowerCase()
-        url.searchParams.delete('count')
-        url.searchParams.set('category', category.slug)
-        category.href = url.href
+        category.href = getLibraryHref($page.url, [ [ 'category', category.slug ], [ 'count', '' ] ])
       }
     }
   }
