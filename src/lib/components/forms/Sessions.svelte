@@ -57,10 +57,10 @@
 
         switch (result.type) {
           case 'error':
-            if (typeof result.error?.message === 'string') showToast({ type: 'error', items: [ result.error.message ] }) // form errors (not field specific)
+            if (typeof result.error?.message === 'string') showToast({ type: 'info', items: [ result.error.message ] }) // form errors (not field specific)
             break
           case 'failure':
-            if (result.data?._errors?.length) showToast({ type: 'error', items: result.data._errors }) // form errors (not field specific)
+            if (result.data?._errors?.length) showToast({ type: 'info', items: result.data._errors }) // form errors (not field specific)
             break
           case 'success':
             showToast({ type: 'success', items: [ setSuccessText() ] }) // successful submission

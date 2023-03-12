@@ -43,7 +43,7 @@ export default (type: string, serverImageId: string): ImageVariableFormItemRespo
               } catch (e) {
                 if (e instanceof IsFileAnImageError) {
                   imageVariables.fileElement.value = ''
-                  showToast({ type: 'error', items: [e.toString()] })
+                  showToast({ type: 'info', items: [e.toString()] })
                 }
               }
             }

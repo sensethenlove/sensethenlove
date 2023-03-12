@@ -4,4 +4,4 @@ declare global { // Node global types
   }
 }
 
-export {}
+export type ShowToastProps = { type: 'info' | 'success', items: string[] }
