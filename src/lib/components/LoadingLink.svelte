@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { tick } from 'svelte'
   import { page } from '$app/stores'
   import { afterNavigate, goto } from '$app/navigation'
   import SVG_LOADING from '$lib/svg/SVG_LOADING.svg'
@@ -15,10 +14,14 @@
   function onAnchorlick (e: Event) {
     // if href is current url do not show loading indicator
     // https://github.com/sveltejs/kit/issues/9390
-    if (!$page.url.href.endsWith(href)) {
+    // debugger
+    if ($page.url.href.endsWith(href)) {}
+    else if ($page.route.id === '/library' && href.includes('/library') && !href.includes('/library/')) {
       e.preventDefault()
       isLoading = true
       window.location.href = href
+    } else {
+      isLoading = true
     }
   }
 </script>

@@ -229,3 +229,30 @@ This is helpful when type definitions are stale (showing incorrect errors)
 Command + Shift + P
 Developer: Reload Window
 ```
+
+## SQL: Create new table using schema & data from exisiting table
+```sql
+create table _CategoryToQuote as select * from _QuoteToCategory;
+```
+
+## SQL: Add primary key to table
+```sql
+ALTER TABLE Category ADD PRIMARY KEY (id); 
+```
+
+## SQL: Add unique key to table
+```sql
+ALTER TABLE _CategoryToQuote ADD CONSTRAINT _CategoryToQuote_AB_unique UNIQUE (A,B);
+```
+
+## SQL: Add index (key) to table
+```sql
+ALTER TABLE `_QuoteToCategory` ADD INDEX `_QuoteToCategory_B_index` (`B`);
+```
+
+## SQL: Swap data between columns
+```sql
+UPDATE _CategoryToQuote old
+JOIN _CategoryToQuote new USING (A,B)
+SET new.A = old.B, new.B = old.A;
+```
