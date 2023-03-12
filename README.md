@@ -111,7 +111,7 @@ pnpm qaWrite
 
 ### Write to ./prisma/schema.prisma, ./src/lib/prisma/prisma.ts & .env files to prep for [github main branch](https://github.com/sensethenlove/sensethenlove/tree/main) or [poduction deploy](https://sensethenlove.com)
 ```bash
-pnpm prodWrite
+pnpm mainWrite
 ```
 
 ### Validate code & then push to [github qa branch](https://github.com/sensethenlove/sensethenlove/tree/qa)
@@ -121,7 +121,7 @@ pnpm qaPush
 
 ### Validate code & then push to [github main branch](https://github.com/sensethenlove/sensethenlove/tree/main)
 ```bash
-pnpm prodPush
+pnpm mainPush
 ```
 
 ### Deploy to [qa](https://qa.sensethenlove.com)
@@ -131,7 +131,7 @@ pnpm qaDeploy
 
 ### Deploy to [production](https://sensethenlove.com)
 ```bash
-pnpm prodDeploy
+pnpm mainDeploy
 ```
 
 ### How to update database schema
@@ -148,7 +148,7 @@ pnpm prodDeploy
 
 ### View logs for production server
 ```bash
-pnpm prodLogs
+pnpm mainLogs
 ```
 
 ### View logs for qa server
