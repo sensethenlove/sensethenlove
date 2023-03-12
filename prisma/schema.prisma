@@ -75,6 +75,7 @@ model Source {
   @@index([slug])
   @@index([createdAt])
   @@fulltext([title])
+  @@fulltext([description])
 }
 
 enum SourceType {

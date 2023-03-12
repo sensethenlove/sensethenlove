@@ -1,5 +1,6 @@
 import { PUBLIC_HOST } from '$env/static/public'
 
+
 export default (currentUrl: URL, parameters?: string[][]) => {
   let url = new URL(currentUrl)
 

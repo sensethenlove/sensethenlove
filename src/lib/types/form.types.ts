@@ -1,3 +1,6 @@
+import type { Source } from '$lib/types/prisma.types'
+
+
 declare global { // Node global types
   interface Window { // Browser window types
     turnstile: { // For Cloudflare Turnstile
@@ -52,4 +55,10 @@ export type ImageVariableFormItemResponse = {
   previewImage ?: HTMLImageElement,
   serverImage ?: HTMLImageElement,
   onFileSelected ?: () => void,
+}
+
+export type SearchResponse = {
+  quotesByText?: Source[],
+  sourcesByTitle?: Source[],
+  sourcesByDescription?: Source[],
 }
