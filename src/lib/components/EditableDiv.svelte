@@ -38,8 +38,15 @@
     clearErrors() // stop showing errors if input happens
   }
 
-  function addLink (href: string, text: string, isBlank?: boolean) {
-    addHtmlToEditableDiv(editableDiv, onInput, `<a href="${ href }" ${ EDITABLE_PRISTINE_ATTRIBUTE }="${ text }" ${ isBlank ? 'target="_blank"' : '' }>${ text }</a>`)
+  function addLink (href: string, text: string, isTargetBlank?: boolean) {
+    const node = document.createElement('a')
+
+    node.setAttribute('href', href)
+    node.setAttribute(EDITABLE_PRISTINE_ATTRIBUTE, text)
+    node.innerText = text
+    if (isTargetBlank) node.setAttribute('target', '_blank')
+
+    addHtmlToEditableDiv(editableDiv, onInput, node)
   }
 
   function bindModalFunctions (e: CustomEvent) {
@@ -59,7 +66,7 @@
   <button class="brand" type="button" on:click={ showModal }>+</button>
 </div>
 
-<div on:input={ () => { onInput() } } bind:this={ editableDiv } contenteditable="true" class="editable-div"></div>
+<div on:input={ () => { onInput() } } bind:this={ editableDiv } contenteditable="true" class="editable-div" on:click={ e => e.preventDefault() }></div>
 <textarea { id } { name } aria-hidden="true" bind:this={ sanitizedTextarea }></textarea>
 
 <Modal header="Add" on:functions={ bindModalFunctions }>
