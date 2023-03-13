@@ -14,7 +14,6 @@
   function onAnchorlick (e: Event) {
     // if href is current url do not show loading indicator
     // https://github.com/sveltejs/kit/issues/9390
-    // debugger
     if ($page.url.href.endsWith(href)) {}
     else if ($page.route.id === '/library' && href.includes('/library') && !href.includes('/library/')) {
       e.preventDefault()
