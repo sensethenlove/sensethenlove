@@ -4,7 +4,7 @@
   import Modal from '$lib/components/Modal.svelte'
   import Form from '$lib/components/forms/Form.svelte'
   import SVG_SEARCH from '$lib/svg/nav/SVG_SEARCH.svg'
-  import Source from '$lib/components/source/Source.svelte'
+  import Science from '$lib/components/source/Science.svelte'
   import Culture from '$lib/components/source/Culture.svelte'
   import Product from '$lib/components/source/Product.svelte'
   import type { SearchResponse, ShowModal, OnModalHide, FormInputs, FormOnSuccess, FormOnSubmitValidate } from '$lib/types/all'
@@ -67,7 +67,7 @@
       <div class="papyrus three">Library title results:</div>
       { #each response.sourcesByTitle as source }
         { #if source.type === 'SCIENCE' }
-          <Source { source } location="search--source-titles" />
+          <Science { source } location="search--source-titles" />
         { :else if source.type === 'CULTURE' }
           <Culture { source } location="search--source-titles" />
         { :else if source.type === 'PRODUCT' }
@@ -80,7 +80,7 @@
       <div class="papyrus three">Library description results:</div>
       { #each response.sourcesByDescription as source }
         { #if source.type === 'SCIENCE' }
-          <Source { source } location="search--source-titles" />
+          <Science { source } location="search--source-titles" />
         { :else if source.type === 'CULTURE' }
           <Culture { source } location="search--source-titles" />
         { :else if source.type === 'PRODUCT' }
@@ -92,7 +92,7 @@
     { #if response?.quotesByText?.length }
       <div class="papyrus three">Science quote results:</div>
       { #each response.quotesByText as source }
-        <Source { source } location="search--with-quote" />
+        <Science { source } location="search--with-quote" />
       { /each }
     { /if }
   </div>

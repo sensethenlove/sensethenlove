@@ -4,9 +4,9 @@
   import type { PageData } from './$types'
   import Head from '$lib/components/Head.svelte'
   import Title from '$lib/components/Title.svelte'
-  import Source from '$lib/components/source/Source.svelte'
   import { CF_OG_SOURCES } from '$lib/util/cloudflareImages'
   import type { Source as SourceType } from '$lib/types/all'
+  import Science from '$lib/components/source/Science.svelte'
   import Product from '$lib/components/source/Product.svelte'
   import Culture from '$lib/components/source/Culture.svelte'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
@@ -67,7 +67,7 @@
   { #if visibleSources?.length }
     { #each visibleSources as source }
       { #if source.type === 'SCIENCE' }
-        <Source { source } type={ data.type } category={ data.category } author={ data.author } location="library" />
+        <Science { source } type={ data.type } category={ data.category } author={ data.author } location="library" />
       { :else if source.type === 'CULTURE' }
         <Culture { source } type={ data.type } category={ data.category } author={ data.author } location="library" />
       { :else if source.type === 'PRODUCT' }

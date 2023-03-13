@@ -1,6 +1,5 @@
 <script lang="ts">
   import { afterNavigate } from '$app/navigation'
-  import getLibraryHref from '$lib/util/getLibraryHref'
   import SVG_PUBMED from '$lib/svg/logo/SVG_PUBMED.svg'
   import SVG_ACADEMIA from '$lib/svg/logo/SVG_ACADEMIA.svg'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
@@ -74,84 +73,3 @@
     <CategoryChips { type } category={ displayCategory } categories={ source.categories } location="science" />
   { /if }
 </section>
-
-
-<style lang="scss">
-  @import '$lib/scss/variables.scss';
-
-  .source {
-    &.location--search--with-quote,
-    &.location--search--source-titles {
-      border-bottom: 1px solid gold;
-      margin-bottom: 1.5rem;
-    }
-    &.location--search--with-quote {
-
-      ol {
-        list-style-type: circle;
-      }
-    }
-
-    .head {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      margin-bottom: 1.5rem;
-
-      @media only screen and (min-width: $move-nav-window-width) { // big screen
-        flex-direction: row;
-      }
-
-      .publisher {
-        padding: 1rem;
-        border-radius: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1rem;
-        background-color: var(--light-opacity-bg);
-
-        @media only screen and (min-width: $move-nav-window-width) { // big screen
-          margin-bottom: 0;
-        }
-
-        :global(.academia-logo),
-        :global(.pub-med-logo) {
-          height: 3rem;
-        }
-      }
-
-      .flex {
-        flex: auto;
-        width: 100%;
-        text-align: center;
-
-        @media only screen and (min-width: $move-nav-window-width) { // big screen
-          margin-left: 1rem;
-          text-align: left;
-        }
-
-        :global(.title) {
-          font-size: 2.1rem;
-          margin: 0 0 0.9rem 0;
-          line-height: 1.4;
-          font-weight: 500;
-          display: inline-block;
-
-          @media only screen and (min-width: $move-nav-window-width) { // big screen
-            text-align: left;
-            margin: 0 0 0.6rem 0;
-          }
-        }
-        
-        p {
-          margin: 0;
-        }
-      }
-    }
-
-    .fav-head {
-      font-weight: 500;
-    }
-  }
-</style>
