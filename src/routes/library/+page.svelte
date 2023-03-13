@@ -4,7 +4,7 @@
   import type { PageData } from './$types'
   import Head from '$lib/components/Head.svelte'
   import Title from '$lib/components/Title.svelte'
-  import { CF_OG_SOURCES } from '$lib/util/cloudflareImages'
+  import { CF_OG_LIBRARY } from '$lib/util/cloudflareImages'
   import type { Source as SourceType } from '$lib/types/all'
   import Science from '$lib/components/source/Science.svelte'
   import Product from '$lib/components/source/Product.svelte'
@@ -49,7 +49,7 @@
 </script>
 
 
-<Head { title } ogImageId={ CF_OG_SOURCES } description="Welcome to our library!" url="sources" />
+<Head { title } ogImageId={ CF_OG_LIBRARY } description="Welcome to our library!" url="sources" />
 <Title text="Library" size="one" />
 <Title text={ title } />
 
