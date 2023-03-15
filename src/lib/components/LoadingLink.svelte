@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  import { afterNavigate, goto } from '$app/navigation'
+  import { afterNavigate } from '$app/navigation'
   import SVG_LOADING from '$lib/svg/SVG_LOADING.svg'
 
   export let label: string = ''
