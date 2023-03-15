@@ -1,9 +1,12 @@
 <script lang="ts">
+  import { page } from '$app/stores'
+  import { goto } from '$app/navigation'
   import type { PageData } from './$types'
   import Head from '$lib/components/Head.svelte'
   import Title from '$lib/components/Title.svelte'
-  import Source from '$lib/components/source/Source.svelte'
-  import { CF_OG_SOURCES } from '$lib/util/cloudflareImages'
+  import { CF_OG_LIBRARY } from '$lib/util/cloudflareImages'
+  import type { Source as SourceType } from '$lib/types/all'
+  import Science from '$lib/components/source/Science.svelte'
   import Product from '$lib/components/source/Product.svelte'
   import Culture from '$lib/components/source/Culture.svelte'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
@@ -13,38 +16,58 @@
 
   export let data: PageData
 
-  let title: string
   const titleParts: string[] = []
+  let visibleSources: SourceType[] = []
+  let showMoreSourcesButton: HTMLButtonElement
+  let title: string = 'Welcome to our Library!'
 
-  $: if (data) {
+  $: if (showMoreSourcesButton) { // add observer to infinite scroll button
+    (new IntersectionObserver(showMoreSources, { rootMargin: '270px' })).observe(showMoreSourcesButton)
+  }
+
+  $: if (data.sources && data.count) { // bind visible sources
+    visibleSources = data.sources.slice(0, data.count)
+  }
+
+  $: if (data.type || data.category || data.author) { // bind title
     titleParts.length = 0
     if (data.type) titleParts.push(data.type.charAt(0).toUpperCase() + data.type.slice(1))
     if (data.category) titleParts.push(data.category.name)
     if (data.author) titleParts.push(data.author.name)
-    title = titleParts.length ? titleParts.join(' ⋅ ') : 'Welcome to our Library!'
+    if (titleParts.length) title = titleParts.join(' ⋅ ')
+  }
+
+  function showMoreSources (entries: IntersectionObserverEntry[]) { // show 9 more sources AND update the url
+    if (entries[0].isIntersecting && data.sources) {
+      const visibleCount = visibleSources.length + 6
+      const url = new URL($page.url)
+      url.searchParams.set('count', String(visibleCount))
+      visibleSources = data.sources.slice(0, visibleCount)
+      goto(url, { replaceState: true, noScroll: true, keepFocus: true, invalidateAll: false })
+    }
   }
 </script>
 
 
-<Head { title } ogImageId={ CF_OG_SOURCES } description="Welcome to our library!" url="sources" />
+<Head { title } ogImageId={ CF_OG_LIBRARY } description="Welcome to our library!" url="sources" />
 <Title text="Library" size="one" />
 <Title text={ title } />
 
 <div>
   <div class="left">
-    <TypeChips type={ data.type } category={ data.category } author={ data.author } />
+    <TypeChips type={ data.type } />
     { #if data.categories }
-      <CategoryChips type={ data.type } category={ data.category } author={ data.author } categories={ data.categories } location="nav" />
+      <CategoryChips type={ data.type } category={ data.category } categories={ data.categories } location="nav" />
     { /if }
     { #if data.authors }
-      <AuthorChips type={ data.type } category={ data.category } author={ data.author } authors={ data.authors } location="nav" />
+      <AuthorChips author={ data.author } authors={ data.authors } location="nav" />
     { /if }
   </div>
 
-  { #if data.sources?.length }
-    { #each data.sources as source }
+  { #if visibleSources?.length }
+    { #each visibleSources as source }
       { #if source.type === 'SCIENCE' }
-        <Source { source } type={ data.type } category={ data.category } author={ data.author } location="library" />
+        <Science { source } type={ data.type } category={ data.category } author={ data.author } location="library" />
       { :else if source.type === 'CULTURE' }
         <Culture { source } type={ data.type } category={ data.category } author={ data.author } location="library" />
       { :else if source.type === 'PRODUCT' }
@@ -56,6 +79,12 @@
       <span>No library items found. Would you love to <LoadingLink href="/library" label="view all" loadWidth="big" />?!</span>
     </Title>
   { /if }
+
+  { #if visibleSources?.length !== data.sources?.length}
+    <div class="more-wrapper">
+      <button bind:this={ showMoreSourcesButton } class="brand">Show more sources</button>
+    </div>
+  { /if }
   <div class="clear-both"></div>
 </div>
 
@@ -65,7 +94,8 @@
 
   .left,
   :global(.no-results),
-  :global(.source) {
+  :global(.source),
+  .more-wrapper {
     display: flex;
     flex-direction: column;
   }
@@ -85,5 +115,9 @@
   :global(.source) {
     margin-bottom: 1.8rem;
   }
-</style>
 
+  .more-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+</style>

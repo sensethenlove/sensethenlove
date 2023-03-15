@@ -22,11 +22,11 @@
 
 
 <button class="theme-toggle brand" on:click={ () => { setTheme() }} aria-hidden="true">
-{ #if $theme === 'light' }
-  { @html SVG_HOME }
-{ :else }
-  { @html SVG_MOON }
-{ /if }
+  { #if $theme === 'light' }
+    { @html SVG_HOME }
+  { :else }
+    { @html SVG_MOON }
+  { /if }
 </button>
 
 

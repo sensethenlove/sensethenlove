@@ -30,6 +30,7 @@
   @import '$lib/scss/variables.scss';
 
   .background {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -40,7 +41,6 @@
     }
 
     .img-wrapper {
-      width: 100%;
       z-index: $zindex-background-images;
       margin: 0;
       aspect-ratio: 1 / 1; // height equal to width so images load in in their done loading location

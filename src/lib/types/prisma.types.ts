@@ -7,8 +7,8 @@ import type {
   Source as SourcePrisma,
   Author as AuthorPrisma,
   Session as SessionPrisma,
+  Category as CategoryPrisma,
   SiteComment as SiteCommentPrisma,
-  QuoteCategory as CategoryPrisma,
 } from '@prisma/client'
 
 

@@ -1,7 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import Modal from '$lib/components/Modal.svelte'
   import htmlSanitize from '$lib/util/htmlSanitize'
-  import { BASE_CONTENT_EDITABLE_ELEMENT } from '$lib/form/variables'
+  import loopBackwards from '$lib/util/loopBackwards'
+  import type { ShowModal, HideModal } from '$lib/types/all'
+  import { EDITABLE_PRISTINE_ATTRIBUTE } from '$lib/form/variables'
+  import addHtmlToEditableDiv from '$lib/form/addHtmlToEditableDiv'
   import isContentEditableEmpty from '$lib/form/isContentEditableEmpty'
 
   export let id: string
@@ -10,67 +14,67 @@
   export let resetCounter: number
   export let clearErrors: () => void
 
+  let showModal: ShowModal
+  let hideModal: HideModal
   let editableDiv: HTMLDivElement
   let sanitizedTextarea: HTMLTextAreaElement
 
   $: if (resetCounter) { // Form.svelte letting us know the form has be reset
-    editableDiv.innerHTML = BASE_CONTENT_EDITABLE_ELEMENT // set editable to base so insert tags works
+    editableDiv.innerHTML = '' // set editable to base so insert tags works
   }
 
   function onInput () {
+    const pristineAdditions = editableDiv.querySelectorAll(`[${ EDITABLE_PRISTINE_ATTRIBUTE }]`)
+
+    loopBackwards(Array.from(pristineAdditions), (item, splice) => {
+      if (item.innerText !== item.getAttribute(EDITABLE_PRISTINE_ATTRIBUTE)) splice()
+    })
+
     if (sanitizedTextarea && editableDiv && typeof editableDiv.textContent === 'string') {
-      if (!isContentEditableEmpty(editableDiv.innerHTML)) sanitizedTextarea.value = htmlSanitize(editableDiv.innerHTML) // editable div is not empty so set sanitized text
-      else { // editable div is empty
-        sanitizedTextarea.value = '' // set sanitized to an empty string so validation knows it is blank
-        editableDiv.innerHTML = BASE_CONTENT_EDITABLE_ELEMENT // set editable to base so insert tags works
-      }
+      if (isContentEditableEmpty(editableDiv.innerHTML))  editableDiv.innerHTML = sanitizedTextarea.value = ''
+      else sanitizedTextarea.value = htmlSanitize(editableDiv.innerHTML)
     }
 
     clearErrors() // stop showing errors if input happens
   }
 
-  function addTag () {
-    const selection = window.getSelection() // find out where the users current focus is
+  function addLink (href: string, text: string, isTargetBlank?: boolean) {
+    const node = document.createElement('a')
 
-    // if selection has been found and it is on the editable div or in the editale div
-    if (selection?.getRangeAt && selection?.rangeCount && (editableDiv.contains(selection.focusNode) || selection.focusNode instanceof HTMLDivElement && selection.focusNode.classList.contains('editable-div'))) {
-      const range = selection.getRangeAt(0) // get the users selection
-      const anchor = document.createElement('a') // create an anchor element
-      anchor.setAttribute('href', 'https://sensethenlove.com') // add link to the anchor element
-      anchor.innerText = '@Chris Carrington' // add text to anchor element
-      range.insertNode(anchor) // add anchor element where the user has selected
-    } else { // if focus was not in editable div pre tag request
-      const content = editableDiv.innerHTML
-      const tag = '<a href="https://sensethenlove.com">@Chris Carrington</a>'
+    node.setAttribute('href', href)
+    node.setAttribute(EDITABLE_PRISTINE_ATTRIBUTE, text)
+    node.innerText = text
+    if (isTargetBlank) node.setAttribute('target', '_blank')
 
-      if (content.endsWith('<br></div>')) { // if editable div ends with a break and a closing div we'd like to put the tag between the break and div (so not on a new line)
-        const length = content.length
-        const position = length - 10
-        editableDiv.innerHTML = content.substring(0, position) + ` ${ tag }` + content.substring(position)
-      } else if (!isContentEditableEmpty(content)) { // content is not empty
-        editableDiv.innerHTML += ` ${ tag }` // put tag @ end
-      } else { // tag becomes it all b/c there is nothing else here
-        editableDiv.innerHTML = tag
-      }
-    }
+    addHtmlToEditableDiv(editableDiv, onInput, node)
+  }
 
-    onInput()
+  function bindModalFunctions (e: CustomEvent) {
+    showModal = e.detail.showModal
+    hideModal = e.detail.hideModal
   }
 
   onMount(() => { // reset sanitized & editable
     if (sanitizedTextarea) sanitizedTextarea.value = ''
-    if (editableDiv) editableDiv.innerHTML = BASE_CONTENT_EDITABLE_ELEMENT
+    if (editableDiv) editableDiv.innerHTML = ''
   })
 </script>
 
 
 <div class="above">
   <label for={ id }>{ label }</label>
-  <button class="brand" type="button" unselectable="on" on:click={ () => { addTag() } }>Tag Friend in Post</button>
+  <button class="brand" type="button" on:click={ showModal }>+</button>
 </div>
 
-<div on:input={ () => { onInput() } } bind:this={ editableDiv } contenteditable="true" class="editable-div"><div></div></div>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div on:input={ () => { onInput() } } bind:this={ editableDiv } contenteditable="true" class="editable-div" on:click={ e => e.preventDefault() }></div>
 <textarea { id } { name } aria-hidden="true" bind:this={ sanitizedTextarea }></textarea>
+
+<Modal header="Add" on:functions={ bindModalFunctions }>
+  <button class="brand" type="button" on:click={ () => { addLink('https://sensethenlove.com', 'Link', true); hideModal(); } }>Add Link</button>
+  <button class="brand" type="button" on:click={ () => { addLink('/social', '#I AM'); hideModal(); } }>Add Hash Tag</button>
+  <button class="brand" type="button" on:click={ () => { addLink('/social', '@Chris Carrington'); hideModal(); } }>Add Friend Tag</button>
+</Modal>
 
 
 <style lang="scss">

@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
+  import  { page } from '$app/stores'
   import { afterNavigate } from '$app/navigation'
   import Title from '$lib/components/Title.svelte'
+  import getLibraryHref from '$lib/util/getLibraryHref'
+  import type { Category, SourceType } from '$lib/types/all'
   import LoadingLink from '$lib/components/LoadingLink.svelte'
-  import type { Author, Category, SourceType } from '$lib/types/all'
 
   export let location = ''
   export let categories: Category[]
   export let type: SourceType = undefined
-  export let author: Author | undefined = undefined
   export let category: Category | undefined = undefined
 
   let query: string
@@ -18,6 +18,8 @@
   let productHref: string
   let isAllVisible: boolean = true
   let filterdCategories: Category[]
+
+  afterNavigate(() => query = '')
 
   $: if (query || categories) {
     if (!query) {
@@ -40,53 +42,17 @@
     if (filterdCategories.length && !filterdCategories[0].href) {
       for (const category of categories) {
         category.lowName = category.name.toLowerCase()
-        const params: any = { }
-        if (type) params.type = type
-        params.category = category.slug
-        if (author) params.author = author.slug
-        const urlParams = (new URLSearchParams(params)).toString()
-        category.href = '/library?' + urlParams
+        category.href = getLibraryHref($page.url, [ [ 'category', category.slug ], [ 'count', '' ] ])
       }
     }
   }
 
-  function bindHrefs () {
-    const params: any = {}
-    if (type) params.type = type
-    if (author) params.author = author.slug
-    const urlParams = (new URLSearchParams(params)).toString()
-    allHref = urlParams ? '/library?' + urlParams : '/library'
-
-    if (location === 'culture') {
-      const cultureParams: any = { type: 'culture' }
-      if (category?.slug) cultureParams.category = category.slug
-      if (author?.slug) cultureParams.author = author.slug
-      const cultureUrlParams = (new URLSearchParams(cultureParams)).toString()
-      cultureHref = '/library?' + cultureUrlParams
-    }
-
-    if (location === 'product') {
-      const productParams: any = { type: 'product' }
-      if (category?.slug) productParams.category = category.slug
-      if (author?.slug) productParams.author = author.slug
-      const productUrlParams = (new URLSearchParams(productParams)).toString()
-      productHref = '/library?' + productUrlParams
-    }
-
-    if (location === 'science') {
-      const scienceParams: any = { type: 'science' }
-      if (category?.slug) scienceParams.category = category.slug
-      if (author?.slug) scienceParams.author = author.slug
-      const scienceUrlParams = (new URLSearchParams(scienceParams)).toString()
-      scienceHref = '/library?' + scienceUrlParams
-    }
+  $: if ($page.url) {
+    allHref = getLibraryHref($page.url, [ [ 'category', '' ], [ 'count', '' ] ])
+    if (location === 'culture') cultureHref = getLibraryHref($page.url, [ [ 'type', 'culture' ], [ 'count', '' ] ])
+    if (location === 'science') scienceHref = getLibraryHref($page.url, [ [ 'type', 'science' ], [ 'count', '' ] ])
+    if (location === 'product') productHref = getLibraryHref($page.url, [ [ 'type', 'product' ], [ 'count', '' ] ])
   }
-
-  onMount(bindHrefs)
-  afterNavigate(() => {
-    bindHrefs()
-    query = ''
-  })
 </script>
 { #if location === 'nav' }
   <Title text="Select a Category!" noBottom={ true } />

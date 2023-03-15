@@ -11,13 +11,22 @@
   let isLoading: boolean
   afterNavigate(() => isLoading = false)
 
-  function click () {
-    isLoading = $page.url.href.endsWith(href) ? false : true
+  function onAnchorlick (e: Event) {
+    // if href is current url do not show loading indicator
+    // https://github.com/sveltejs/kit/issues/9390
+    if ($page.url.href.endsWith(href)) {}
+    else if ($page.route.id === '/library' && href.includes('/library') && !href.includes('/library/')) {
+      e.preventDefault()
+      isLoading = true
+      window.location.href = href
+    } else {
+      isLoading = true
+    }
   }
 </script>
 
 
-<a { href } class="{ css } loading-link { isLoading ? 'is-loading' : '' } loading-link--loading-size-{ loadWidth }" on:click={ click }>
+<a { href } class="{ css } loading-link { isLoading ? 'is-loading' : '' } loading-link--loading-size-{ loadWidth }" on:click={ onAnchorlick }>
   <slot/>
   <span>{ label }</span>
   { @html SVG_LOADING }

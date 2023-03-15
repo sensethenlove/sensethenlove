@@ -8,7 +8,7 @@
 
   .logo {
     position: fixed;
-    z-index: $zindex-nav;
+    z-index: $zindex-logo;
     top: 0.9rem;
     width: 4rem;
     left: 50%;
@@ -86,6 +86,7 @@
       color: var(--papyrus-text-color);
       text-decoration: none;
       border: none;
+      cursor: pointer;
   
       @media only screen and (min-width: $move-nav-window-width) { // big screen
         font-size: 2.3rem;

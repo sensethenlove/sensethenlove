@@ -4,7 +4,7 @@
   import Title from '$lib/components/Title.svelte'
   import AboutUs from '$lib/components/AboutUs.svelte'
   import { CF_OG_HOME } from '$lib/util/cloudflareImages'
-  import Source from '$lib/components/source/Source.svelte'
+  import Science from '$lib/components/source/Science.svelte'
   import Culture from '$lib/components/source/Culture.svelte'
   import Product from '$lib/components/source/Product.svelte'
   import OurSocials from '$lib/components/OurSocials.svelte'
@@ -26,7 +26,7 @@
   <Title noBottom={ true }>
     <span class="pr-5">The most recent</span> <LoadingLink href="/library?type=science" label="science" loadWidth="big" /> addition to our <LoadingLink href="/library" label="library" loadWidth="big" />!
   </Title>
-  <Source source={ data.science } location="home" />
+  <Science source={ data.science } location="home" />
 { /if }
 
 { #if data.culture }

@@ -18,7 +18,7 @@
   </ul>
   <div class="item list-below">
     <div class="emoji">🕉</div>
-    <div>Share our <LoadingLink href="/social/" label="social network" /> that may help us all:</div>
+    <div>Cultivate an <LoadingLink href="/social/" label="online community" /> to help us all:</div>
   </div>
   <ul>
     <li class="indent-dot">Share our lovely thoughts, goals & achievements!</li>
@@ -27,13 +27,13 @@
   </ul>
   <div class="item">
     <div class="emoji" style="font-size: 2.3rem">📚</div>
-    <div>Share our <LoadingLink href="/library" label="library" /> of our favorite <LoadingLink href="/library?type=science" label="scientific evidence," /> <LoadingLink href="/library?type=product" label="products," /> & <LoadingLink href="/library?type=culture" label="culture" />!</div>
+    <div>Cultivate a <LoadingLink href="/library" label="library" /> of lovely <LoadingLink href="/library?type=science" label="scientific evidence," /> <LoadingLink href="/library?type=product" label="products," /> & <LoadingLink href="/library?type=culture" label="culture" />!</div>
   </div>
 
   <div class="papyrus three content-above">Sense Then Love means?</div>
   <div class="item list-below">
     <div class="emoji">🙏</div>
-    <div>Sense Then Love is our guide to <LoadingLink href="/library?category=coherence" label="coherence" /> (bliss)!</div>
+    <div>Sense Then Love is our map to <LoadingLink href="/library?category=coherence" label="coherence" /> (bliss)!</div>
   </div>
 
   <div class="papyrus three content-above">How?</div>

@@ -4,18 +4,31 @@
   import Modal from '$lib/components/Modal.svelte'
   import Form from '$lib/components/forms/Form.svelte'
   import SVG_SEARCH from '$lib/svg/nav/SVG_SEARCH.svg'
-  import Source from '$lib/components/source/Source.svelte'
+  import Science from '$lib/components/source/Science.svelte'
   import Culture from '$lib/components/source/Culture.svelte'
   import Product from '$lib/components/source/Product.svelte'
-  import type { Source as SourceType, ShowModal, OnModalHide, FormInputs, FormOnSuccess, FormOnSubmitValidate } from '$lib/types/all'
+  import type { SearchResponse, ShowModal, OnModalHide, FormInputs, FormOnSuccess, FormOnSubmitValidate } from '$lib/types/all'
+
 
   let showModal: ShowModal
-  let response: { quotesByText?: SourceType[], sourcesByTitle?: SourceType[] } | null = null
+  let response: SearchResponse | null = null
+  const searchOptions = [ 'quotesByText', 'sourcesByTitle', 'sourcesByDescription' ]
+  const inputs: FormInputs = [
+    { name: 'query', focusOnInit: true, autocomplete: 'off' },
+    { name: 'sourcesByTitle', label: 'Search library titles',  type: 'checkbox' },
+    { name: 'sourcesByDescription', label: 'Search library descriptions',  type: 'checkbox' },
+    { name: 'quotesByText', label: 'Search science quotes', type: 'checkbox' },
+  ]
+
 
   const onSubmitValidate = ((fields) => {
-    let isValid = true
+    let isValid = false
 
-    if (fields.quotesByText?.toString() !== 'on' && fields.sourcesByTitle?.toString() !== 'on') {
+    for (const option of searchOptions) {
+      if (fields[option]?.toString() === 'on') isValid = true
+    }
+
+    if (!isValid) {
       showToast({ type: 'info', items: [ 'Select atleast one checkbox please' ] })
       isValid = false
     }
@@ -23,20 +36,22 @@
     return isValid
   }) satisfies FormOnSubmitValidate
 
+
   const onSuccess = (({ data }) => {
-    if (!data?.quotesByText?.length && !data?.sourcesByTitle?.length) showToast({ type: 'info', items: [ 'No search results found' ] })
+    let resultsFound = false
+
+    for (const option of searchOptions) {
+      if (data?.[ option ]?.length) resultsFound = true
+    }
+
+    if (!resultsFound) showToast({ type: 'info', items: [ 'No search results found' ] })
     else response = data
   }) satisfies FormOnSuccess
+
 
   const onHideModal = (() => {
     response = null
   }) satisfies OnModalHide
-
-  const inputs: FormInputs = [
-    { name: 'query', focusOnInit: true, autocomplete: 'off' },
-    { name: 'sourcesByTitle', label: 'Search library titles',  type: 'checkbox' },
-    { name: 'quotesByText', label: 'Search science quotes', type: 'checkbox' },
-  ]
 </script>
 
 
@@ -47,29 +62,40 @@
 <Modal header="Search" on:functions={ e => showModal = e.detail.showModal } { onHideModal }>
   <Form { inputs } { schema } { onSubmitValidate } { onSuccess } reset={ false } action="search" buttonText="Search" />
 
-  { #if response?.quotesByText?.length || response?.sourcesByTitle?.length }
-    <div class="response">
-      { #if response?.sourcesByTitle?.length }
-        <div class="papyrus three">Library title results:</div>
-        { #each response.sourcesByTitle as source }
-          { #if source.type === 'SCIENCE' }
-            <Source { source } location="search--source-titles" />
-          { :else if source.type === 'CULTURE' }
-            <Culture { source } location="search--source-titles" />
-          { :else if source.type === 'PRODUCT' }
-            <Product { source } location="search--source-titles" />
-          { /if }
-        { /each }
-      { /if }
+  <div class="response">
+    { #if response?.sourcesByTitle?.length }
+      <div class="papyrus three">Library title results:</div>
+      { #each response.sourcesByTitle as source }
+        { #if source.type === 'SCIENCE' }
+          <Science { source } location="search--source-titles" />
+        { :else if source.type === 'CULTURE' }
+          <Culture { source } location="search--source-titles" />
+        { :else if source.type === 'PRODUCT' }
+          <Product { source } location="search--source-titles" />
+        { /if }
+      { /each }
+    { /if }
 
-      { #if response?.quotesByText?.length }
-        <div class="papyrus three">Science quote results:</div>
-        { #each response.quotesByText as source }
-          <Source { source } location="search--with-quote" />
-        { /each }
-      { /if }
-    </div>
-  { /if }
+    { #if response?.sourcesByDescription?.length }
+      <div class="papyrus three">Library description results:</div>
+      { #each response.sourcesByDescription as source }
+        { #if source.type === 'SCIENCE' }
+          <Science { source } location="search--source-titles" />
+        { :else if source.type === 'CULTURE' }
+          <Culture { source } location="search--source-titles" />
+        { :else if source.type === 'PRODUCT' }
+          <Product { source } location="search--source-titles" />
+        { /if }
+      { /each }
+    { /if }
+
+    { #if response?.quotesByText?.length }
+      <div class="papyrus three">Science quote results:</div>
+      { #each response.quotesByText as source }
+        <Science { source } location="search--with-quote" />
+      { /each }
+    { /if }
+  </div>
 </Modal>
 
 

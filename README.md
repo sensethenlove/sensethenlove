@@ -1,6 +1,5 @@
 # Sense Then Love
 
-## Helpful links
 #### Documentation
 - [Svelte](https://svelte.dev/docs)
 - [SvelteKit](https://kit.svelte.dev/docs/introduction)
@@ -84,7 +83,7 @@
 - [Prisma Data Platform: $29/month for 500 CPU minutes/month](https://www.prisma.io/pricing)
 - [Planetscale: $29/month for 10 GB storage, 50 million row writes/month & 100 billion row reads/month](https://planetscale.com/pricing)
 
-## Local install
+#### Local install
 1. [Install git](https://github.com/git-guides/install-git)
 1. [Install node & npm](https://nodejs.org/en/download/)
 1. [Install nvm](https://github.com/nvm-sh/nvm)
@@ -99,46 +98,46 @@ source /Users/[ username ]/.zshrc
 pnpm i
 ```
 
-## Start development server
+#### Start development server
 ```bash
 pnpm dev
 ```
 
-## Write to ./prisma/schema.prisma, ./src/lib/prisma/prisma.ts & .env files to prep for [github qa branch push](https://github.com/sensethenlove/sensethenlove/tree/qa) or [qa deploy](https://qa.sensethenlove.com)
+#### Write to schema.prisma, prisma.ts & .env files to prep for [github qa branch push](https://github.com/sensethenlove/sensethenlove/tree/qa) or [qa deploy](https://qa.sensethenlove.com)
 ```bash
 pnpm qaWrite
 ```
 
-## Write to ./prisma/schema.prisma, ./src/lib/prisma/prisma.ts & .env files to prep for [github main branch](https://github.com/sensethenlove/sensethenlove/tree/main) or [poduction deploy](https://sensethenlove.com)
+#### Write to schema.prisma, prisma.ts & .env files to prep for [github main branch](https://github.com/sensethenlove/sensethenlove/tree/main) or [poduction deploy](https://sensethenlove.com)
 ```bash
-pnpm prodWrite
+pnpm mainWrite
 ```
 
-## Validate code & then push to [github qa branch](https://github.com/sensethenlove/sensethenlove/tree/qa)
+#### Validates code & then pushes to [github qa branch](https://github.com/sensethenlove/sensethenlove/tree/qa)
 ```bash
 pnpm qaPush
 ```
 
-## Validate code & then push to [github main branch](https://github.com/sensethenlove/sensethenlove/tree/main)
+#### Validates code & then pushes to [github main branch](https://github.com/sensethenlove/sensethenlove/tree/main)
 ```bash
-pnpm prodPush
+pnpm mainPush
 ```
 
-## Deploy to [qa](https://qa.sensethenlove.com)
+#### Deploy to [qa](https://qa.sensethenlove.com)
 ```bash
 pnpm qaDeploy
 ```
 
-## Deploy to [production](https://sensethenlove.com)
+#### Deploy to [production](https://sensethenlove.com)
 ```bash
-pnpm prodDeploy
+pnpm mainDeploy
 ```
 
-## How to update database schema
-1. Bash `pnpm qaWrite`
+#### How to update database schema
+1. Bash `pnpm qaData` to view qa data in browser
 1. Update schema @ `./prisma/schema.prisma`
 1. Bash `pnpm schemaDeploy` to push schema changes to `qa` branch in [PlanetScale](https://planetscale.com/docs)
-1. Click `DASHBOARD_PLANETSCALE` link in `.apps.toml` file
+1. In `.apps.toml` file click `DASHBOARD_PLANETSCALE` link
 1. Click `Branches` tab
 1. Click `qa` link
 1. Scroll to bottom of page
@@ -146,28 +145,32 @@ pnpm prodDeploy
 1. Click `Create deploy request` button
 1. Click `Deploy changes`
 
-## View logs for production server
+#### View logs for production server
 ```bash
-pnpm prodLogs
+pnpm mainLogs
 ```
 
-## View logs for qa server
+#### View logs for qa server
 ```bash
 pnpm qaLogs
 ```
 
-## [Updates all dependencies](https://pnpm.io/cli/update)
+#### [Updates all dependencies](https://pnpm.io/cli/update)
 ```bash
 pnpm up
 ```
 
-## Open [Prisma Studio](https://www.prisma.io/studio)
-1. Save schema @ `./prisma/schema.prisma` > `datasource db` > `url` w/ `env("QA_PLANETSCALE_URL")` or `env("PROD_PLANETSCALE_URL")`
+#### Open [Prisma Studio](https://www.prisma.io/studio) w/ Production data
 ```bash
-pnpm data
+pnpm mainData
 ```
 
-## Format `schema.prisma` in [VSCodium](https://vscodium.com/) on save
+#### Open [Prisma Studio](https://www.prisma.io/studio) w/ QA data
+```bash
+pnpm qaData
+```
+
+#### Format `schema.prisma` in [VSCodium](https://vscodium.com/) on save
 Preferences > Settings > JSON
 ```json
 {
@@ -178,7 +181,7 @@ Preferences > Settings > JSON
 }
 ```
 
-## Set default tab size in [VSCodium](https://vscodium.com/) to 2 for new files
+#### Set default tab size in [VSCodium](https://vscodium.com/) to 2 for new files
 Preferences > Settings > JSON
 ```json
 {
@@ -186,7 +189,7 @@ Preferences > Settings > JSON
 }
 ```
 
-## Show what folder we are in @ the tab level of [VSCodium](https://vscodium.com/)
+#### Show what folder we are in @ the tab level of [VSCodium](https://vscodium.com/)
 Preferences > Settings > JSON
 ```json
 {
@@ -194,7 +197,7 @@ Preferences > Settings > JSON
 }
 ```
 
-## Stop [VSCodium](https://vscodium.com/) from compacting folders in sidenav
+#### Stop [VSCodium](https://vscodium.com/) from compacting folders in sidenav
 Preferences > Settings > JSON
 ```json
 {
@@ -202,7 +205,7 @@ Preferences > Settings > JSON
 }
 ```
 
-## Increase indent for sub folders in [VSCodium](https://vscodium.com/) sidenav
+#### Increase indent for sub folders in [VSCodium](https://vscodium.com/) sidenav
 Preferences > Settings > JSON
 ```json
 {
@@ -210,7 +213,7 @@ Preferences > Settings > JSON
 }
 ```
 
-## Get project wide typescript reporting in [VSCodium](https://vscodium.com/)
+#### Get project wide typescript reporting in [VSCodium](https://vscodium.com/)
 Preferences > Settings > JSON
 ```json
 {
@@ -218,14 +221,46 @@ Preferences > Settings > JSON
 }
 ```
 
-## Show autocomplete suggestions in [VSCodium](https://vscodium.com/)
+#### Show autocomplete suggestions in [VSCodium](https://vscodium.com/)
 ```
 Control + Space
 ```
 
-## Reload [VSCodium](https://vscodium.com/)
+#### Reload [VSCodium](https://vscodium.com/)
 This is helpful when type definitions are stale (showing incorrect errors)
 ```
 Command + Shift + P
 Developer: Reload Window
+```
+
+#### Create new table using schema & data from exisiting table
+```sql
+CREATE TABLE _CategoryToQuote
+AS SELECT * FROM _QuoteToCategory;
+```
+
+#### Add primary key to table
+```sql
+ALTER TABLE Category
+ADD PRIMARY KEY (id); 
+```
+
+#### Add unique key to table
+```sql
+ALTER TABLE _CategoryToQuote
+ADD CONSTRAINT _CategoryToQuote_AB_unique
+UNIQUE (A,B);
+```
+
+#### Add index (key) to table
+```sql
+ALTER TABLE `_QuoteToCategory`
+ADD INDEX `_QuoteToCategory_B_index` (`B`);
+```
+
+#### Swap data between two columns
+```sql
+UPDATE _CategoryToQuote old
+JOIN _CategoryToQuote new USING (A,B)
+SET new.A = old.B, new.B = old.A;
 ```
