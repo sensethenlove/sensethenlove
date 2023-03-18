@@ -25,7 +25,7 @@ export const load = (async ({ url, cookies, locals, getClientAddress }) => {
         createToken('refresh', payload)
       ])
 
-      await setAccessAndRefreshCookies(cookies, accessToken, refreshToken)
+      setAccessAndRefreshCookies(cookies, accessToken, refreshToken)
       throw new RedirectError('/social')
     } 
   } catch (e) {

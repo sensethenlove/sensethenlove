@@ -1,5 +1,6 @@
 import { ZodError } from 'zod'
-import { fail } from '@sveltejs/kit'
+import { fail, redirect } from '@sveltejs/kit'
+import { RedirectError } from '$lib/util/errors'
 
 
 export default (e: any) => {
@@ -10,11 +11,11 @@ export default (e: any) => {
   else {
     if (typeof e === 'string') response._errors.push(e)
     else if (e instanceof ZodError) response = e.format()
-    else if (typeof e !== 'object') response._errors.push(DEFAULT_ERROR)
-    else if (typeof e.toString === 'function') response._errors.push(e.toString())
+    else if (e instanceof RedirectError) throw redirect(303, e.message) // redirects are the smoothest w/ a throw b4 hand
+    else if (typeof e === 'object') response = e
     else response._errors.push(DEFAULT_ERROR)
   }
 
-  console.log(e)
+  console.log('actionCatch', e)
   return fail(400, response)
 }

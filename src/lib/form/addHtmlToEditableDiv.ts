@@ -20,5 +20,5 @@ export default (editableDiv: HTMLDivElement, onInput: () => void, node: HTMLElem
 function insertBeforeBreak (content: string, editableDiv: HTMLDivElement, node: HTMLElement, skipLength: number) {
   const length = content.length
   const position = length - skipLength
-  editableDiv.innerHTML = content.substring(0, position) + ` ${ node.innerHTML }` + content.substring(position)
+  editableDiv.innerHTML = content.substring(0, position) + ` ${ node.outerHTML }` + content.substring(position)
 }

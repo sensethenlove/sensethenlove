@@ -70,6 +70,6 @@ async function createNewSessionTokenAndCookies (event: RequestEvent, session: Se
   const [ accessToken, refreshToken ] = await Promise.all([ createToken('access', payload), createToken('refresh', payload) ]) // create new auth tokens for this user
 
   await updateSession(session.id, event.getClientAddress()) // update session with their most recent ip address
-  await setAccessAndRefreshCookies(event.cookies, accessToken, refreshToken) // set auth cookies w/ newly created tokens
+  setAccessAndRefreshCookies(event.cookies, accessToken, refreshToken) // set auth cookies w/ newly created tokens
   event.locals.userId = session.userId // add userId to locals so server code down stream may access it
 }

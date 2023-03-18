@@ -6,17 +6,15 @@
 
   export let data: PageData
 
-  let heading = 'Invalid sign in link'
+  let heading: string
 
-  if (typeof data.error === 'string') {
-    if (data.error.includes('VerifyTokenExpiredError')) heading = 'Sign in link expired'
-    else if (data.error.includes('VerifyTokenIDMismatchError')) heading = 'Computer & browser that starts the sign in process must match the computer & browser that clicks the email link'
-    else heading = 'Email link is invalid'
-  }
+  if (data._errors.find(e => e.includes('VerifyTokenExpiredError'))) heading = 'Sign in link expired'
+  else if (data._errors.find(e => e.includes('VerifyTokenIDMismatchError'))) heading = 'Computer & browser that starts the sign in process must match the computer & browser that clicks the email link'
+  else heading = 'Email link is invalid'
 </script>
 
 <Head title="Verify Sign In" />
-{ #if data.error }
+{ #if heading }
   <Title text={ heading } size="one" />
   <Title text="Please sign in again" size="four" noBottom={ true } />
   <SignIn />
