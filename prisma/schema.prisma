@@ -7,9 +7,9 @@ datasource db {
   provider     = "mysql"
   relationMode = "prisma"
   // url          = env("QA_PLANETSCALE_URL")
-  // url          = env("MAIN_PLANETSCALE_URL")
+  url          = env("MAIN_PLANETSCALE_URL")
   // url          = env("QA_PRISMA_URL")
-  url          = env("MAIN_PRISMA_URL")
+  // url          = env("MAIN_PRISMA_URL")
 }
 
 model User {
@@ -30,18 +30,6 @@ model User {
 enum Role {
   Staff
   Customer
-}
-
-model Post {
-  id        String   @id @default(uuid())
-  content   String   @db.Text
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  creator   User     @relation(fields: [creatorId], references: [id])
-  creatorId String
-  imageId   String?  @db.VarChar(255)
-
-  @@index([creatorId])
 }
 
 model Session {
@@ -93,11 +81,26 @@ enum UrlType {
   @@map("SourceUrlType")
 }
 
+model Post {
+  id        String   @id @default(uuid())
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  creator   User     @relation(fields: [creatorId], references: [id])
+  creatorId String
+  images    Image[]
+
+  @@index([creatorId])
+}
+
 model Image {
   id       String  @unique
   source   Source? @relation(fields: [sourceId], references: [id])
   sourceId String?
+  post     Post?   @relation(fields: [postId], references: [id])
+  postId   String?
 
+  @@index([postId])
   @@index([sourceId])
 }
 

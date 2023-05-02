@@ -10,7 +10,7 @@
 
   $: if (user) {
     inputs = [
-      { name: 'profileImage', label: 'Profile Image', type: 'image', serverImageId: user.profileImageId, maxWidth: '56rem', },
+      { name: 'profileImage', label: 'Profile Image', type: 'image', serverImages: user.profileImageId ? [ user.profileImageId ] : null, maxWidth: '56rem', },
       [
         { name: 'firstName', label: 'First Name', value: user.firstName },
         { name: 'lastName', label: 'Last Name', value: user.lastName },

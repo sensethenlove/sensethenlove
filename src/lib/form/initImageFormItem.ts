@@ -1,55 +1,62 @@
 import { onMount } from 'svelte'
-import { showToast } from '$lib/util/toast'
-import isFileAnImage from '$lib/file/isFileAnImage'
-import { IsFileAnImageError } from '$lib/util/errors'
+import showToast from '@sensethenlove/toast'
 import getImageUrl from '$lib/file/getImageUrl'
+import isFileAnImage from '$lib/file/isFileAnImage'
+import { IsFileAnImageError } from '$lib/errors/all'
 import type { ImageVariableFormItemResponse } from '$lib/types/all'
 
 
-export default (type: string, serverImageId: string): ImageVariableFormItemResponse => {
-  const imageVariables: ImageVariableFormItemResponse = {}
+export default (type: string, bind: (imageVariables: ImageVariableFormItemResponse) => void, serverImages: string[]): ImageVariableFormItemResponse => {
+  const imageVariables: ImageVariableFormItemResponse = {
+    previewImages: [],
+  }
 
   if (type === 'image') {
     onMount(() => {
-      if (imageVariables.fileElement && imageVariables.previewImage && imageVariables.serverImage) { // defined in DOM
-        imageVariables.fileElement.value = ''
-        imageVariables.previewImage.removeAttribute('src') // if we set src to an empty string some browsers will set src to the url of the page
-        imageVariables.previewImage.style.display = 'none'
+      if (serverImages.length) {
+        imageVariables.serverImages = []
 
-        if (!serverImageId) imageVariables.serverImage.style.display = 'none'
-        else {
-          imageVariables.serverImage.src = `${getImageUrl(serverImageId)}`
-          imageVariables.serverImage.style.display = 'block'
+        for (const id of serverImages) {
+          imageVariables.serverImages.push(getImageUrl(id))
         }
+      }
 
-        imageVariables.onFileSelected = () => {
-          if (imageVariables.fileElement) { // defined in DOM
-            const file = imageVariables.fileElement.files?.[0]
+      if (imageVariables.fileInput) { // defined in DOM
+        imageVariables.fileInput.value = ''
 
-            if (file instanceof Blob) {
-              try {
-                isFileAnImage(file)
-                const reader = new FileReader()
-                reader.onload = e => {
-                  if (imageVariables.previewImage && imageVariables.serverImage) { // defined in DOM
+        imageVariables.onChange = () => {
+          let imageLoadCount = 0
+          imageVariables.previewImages = []
+
+          if (imageVariables.fileInput && imageVariables.fileInput.files instanceof FileList) { // defined in DOM
+            const imageLoadTotal = imageVariables.fileInput.files.length
+
+            for (const file of imageVariables.fileInput.files) {
+              if (file instanceof Blob) {
+                try {
+                  isFileAnImage(file)
+                  const reader = new FileReader()
+                  reader.onload = e => {
                     if (typeof e.target?.result === 'string') { // is not an ArrayBuffer so we may continue
-                      imageVariables.previewImage.src = e.target.result
-                      imageVariables.previewImage.style.display = 'block'
-                      imageVariables.serverImage.style.display = 'none'
+                      imageLoadCount++
+                      imageVariables.previewImages.push(e.target.result)
+                      if (imageLoadCount === imageLoadTotal) bind(imageVariables) // on last image to be loaded => bind image variables
                     }
                   }
-                }
-                reader.readAsDataURL(file) // triggers onload fn above
-              } catch (e) {
-                if (e instanceof IsFileAnImageError) {
-                  imageVariables.fileElement.value = ''
-                  showToast({ type: 'info', items: [e.toString()] })
+                  reader.readAsDataURL(file) // triggers onload fn above
+                } catch (e) {
+                  if (e instanceof IsFileAnImageError) {
+                    imageVariables.fileInput.value = ''
+                    showToast({ type: 'info', items: [e.toString()] })
+                  }
                 }
               }
-            }
+            }            
           }
         }
       }
+
+      bind(imageVariables)
     })
   }
 

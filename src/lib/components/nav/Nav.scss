@@ -26,10 +26,6 @@
       top: 1.8rem;
     }
 
-    .loading-link {
-      display: inline-block;
-    }
-
     a {
       transition: all 0.25s;
       &.hidden {
@@ -123,19 +119,15 @@
       text-decoration: none;
       padding: 1.5rem 0;
       cursor: pointer;
-      &.is-loading {
-        cursor: default;
-
-        svg:not(.loading-icon) {
-          opacity: 0;
-        }
+      &.active {
+        text-decoration: underline;
       }
 
       @media only screen and (min-width: $move-nav-window-width) { // big screen
         padding: 0;
       }
 
-      svg:not(.loading-icon) {
+      svg:not(.loading-anchor__loading-icon) {
         width: auto;
         max-height: 2.1rem;
         margin-bottom: 0.75rem;
@@ -147,7 +139,7 @@
         }
       }
 
-      .loading-icon {
+      .loading-anchor__loading-icon {
         transform: translateY(-0.3rem);
 
         @media only screen and (min-width: $move-nav-window-width) { // big screen

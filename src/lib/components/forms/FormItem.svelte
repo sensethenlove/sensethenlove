@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
   import initImageFormItem from '$lib/form/initImageFormItem'
   import EditableDiv from '$lib/components/EditableDiv.svelte'
+  import type { ImageVariableFormItemResponse } from '$lib/types/all';
 
   export let errors: any
   export let name: string
@@ -10,9 +11,10 @@
   export let resetCounter: number
   export let maxWidth: string = ''
   export let type: string = 'text'
+  export let multiple: boolean = false
   export let autocomplete: string = ''
   export let value: string | null = ''
-  export let serverImageId: string = ''
+  export let serverImages: string[] = []
   export let focusOnInit: boolean = false
   export let checkboxValue: boolean | null = false
 
@@ -25,13 +27,15 @@
     if (itemErrors?.length) itemErrors.length = 0
   }
 
-  const id: string = crypto.randomUUID()
-  const imageVariables = initImageFormItem(type, serverImageId)
+  function bindImageVariables (response: ImageVariableFormItemResponse) {
+    imageVariables = response
+  }
 
-  $: if (type === 'image' && imageVariables.serverImage && imageVariables.previewImage && imageVariables.fileElement && resetCounter) {
-    imageVariables.fileElement.value = ''
-    imageVariables.serverImage.removeAttribute('src') // if we set src to an empty string some browsers will set src to the url of the page
-    imageVariables.previewImage.removeAttribute('src') // if we set src to an empty string some browsers will set src to the url of the page
+  const id: string = crypto.randomUUID()
+  let imageVariables = initImageFormItem(type, bindImageVariables, serverImages)
+
+  $: if (type === 'image' && imageVariables.fileInput && resetCounter) {
+    imageVariables.fileInput.value = ''
   }
 
   if (focusOnInit) {
@@ -41,10 +45,22 @@
   }
 </script>
 
-
-{ #if type === 'image' }
-  <img bind:this={ imageVariables.serverImage } style="max-width:{ maxWidth }; display:{ imageVariables.serverImage?.src ? 'block' : 'none' }" alt="Profile" />
-  <img bind:this={ imageVariables.previewImage } style="max-width:{ maxWidth }; display:{ imageVariables.previewImage?.src ? 'block' : 'none' }" alt="Preview" /> 
+{ #if imageVariables.previewImages.length }
+  <div class="images { imageVariables.previewImages.length % 2 ? 'odd' : 'even' }">
+    { #each imageVariables.previewImages as src }
+      <div class="image">
+        <img { src } style="max-width:{ maxWidth };" alt="Preview" /> 
+      </div>
+    { /each }
+  </div>
+{ :else if imageVariables.serverImages?.length }
+  <div class="images { imageVariables.serverImages.length % 2 ? 'odd' : 'even' }">
+    { #each imageVariables.serverImages as src }
+      <div class="image">
+        <img { src } style="max-width:{ maxWidth };" alt="Uploaded" /> 
+      </div>
+    { /each }
+  </div>
 { /if }
 
 <div class="form-item form-item--{ type } { css }">
@@ -62,7 +78,7 @@
     <EditableDiv { id } { label } { name } { clearErrors } { resetCounter } />
   { :else if type === 'image' }
     <label for={ id }>{ label }</label>
-    <input class={ itemErrors?.length ? 'error': '' } on:input={ () => { clearErrors() } } { name } { id } type="file" accept=".jpg, .jpeg, .png" on:change={ imageVariables.onFileSelected  } bind:this={ imageVariables.fileElement } />
+    <input class={ itemErrors?.length ? 'error': '' } on:input={ () => { clearErrors() } } { name } { id } type="file" accept=".jpg, .jpeg, .png" { multiple } on:change={ imageVariables.onChange } bind:this={ imageVariables.fileInput } />
   { :else }
     <label for={ id }>{ label }</label>
     <input bind:this={ input } { value } { autocomplete } class={ itemErrors?.length ? 'error': '' } on:input={ () => { clearErrors() } } { name } { id } { type } />
@@ -75,10 +91,30 @@
 </div>
 
 
-<style>
-  img {
-    display: none;
+<style lang="scss">
+  .images {
     width: 100%;
-    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    &.odd {
+      .image:last-child {
+        width: 100%;
+      }
+    }
+    
+    .image {
+      width: 49.5%;
+      max-height: 39rem;
+      overflow: hidden;
+      margin-bottom: 0.9rem;
+
+      img { // https://stackoverflow.com/a/36530632/1549471
+        height: 100%;
+        margin-left: 50%;
+        transform: translateX(-50%);
+      }
+    }
   }
+  
 </style>

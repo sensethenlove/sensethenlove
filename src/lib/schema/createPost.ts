@@ -7,7 +7,6 @@ export default z
     content: z.string().optional(), // allow .superRefine() to do the validation
   })
   .superRefine(({ content }, ctx) => {
-    debugger
     if (!content || isContentEditableEmpty(content)) {
       ctx.addIssue({
         code: 'custom',

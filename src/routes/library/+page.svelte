@@ -9,7 +9,7 @@
   import Science from '$lib/components/source/Science.svelte'
   import Product from '$lib/components/source/Product.svelte'
   import Culture from '$lib/components/source/Culture.svelte'
-  import LoadingLink from '$lib/components/LoadingLink.svelte'
+  import { LoadingAnchor } from '@sensethenlove/svelte-loading-anchor'
   import TypeChips from '$lib/components/chips/TypeChips.svelte'
   import AuthorChips from '$lib/components/chips/AuthorChips.svelte'
   import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
@@ -76,7 +76,7 @@
     { /each }
   { :else }
     <Title>
-      <span>No library items found. Would you love to <LoadingLink href="/library" label="view all" loadWidth="big" />?!</span>
+      <span>No library items found. Would you love to <LoadingAnchor ssr={ true } href="/library" label="view all" loadWidth="big" />?!</span>
     </Title>
   { /if }
 

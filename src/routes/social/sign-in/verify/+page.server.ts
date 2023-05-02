@@ -6,7 +6,7 @@ import createToken from '$lib/security/createToken'
 import verifyToken from '$lib/security/verifyToken'
 import createSession from '$lib/prisma/createSession'
 import userIsUnauthenticated from '$lib/security/userIsUnauthenticated'
-import { RedirectError, VerifyTokenIDMismatchError } from '$lib/util/errors'
+import { RedirectError, VerifyTokenIDMismatchError } from '$lib/errors/all'
 import setAccessAndRefreshCookies from '$lib/cookies/setAccessAndRefreshCookies'
 
 

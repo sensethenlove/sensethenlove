@@ -1,4 +1,4 @@
-import { RedirectError } from '$lib/util/errors'
+import { RedirectError } from '$lib/errors/all'
 
 
 export default (locals: App.Locals, redirectTo: string): boolean => {

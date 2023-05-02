@@ -1,12 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import Modal from '$lib/components/Modal.svelte'
   import htmlSanitize from '$lib/util/htmlSanitize'
-  import loopBackwards from '$lib/util/loopBackwards'
-  import type { ShowModal, HideModal } from '$lib/types/all'
+  import loopBackwards from '@sensethenlove/loop-backwards'
   import { EDITABLE_PRISTINE_ATTRIBUTE } from '$lib/form/variables'
   import addHtmlToEditableDiv from '$lib/form/addHtmlToEditableDiv'
   import isContentEditableEmpty from '$lib/form/isContentEditableEmpty'
+  import { Modal, type ShowModal, type HideModal } from '@sensethenlove/svelte-modal'
 
   export let id: string
   export let name: string
@@ -83,7 +82,7 @@
   }
 
   button {
-    padding: 0.3rem 0.9rem;
+    padding: .12rem .9rem .3rem .9rem;
   }
 
   .above {

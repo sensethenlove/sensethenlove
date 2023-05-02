@@ -2,7 +2,7 @@
   import { afterNavigate } from '$app/navigation'
   import SVG_PUBMED from '$lib/svg/logo/SVG_PUBMED.svg'
   import SVG_ACADEMIA from '$lib/svg/logo/SVG_ACADEMIA.svg'
-  import LoadingLink from '$lib/components/LoadingLink.svelte'
+  import { LoadingAnchor } from '@sensethenlove/svelte-loading-anchor'
   import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
   import type { Source, Author, Category, SourceType } from '$lib/types/all'
 
@@ -37,7 +37,7 @@
       { #if location === 'source-page' }
         <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
       { :else }
-        <LoadingLink href={ `/library/${ source.slug }` } css="title" label={ source.title } />
+        <LoadingAnchor href={ `/library/${ source.slug }` } css="title" label={ source.title } />
       { /if }
       <p>
         { #if source.publicationLocation }
@@ -46,7 +46,7 @@
         { #if source.authors }
           <span>⋅</span>
           { #each source.authors as a, i }
-            <LoadingLink href={ `/library?author=${ a.slug }${ type ? '&type=' + type : '' }${ displayCategory?.slug ? '&category=' + displayCategory.slug : '' }` } css="{ author?.id === a.id ? 'active': '' }" label="{ a.name }" />
+            <LoadingAnchor href={ `/library?author=${ a.slug }${ type ? '&type=' + type : '' }${ displayCategory?.slug ? '&category=' + displayCategory.slug : '' }` } css="{ author?.id === a.id ? 'active': '' }" label="{ a.name }" />
             { #if i+1 !== source.authors.length }
               <span>⋅</span>
             { /if }

@@ -1,8 +1,8 @@
 import search from '$lib/actions/search'
 import routeCatch from '$lib/catch/routeCatch'
-import loopBackwards from '$lib/util/loopBackwards'
 import type { Actions, PageServerLoad } from './$types'
 import findManySources from '$lib/prisma/findManySources'
+import loopBackwards from '@sensethenlove/loop-backwards'
 import type { Source, SourceType, Quote, Author, Category } from '$lib/types/all'
 
 

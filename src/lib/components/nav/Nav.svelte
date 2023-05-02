@@ -1,7 +1,6 @@
 <script lang="ts">
   import '$lib/components/nav/Nav.scss'
   import { page, navigating } from '$app/stores'
-  import LoadingLink from '../LoadingLink.svelte'
   import getImageUrl from '$lib/file/getImageUrl'
   import SVG_HOME from '$lib/svg/nav/SVG_HOME.svg'
   import SVG_SOCIAL from '$lib/svg/nav/SVG_SOCIAL.svg'
@@ -9,7 +8,8 @@
   import SVG_CONTACT from '$lib/svg/nav/SVG_CONTACT.svg'
   import SVG_LIBRARY from '$lib/svg/nav/SVG_LIBRARY.svg'
   import SVG_SUPPORT from '$lib/svg/nav/SVG_SUPPORT.svg'
-  
+  import { LoadingAnchor } from '@sensethenlove/svelte-loading-anchor'
+
   let activeRoute: string | null | undefined
   $: if ($navigating) setActiveRoute(true)
 
@@ -27,9 +27,9 @@
 
 <div class="nav">
   <div class="logo">
-    <LoadingLink loadWidth="huge">
+    <LoadingAnchor loadWidth="huge">
       <img src={ getImageUrl(CF_LOGO) } alt="The logo for Sense Then Love"/>
-    </LoadingLink>
+    </LoadingAnchor>
   </div>
 
   <div class="name-wrapper">
@@ -37,10 +37,10 @@
   </div>
 
   <nav>
-    <LoadingLink label="Home" loadWidth="big" css="item { activeRoute === '/' ? 'active' : '' }">{ @html SVG_HOME }</LoadingLink>
-    <LoadingLink label="Social" href="/social" loadWidth="big" css="item { activeRoute?.includes('/social') ? 'active' : '' }">{ @html SVG_SOCIAL }</LoadingLink>
-    <LoadingLink label="Library" href="/library" loadWidth="big" css="item { activeRoute?.includes('/library') ? 'active' : '' }">{ @html SVG_LIBRARY }</LoadingLink>
-    <LoadingLink label="Contact" href="/contact" loadWidth="big" css="item { activeRoute === '/contact' ? 'active' : '' }">{ @html SVG_CONTACT }</LoadingLink>
-    <LoadingLink label="Support" href="/support" loadWidth="big" css="item { activeRoute === '/support' ? 'active' : '' }">{ @html SVG_SUPPORT }</LoadingLink>
+    <LoadingAnchor label="Home" loadWidth="big" css="item { activeRoute === '/' ? 'active' : '' }">{ @html SVG_HOME }</LoadingAnchor>
+    <LoadingAnchor label="Social" href="/social" loadWidth="big" css="item { activeRoute?.includes('/social') ? 'active' : '' }">{ @html SVG_SOCIAL }</LoadingAnchor>
+    <LoadingAnchor label="Library" href="/library" loadWidth="big" css="item { activeRoute?.includes('/library') ? 'active' : '' }">{ @html SVG_LIBRARY }</LoadingAnchor>
+    <LoadingAnchor label="Contact" href="/contact" loadWidth="big" css="item { activeRoute === '/contact' ? 'active' : '' }">{ @html SVG_CONTACT }</LoadingAnchor>
+    <LoadingAnchor label="Support" href="/support" loadWidth="big" css="item { activeRoute === '/support' ? 'active' : '' }">{ @html SVG_SUPPORT }</LoadingAnchor>
   </nav>
 </div>

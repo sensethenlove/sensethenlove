@@ -23,6 +23,9 @@
     background-color: var(--opacity-bg);
     margin: 0.3rem 0.72rem;
     transition: all 0.9s;
+    &.active {
+      text-decoration: underline;
+    }
   }
 
   .form-item {

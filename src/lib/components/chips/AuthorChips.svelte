@@ -4,12 +4,13 @@
   import { afterNavigate } from '$app/navigation'
   import Title from '$lib/components/Title.svelte'
   import getLibraryHref from '$lib/util/getLibraryHref'
-  import LoadingLink from '$lib/components/LoadingLink.svelte'
+  import { LoadingAnchor } from '@sensethenlove/svelte-loading-anchor'
 
   export let location = ''
   export let authors: Author[]
   export let author: Author | undefined = undefined
 
+  let ssr: boolean
   let query: string
   let allHref: string
   let filterdAuthors: Author[]
@@ -45,6 +46,7 @@
   }
 
   $: if ($page.url) {
+    ssr = $page.route.id === '/library'
     allHref = getLibraryHref($page.url, [ [ 'author', '' ], [ 'count', '' ] ])
   }
 </script>
@@ -59,9 +61,9 @@
     </div>
   { /if }
   { #if location === 'nav' && isAllVisible }
-    <LoadingLink label="All" href={ allHref }  css="chip { !author ? 'active' : '' }"/>
+    <LoadingAnchor { ssr } label="All" href={ allHref }  css="chip { !author ? 'active' : '' }"/>
   { /if }
   { #each filterdAuthors as a }
-    <LoadingLink label={ a.name } href={ a.href }  css="chip { author?.slug === a.slug ? 'active' : '' }"/>
+    <LoadingAnchor { ssr } label={ a.name } href={ a.href }  css="chip { author?.slug === a.slug ? 'active' : '' }"/>
   { /each }
 </div>

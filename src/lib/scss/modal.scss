@@ -1,80 +1,28 @@
 @import '$lib/scss/variables.scss';
 
-.modal {
-  width: 100%;
-  max-width: 81rem;
-  position: relative;
-  border-radius: 1.8rem;
-  z-index: $zindex-modal-modal;
-  background-color: white;
-  animation-name: fade-in-from-above;
-  animation-duration: 0.9s;
+.stl--modal {
+  z-index: $zindex-modal;
   color: var(--text-color);
   background-color: var(--bg-color);
-  &.hide {
-    animation-name: fade-out-and-slide-up;
-  }
 
   &--container {
-    position: fixed;
     z-index: $zindex-modal-container;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    padding: 9rem 0.9rem;
-    overflow: auto;
-    transition: all 0.9s;
-    z-index: $zindex-modal-backdrop;
-    cursor: default;
-    &.hide {
-      opacity: 0;
-    }
+    background-color: rgba(black, 0.693);
   }
 
   &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.8rem 1.8rem 0 1.8rem;
-    margin-bottom: -1.8rem;
+    &__text {
+      @extend .papyrus, .two
+    }
 
     &__close {
-      border: none;
-      background-color: transparent;
 
       svg {
-        height: 2.4rem;
-        width: 2.4rem;
-        cursor: pointer;
         color: var(--anchor-color);
         &:hover {
           color: var(--gold-text-color);
         }
       }
     }
-  }
-
-  &__body {
-    margin: 0;
-    padding: 1.8rem;
-  }
-}
-
-.theme--light {
-  .modal--container {
-    background-color: rgba(white, 0.81);
-  }
-}
-
-.theme--dark {
-  .modal--container {
-    background-color: rgba(black, 0.693);
   }
 }

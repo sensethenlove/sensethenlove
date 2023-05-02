@@ -1,11 +1,12 @@
 <script lang="ts">
   import { enhance } from '$app/forms'
-  import { showToast } from '$lib/util/toast'
+  import showToast from '@sensethenlove/toast'
   import type { SubmitFunction } from '@sveltejs/kit'
-  import turnstileFormItem from '$lib/turnstile/formItem'
+  import { PUBLIC_ENVIRONMENT } from '$env/static/public'
   import Button from '$lib/components/forms/Button.svelte'
   import FormItem from '$lib/components/forms/FormItem.svelte'
-  import type { FormInputs, FormOnSuccess, FormToastOnSuccess, FormOnSubmitValidate } from '$lib/types/all'
+  import { Turnstile, PUBLIC_KEY_ALWAYS_PASSES } from '@sensethenlove/svelte-turnstile'
+  import type { FormInputs, FormOnError, FormOnSuccess, FormToastOnSuccess, FormOnSubmitValidate } from '$lib/types/all'
 
   export let schema: any
   export let action: string
@@ -13,6 +14,7 @@
   export let inputs: FormInputs
   export let reset: boolean = true
   export let buttonText: string = 'Send'
+  export let onError: FormOnError = () => {}
   export let onSuccess: FormOnSuccess = () => {}
   export let toastOnSuccess: FormToastOnSuccess = () => ''
   export let onSubmitValidate: FormOnSubmitValidate = () => true
@@ -20,6 +22,7 @@
   let errors: any
   let resetCounter = 0
   let isLoading = false
+  const PUBLIC_KEY = '0x4AAAAAAACd5Awen-i8HImo'
 
   const onSubmit = (({ data, cancel }) => {
     let doCancel = false
@@ -43,10 +46,16 @@
         switch (result.type) {
           case 'error':
             if (typeof result.error?.message === 'string') showToast({ type: 'info', items: [ result.error.message ] }) // form errors (not field specific)
+            setTimeout(() => {
+              onError({ fields, data: result?.data })
+            })
             break
           case 'failure':
             if (result.data?._errors?.length) showToast({ type: 'info', items: result.data._errors }) // form errors (not field specific)
             errors = result.data
+            setTimeout(() => {
+              onError({ fields, data: result?.data })
+            })
             break
           case 'success':
             const successMessage = toastOnSuccess({ fields, data: result?.data })
@@ -55,7 +64,9 @@
             if (result?.data?.$localHref) showToast({ type: 'success', items: [ `<a href="${ result?.data?.$localHref }">Local Link</a>` ] }) // if a $localHref has been returned by the action (something to click locally that we wouldn't click in qa or main)
             if (reset !== false) resetCounter++
 
-            onSuccess({ fields, data: result?.data })
+            setTimeout(() => {
+              onSuccess({ fields, data: result?.data })
+            })
             break
         }
 
@@ -77,11 +88,11 @@
             { /each }
           </div>
         { :else }
-          <FormItem { resetCounter } name={ input.name } label={ input.label } value={ input.value } checkboxValue={ input.checkboxValue } type={ input.type || 'text' } { errors } css={ input.hidden ? 'hidden' : '' } serverImageId={ input.serverImageId || '' } maxWidth={ input.maxWidth } focusOnInit={ input.focusOnInit } autocomplete={ input.autocomplete } />
+          <FormItem { resetCounter } name={ input.name } label={ input.label } value={ input.value } checkboxValue={ input.checkboxValue } type={ input.type || 'text' } { errors } css={ input.hidden ? 'hidden' : '' } serverImages={ input.serverImages || [] } maxWidth={ input.maxWidth } focusOnInit={ input.focusOnInit } autocomplete={ input.autocomplete } multiple={ input.multiple } />
         { /if}
       {/each }
     { /if }
-    <div use:turnstileFormItem />
+    <Turnstile sitekey={ PUBLIC_ENVIRONMENT === 'local' ? PUBLIC_KEY_ALWAYS_PASSES : PUBLIC_KEY } />
     <Button text={ buttonText } { isLoading } />
   </form>
 </section>

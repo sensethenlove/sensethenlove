@@ -1,15 +1,35 @@
 <script lang="ts">
   import Title from '$lib/components/Title.svelte'
-  import LoadingLink from '$lib/components/LoadingLink.svelte'
+  import { LoadingAnchor } from '@sensethenlove/svelte-loading-anchor'
 </script>
 
 
 <Title text="About Us!" noBottom={ true } />
 <section class="us">
-  <div class="papyrus three">Our Goals</div>
+  <div class="papyrus three">Sense Then Love means?</div>
+  <div class="item list-below">
+    <div class="emoji">🙏</div>
+    <div>It's a map!</div>
+  </div>
+
+  <div class="papyrus three content-above">Example:</div>
+  <div class="item list-below">
+    <div class="emoji" style="font-size: 2.4rem;">🌬️</div>
+    <div>Feeling breath (sense)</div>
+  </div>
+  <div class="item">
+    <div class="emoji">✨</div>
+    <div>Loving this feeling</div>
+  </div>
+  <div class="item">
+    <div class="emoji">🥰</div>
+    <div>Feeling love!</div>
+  </div>
+
+  <div class="papyrus three content-above">Our goal is to cultivate:</div>
   <div class="item list-below">
     <div class="emoji">💖</div>
-    <div>Think lovely thoughts!</div>
+    <div>Lovely thoughts!</div>
   </div>
   <ul>
     <li class="indent-dot">Sing a lovely song &rarr; Feel lovely</li>
@@ -18,7 +38,7 @@
   </ul>
   <div class="item list-below">
     <div class="emoji">🕉</div>
-    <div>Cultivate an <LoadingLink href="/social/" label="online community" /> to help us all:</div>
+    <div>An <LoadingAnchor href="/social/" label="online community" /> to help us all:</div>
   </div>
   <ul>
     <li class="indent-dot">Share our lovely thoughts, goals & achievements!</li>
@@ -27,30 +47,7 @@
   </ul>
   <div class="item">
     <div class="emoji" style="font-size: 2.3rem">📚</div>
-    <div>Cultivate a <LoadingLink href="/library" label="library" /> of lovely <LoadingLink href="/library?type=science" label="scientific evidence," /> <LoadingLink href="/library?type=product" label="products," /> & <LoadingLink href="/library?type=culture" label="culture" />!</div>
-  </div>
-
-  <div class="papyrus three content-above">Sense Then Love means?</div>
-  <div class="item list-below">
-    <div class="emoji">🙏</div>
-    <div>Sense Then Love is our map to <LoadingLink href="/library?category=coherence" label="coherence" /> (bliss)!</div>
-  </div>
-
-  <div class="papyrus three content-above">How?</div>
-  <div class="item list-below">
-    <div class="emoji" style="font-size: 2.4rem;">🌬️</div>
-    <div>Focus on a sensation happening now</div>
-  </div>
-  <ul>
-    <li class="indent-dot">Example: Feel breath flow in & out of nose</li>
-  </ul>
-  <div class="item">
-    <div class="emoji">🌟</div>
-    <div>To guide mind, externally or internally sing the word <strong>'Love'</strong>, on inhale & exhale</div>
-  </div>
-  <div class="item">
-    <div class="emoji">🥰</div>
-    <div>Feel love for this sensation</div>
+    <div>A <LoadingAnchor href="/library" label="library" /> of lovely <LoadingAnchor href="/library?type=science" label="scientific evidence," /> <LoadingAnchor href="/library?type=product" label="products," /> & <LoadingAnchor href="/library?type=culture" label="culture" />!</div>
   </div>
 </section>
 

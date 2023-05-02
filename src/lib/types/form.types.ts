@@ -1,34 +1,12 @@
 import type { Source } from '$lib/types/prisma.types'
 
 
-declare global { // Node global types
-  interface Window { // Browser window types
-    turnstile: { // For Cloudflare Turnstile
-      render: (element: string | HTMLElement, options: TurnstileOptions) => string;
-      remove: (widgetId: string) => void;
-    }
-  }
-}
-
-
-interface TurnstileOptions {
-  sitekey: string;
-}
-
-
-export type TurnstileTokenValidateResponse = {
-  'error-codes': string[]
-  success: boolean
-  action: string
-  cdata: string
-}
-
-
 export type FormFields = {
   [k: string]: FormDataEntryValue
 }
 
 
+export type FormOnError = ({ fields, data }: { fields: FormFields, data: any }) => void
 export type FormOnSuccess = ({ fields, data }: { fields: FormFields, data: any }) => void
 export type FormToastOnSuccess = ({ fields, data }: { fields: FormFields, data: any }) => string
 export type FormOnSubmitValidate = (fields: FormFields) => boolean
@@ -41,20 +19,21 @@ export type FormInput = {
   value?: string | null,
   checkboxValue?: boolean,
   hidden?: boolean,
-  serverImageId?: string | null,
+  serverImages?: string[] | null,
   maxWidth?: string,
   focusOnInit?: boolean,
   autocomplete?: string,
+  multiple?: boolean,
 }
 
 
 export type FormInputs = Array<FormInput | Array<FormInput>>
 
 export type ImageVariableFormItemResponse = {
-  fileElement ?: HTMLInputElement,
-  previewImage ?: HTMLImageElement,
-  serverImage ?: HTMLImageElement,
-  onFileSelected ?: () => void,
+  fileInput?: HTMLInputElement,
+  previewImages: string[],
+  serverImages?: string[],
+  onChange ?: () => void,
 }
 
 export type SearchResponse = {

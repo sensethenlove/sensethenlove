@@ -3,7 +3,9 @@
   import { updated } from '$app/stores'
   import { theme } from '$lib/util/store'
   import type { PageData } from './$types'
+  import '@sensethenlove/toast/lib/index.css'
   import Nav from '$lib/components/nav/Nav.svelte'
+  import '@sensethenlove/global-style/lib/index.css'
   import Search from '$lib/components/nav/Search.svelte'
   import Background from '$lib/components/Background.svelte'
   import ThemeToggle from '$lib/components/nav/ThemeToggle.svelte'
@@ -70,4 +72,4 @@
 <Background />
 <Search />
 <ThemeToggle />
-<div id="toast-wrapper"></div>
+<div id="stl--toast-wrapper"></div>

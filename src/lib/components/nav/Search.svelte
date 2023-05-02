@@ -1,13 +1,13 @@
 <script lang="ts">
   import schema from '$lib/schema/search'
-  import { showToast } from '$lib/util/toast'
-  import Modal from '$lib/components/Modal.svelte'
+  import showToast from '@sensethenlove/toast'
   import Form from '$lib/components/forms/Form.svelte'
   import SVG_SEARCH from '$lib/svg/nav/SVG_SEARCH.svg'
   import Science from '$lib/components/source/Science.svelte'
   import Culture from '$lib/components/source/Culture.svelte'
   import Product from '$lib/components/source/Product.svelte'
-  import type { SearchResponse, ShowModal, OnModalHide, FormInputs, FormOnSuccess, FormOnSubmitValidate } from '$lib/types/all'
+  import { Modal, type ShowModal, type OnModalHide, } from '@sensethenlove/svelte-modal'
+  import type { SearchResponse, FormInputs, FormOnSuccess, FormOnSubmitValidate } from '$lib/types/all'
 
 
   let showModal: ShowModal
@@ -55,7 +55,7 @@
 </script>
 
 
-<button class="search__button brand" on:click={ () => { showModal() } } title="Click to search">
+<button class="search__button brand" on:click={ showModal } title="Click to search">
   { @html SVG_SEARCH }
 </button>
 

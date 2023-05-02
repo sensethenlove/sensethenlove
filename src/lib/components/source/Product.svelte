@@ -1,6 +1,6 @@
 <script lang="ts">
   import getImageUrl from '$lib/file/getImageUrl'
-  import LoadingLink from '$lib/components/LoadingLink.svelte'
+  import { LoadingAnchor } from '@sensethenlove/svelte-loading-anchor'
   import AuthorChips from '$lib/components/chips/AuthorChips.svelte'
   import CategoryChips from '$lib/components/chips/CategoryChips.svelte'
   import type { Source, Author, Category, SourceType } from '$lib/types/all'
@@ -25,7 +25,7 @@
       { #if location === 'source-page' }
         <a href={ source.url } class="title" target="_blank" rel="noreferrer">{ source.title }</a>
       { :else }
-        <LoadingLink href={ `/library/${ source.slug }` } css="title" label={ source.title } />
+        <LoadingAnchor href={ `/library/${ source.slug }` } css="title" label={ source.title } />
       { /if }
       { #if source?.authors?.length }
         <AuthorChips { author } authors={ source.authors } />

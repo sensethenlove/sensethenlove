@@ -1,6 +1,6 @@
 import { ZodError } from 'zod'
 import { fail, redirect } from '@sveltejs/kit'
-import { RedirectError } from '$lib/util/errors'
+import { ServerError, RedirectError } from '$lib/errors/all'
 
 
 export default (e: any) => {
@@ -12,6 +12,7 @@ export default (e: any) => {
     if (typeof e === 'string') response._errors.push(e)
     else if (e instanceof ZodError) response = e.format()
     else if (e instanceof RedirectError) throw redirect(303, e.message) // redirects are the smoothest w/ a throw b4 hand
+    else if (e instanceof ServerError) response = e.format()
     else if (typeof e === 'object') response = e
     else response._errors.push(DEFAULT_ERROR)
   }
