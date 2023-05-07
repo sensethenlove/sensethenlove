@@ -7,9 +7,9 @@ datasource db {
   provider     = "mysql"
   relationMode = "prisma"
   // url          = env("QA_PLANETSCALE_URL")
-  url          = env("MAIN_PLANETSCALE_URL")
+  // url          = env("MAIN_PLANETSCALE_URL")
   // url          = env("QA_PRISMA_URL")
-  // url          = env("MAIN_PRISMA_URL")
+  url          = env("MAIN_PRISMA_URL")
 }
 
 model User {
