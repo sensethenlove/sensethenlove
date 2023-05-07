@@ -20,7 +20,6 @@ declare global { // Node global types
 export interface User extends UserPrisma {}
 export interface Image extends ImagePrisma {}
 export interface SiteComment extends SiteCommentPrisma {}
-export interface Post extends PostPrisma {}
 export type SourceType = 'science' | 'culture' | 'product' | undefined
 
 
@@ -32,6 +31,12 @@ export interface Source extends SourcePrisma {
   favoriteQuotes?: Quote[] // schema.prisma property
   categories?: Category[], // schema.prisma property
   images?: Image[], // schema.prisma property
+}
+
+
+export interface Post extends PostPrisma {
+  creator: User // schema.prisma property
+  images: Image[] // schema.prisma property
 }
 
 

@@ -2,7 +2,5 @@ import type { LayoutServerLoad } from './$types'
 
 
 export const load = (({ locals }) => {
-  return {
-    theme: locals.theme
-  }
+  return { locals }
 }) satisfies LayoutServerLoad

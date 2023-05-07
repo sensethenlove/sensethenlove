@@ -11,5 +11,5 @@
 
 <Head title="Profile" url="social/profile" description="Profile page" />
 <Title text="Profile" size="one" />
-<Views userId={ data?.userId } />
+<Views userId={ data.locals?.userId } />
 <CreatePost />

@@ -3,7 +3,7 @@ import setThemeCookie from '$lib/cookies/setThemeCookie'
 
 
 export default async (event: RequestEvent): Promise<({ html }: { html: string }) => string> => {
-  const DEFAULT_THEME = 'light'
+  const DEFAULT_THEME = 'dark'
   const COOKIE_THEME = event.cookies.get('theme')
   let theme = COOKIE_THEME || DEFAULT_THEME
 

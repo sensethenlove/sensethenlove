@@ -12,7 +12,7 @@
 
   export let data: PageData
 
-  theme.set(data.theme)
+  theme.set(data.locals.theme)
 </script>
 
 

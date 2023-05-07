@@ -5,6 +5,7 @@
   import { PUBLIC_ENVIRONMENT } from '$env/static/public'
   import Button from '$lib/components/forms/Button.svelte'
   import FormItem from '$lib/components/forms/FormItem.svelte'
+  import { getFormEntries } from '@sensethenlove/get-form-entries'
   import { Turnstile, PUBLIC_KEY_ALWAYS_PASSES } from '@sensethenlove/svelte-turnstile'
   import type { FormInputs, FormOnError, FormOnSuccess, FormToastOnSuccess, FormOnSubmitValidate } from '$lib/types/all'
 
@@ -26,7 +27,7 @@
 
   const onSubmit = (({ data, cancel }) => {
     let doCancel = false
-    const fields = Object.fromEntries(data.entries())
+    const fields = getFormEntries(data)
     const validationResponse = schema.safeParse(fields)
 
     if (!validationResponse.success) {

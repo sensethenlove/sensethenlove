@@ -10,5 +10,5 @@
 
 <Head title="Messages" url="social/messages" description="Messages page" />
 <Title text="Messages" size="one" />
-<Views userId={ data?.userId } />
+<Views userId={ data.locals?.userId } />
 <Title text="Coming soon!" />

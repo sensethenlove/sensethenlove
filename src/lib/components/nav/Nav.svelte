@@ -3,7 +3,7 @@
   import { page, navigating } from '$app/stores'
   import getImageUrl from '$lib/file/getImageUrl'
   import SVG_HOME from '$lib/svg/nav/SVG_HOME.svg'
-  import SVG_SOCIAL from '$lib/svg/nav/SVG_SOCIAL.svg'
+  // import SVG_SOCIAL from '$lib/svg/nav/SVG_SOCIAL.svg'
   import { CF_LOGO } from '$lib/util/cloudflareImages'
   import SVG_CONTACT from '$lib/svg/nav/SVG_CONTACT.svg'
   import SVG_LIBRARY from '$lib/svg/nav/SVG_LIBRARY.svg'
@@ -38,7 +38,7 @@
 
   <nav>
     <LoadingAnchor label="Home" loadWidth="big" css="item { activeRoute === '/' ? 'active' : '' }">{ @html SVG_HOME }</LoadingAnchor>
-    <LoadingAnchor label="Social" href="/social" loadWidth="big" css="item { activeRoute?.includes('/social') ? 'active' : '' }">{ @html SVG_SOCIAL }</LoadingAnchor>
+    <!-- <LoadingAnchor label="Social" href="/social" loadWidth="big" css="item { activeRoute?.includes('/social') ? 'active' : '' }">{ @html SVG_SOCIAL }</LoadingAnchor> -->
     <LoadingAnchor label="Library" href="/library" loadWidth="big" css="item { activeRoute?.includes('/library') ? 'active' : '' }">{ @html SVG_LIBRARY }</LoadingAnchor>
     <LoadingAnchor label="Contact" href="/contact" loadWidth="big" css="item { activeRoute === '/contact' ? 'active' : '' }">{ @html SVG_CONTACT }</LoadingAnchor>
     <LoadingAnchor label="Support" href="/support" loadWidth="big" css="item { activeRoute === '/support' ? 'active' : '' }">{ @html SVG_SUPPORT }</LoadingAnchor>

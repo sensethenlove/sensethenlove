@@ -74,7 +74,7 @@
       color: rgb(238, 238, 238);
       &:global(.visible) {
         visibility: visible !important;
-        animation-name: fade-in-from-above;
+        animation-name: subtle-fade-in-from-above;
       }
 
       :global(.play--out) {

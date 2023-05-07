@@ -10,5 +10,5 @@
 
 <Head title="Friends" url="social/friends" description="Friends page" />
 <Title text="Friends" size="one" />
-<Views userId={ data?.userId } />
+<Views userId={ data.locals?.userId } />
 <Title text="Coming soon!" />

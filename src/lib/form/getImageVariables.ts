@@ -3,11 +3,11 @@ import showToast from '@sensethenlove/toast'
 import getImageUrl from '$lib/file/getImageUrl'
 import isFileAnImage from '$lib/file/isFileAnImage'
 import { IsFileAnImageError } from '$lib/errors/all'
-import type { ImageVariableFormItemResponse } from '$lib/types/all'
+import type { ImageVariableFormItem } from '$lib/types/all'
 
 
-export default (type: string, bind: (imageVariables: ImageVariableFormItemResponse) => void, serverImages: string[]): ImageVariableFormItemResponse => {
-  const imageVariables: ImageVariableFormItemResponse = {
+export default (type: string, bind: (imageVariables: ImageVariableFormItem) => void, serverImages: string[]): ImageVariableFormItem => {
+  const imageVariables: ImageVariableFormItem = {
     previewImages: [],
   }
 

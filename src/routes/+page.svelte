@@ -4,12 +4,13 @@
   import Title from '$lib/components/Title.svelte'
   import AboutUs from '$lib/components/AboutUs.svelte'
   import { CF_OG_HOME } from '$lib/util/cloudflareImages'
+  import EmailUs from '$lib/components/forms/EmailUs.svelte'
   import Science from '$lib/components/source/Science.svelte'
   import Culture from '$lib/components/source/Culture.svelte'
   import Product from '$lib/components/source/Product.svelte'
-  import OurSocials from '$lib/components/OurSocials.svelte'
+  // import OurSocials from '$lib/components/OurSocials.svelte'
   import { LoadingAnchor } from '@sensethenlove/svelte-loading-anchor'
-  import NewsletterSignUp from '$lib/components/forms/NewsletterSignUp.svelte'
+  // import NewsletterSignUp from '$lib/components/forms/NewsletterSignUp.svelte'
 
   export let data: PageData
 </script>
@@ -19,8 +20,9 @@
 <Title text="Home" size="one" />
 <Title text="Welcome to Sense Then Love!" />
 <AboutUs />
-<OurSocials />
-<NewsletterSignUp />
+<EmailUs />
+<!-- <OurSocials /> -->
+<!-- <NewsletterSignUp /> -->
 
 { #if data.science }
   <Title noBottom={ true }>

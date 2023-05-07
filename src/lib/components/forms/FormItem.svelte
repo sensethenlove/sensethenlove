@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import initImageFormItem from '$lib/form/initImageFormItem'
+  import getImageVariables from '$lib/form/getImageVariables'
   import EditableDiv from '$lib/components/EditableDiv.svelte'
-  import type { ImageVariableFormItemResponse } from '$lib/types/all';
+  import type { ImageVariableFormItem } from '$lib/types/all'
 
   export let errors: any
   export let name: string
@@ -27,12 +27,12 @@
     if (itemErrors?.length) itemErrors.length = 0
   }
 
-  function bindImageVariables (response: ImageVariableFormItemResponse) {
+  function bindImageVariables (response: ImageVariableFormItem) {
     imageVariables = response
   }
 
   const id: string = crypto.randomUUID()
-  let imageVariables = initImageFormItem(type, bindImageVariables, serverImages)
+  let imageVariables = getImageVariables(type, bindImageVariables, serverImages)
 
   $: if (type === 'image' && imageVariables.fileInput && resetCounter) {
     imageVariables.fileInput.value = ''

@@ -5,7 +5,7 @@
   import type { FormInputs, FormToastOnSuccess } from '$lib/types/all'
 
   const inputs: FormInputs = [
-    { name: 'image', label: 'Image', type: 'image', multiple: true },
+    { name: 'images', label: 'Image', type: 'image', multiple: true },
     { name: 'content', label: 'Content', type: 'content-editable' },
   ]
 

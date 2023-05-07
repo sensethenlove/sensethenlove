@@ -11,7 +11,7 @@
     ],
     { name: 'email', label: 'Email', type: 'email' },
     { name: 'comment', label: 'Comment', type: 'textarea' },
-    { name: 'isNewsletterSubscriber', label: 'Simultaneously sign me up for our weekly newsletter!', type: 'checkbox' },
+    // { name: 'isNewsletterSubscriber', label: 'Simultaneously sign me up for our weekly newsletter!', type: 'checkbox' },
   ]
 
   const toastOnSuccess = (({ fields }) => `Thank you for your comment ${ fields.firstName.toString() }!`) satisfies FormToastOnSuccess

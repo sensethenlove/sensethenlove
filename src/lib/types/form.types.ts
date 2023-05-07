@@ -29,7 +29,7 @@ export type FormInput = {
 
 export type FormInputs = Array<FormInput | Array<FormInput>>
 
-export type ImageVariableFormItemResponse = {
+export type ImageVariableFormItem = {
   fileInput?: HTMLInputElement,
   previewImages: string[],
   serverImages?: string[],
