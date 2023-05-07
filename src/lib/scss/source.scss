@@ -5,8 +5,8 @@
   &.location--home {
     width: calc(100vw - 1.8rem);
 
-    @media only screen and (min-width: 54rem) { // big screen
-      width: 82rem;
+    @media only screen and (min-width: 60rem) { // big screen
+      width: 90rem;
     }
   }
   &.location--home.type--culture,
