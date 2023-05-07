@@ -55,6 +55,7 @@
 - [Cloudflare + MailChannels + DKIM](https://mailchannels.zendesk.com/hc/en-us/articles/7122849237389)
 - [Faster Websites](https://www.cloudflare.com/resources/images/slt3lc6tev37/1PdxTNFdaTagVJ1zxxTKCX/5fcc6da3f0a170414a8b8f9c7cd405d5/Getting_Faster_-_Performance_whitepaper.pdf)
 - [PlanetScale Restore to Backup](https://planetscale.com/docs/concepts/back-up-and-restore)
+- [Relative Time](https://www.js-howto.com/how-to-format-dates-with-intl-relativetimeformat/)
 
 #### Videos
 - [Learn Prisma In 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)

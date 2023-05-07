@@ -13,6 +13,7 @@ importers:
       '@sensethenlove/global-style': ^1.0.7
       '@sensethenlove/jwt': ^1.0.6
       '@sensethenlove/loop-backwards': ^1.0.9
+      '@sensethenlove/slug': ^1.0.2
       '@sensethenlove/svelte-loading-anchor': ^1.0.2
       '@sensethenlove/svelte-modal': ^1.0.2
       '@sensethenlove/svelte-turnstile': ^1.1.5
@@ -42,6 +43,7 @@ importers:
       '@sensethenlove/global-style': 1.0.7
       '@sensethenlove/jwt': 1.0.6
       '@sensethenlove/loop-backwards': 1.0.9
+      '@sensethenlove/slug': 1.0.2_svelte@3.58.0
       '@sensethenlove/svelte-loading-anchor': 1.0.2_svelte@3.58.0
       '@sensethenlove/svelte-modal': 1.0.2_svelte@3.58.0
       '@sensethenlove/svelte-turnstile': 1.1.5_svelte@3.58.0
@@ -783,6 +785,14 @@ packages:
 
   /@sensethenlove/loop-backwards/1.0.9:
     resolution: {integrity: sha512-7Hxm6wag8CN7XrNQ96TnvJEYA8T0RYOxv/E5uBfjdi3yjoiAZNddMiMLqTxlgwbsDfUYyRkwb515qoGYIznHOg==}
+    dev: true
+
+  /@sensethenlove/slug/1.0.2_svelte@3.58.0:
+    resolution: {integrity: sha512-XAWeNixUlNIYAuus6c+z2CUc5MMpH1PbVNaM62XHywF1xwVuDQjIS1u0IctTKZG1pnf/mHHQFjoZi3gowcZ3vQ==}
+    peerDependencies:
+      svelte: ^3.54.0
+    dependencies:
+      svelte: 3.58.0
     dev: true
 
   /@sensethenlove/svelte-loading-anchor/1.0.2_svelte@3.58.0:

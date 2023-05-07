@@ -6,10 +6,10 @@
 
 <Title text="About Us!" noBottom={ true } />
 <section class="us">
-  <div class="papyrus three">Sense Then Love is?</div>
+  <div class="papyrus three">Sense Then Love?</div>
   <div class="item list-below">
     <div class="emoji">🙏</div>
-    <div>A map!</div>
+    <div>Is a map!</div>
   </div>
 
   <div class="papyrus three content-above">How?</div>
@@ -26,25 +26,7 @@
     <div>Feeling love!</div>
   </div>
 
-  <div class="papyrus three content-above">This place is a?</div>
-  <!-- <div class="item list-below">
-    <div class="emoji">💖</div>
-    <div>Lovely thoughts!</div>
-  </div>
-  <ul>
-    <li class="indent-dot">Sing a lovely song &rarr; Feel lovely</li>
-    <li class="indent-dot">Tell a scary story &rarr; Feel scared</li>
-    <li class="indent-dot">Think lovely &rarr; Feel lovely</li>
-  </ul>
-  <div class="item list-below">
-    <div class="emoji">🕉</div>
-    <div>An <LoadingAnchor href="/social/" label="online community" /> to help us all:</div>
-  </div>
-  <ul>
-    <li class="indent-dot">Share our lovely thoughts, goals & achievements!</li>
-    <li class="indent-dot">Aim high together!</li>
-    <li class="indent-dot">Collaborate with, encourage & love each other!</li>
-  </ul> -->
+  <div class="papyrus three content-above">This site is a?</div>
   <div class="item">
     <div class="emoji" style="font-size: 2.3rem">📚</div>
     <div><LoadingAnchor href="/library" label="Library" /> of lovely <LoadingAnchor href="/library?type=science" label="scientific evidence," /> <LoadingAnchor href="/library?type=product" label="products," /> & <LoadingAnchor href="/library?type=culture" label="culture" />!</div>

@@ -31,6 +31,7 @@
     "@sensethenlove/global-style": "^1.0.7",
     "@sensethenlove/jwt": "^1.0.6",
     "@sensethenlove/loop-backwards": "^1.0.9",
+    "@sensethenlove/slug": "^1.0.2",
     "@sensethenlove/svelte-loading-anchor": "^1.0.2",
     "@sensethenlove/svelte-modal": "^1.0.2",
     "@sensethenlove/svelte-turnstile": "^1.1.5",
