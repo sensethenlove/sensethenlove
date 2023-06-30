@@ -6,7 +6,7 @@
   import Science from '$lib/components/source/Science.svelte'
   import Culture from '$lib/components/source/Culture.svelte'
   import Product from '$lib/components/source/Product.svelte'
-  import { Modal, type ShowModal, type OnModalHide, } from '@sensethenlove/svelte-modal'
+  import { Modal, type ShowModal, type OnModalHide } from '@sensethenlove/svelte-modal'
   import type { SearchResponse, FormInputs, FormOnSuccess, FormOnSubmitValidate } from '$lib/types/all'
 
 
