@@ -5,7 +5,7 @@
   import SVG_PAYPAL from '$lib/svg/logo/SVG_PAYPAL.svg'
   import SVG_FACEBOOK from '$lib/svg/logo/SVG_FACEBOOK.svg'
   import SVG_INSTAGRAM from '$lib/svg/logo/SVG_INSTAGRAM.svg'
-  import { CF_OG_HOME, CF_CHRIS_GUITAR } from '$lib/util/cloudflareImages'
+  import { CF_OG_LINKS, CF_CHRIS_GUITAR } from '$lib/util/cloudflareImages'
 
   let picSrc: string
 
@@ -35,7 +35,7 @@
         ['seconds', Math.floor((difference / 1000) % 60)],
       ])
 
-      for (const [key, value] of parts) {
+      for (const [ key, value ] of parts) {
         if (value) remaining +=  `${ value } ${ key } `
       }
     }
@@ -52,7 +52,7 @@
 </script>
 
 
-<Head title="Links" ogImageId={ CF_OG_HOME } description="Chris Carrington Links!" />
+<Head title="Links" ogImageId={ CF_OG_LINKS } description="Chris Carrington Links!" />
 <div class="profile-pic">
   <img src={ picSrc } alt="Chris Carrington playing guitar" />
 </div>
