@@ -196,7 +196,7 @@
       width: 0;
       opacity: 0;
       max-height: 0;
-      max-width: 90vw;
+      max-width: 81vw;
       overflow: hidden;
       transition: opacity 0.36s;
       text-align: left;
@@ -212,7 +212,7 @@
     :global(.description.visible) {
       width: 81rem;
       opacity: 1;
-      max-height: 71rem;
+      max-height: 81rem;
     }
   }
 </style>
