@@ -1,24 +1,31 @@
 <script lang="ts">
-  import SVG_INFO from '$lib/svg/SVG_INFO.svg'
   import Head from '$lib/components/Head.svelte'
   import getImageUrl from '$lib/file/getImageUrl'
-  import SVG_VENMO from '$lib/svg/logo/SVG_VENMO.svg'
-  import SVG_PAYPAL from '$lib/svg/logo/SVG_PAYPAL.svg'
-  import SVG_FACEBOOK from '$lib/svg/logo/SVG_FACEBOOK.svg'
-  import SVG_INSTAGRAM from '$lib/svg/logo/SVG_INSTAGRAM.svg'
+  import SocialSupport from '$lib/components/SocialSupport.svelte'
+  import { LoadingAnchor } from '@sensethenlove/svelte-loading-anchor'
   import { CF_OG_LINKS, CF_CHRIS_GUITAR } from '$lib/util/cloudflareImages'
 
   let picSrc: string
-  let descriptionDIV: HTMLDivElement
 
-  const dates = { // https://savvytime.com/converter/utc-to-ca-los-angeles
-    next: Date.UTC(2023, 6, 6, 0, 10), // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/UTC
-    nextNext: Date.UTC(2023, 6, 6, 1, 45), // Date.UTC(year, monthIndex, day, hour, minute)
+  // https://savvytime.com/converter/utc-to-ca-los-angelesuy
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/UTC
+  // Date.UTC(year, monthIndex, day, hour, minute)
+  const dates = { 
+    next: Date.UTC(2023, 7, 3, 0, 10), 
+    nextNext: Date.UTC(2023, 7, 3, 1, 45), 
+    nextNextNext: Date.UTC(2023, 7, 10, 0, 10),
   }
 
   const remaining = {
     next: getRemaining(dates.next),
     nextNext: getRemaining(dates.nextNext),
+    nextNextNext: getRemaining(dates.nextNextNext),
+  }
+
+  const pretty = {
+    next: getPrettyDate(dates.next),
+    nextNext: getPrettyDate(dates.nextNext),
+    nextNextNext: getPrettyDate(dates.nextNextNext),
   }
 
   $: if (CF_CHRIS_GUITAR) picSrc = getImageUrl(CF_CHRIS_GUITAR)
@@ -50,18 +57,19 @@
     return remaining
   }
 
+  function getPrettyDate (upcomingDate: number) {
+    return new Date(upcomingDate).toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short', timeZone: 'America/Los_Angeles' })
+  }
+
   setInterval(() => {
     remaining.next = getRemaining(dates.next)
     remaining.nextNext = getRemaining(dates.nextNext)
+    remaining.nextNextNext = getRemaining(dates.nextNextNext)
+
+    pretty.next = getPrettyDate(dates.next)
+    pretty.nextNext = getPrettyDate(dates.nextNext)
+    pretty.nextNextNext = getPrettyDate(dates.nextNextNext)
   }, 1000)
-
-  function showDescription () {
-    descriptionDIV.classList.add('visible')
-  }
-
-  function hideDescription () {
-    descriptionDIV.classList.remove('visible')
-  }
 </script>
 
 
@@ -70,30 +78,17 @@
   <img src={ picSrc } alt="Chris Carrington playing guitar" />
 </div>
 
-<section class="title meta-wrapper">
+<section class="title chris">
   <div class="papyrus one">Chris Carrington</div>
-  <div class="papyrus four">
-    <span class="title">
-      <span>Gentle Yoga & Sound Healing</span>
-       <button
-          class="info"
-          type="button"
-          on:focus={ showDescription }
-          on:blur={ hideDescription }
-          on:mouseover={ showDescription }
-          on:mouseleave={ hideDescription}>
-          { @html SVG_INFO }
-        </button>
-    </span>
-  </div>
-  <div class="description" bind:this={ descriptionDIV }>
+  <div class="description">
     <ul>
-      <li>Chris Carrington offers free, Gentle Yoga & Sound Healing classes, in Mount Shasta & online.</li>
-      <li>Chris's Yoga & Sound Healing class features stretches that are gentle, simple & effective. Each stretch is typically held for a couple minutes, to allow time for gravity to gently open us up.</li>
-      <li>The stretch or neutral position that feels good to you is far more important then what Chris suggests, so in class you are free free to listen to, cultivate & follow your intuitive guidance.</li>
+      <li>Chris ceated this site to be a <LoadingAnchor href="/library" label="library" /> of lovely <LoadingAnchor href="/library?type=science" label="scientific evidence" />, <LoadingAnchor href="/library?type=product" label="products" /> & <LoadingAnchor href="/library?type=culture" label="culture" /> for his Gentle Yoga & Sound Healing classes & all else who may love this information.</li>
+      <li>Chris offers free, Gentle Yoga & Sound Healing classes, in <a href="https://soulconnectionscommunitycenter.com/" target="_blank">Mount Shasta</a> & <a href="https://teams.live.com/meet/9355564920768" target="_blank">live online</a>.</li>
+      <li>Class features stretches that are gentle, simple & effective. Each stretch is typically held for a couple minutes, to allow time for gravity to gently open us up.</li>
+      <li>The stretch or neutral position that feels good to you is far more important then what Chris suggests, so in class you may feel free to find, allow & savor any movements that feel good.</li>
       <li>Class features many flows, which are opportunities to mix several stretches together @ any pace you love.</li>
-      <li>During the majority of stretches crystal singing bowls, guitar or gongs are gently played, live.</li>
-      <li>There are also several opportunities to learn, practice & enjoy simple mindfulness meditation techniques that may be implemented outside of class whenever we please.</li>
+      <li>During the majority of stretches crystal singing bowls, guitar and/or gongs are gently played, live.</li>
+      <li>Class also features several opportunities to learn, practice & enjoy simple mindfulness meditation techniques that may be implemented outside of class, anytime.</li>
       <li>Free mats available, donations welcome, all welcome!</li>
     </ul>
   </div>
@@ -115,23 +110,24 @@
   <section class="title">👋 Get in touch</section>
 </a>
 
-<section class="title">
-  <div class="logos">
-    <a href="https://instagram.com/feelinglovelynow" target="_blank">{ @html SVG_INSTAGRAM }</a>
-    <a href="https://venmo.com/u/feelinglovelynow" target="_blank">{ @html SVG_VENMO }</a>
-    <a href="https://facebook.com/feelinglovelynow" target="_blank">{ @html SVG_FACEBOOK }</a>
-    <a href="https://paypal.me/feelinglovelynow" target="_blank">{ @html SVG_PAYPAL }</a>
-  </div>
-</section>
+<SocialSupport />
 
 <section class="title remaining">
-  <div>Next Class · 7/5 @ 5:10pm PST</div>
+  <div class="strong">Next Class</div>
+  <div>{ pretty.next } PST</div>
   <div>{ remaining.next }</div>
 </section>
 
 <section class="title remaining">
-  <div>Next Next Class · 7/5 @ 6:45pm PST</div>
+  <div class="strong">Next Next Class</div>
+  <div>{ pretty.nextNext }</div>
   <div>{ remaining.nextNext }</div>
+</section>
+
+<section class="title remaining">
+  <div class="strong">Next Next Next Class</div>
+  <div>{ pretty.nextNextNext }</div>
+  <div>{ remaining.nextNextNext }</div>
 </section>
 
 
@@ -152,8 +148,14 @@
   .remaining {
     font-size: 1.8rem;
 
-    div:first-child {
+    div {
       margin-bottom: 0.6rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &.strong {
+        font-weight: 500;
+      }
     }
   }
 
@@ -161,58 +163,12 @@
     font-size: 2.1rem;
   }
 
-  .logos {
-    height: 3.2rem;
-
-    a {
-      display: inline-block;
-      height: 3.2rem;
-      aspect-ratio: 1/1;
-      margin: 0 0.9rem;
-    }
-  }
-
-  .meta-wrapper {
-
-    .title {
-      position: relative;
-    }
-
-    .info {
-      border: none;
-      background-color: transparent;
-      padding: 0;
-      transform: translate(0, 0.36rem);
-
-      :global(svg) {
-        color: var(--anchor-color);
-        height: 2.1rem;
-        aspect-ratio: 1/1;
-        transform: translate(0, 0.1rem);
-      }
-    }
+  .chris {
 
     .description {
-      width: 0;
-      opacity: 0;
-      max-height: 0;
-      max-width: 81vw;
-      overflow: hidden;
-      transition: opacity 0.36s;
-      text-align: left;
-
-      div {
-        margin-bottom: 0.9rem;
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-
-    :global(.description.visible) {
       width: 81rem;
-      opacity: 1;
-      max-height: 81rem;
+      max-width: 81vw;
+      text-align: left;
     }
   }
 </style>

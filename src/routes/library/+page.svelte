@@ -51,7 +51,7 @@
 
 <Head { title } ogImageId={ CF_OG_LIBRARY } description="Welcome to our library!" url="sources" />
 <Title text="Library" size="one" />
-<Title text={ title } />
+<Title text={ title } size="two" />
 
 <div>
   <div class="left">

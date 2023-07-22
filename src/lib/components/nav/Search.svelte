@@ -17,7 +17,7 @@
     { name: 'query', focusOnInit: true, autocomplete: 'off' },
     { name: 'sourcesByTitle', label: 'Search library titles',  type: 'checkbox' },
     { name: 'sourcesByDescription', label: 'Search library descriptions',  type: 'checkbox' },
-    { name: 'quotesByText', label: 'Search science quotes', type: 'checkbox' },
+    { name: 'quotesByText', label: 'Search scientific journal quotes', type: 'checkbox' },
   ]
 
 

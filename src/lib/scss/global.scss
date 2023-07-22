@@ -8,6 +8,8 @@
 
 body {
   font-family: $font-family;
+  background-color: var(--bg-color);
+  transition: background-color 0.9s;
 }
 
 main {
@@ -93,7 +95,7 @@ strong {
     font-size: 2.7rem;
   }
   &.two {
-    font-size: 2.4rem;
+    font-size: 2.31rem;
   }
   &.three {
     font-size: 2.1rem;
